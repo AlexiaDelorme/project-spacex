@@ -33,8 +33,8 @@
 	<!-- Custom styles for template -->
 	<link href="{% static 'css/grayscale.min.css' %}" rel="stylesheet">
 
-    <!-- My CSS file -->
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+	<!-- My CSS file -->
+	<link href="{% static 'css/custom.css' %}" rel="stylesheet">
 
 </head>
 
@@ -44,43 +44,43 @@
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
 			<a class="navbar-brand" href="#page-top">
-                <img src="{% static 'img/logo.png' %}" width="auto" height="80" alt="Logo SpaceX">
+				<img src="{% static 'img/logo.png' %}" width="auto" height="80" alt="Logo SpaceX">
             </a>
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="#">Home</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Trips</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Contact</a>
-					</li>
-                </ul>
-                <ul class="navbar-nav ml-auto justify-content-end">
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Account
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Log In</a>
-							<a class="dropdown-item" href="#">Sign Up</a>
-						</div>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#"><i class="fas fa-luggage-cart"></i></a>
-					</li>
-				</ul>
-			</div>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="#">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Trips</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">About</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Contact</a>
+						</li>
+					</ul>
+					<ul class="navbar-nav ml-auto justify-content-end">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Account
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#">Log In</a>
+								<a class="dropdown-item" href="#">Sign Up</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#"><i class="fas fa-luggage-cart"></i></a>
+						</li>
+					</ul>
+				</div>
 		</div>
 	</nav>
 
@@ -96,10 +96,10 @@
 				<div class="col-md-4 mb-3 mb-md-0">
 					<div class="card py-4 h-100">
 						<div class="card-body text-center">
-							<i class="fas fa-map-marked-alt text-primary mb-2"></i>
+							<i class="fas fa-space-shuttle text-primary mb-2"></i>
 							<h4 class="text-uppercase m-0">Address</h4>
 							<hr class="my-4">
-							<div class="small text-black-50">4923 Market Street, Orlando FL</div>
+							<div class="small text-black-50">4923 Market Street, Orlando FL, USA</div>
 						</div>
 					</div>
 				</div>
@@ -107,47 +107,53 @@
 				<div class="col-md-4 mb-3 mb-md-0">
 					<div class="card py-4 h-100">
 						<div class="card-body text-center">
-							<i class="fas fa-envelope text-primary mb-2"></i>
-							<h4 class="text-uppercase m-0">Email</h4>
+							<i class="far fa-paper-plane text-primary mb-2"></i>
+							<h4 class="text-uppercase m-0">Subscribe</h4>
 							<hr class="my-4">
-							<div class="small text-black-50">
-								<a href="#">hello@yourdomain.com</a>
+							<form class="form-inline d-flex">
+								<input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
+								<button type="submit" class="btn btn-primary btn-subscribe mx-auto mt-2">Subscribe</button>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 mb-3 mb-md-0">
+					<div class="card py-4 h-100">
+						<div class="card-body text-center">
+							<i class="fas fa-link text-primary mb-2"></i>
+							<h4 class="text-uppercase m-0">Links</h4>
+							<hr class="my-4">
+							<div class="small text-black-50 justify-content-center">
+								<a class="d-block" href="#">Trips</a>
+								<a class="d-block" href="#">Scientists</a>
+								<a class="d-block" href="#">FAQ</a>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-4 mb-3 mb-md-0">
-					<div class="card py-4 h-100">
-						<div class="card-body text-center">
-							<i class="fas fa-mobile-alt text-primary mb-2"></i>
-							<h4 class="text-uppercase m-0">Phone</h4>
-							<hr class="my-4">
-							<div class="small text-black-50">+1 (555) 902-8832</div>
-						</div>
-					</div>
-				</div>
 			</div>
 
-			<div class="social d-flex justify-content-center">
+			<div class="social d-flex justify-content-center mb-3">
 				<a href="#" class="mx-2">
-					<i class="fab fa-facebook-f"></i>
+					<i class="fab fa-facebook-f footer-icon"></i>
 				</a>
 				<a href="#" class="mx-2">
-					<i class="fab fa-twitter"></i>
+					<i class="fab fa-twitter footer-icon"></i>
 				</a>
 				<a href="#" class="mx-2">
-					<i class="fab fa-linkedin"></i>
+					<i class="fab fa-linkedin footer-icon"></i>
 				</a>
 				<a href="#" class="mx-2">
-					<i class="fab fa-youtube"></i>
+					<i class="fab fa-youtube footer-icon"></i>
 				</a>
 			</div>
 
-		</div>
+			<div class="container bg-black small text-center text-white-50 pb-3">
+				SpaceX &copy; 2020 All Rights Reserved
+			</div>
 
-		<div class="container bg-black small text-center text-white-50">
-			SpaceX &copy; 2020 All Rights Reserved
 		</div>
 
 	</footer>
