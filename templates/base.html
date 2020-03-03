@@ -11,9 +11,9 @@
 	<meta name="author" content="">
 
 	{% if title %}
-	    <title>SpaceX | {{ title }}</title>
+	<title>SpaceX | {{ title }}</title>
 	{% else %}
-	    <title>SpaceX</title>
+	<title>SpaceX</title>
 	{% endif %}
 
 	<!-- Bootstrap CDN -->
@@ -33,6 +33,9 @@
 	<!-- Custom styles for template -->
 	<link href="{% static 'css/grayscale.min.css' %}" rel="stylesheet">
 
+    <!-- My CSS file -->
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -40,21 +43,41 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
-			<a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+			<a class="navbar-brand" href="#page-top">
+                <img src="{% static 'img/logo.png' %}" width="auto" height="80" alt="Logo SpaceX">
+            </a>
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" href="#about">About</a>
+						<a class="nav-link" href="#">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
+						<a class="nav-link" href="#">Trips</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link js-scroll-trigger" href="#signup">Contact</a>
+						<a class="nav-link" href="#">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Contact</a>
+					</li>
+                </ul>
+                <ul class="navbar-nav ml-auto justify-content-end">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Account
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Log In</a>
+							<a class="dropdown-item" href="#">Sign Up</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"><i class="fas fa-luggage-cart"></i></a>
 					</li>
 				</ul>
 			</div>
@@ -65,21 +88,79 @@
 	{% endblock %}
 
 	<!-- Footer -->
-	<footer class="bg-black small text-center text-white-50">
+	<footer class="contact-section bg-black">
 		<div class="container">
-			Copyright &copy; Your Website 2019
+
+			<div class="row">
+
+				<div class="col-md-4 mb-3 mb-md-0">
+					<div class="card py-4 h-100">
+						<div class="card-body text-center">
+							<i class="fas fa-map-marked-alt text-primary mb-2"></i>
+							<h4 class="text-uppercase m-0">Address</h4>
+							<hr class="my-4">
+							<div class="small text-black-50">4923 Market Street, Orlando FL</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 mb-3 mb-md-0">
+					<div class="card py-4 h-100">
+						<div class="card-body text-center">
+							<i class="fas fa-envelope text-primary mb-2"></i>
+							<h4 class="text-uppercase m-0">Email</h4>
+							<hr class="my-4">
+							<div class="small text-black-50">
+								<a href="#">hello@yourdomain.com</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 mb-3 mb-md-0">
+					<div class="card py-4 h-100">
+						<div class="card-body text-center">
+							<i class="fas fa-mobile-alt text-primary mb-2"></i>
+							<h4 class="text-uppercase m-0">Phone</h4>
+							<hr class="my-4">
+							<div class="small text-black-50">+1 (555) 902-8832</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="social d-flex justify-content-center">
+				<a href="#" class="mx-2">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				<a href="#" class="mx-2">
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a href="#" class="mx-2">
+					<i class="fab fa-linkedin"></i>
+				</a>
+				<a href="#" class="mx-2">
+					<i class="fab fa-youtube"></i>
+				</a>
+			</div>
+
 		</div>
+
+		<div class="container bg-black small text-center text-white-50">
+			SpaceX &copy; 2020 All Rights Reserved
+		</div>
+
 	</footer>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-	</script>
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
 		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 	</script>
 
 	<!-- Plugin JavaScript -->
@@ -87,7 +168,7 @@
 
 	<!-- Custom scripts for this template -->
 	<script src="{% static 'js/grayscale.min.js' %}"></script>
-    
+
 </body>
 
 </html>
