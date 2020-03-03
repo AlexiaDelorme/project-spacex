@@ -1,0 +1,13 @@
+.dropdown-menu.show {
+    background: transparent;
+    border: none;
+}
+
+.dropdown-item {
+    color: rgba(255,255,255,.5);
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color: rgba(255,255,255,.75);
+    background: transparent;
+}
