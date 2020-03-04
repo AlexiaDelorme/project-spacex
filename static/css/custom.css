@@ -41,7 +41,7 @@ input#inputEmail {
 Home
  */
 
- .testimony-section hr {
+ .testimony-section hr, .stat-section hr {
   border-color: #64a19d;
   border-width: 0.25rem;
   width: 5rem;
@@ -54,4 +54,9 @@ Home
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
+}
+
+.stat-icon {
+    font-size: 3rem;
+    color: white;
 }
