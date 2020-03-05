@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
+from django.conf import settings
 from .forms import ContactForm
 
 # Create your views here.
@@ -14,4 +15,9 @@ def about_page(request):
 
 def contact_page(request):
     form = ContactForm()
-    return render(request, "contact.html", {'form': form})
+    emailjs_user = settings.EMAILJS_USER
+    context = {
+        "form": form,
+        "emailjs_user": emailjs_user
+    }
+    return render(request, "contact.html", context)
