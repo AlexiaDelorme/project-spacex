@@ -111,14 +111,14 @@
 							<h4 class="text-uppercase m-0">Subscribe</h4>
 							<hr class="my-4">
 							<form>
-                                <div class="row text-right">
-                                    <div class="col-12">
-								        <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
-                                    </div> 
-                                    <div class="col-12">
-								        <button type="submit" class="btn btn-primary btn-subscribe mx-auto mt-2">Subscribe</button>
-                                    </div>                                   
-                                </div>
+								<div class="row text-right">
+									<div class="col-12">
+										<input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
+                                    </div>
+										<div class="col-12">
+											<button type="submit" class="btn btn-primary btn-subscribe mx-auto mt-2">Subscribe</button>
+										</div>
+									</div>
 							</form>
 						</div>
 					</div>
@@ -178,25 +178,23 @@
 	<!-- Plugin JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
-    
-    {% if page_name == "contact" %}
 
-        <!-- EmailJS API script -->
-        <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js">
-        </script>
-        <script type="text/javascript">
-            const emailjsUser = '{{emailjs_user}}';
-        </script>
-        <script src="{% static 'js/email.js' %}"></script>
+	{% if page_name == "contact" %}
 
-        <!-- Google map API script -->
-        <script src="{% static 'js/google.js' %}"></script>
-        <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap">
-        </script>
-        
-    {% endif %}
+	<!-- EmailJS API script -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js">
+	</script>
+	<script type="text/javascript">
+		const emailjsUser = '{{emailjs_user}}';
+	</script>
+	<script src="{% static 'js/email.js' %}"></script>
+
+	<!-- Google map API script -->
+	<script src="{% static 'js/google.js' %}"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap">
+	</script>
+
+	{% endif %}
 
 	<!-- Custom scripts for this template -->
 	<script src="{% static 'js/grayscale.js' %}"></script>
