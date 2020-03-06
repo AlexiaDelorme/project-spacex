@@ -178,8 +178,10 @@
 	<!-- Plugin JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
-    <!-- Email JS script -->
+    
     {% if page_name == "contact" %}
+
+        <!-- EmailJS API script -->
         <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js">
         </script>
@@ -187,6 +189,13 @@
             const emailjsUser = '{{emailjs_user}}';
         </script>
         <script src="{% static 'js/email.js' %}"></script>
+
+        <!-- Google map API script -->
+        <script src="{% static 'js/google.js' %}"></script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap">
+        </script>
+        
     {% endif %}
 
 	<!-- Custom scripts for this template -->

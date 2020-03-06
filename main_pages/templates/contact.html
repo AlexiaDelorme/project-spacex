@@ -17,7 +17,7 @@
 	<div class="container pt-5 pb-5">
 		<div class="row">
 
-			<div class="col-12">
+			<div class="col-12 col-lg-6">
 				<!-- Contact Form -->
 				<form id="contact-form" method="POST" onsubmit="return sendMail(this)">
 					{% csrf_token %}
@@ -33,6 +33,11 @@
 					</div>
 				</form>
 			</div>
+
+            <div class="col-12 col-lg-6">
+                <!-- Google Map -->
+                <div id="map"></div>
+            </div>
 
 		</div>
 	</div>
