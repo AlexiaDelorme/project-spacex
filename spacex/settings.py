@@ -130,3 +130,5 @@ STATICFILES_DIRS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 EMAILJS_USER = os.environ.get('EMAILJS_USER')
+
+GOOGLE_API_KEY = os.environ.get('GOOGLE_API_KEY')
