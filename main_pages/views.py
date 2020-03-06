@@ -17,6 +17,7 @@ def contact_page(request):
     form = ContactForm()
     emailjs_user = settings.EMAILJS_USER
     context = {
+        "page_name": "contact",
         "form": form,
         "emailjs_user": emailjs_user
     }
