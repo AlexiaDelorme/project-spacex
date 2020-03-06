@@ -5,7 +5,7 @@ class ContactForm(forms.Form):
     """Contact for contact page"""
 
     subject = forms.ChoiceField(
-        choices=((1, "ID"), (0, "Medical"))
+        choices=(("Information Request", "Information Request"), ("Tickets Booking", "Tickets Booking"), ("Medical Question", "Medical Question"))
     )
     first = forms.CharField(label='First name')
     last = forms.CharField(label='Last name')
