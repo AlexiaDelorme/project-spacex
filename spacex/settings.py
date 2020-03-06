@@ -127,6 +127,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 EMAILJS_USER = os.environ.get('EMAILJS_USER')
