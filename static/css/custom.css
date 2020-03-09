@@ -88,3 +88,40 @@ Contact
     height: 100%;
     background-color: grey;
  }
+
+ /*
+Trips
+ */
+
+ .trips-head {
+    padding: 10rem 0;
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url("../img/iss-nasa-3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.trips-head h1 {
+    font-family: 'Varela Round';
+    letter-spacing: 0.6rem;
+}
+
+ /*
+FAQ
+ */
+
+#faq .btn-link {
+    color: #161616;
+    box-shadow: 0 0!important;
+}
+
+#faq .btn-link:hover,
+#faq .btn-link:focus {
+    color: #64a19d;
+    text-decoration: none;
+}
+
+#faq h2 {
+    font-size: 1rem;
+}
