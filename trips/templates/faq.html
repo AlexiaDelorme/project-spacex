@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Header -->
+<header class="trips-head">
+	<div class="container d-flex align-items-center">
+		<div class="mx-auto text-center">
+			<h1 class="text-light mx-auto my-0">FAQs</h1>
+		</div>
+	</div>
+</header>
+
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+		<li class="breadcrumb-item"><a href="#">Trips</a></li>
+		<li class="breadcrumb-item active" aria-current="page">FAQs</li>
+	</ol>
+</nav>
+
+<!-- FAQs Section -->
+<section id="faq" class="pt-4 pb-5"> 
+	<div class="container">
+		<div class="row">
+
+			<div class="accordion col-12" id="accordionExample">
+
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h2 class="mb-0">
+							<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Can I take out cancellation insurance for my trip</button>
+						</h2>
+					</div>
+					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+						data-parent="#accordionExample">
+						<div class="card-body">
+							Yes, if you live in Europe or North America.
+						</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="card-header" id="headingTwo">
+						<h2 class="mb-0">
+							<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Are you insured during a trip or parabolic flight?</button>
+						</h2>
+					</div>
+					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+						<div class="card-body">
+							Yes, any passenger booking a trip with SpaceX is automatically insured (insurance underwritten by Air Space Insurance Inc) up to a value of €300,000 per person. <br>
+                            However, we suggest you check the clauses and provisions of your personal insurance, including any restrictions on sporting and aeronautical activities. <br>
+                            You may take out optional extension of cover of up to €650,000 per person. Cancellation insurance is also available.
+						</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="card-header" id="headingThree">
+						<h2 class="mb-0">
+							<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Do you need to have a medical examination to be able to particapte in a trip?</button>
+						</h2>
+					</div>
+					<div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+						data-parent="#accordionExample">
+						<div class="card-body">
+							Yes, you need to ask your general practitioner, a flight physician or any other medical doctor to give you a medical examination. You also need to have an electrocardiogram. 
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</section>
+
+{% endblock %}
