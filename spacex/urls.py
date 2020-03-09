@@ -22,4 +22,5 @@ urlpatterns = [
 
     path('', home_page, name='home'),
     path('main/', include('main_pages.urls')),
+    path('trips/', include('trips.urls')),
 ]
