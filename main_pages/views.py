@@ -9,7 +9,7 @@ def home_page(request):
 
 
 def about_page(request):
-    return render(request, "about.html")
+    return render(request, "about.html", {"page_title": "About Us"})
 
 
 def contact_page(request):
@@ -30,6 +30,7 @@ def contact_page(request):
     emailjs_user = settings.EMAILJS_USER
     google_api_key = settings.GOOGLE_API_KEY
     context = {
+        "page_title": "Contact Us",
         "page_name": "contact",
         "form": form,
         "emailjs_user": emailjs_user,

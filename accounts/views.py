@@ -6,7 +6,7 @@ from .forms import UserLoginForm
 def logout_page(request):
     auth.logout(request)
     messages.success(request, "You have successfully been logged out")
-    return render(request, "logout.html")
+    return render(request, "logout.html", {"page_title": "Log Out"})
 
 
 def login_page(request):
@@ -27,4 +27,8 @@ def login_page(request):
 
     else:
         login_form = UserLoginForm()
-    return render(request, "login.html", {'form': login_form})
+    context = {
+        "page_title": "Log In",
+        "form": login_form
+    }
+    return render(request, "login.html", context)
