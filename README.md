@@ -1,5 +1,3 @@
-__Development branch__
-
 # [SpaceX]()
 
 Project currently under early stage of development. 
@@ -207,6 +205,8 @@ My application was deployed through [heroku](https://dashboard.heroku.com) using
     - `sudo pip3 install psycopg2`
 3. Create a **requirements.txt** file
     - `sudo pip3 freeze --local > requirements.txt`
+4. Install PostgreSQL add-on
+    - `heroku addons:create heroku-postgresql:hobby-dev`
 4. Create a **Procfile**
     - `to be updated`
 5. Create a new Heroku application
