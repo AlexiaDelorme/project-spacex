@@ -13,17 +13,13 @@
 </header>
 
 <!-- Flash messages -->
-<div class="container">
-	<div class="row">
-		{% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-		{% endif %}
-	</div>
-</div>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} text-center">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 
 <!-- Contact Section -->
 <section class="bg-light">
