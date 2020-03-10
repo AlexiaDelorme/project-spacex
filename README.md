@@ -201,15 +201,19 @@ All the documentation regarding the testing of this project can be found in this
 
 My application was deployed through [heroku](https://dashboard.heroku.com) using the master branch of my github repository for this project. The following steps were implemented to deploy this project:
 
-1. Create a **requirements.txt** file
+1. Install gunicorn package to run the application on Heroku.
+    - `sudo pip3 install gunicorn`
+2. Install pycopg2 to connect to PostgreSQL
+    - `sudo pip3 install psycopg2`
+3. Create a **requirements.txt** file
     - `sudo pip3 freeze --local > requirements.txt`
-2. Create a **Procfile**
+4. Create a **Procfile**
     - `to be updated`
-3. Create a new Heroku application
+5. Create a new Heroku application
     - Sign up to a new account if you do not already have one.
     - Create a new application by clicking on `new` then `create new app`.
     - Set the name of your application and select your region and click on `create app` to finalize the creation of your app. 
-4. Set the following config variables as environment variables:
+6. Set the following config variables as environment variables:
     - **SECRET_KEY**: `<SECRET_KEY>`
 
 To be updated
