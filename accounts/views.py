@@ -13,11 +13,14 @@ def logout_page(request):
 
 def login_page(request):
 
+    if request.user.is_authenticated:
+        return redirect(reverse('profile'))
+
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
 
         if login_form.is_valid():
-            user = auth.authenticate(email=request.POST['email'],
+            user = auth.authenticate(username=request.POST['username'],
                                      password=request.POST['password'])
 
             if user:
@@ -26,7 +29,7 @@ def login_page(request):
                 return redirect(reverse('profile'))
             else:
                 login_form.add_error(
-                    None, "Your email or password is incorrect")
+                    None, "Your username or password is incorrect")
 
     else:
         login_form = UserLoginForm()
@@ -38,7 +41,30 @@ def login_page(request):
 
 
 def signup_page(request):
-    signup_form = UserSignupForm()
+
+    if request.user.is_authenticated:
+        return redirect(reverse('profile'))
+
+    if request.method == "POST":
+        signup_form = UserSignupForm(request.POST)
+
+        if signup_form.is_valid():
+            signup_form.save()
+
+            user = auth.authenticate(username=request.POST['username'],
+                                     password=request.POST['password1'])
+
+            if user:
+                auth.login(user=user, request=request)
+                messages.success(request, "Your account has been created")
+                return redirect(reverse('profile'))
+            else:
+                messages.error(
+                    request, "We were unable to register your account.")
+
+    else:
+        signup_form = UserSignupForm()
+
     context = {
         "page_title": "Sign Up",
         "form": signup_form
