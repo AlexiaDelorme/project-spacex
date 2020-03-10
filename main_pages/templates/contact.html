@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block content %}
-
+{% block header %}
 <!-- Header -->
 <header class="about-head">
 	<div class="container d-flex align-items-center">
@@ -11,6 +10,9 @@
 		</div>
 	</div>
 </header>
+{% endblock %}
+
+{% block content %}
 
 <!-- Flash messages -->
 {% if messages %}

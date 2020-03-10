@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block content %}
-
+{% block header %}
 <!-- Header -->
 <header class="trips-head">
 	<div class="container d-flex align-items-center">
@@ -11,15 +10,9 @@
 		</div>
 	</div>
 </header>
+{% endblock %}
 
-<!-- Flash messages -->
-{% if messages %}
-    <div class="alert alert-success text-center" role="alert">
-        {% for message in messages %}
-            {{ message }}
-        {% endfor %}
-    </div>
-{% endif %}
+{% block content %}
 
 <!-- Login Section -->
 <section> 

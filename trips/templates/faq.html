@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
+{% block header %}
 
 <!-- Header -->
 <header class="trips-head">
@@ -20,6 +20,10 @@
 		<li class="breadcrumb-item active" aria-current="page">FAQs</li>
 	</ol>
 </nav>
+
+{% endblock %}
+
+{% block content %}
 
 <!-- FAQs Section -->
 <section id="faq" class="pt-4 pb-5"> 
