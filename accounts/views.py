@@ -17,15 +17,16 @@ def login_page(request):
         login_form = UserLoginForm(request.POST)
 
         if login_form.is_valid():
-            user = auth.authenticate(username=request.POST['username'],
+            user = auth.authenticate(email=request.POST['email'],
                                      password=request.POST['password'])
 
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in!")
+                return redirect(reverse('profile'))
             else:
                 login_form.add_error(
-                    None, "Your username or password is incorrect")
+                    None, "Your email or password is incorrect")
 
     else:
         login_form = UserLoginForm()
@@ -43,3 +44,7 @@ def signup_page(request):
         "form": signup_form
     }
     return render(request, 'signup.html', context)
+
+
+def profile_page(request):
+    return render(request, 'profile.html', {"page_title": "Profile"})
