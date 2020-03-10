@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
-from .forms import UserLoginForm
+from django.contrib.auth.decorators import login_required
+from .forms import UserLoginForm, UserSignupForm
 
 
+@login_required
 def logout_page(request):
     auth.logout(request)
     messages.success(request, "You have successfully been logged out")
@@ -32,3 +34,12 @@ def login_page(request):
         "form": login_form
     }
     return render(request, "login.html", context)
+
+
+def signup_page(request):
+    signup_form = UserSignupForm()
+    context = {
+        "page_title": "Sign Up",
+        "form": signup_form
+    }
+    return render(request, 'signup.html', context)
