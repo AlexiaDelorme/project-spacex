@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Header -->
+<header class="trips-head">
+	<div class="container d-flex align-items-center">
+		<div class="mx-auto text-center">
+			<h1 class="text-light mx-auto my-0">Logout</h1>
+		</div>
+	</div>
+</header>
+
+<!-- Flash messages -->
+{% if messages %}
+    <div class="alert alert-success text-center" role="alert">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- Logout Section -->
+<section id="" class="pt-4 pb-5"> 
+	<div class="container">
+		<div class="row">
+
+            Logout view
+
+		</div>
+	</div>
+</section>
+
+{% endblock %}

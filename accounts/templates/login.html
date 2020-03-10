@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!-- Header -->
+<header class="trips-head">
+	<div class="container d-flex align-items-center">
+		<div class="mx-auto text-center">
+			<h1 class="text-light mx-auto my-0"></h1>
+		</div>
+	</div>
+</header>
+
+<!-- Flash messages -->
+{% if messages %}
+    <div class="alert text-center" role="alert">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- Login Section -->
+<section class="bg-light"> 
+
+	<div class="container pt-5 pb-5">
+		<div class="row">
+
+            <div class="col-12 col-lg-8 mx-auto">
+            
+                <!-- Login Form -->
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <fieldset class="form-group col-12">
+                        <legend class="border-bottom mb-4">Log In</legend>
+                        {{ form|crispy }}
+                    </fieldset>
+
+                    <div class="form-group col-12 text-right">
+                        <button class="btn btn-primary" type="submit">Log In</button>
+                    </div>
+                    
+                    <div class="form-group col-12 text-right">
+                        <small class="text-muted ml-2">
+                            <a href="#">Forgot Password?</a>
+                        </small>
+                    </div>
+
+                </form>
+
+                <div class="col-12 border-top pt-3">
+                    <small class="text-muted">
+                        Do you need an account? <a class="ml-2" href="#">Sign Up</a>
+                    </small>
+                </div>
+
+            </div>
+
+		</div>
+	</div>
+
+</section>
+
+{% endblock %}
