@@ -15,8 +15,127 @@
 {% block content %}
 
 <!-- Profile Section -->
-<section> 
+<section class="pt-5 pb-5">
+	<div class="container">
+		<div class="row mx-auto align-items-center">
 
+			<div class="mx-auto text-center">
+				<h2 class="text-center">{{ user.first_name }} {{ user.last_name }}</h2>
+			</div>
+
+			<div class="col-12">
+
+				<!-- Tabs title -->
+				<nav>
+					<div class="nav nav-tabs" id="nav-tab" role="tablist">
+						<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home"
+							role="tab" aria-controls="nav-home" aria-selected="true">Account</a>
+						<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile"
+							role="tab" aria-controls="nav-profile" aria-selected="false">Bookings</a>
+						<a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+							role="tab" aria-controls="nav-contact" aria-selected="false">Documents</a>
+					</div>
+				</nav>
+
+				<!-- Tabs content -->
+				<div class="tab-content" id="nav-tabContent">
+
+					<!-- Account -->
+					<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+						<div class="col-12 col-lg-8 mx-auto">
+
+							<!-- Passenger details -->
+							<div class="card mt-5">
+								<div class="card-body">
+									<div class="d-flex flex-row-reverse bd-highlight"><a href="">Edit</a></div>
+									<h4 class="font-weight-bold">Passenger</h4>
+									<div class="row">
+										<div class="col-4 text-left">
+											<p>Full name<br>Date of birth</p>
+										</div>
+										<div class="col-8 text-right">
+											<p>{{ user.first_name }} {{ user.last_name }}<br> xx/xx/xxxx </p>
+										</div>
+									</div>
+                                    <h4 class="font-weight-bold">Contact</h4>
+									<div class="row">
+										<div class="col-4 text-left">
+											<p>Email<br>Phone number<br>Address</p>
+										</div>
+										<div class="col-8 text-right">
+											<p>{{ user.email }}<br>TO BE ADDED<br>TO BE ADDED </p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+                            <!-- Login -->
+							<div class="card mt-5">
+								<div class="card-body">
+									<div class="d-flex flex-row-reverse bd-highlight"><a href="">Edit</a></div>
+									<h4 class="font-weight-bold">Login</h4>
+									<div class="row">
+										<div class="col-4 text-left">
+											<p>Password</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+                            <!-- ID -->
+							<div class="card mt-5">
+								<div class="card-body">
+									<div class="d-flex flex-row-reverse bd-highlight"><a href="">Edit</a></div>
+									<h4 class="font-weight-bold">ID</h4>
+									<div class="row">
+										<div class="col-4 text-left">
+											<p>Passport</p>
+										</div>
+										<div class="col-8 text-right">
+											<p>USXXXXXX</p>
+										</div>
+									</div>
+                                    <h4 class="font-weight-bold">Travel Documents</h4>
+									<div class="row">
+										<div class="col-4 text-left">
+											<p>Status</p>
+										</div>
+										<div class="col-8 text-right">
+											<p>checked</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!-- Bookings -->
+					<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eligendi. Amet nemo quibusdam
+						exercitationem perferendis doloribus, nobis quasi tempore maxime provident ut necessitatibus
+						ipsa. Laudantium, aliquam? Obcaecati, consequuntur necessitatibus. Rem!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil excepturi sint iste nulla
+						explicabo fuga, nemo officiis iusto quibusdam aspernatur consectetur deserunt qui, facilis
+						voluptas ducimus unde sit quaerat assumenda.
+					</div>
+
+					<!-- Documents -->
+					<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eligendi. Amet nemo quibusdam
+						exercitationem perferendis doloribus, nobis quasi tempore maxime provident ut necessitatibus
+						ipsa. Laudantium, aliquam? Obcaecati, consequuntur necessitatibus. Rem!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil excepturi sint iste nulla
+						explicabo fuga, nemo officiis iusto quibusdam aspernatur consectetur deserunt qui, facilis
+						voluptas ducimus unde sit quaerat assumenda.
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
 </section>
 
 {% endblock %}
