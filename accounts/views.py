@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from .forms import UserLoginForm, UserSignupForm
 
 
@@ -73,4 +74,9 @@ def signup_page(request):
 
 
 def profile_page(request):
-    return render(request, 'profile.html', {"page_title": "Profile"})
+    user = User.objects.get(email=request.user.email)
+    context = {
+        "page_title": "Profile",
+        "user": user
+    }
+    return render(request, 'profile.html', context)
