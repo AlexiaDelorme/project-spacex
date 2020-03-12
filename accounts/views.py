@@ -73,6 +73,7 @@ def signup_page(request):
     return render(request, 'signup.html', context)
 
 
+@login_required
 def profile_page(request):
     user = User.objects.get(email=request.user.email)
     context = {
