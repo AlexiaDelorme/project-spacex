@@ -9,7 +9,7 @@ from .forms import UserLoginForm, UserSignupForm
 def logout_page(request):
     auth.logout(request)
     messages.success(request, "You have successfully been logged out")
-    return render(request, "logout.html", {"page_title": "Log Out"})
+    return redirect(reverse('login'))
 
 
 def login_page(request):
