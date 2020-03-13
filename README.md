@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/AlexiaDelorme/project-spacex.svg?branch=master)](https://travis-ci.org/AlexiaDelorme/project-spacex)
+
 # [SpaceX]()
 
 Project currently under early stage of development. 
