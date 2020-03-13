@@ -29,7 +29,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['project-spacex.herokuapp.com']
+ALLOWED_HOSTS = [
+    os.environ.get('HOSTNAME'),
+    'localhost'
+]
 
 
 # Application definition
@@ -90,7 +93,7 @@ DATABASES = {
 }
 """
 
-DATABASES = {'default': dj_database_url.parse(os.environ.get('DB_URL'))}
+DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
