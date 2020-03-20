@@ -36,7 +36,7 @@ class Trip(models.Model):
     description = models.TextField()
     distance = models.IntegerField()
     required_document = models.ManyToManyField(RequiredDocument)
-    img = models.FileField(blank=True, upload_to='static/img/')
+    img = models.ImageField(blank=True, upload_to='static/img/')
 
     def __str__(self):
         return self.title
