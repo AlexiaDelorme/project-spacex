@@ -2,10 +2,17 @@ from django import forms
 
 
 class ContactForm(forms.Form):
-    """Contact for contact page"""
+    """Contact form for contact page"""
+    SUBJECT_CHOICES = (
+        ("Information Request", "Information Request"),
+        ("Tickets Booking", "Tickets Booking"),
+        ("Medical Question", "Medical Question"),
+        ("Scientific Trips", "Scientific Trips"),
+        ("Other", "Other")
+    )
 
     subject = forms.ChoiceField(
-        choices=(("Information Request", "Information Request"), ("Tickets Booking", "Tickets Booking"), ("Medical Question", "Medical Question"))
+        choices=SUBJECT_CHOICES
     )
     first = forms.CharField(label='First name')
     last = forms.CharField(label='Last name')
