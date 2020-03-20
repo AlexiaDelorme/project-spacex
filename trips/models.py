@@ -2,13 +2,19 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.conf import settings
+import os
 
 
 class DepartureSite(models.Model):
-    site = models.CharField(max_length=100)
+    site_name = models.CharField(max_length=100)
+    country = models.CharField(max_length=50)
+
+    class Meta:
+        ordering = ['site_name']
 
     def __str__(self):
-        return self.site
+        return f"{self.site_name}, {self.country}"
 
 
 class RequiredDocument(models.Model):
@@ -29,9 +35,8 @@ class Trip(models.Model):
     slot = models.IntegerField()
     description = models.TextField()
     distance = models.IntegerField()
-    required_document = models.ForeignKey(
-        RequiredDocument, on_delete=models.PROTECT)
-    img = models.FileField(blank=True)
+    required_document = models.ManyToManyField(RequiredDocument)
+    img = models.FileField(blank=True, upload_to='static/img/')
 
     def __str__(self):
         return self.title
