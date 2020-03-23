@@ -60,7 +60,7 @@
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Trips
 							</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-shrink" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{% url 'all-trips' %}">All</a>
                                 <a class="dropdown-item" href="{% url 'faq' %}">FAQs</a>
                             </div>                            
@@ -78,7 +78,7 @@
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Account
 							</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu dropdown-shrink" aria-labelledby="navbarDropdown">
                                 {% if user.is_authenticated %}
                                     <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                                     <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>

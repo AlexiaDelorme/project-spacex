@@ -3,17 +3,33 @@ Navbar
  */
 
 .dropdown-menu.show {
-    background: transparent;
     border: none;
 }
 
 .dropdown-item {
-    color: rgba(255,255,255,.5);
+    color: rgba(0,0,0,.5);
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
-    color: rgba(255,255,255,.75);
     background: transparent;
+    color: rgba(0,0,0,.7);
+}
+
+@media (min-width: 992px) {
+    
+    .dropdown-shrink.dropdown-menu.show {
+        background: transparent;
+    }
+
+    .dropdown-shrink .dropdown-item {
+        color: rgba(255,255,255,.5);
+    }
+
+    .dropdown-shrink .dropdown-item:focus, .dropdown-shrink .dropdown-item:hover {
+        color: rgba(255,255,255,.75);
+    }
+
+
 }
 
  /*
