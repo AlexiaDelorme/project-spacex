@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import os
 from django.db import models
 from django.conf import settings
-import os
+from PIL import Image
 
 
 class DepartureSite(models.Model):
@@ -27,7 +28,7 @@ class RequiredDocument(models.Model):
 class Trip(models.Model):
     title = models.CharField(max_length=50)
     destination = models.CharField(max_length=30)
-    duration = models.DurationField()
+    duration = models.IntegerField()
     price = models.IntegerField()
     departure_date = models.DateField()
     departure_site = models.ForeignKey(
@@ -36,7 +37,7 @@ class Trip(models.Model):
     description = models.TextField()
     distance = models.IntegerField()
     required_document = models.ManyToManyField(RequiredDocument)
-    img = models.ImageField(blank=True, upload_to='static/img/')
+    img = models.ImageField(blank=True, upload_to='trip_pics')
 
     def __str__(self):
         return self.title
