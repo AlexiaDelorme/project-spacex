@@ -129,6 +129,14 @@ Trips
     letter-spacing: 0.6rem;
 }
 
+.btn-book {
+    position: absolute;
+    top: 80%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
  /*
 FAQ
  */
