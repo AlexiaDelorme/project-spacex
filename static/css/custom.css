@@ -137,6 +137,14 @@ Trips
     -ms-transform: translate(-50%, -50%);
 }
 
+.btn-book-odd {
+    position: absolute;
+    top: 80%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
  /*
 FAQ
  */
