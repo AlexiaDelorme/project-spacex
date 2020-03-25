@@ -17,6 +17,18 @@ class DepartureSite(models.Model):
         return f"{self.site_name}, {self.country}"
 
 
+class Departure(models.Model):
+    departure_site = models.ForeignKey(
+        DepartureSite, on_delete=models.CASCADE)
+    departure_date = models.DateField()
+
+    class Meta:
+        ordering = ['departure_date']
+
+    def __str__(self):
+        return f"{self.departure_date}, from {self.departure_site}"
+
+
 class RequiredDocument(models.Model):
     name = models.CharField(max_length=100)
 
@@ -24,19 +36,28 @@ class RequiredDocument(models.Model):
         return self.name
 
 
+class TripImage(models.Model):
+    img_name = models.CharField(max_length=50)
+    img = models.ImageField(blank=True, upload_to='trip_pics')
+
+    class Meta:
+        ordering = ['img_name']
+
+    def __str__(self):
+        return self.img_name
+
+
 class Trip(models.Model):
     title = models.CharField(max_length=50)
     destination = models.CharField(max_length=30)
     duration = models.IntegerField()
     price = models.IntegerField()
-    departure_date = models.DateField()
-    departure_site = models.ForeignKey(
-        DepartureSite, on_delete=models.PROTECT)
+    departure = models.ManyToManyField(Departure)
     slot = models.IntegerField()
     description = models.TextField()
     distance = models.IntegerField()
     required_document = models.ManyToManyField(RequiredDocument)
-    img = models.ImageField(blank=True, upload_to='trip_pics')
+    img = models.ManyToManyField(TripImage)
 
     def __str__(self):
         return self.title
