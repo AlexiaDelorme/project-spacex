@@ -28,7 +28,9 @@
                 <!-- Trip card - even -->
                 <div class="row justify-content-center no-gutters mb-5">
                     <div class="col-lg-8">
-                        <img class="img-fluid" src="{{ trip.img.url }}" alt="{{ trip.destination }}">
+                        {% with trip.img|first as first_img %}
+                            <img class="img-fluid" src="{{ first_img.img.url }}" alt="{{ trip.destination }}">
+                        {% endwith %}
                         <button type="button" class="d-none d-md-block btn btn-book btn-light">Book</button>
                     </div>
                     <div class="col-lg-4 order-lg-first">
@@ -41,7 +43,10 @@
                                         {{ trip.duration }} Day</br>
                                         {{ trip.distance|intcomma }} Km</br>
                                         € {{ trip.price|intcomma }}</br>
-                                        <i class="fas fa-calendar-day"></i> {{ trip.departure_date }}
+                                        <i class="fas fa-calendar-day"></i>
+                                            {% for date in trip.departure.all %}
+                                                {{date}}
+                                            {% endfor %}
                                     </p>
                                     <button type="button" class="mx-auto d-block d-md-none btn btn-light">Book</button>
                                 </div>
