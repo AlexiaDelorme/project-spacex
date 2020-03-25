@@ -54,16 +54,22 @@
 											<p>Full name<br>Date of birth</p>
 										</div>
 										<div class="col-8 text-right">
-											<p>{{ user.first_name }} {{ user.last_name }}<br> xx/xx/xxxx </p>
+											<p>{{ user.first_name }} {{ user.last_name }}<br> {{ contact.birth_date }} </p>
 										</div>
 									</div>
                                     <h4 class="font-weight-bold">Contact</h4>
 									<div class="row">
 										<div class="col-4 text-left">
-											<p>Email<br>Phone number<br>Address</p>
+											<p>Email<br>Phone number<br><br>Address</p>
 										</div>
 										<div class="col-8 text-right">
-											<p>{{ user.email }}<br>TO BE ADDED<br>TO BE ADDED </p>
+											<p> {{ user.email }}<br>
+                                                {{ contact.phone_number }}<br><br>
+                                                {{ contact.street_address1 }} <br>
+                                                {{ contact.postcode }} {{ contact.town_or_city}} <br>
+                                                {{ contact.state }} <br>
+                                                {{ contact.country }} <br>
+                                            </p>
 										</div>
 									</div>
 								</div>
