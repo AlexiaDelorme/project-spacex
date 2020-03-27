@@ -18,11 +18,38 @@
 {% block content %}
 
 <!-- Trip detail section -->
-<section class="">
+<section class="mt-5 mb-5">
 	<div class="container">
+		<div class="row">
 
-	
+			<!-- Big image -->
+			<div class="col-lg-7">
+				<img class="img-fluid" src="{{ trip.img.all.0.img.url }}" alt="{{ trip.img.all.0.img_name }}">
+            </div>
+            
+            <!-- Small images -->
+            <div class="col-lg-2">
+                {% for trip_image in trip.img.all %}
+                    <img class="trip-img-thumbnail mb-3" src="{{ trip_image.img.url }}" alt="{{ trip_image.img_name }}">
+                {% endfor %}
+            </div>
 
+            <!-- Trip detail-->
+            <div class="col-lg-3 card bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ trip.destination }}</h5>
+                    <p class="card-text">
+                        {{ trip.duration }} Day</br>
+                        {{ trip.distance|intcomma }} Km</br>
+                        € {{ trip.price|intcomma }}</br>
+                        <i class="fas fa-calendar-day"></i>
+                        {{ trip.departure.all.0.departure_date }}
+                    
+                    </p>
+                </div>
+            </div> 
+
+		</div>
 	</div>
 </section>
 
