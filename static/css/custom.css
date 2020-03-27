@@ -158,6 +158,16 @@ All Trips
 }
 
  /*
+Trip detail 
+ */
+
+.trip-img-thumbnail {
+    object-fit: cover;
+    height: 125px;
+    width: 125px;
+}
+
+ /*
 FAQ
  */
 
