@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Trip
 
 
@@ -17,3 +17,12 @@ def trips_page(request):
         "trips": trips
     }
     return render(request, "trips.html", context)
+
+
+def trip_detail_page(request, pk):
+    trip = get_object_or_404(Trip, pk=pk)
+    context = {
+        "page_title": "Detail",
+        "trip": trip
+    }
+    return render(request, "trip_detail.html", context)
