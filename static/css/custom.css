@@ -167,6 +167,12 @@ Trip detail
     width: 125px;
 }
 
+img.img-fluid.img-box {
+    height: 550px;
+    width: 100%;
+    object-fit: cover;
+}
+
  /*
 FAQ
  */

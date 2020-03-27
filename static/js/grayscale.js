@@ -39,4 +39,11 @@
   // Collapse the navbar when page is scrolled
   $(window).scroll(navbarCollapse);
 
+  // Image thumbnail for trips page
+
+  $('.trip-img-thumbnail').click(function(e){
+      e.preventDefault();
+      $('.img-box').attr("src", $(this).attr("src"))
+  })
+
 })(jQuery); // End of use strict
