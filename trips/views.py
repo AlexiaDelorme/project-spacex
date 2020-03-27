@@ -13,6 +13,7 @@ def trips_page(request):
     trips = Trip.objects.all()
     context = {
         "page_title": "All Trips",
+        "page_name": "all trips",
         "trips": trips
     }
     return render(request, "trips.html", context)
