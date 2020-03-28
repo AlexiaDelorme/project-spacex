@@ -8,7 +8,7 @@
 <header class="trips-head">
 	<div class="container d-flex align-items-center">
 		<div class="mx-auto text-center">
-			<h1 class="text-light mx-auto my-0">{{ trip.title }}</h1>
+			<h1 class="text-light mx-auto my-0"></h1>
 		</div>
 	</div>
 </header>
@@ -20,7 +20,12 @@
 <!-- Trip detail section -->
 <section class="mt-5 mb-5">
 	<div class="container">
+
 		<div class="row">
+
+            <div class="col-12 text-center mt-5 mb-5">
+                <h1 class="text-uppercase">{{ trip.title }}</h1>
+            </div>
 
 			<!-- Big image -->
 			<div class="col-lg-7">
@@ -34,22 +39,81 @@
                 {% endfor %}
             </div>
 
-            <!-- Trip detail-->
-            <div class="col-lg-3 card bg-light mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">{{ trip.destination }}</h5>
-                    <p class="card-text">
-                        {{ trip.duration }} Day</br>
-                        {{ trip.distance|intcomma }} Km</br>
-                        € {{ trip.price|intcomma }}</br>
+            <!-- Trip details -->
+            <div class="col-lg-3 jumbotron">
+            
+                <div class="col-12">
+                    <h2>{{ trip.destination }}</h2>
+                    <p>
+                        <i class="far fa-clock"></i> {{ trip.duration }} Day</br>
+                        <i class="fas fa-space-shuttle"></i> {{ trip.distance|intcomma }} Km</br>
+                        <i class="fas fa-money-bill-wave"></i> € {{ trip.price|intcomma }}</br>
                         <i class="fas fa-calendar-day"></i>
                         {{ trip.departure.all.0.departure_date }}
-                    
                     </p>
                 </div>
-            </div> 
+
+                <form id="select-trip-form" method="POST" class="col-12">
+                    
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Departure site</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            {% for departure in trip.departure.all %}
+                                <option>{{ departure.departure_site }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Departure dates</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            {% for departure in trip.departure.all %}
+                                <option>{{ departure.departure_date }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Passenger(s)</label>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>1</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group text-right">
+                        <button type="submit" class="btn btn-primary btn-subscribe">Book</button>
+                    </div>
+
+                </form>
+
+		    </div>
 
 		</div>
+
+        <!-- Trip description -->
+        <div class="row">
+            <div class="col-12 jumbotron">
+                <h2>Trip description</h2>
+                <p>{{ trip.description }}</p>
+            </div>
+        </div>
+
+        <!-- Requirements -->
+        <div class="row">
+            <div class="col-12 jumbotron">
+                <h2>Requirements</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+
+        <!-- Safety -->
+        <div class="row">
+            <div class="col-12 jumbotron">
+                <h2>Safety</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        
 	</div>
 </section>
 
