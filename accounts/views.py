@@ -3,7 +3,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import ContactDetail
-from .forms import UserLoginForm, UserSignupForm
+from .forms import UserLoginForm, UserSignupForm, UserContactDetailForm
 
 
 @login_required
@@ -85,3 +85,16 @@ def profile_page(request):
         "contact": contact
     }
     return render(request, 'profile.html', context)
+
+
+@login_required
+def contact_details_page(request):
+    form = UserContactDetailForm()
+    contact = ContactDetail.objects.get(user=request.user)
+
+    context = {
+        "page_title": "Contact details",
+        "form": form,
+        "contact": contact
+    }
+    return render(request, 'contact_details.html', context)

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block header %}
+<!-- Header -->
+<header class="accounts-head">
+	<div class="container d-flex align-items-center">
+		<div class="mx-auto text-center">
+			<h1 class="text-light mx-auto my-0">Your contact details</h1>
+		</div>
+	</div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+<!-- Profile Section -->
+<section class="pt-5 pb-5">
+	<div class="container">
+		<div class="row mx-auto align-items-center">
+
+			<div class="col-12 mx-auto text-center">
+				<h2 class="text-center">{{ user.first_name }} {{ user.last_name }}</h2>
+			</div>
+
+            <div class="col-12 col-lg-8 mx-auto">
+            
+                <!-- Contact Details Form -->
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <fieldset class="form-group col-12">
+                        {{ form|crispy }}
+                    </fieldset>
+
+                    <div class="form-group col-12 text-right">
+                        <button class="btn btn-primary" type="submit">Edit</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+		</div>
+	</div>
+</section>
+
+{% endblock %}
