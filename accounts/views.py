@@ -3,7 +3,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import ContactDetail
-from .forms import UserLoginForm, UserSignupForm, UserContactDetailForm
+from .forms import UserLoginForm, UserSignupForm, UserContactDetailForm, UserUpdateForm
 
 
 @login_required
@@ -58,6 +58,8 @@ def signup_page(request):
 
             if user:
                 auth.login(user=user, request=request)
+                contact = ContactDetail(user=user)
+                contact.save()
                 messages.success(request, "Your account has been created")
                 return redirect(reverse('profile'))
             else:
@@ -91,20 +93,24 @@ def profile_page(request):
 def contact_details_page(request):
 
     if request.method == 'POST':
-        form = UserContactDetailForm(
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        c_form = UserContactDetailForm(
             request.POST,
             request.FILES,
             instance=request.user.contactdetail)
-        if form.is_valid():
-            form.save()
+        if u_form.is_valid() and c_form.is_valid():
+            u_form.save()
+            c_form.save()
             messages.success(request, f'Your account details have been updated!')
             return redirect('profile')
     else:
-        form = UserContactDetailForm(instance=request.user.contactdetail)
+        u_form = UserUpdateForm(instance=request.user)
+        c_form = UserContactDetailForm(instance=request.user.contactdetail)
 
     context = {
         "page_title": "Contact details",
-        "form": form
+        "u_form": u_form,
+        "c_form": c_form
     }
     
     return render(request, 'contact_details.html', context)
