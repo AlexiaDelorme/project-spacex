@@ -20,3 +20,16 @@ class ContactDetail(models.Model):
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name}"
+
+
+class Passenger(models.Model):
+   
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=30, blank=False)
+    last_name = models.CharField(max_length=150, blank=False)
+    birth_date = models.DateField()
+    citizenship = models.CharField(max_length=30, blank=False)
+    passport_id = models.CharField(max_length=30, blank=False)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
