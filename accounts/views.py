@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -89,12 +89,22 @@ def profile_page(request):
 
 @login_required
 def contact_details_page(request):
-    form = UserContactDetailForm()
-    contact = ContactDetail.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        form = UserContactDetailForm(
+            request.POST,
+            request.FILES,
+            instance=request.user.contactdetail)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Your account details have been updated!')
+            return redirect('profile')
+    else:
+        form = UserContactDetailForm(instance=request.user.contactdetail)
 
     context = {
         "page_title": "Contact details",
-        "form": form,
-        "contact": contact
+        "form": form
     }
+    
     return render(request, 'contact_details.html', context)
