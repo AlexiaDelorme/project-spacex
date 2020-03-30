@@ -21,8 +21,10 @@ def trips_page(request):
 
 def trip_detail_page(request, pk):
     trip = get_object_or_404(Trip, pk=pk)
+    slot = trip.slot
     context = {
         "page_title": "Detail",
-        "trip": trip
+        "trip": trip,
+        "slot": range(slot),
     }
     return render(request, "trip_detail.html", context)
