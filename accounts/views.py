@@ -105,6 +105,29 @@ def profile_page(request):
 
 
 @login_required
+def create_contact_details_page(request):
+
+    if request.method == 'POST':
+        form = UserContactDetailForm(request.POST)
+        if form.is_valid():
+            contact_details = form.save(commit=False)
+            contact_details.user = request.user
+            contact_details.save()
+            messages.success(
+                request, f'Your account details have been updated!')
+            return redirect('profile')
+    else:
+        form = UserContactDetailForm()
+
+    context = {
+        "page_title": "Create contact",
+        "form": form
+    }
+
+    return render(request, 'create_contact_details.html', context)
+
+
+@login_required
 def edit_contact_details_page(request):
 
     if request.method == 'POST':
