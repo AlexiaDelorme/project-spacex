@@ -3,7 +3,13 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import ContactDetail
-from .forms import UserLoginForm, UserSignupForm, UserContactDetailForm, UserUpdateForm
+from .forms import (
+    UserLoginForm,
+    UserSignupForm,
+    UserContactDetailForm,
+    UserUpdateForm,
+    PassengerForm
+)
 
 
 @login_required
@@ -58,8 +64,6 @@ def signup_page(request):
 
             if user:
                 auth.login(user=user, request=request)
-                contact = ContactDetail(user=user)
-                contact.save()
                 messages.success(request, "Your account has been created")
                 return redirect(reverse('profile'))
             else:
@@ -78,14 +82,25 @@ def signup_page(request):
 
 @login_required
 def profile_page(request):
+ 
     user = User.objects.get(email=request.user.email)
-    contact = ContactDetail.objects.get(user=request.user)
 
-    context = {
-        "page_title": "Profile",
-        "user": user,
-        "contact": contact
-    }
+    try:
+        contact = ContactDetail.objects.get(user=request.user)
+    except ContactDetail.DoesNotExist:
+        contact = None
+    
+    if contact is not None:
+        context = {
+            "page_title": "Profile",
+            "user": user,
+            "contact": contact
+        }
+    else:
+        context = {
+            "page_title": "Profile",
+            "user": user
+        }
     return render(request, 'profile.html', context)
 
 
@@ -101,7 +116,8 @@ def contact_details_page(request):
         if u_form.is_valid() and c_form.is_valid():
             u_form.save()
             c_form.save()
-            messages.success(request, f'Your account details have been updated!')
+            messages.success(
+                request, f'Your account details have been updated!')
             return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
@@ -112,5 +128,5 @@ def contact_details_page(request):
         "u_form": u_form,
         "c_form": c_form
     }
-    
+
     return render(request, 'contact_details.html', context)
