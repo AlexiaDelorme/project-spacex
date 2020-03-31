@@ -44,14 +44,18 @@
 							    <!-- User & Contact details -->
                                 <div class="card mt-5">
                                     <div class="card-body">
-                                        <div class="d-flex flex-row-reverse bd-highlight"><a href="{% url 'contact_details' %}">Edit</a></div>
-                                        <h4 class="font-weight-bold">Information</h4>
+                                        <div class="d-flex flex-row-reverse bd-highlight"><a href="{% url 'edit_contact_details' %}">Edit</a></div>
+                                        <h4 class="font-weight-bold">Passenger</h4>
                                         <div class="row">
                                             <div class="col-4 text-left">
-                                                <p>Full name<br>Date of birth</p>
+                                                <p>Full name<br>Date of birth<br>Passport</p>
                                             </div>
                                             <div class="col-8 text-right">
-                                                <p>{{ user.first_name }} {{ user.last_name }}<br> {{ contact.birth_date }} </p>
+                                                <p>
+                                                    {{ user.first_name }} {{ user.last_name }}<br>
+                                                    {{ contact.birth_date }}<br>
+                                                    {{ contact.passport_id }}<br>
+                                                </p>
                                             </div>
                                         </div>
                                         <h4 class="font-weight-bold">Contact</h4>
@@ -74,8 +78,8 @@
                             {% else %}
                                 <!-- If user has no contact details  -->
                                 <div class="card mt-5">
-                                    <div class="card-body">
-                                        You have not provided your passenger details yet! <a href="">Provide passenger details</a>.
+                                    <div class="card-body text-center">
+                                        You have not provided your details yet! <a href="">Update</a>
                                     </div>
                                 </div>
                             {% endif %}
@@ -98,43 +102,12 @@
 
 					<!-- Bookings -->
 					<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eligendi. Amet nemo quibusdam
-						exercitationem perferendis doloribus, nobis quasi tempore maxime provident ut necessitatibus
-						ipsa. Laudantium, aliquam? Obcaecati, consequuntur necessitatibus. Rem!
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil excepturi sint iste nulla
-						explicabo fuga, nemo officiis iusto quibusdam aspernatur consectetur deserunt qui, facilis
-						voluptas ducimus unde sit quaerat assumenda.
+						Trips booked by the user
 					</div>
 
-					<!-- Passenger -->
+					<!-- Documents -->
 					<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-						<div class="col-12 col-lg-8 mx-auto">
-
-							<div class="card mt-5">
-								<div class="card-body">
-									<div class="d-flex flex-row-reverse bd-highlight"><a href="">Edit</a></div>
-									<h4 class="font-weight-bold">ID</h4>
-									<div class="row">
-										<div class="col-4 text-left">
-											<p>Passport</p>
-										</div>
-										<div class="col-8 text-right">
-											<p>USXXXXXX</p>
-										</div>
-									</div>
-                                    <h4 class="font-weight-bold">Travel Documents</h4>
-									<div class="row">
-										<div class="col-4 text-left">
-											<p>Status</p>
-										</div>
-										<div class="col-8 text-right">
-											<p>checked</p>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
+                        Additional documents to be provided by the user
 					</div>
 
 				</div>
