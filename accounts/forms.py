@@ -26,14 +26,16 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email']
+        fields = ['email']
 
 class UserContactDetailForm(forms.ModelForm):
     class Meta:
         model = ContactDetail
         fields = [
-            'phone_number',
             'birth_date',
+            'citizenship',
+            'passport_id',
+            'phone_number',
             'street_address1',
             'street_address2',
             'state',
