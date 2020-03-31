@@ -82,14 +82,14 @@ def signup_page(request):
 
 @login_required
 def profile_page(request):
- 
+
     user = User.objects.get(email=request.user.email)
 
     try:
         contact = ContactDetail.objects.get(user=request.user)
     except ContactDetail.DoesNotExist:
         contact = None
-    
+
     if contact is not None:
         context = {
             "page_title": "Profile",
@@ -105,7 +105,7 @@ def profile_page(request):
 
 
 @login_required
-def contact_details_page(request):
+def edit_contact_details_page(request):
 
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
@@ -129,4 +129,4 @@ def contact_details_page(request):
         "c_form": c_form
     }
 
-    return render(request, 'contact_details.html', context)
+    return render(request, 'edit_contact_details.html', context)
