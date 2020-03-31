@@ -39,6 +39,17 @@ class UserContactDetailForm(forms.ModelForm):
             'state',
             'postcode',
             'town_or_city',
-            'country',
-            'profile_pic'
+            'country'
+            ]
+
+
+class PassengerForm(forms.ModelForm):
+    class Meta:
+        model = Passenger
+        fields = [
+            'first_name',
+            'last_name',
+            'birth_date',
+            'citizenship',
+            'passport_id'
             ]
