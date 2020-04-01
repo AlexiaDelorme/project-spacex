@@ -6,27 +6,26 @@ from django.db import models
 from django.conf import settings
 
 
-class DepartureSite(models.Model):
-    site_name = models.CharField(max_length=100)
-    country = models.CharField(max_length=50)
+class Date(models.Model):
+    date = models.DateField()
 
     class Meta:
-        ordering = ['site_name']
+        ordering = ['date']
 
     def __str__(self):
-        return f"{self.site_name}, {self.country}"
+        return f"{self.date}"
 
 
 class Departure(models.Model):
-    departure_site = models.ForeignKey(
-        DepartureSite, on_delete=models.CASCADE)
-    departure_date = models.DateField()
+    site_name = models.CharField(max_length=100)
+    country = models.CharField(max_length=50)
+    date = models.ManyToManyField(Date)
 
     class Meta:
-        ordering = ['departure_date']
+        ordering = ['country']
 
     def __str__(self):
-        return f"{self.departure_date}, from {self.departure_site}"
+        return f"{self.site_name}, {self.country}"
 
 
 class RequiredDocument(models.Model):
