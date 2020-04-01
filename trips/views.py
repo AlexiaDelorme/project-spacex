@@ -25,6 +25,6 @@ def trip_detail_page(request, pk):
     context = {
         "page_title": "Detail",
         "trip": trip,
-        "slot": range(slot),
+        "slot": range(slot+1),
     }
     return render(request, "trip_detail.html", context)
