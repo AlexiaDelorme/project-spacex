@@ -27,6 +27,8 @@
                 <h1 class="text-uppercase">{{ trip.title }}</h1>
             </div>
 
+            {{ departures }}
+
 			<!-- Big image -->
 			<div class="col-lg-7">
 				<img class="img-fluid img-box" src="{{ trip.img.all.0.img.url }}" alt="{{ trip.img.all.0.img_name }}">
@@ -126,6 +128,8 @@
 <script type="text/javascript">
     const departures = '{{departures}}';
     console.log(departures);
+    var value = JSON.parse(departures);
+    console.log(value);
 </script>
 
 {% endblock %}

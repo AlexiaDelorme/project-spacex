@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, get_object_or_404
 from django.core import serializers
+from django.forms.models import model_to_dict
 from .models import Trip
 import json
 
@@ -25,7 +26,10 @@ def trip_detail_page(request, pk):
     trip = get_object_or_404(Trip, pk=pk)
     slot = trip.slot
     # Create a string dic to be passed to the dom
-    departures = serializers.serialize('json', Trip.objects.all())
+    # trip_dict = serializers.serialize('json', Trip.objects.all())
+    trip_dict = model_to_dict(trip)
+    model_obj_dep = trip_dict["departure"]
+    departures = serializers.serialize('json', model_obj_dep, fields=('site_name', 'date'))
     context = {
         "page_title": "Detail",
         "trip": trip,
