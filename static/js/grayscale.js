@@ -52,4 +52,4 @@
         alert("You have selected the option - " + departureSiteSelected);
     });
 
-})(jQuery); // End of use strict
+}) (jQuery); // End of use strict
