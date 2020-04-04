@@ -28,13 +28,11 @@ class UserUpdateForm(forms.ModelForm):
         model = User
         fields = ['email']
 
+
 class UserContactDetailForm(forms.ModelForm):
     class Meta:
         model = ContactDetail
         fields = [
-            'birth_date',
-            'citizenship',
-            'passport_id',
             'phone_number',
             'street_address1',
             'street_address2',
@@ -42,7 +40,7 @@ class UserContactDetailForm(forms.ModelForm):
             'postcode',
             'town_or_city',
             'country'
-            ]
+        ]
 
 
 class PassengerForm(forms.ModelForm):
@@ -54,4 +52,4 @@ class PassengerForm(forms.ModelForm):
             'birth_date',
             'citizenship',
             'passport_id'
-            ]
+        ]
