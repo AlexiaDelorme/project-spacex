@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .models import ContactDetail
+from .models import ContactDetail, Passenger
 from .forms import (
     UserLoginForm,
     UserSignupForm,
@@ -90,17 +90,38 @@ def profile_page(request):
     except ContactDetail.DoesNotExist:
         contact = None
 
+    try:
+        passenger = Passenger.objects.get(user=request.user)
+    except Passenger.DoesNotExist:
+        passenger = None
+
     if contact is not None:
-        context = {
-            "page_title": "Profile",
-            "user": user,
-            "contact": contact
-        }
+        if passenger is not None:
+            context = {
+                "page_title": "Profile",
+                "user": user,
+                "contact": contact,
+                "passenger": passenger
+            }
+        else:
+            context = {
+                "page_title": "Profile",
+                "user": user,
+                "contact": contact
+            }
     else:
-        context = {
-            "page_title": "Profile",
-            "user": user
-        }
+        if passenger is not None:
+            context = {
+                "page_title": "Profile",
+                "user": user,
+                "passenger": passenger
+            }
+        else:
+            context = {
+                "page_title": "Profile",
+                "user": user
+            }
+
     return render(request, 'profile.html', context)
 
 

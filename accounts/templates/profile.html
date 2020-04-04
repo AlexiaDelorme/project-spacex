@@ -40,25 +40,43 @@
 					<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 						<div class="col-12 col-lg-8 mx-auto">
 
-                            {% if contact %}
-							    <!-- User & Contact details -->
-                                <div class="card mt-5">
-                                    <div class="card-body">
-                                        <div class="d-flex flex-row-reverse bd-highlight"><a href="{% url 'edit_contact_details' %}">Edit</a></div>
-                                        <h4 class="font-weight-bold">Passenger</h4>
-                                        <div class="row">
-                                            <div class="col-4 text-left">
-                                                <p>Full name<br>Date of birth<br>Passport</p>
-                                            </div>
-                                            <div class="col-8 text-right">
-                                                <p>
-                                                    {{ user.first_name }} {{ user.last_name }}<br>
-                                                    {{ contact.birth_date }}<br>
-                                                    {{ contact.passport_id }}<br>
-                                                </p>
-                                            </div>
+                            <!-- Passenger details -->
+                            <div class="card mt-5">
+                                <div class="card-body">
+                                    {% if passenger %}
+                                        <div class="d-flex flex-row-reverse bd-highlight"><a href="">Edit</a></div>
+                                    {% else %}
+                                    {% endif %}
+                                    <h4 class="font-weight-bold">Passenger</h4>
+                                    <div class="row">
+                                        <div class="col-4 text-left">
+                                            <p>Full name<br>Date of birth<br>Passport</p>
                                         </div>
-                                        <h4 class="font-weight-bold">Contact</h4>
+                                        <div class="col-8 text-right">
+                                            <p>
+                                                {{ user.first_name }} {{ user.last_name }}<br>
+                                                {% if passenger %}
+                                                    {{ passenger.birth_date }}<br>
+                                                    {{ passenger.passport_id }}<br>
+                                                {% else %}
+                                                    N/A <br>
+                                                    N/A <br>
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact details -->
+                            <div class="card mt-5">
+                                <div class="card-body">
+                                    {% if contact %}
+                                        <div class="d-flex flex-row-reverse bd-highlight"><a href="{% url 'edit_contact_details' %}">Edit</a></div>
+                                    {% else %}
+                                    {% endif %}
+                                    <h4 class="font-weight-bold">Contact</h4>
+                                    {% if contact %}
                                         <div class="row">
                                             <div class="col-4 text-left">
                                                 <p>Email<br>Phone number<br><br>Address</p>
@@ -73,16 +91,13 @@
                                                 </p>
                                             </div>
                                         </div>
-                                    </div>
+                                    {% else %}
+                                        <div class="card-body text-center">
+                                            You have not provided your details yet! <a href="{% url 'create_contact_details' %}">Update</a>
+                                        </div>
+                                    {% endif %}
                                 </div>
-                            {% else %}
-                                <!-- If user has no contact details  -->
-                                <div class="card mt-5">
-                                    <div class="card-body text-center">
-                                        You have not provided your details yet! <a href="{% url 'create_contact_details' %}">Update</a>
-                                    </div>
-                                </div>
-                            {% endif %}
+                            </div>
 
                             <!-- Login -->
 							<div class="card mt-5">
