@@ -27,7 +27,7 @@
                 <h1 class="text-uppercase">{{ trip.title }}</h1>
             </div>
 
-            {{ departures }}
+            {{ string_departures }}
 
 			<!-- Big image -->
 			<div class="col-lg-7">
@@ -59,9 +59,9 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1"><i class="fas fa-space-shuttle"></i> Departure site</label>
                         <select class="form-control" id="departureSiteSelected">
-                            <option value="">Choose site</option> 
-                            {% for departure in trip.departure.all %}
-                                <option value="{{ departure.id }}">{{ departure }}</option>
+                            <option value="" selected disabled>Choose site</option> 
+                            {% for departure in departures %}
+                                <option value="{{ departure.id }}">{{ departure.site_name }}, {{ departure.country }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -69,9 +69,12 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1"><i class="fas fa-calendar-day"></i> Departure dates</label>
                         <select class="form-control" id="exampleFormControlSelect1">
-                            <option value="">Choose date</option> 
-                            {% for date in trip.departure.all.0.date.all %}
-                                <option value="{{ date.id }}">{{ date }}</option>
+                            <option value="" selected disabled>Choose date</option> 
+                            {% for departure in departures %}
+                                <option value="" disabled>{{ departure.site_name }}</option>
+                                {% for date in departure.date %}
+                                    <option value="{{ date }}">{{ date }}</option>
+                                {% endfor %}
                             {% endfor %}
                         </select>
                     </div>
@@ -126,8 +129,8 @@
 </section>
 
 <script type="text/javascript">
-    const departures = '{{departures}}';
-    console.log(departures);
+    const departures = '{{string_departures}}';
+    console.log(typeof(departures));
     var value = JSON.parse(departures);
     console.log(value);
 </script>
