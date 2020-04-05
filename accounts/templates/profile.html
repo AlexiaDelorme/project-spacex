@@ -45,7 +45,7 @@
                                 <div class="card-body">
                                     <div class="d-flex flex-row-reverse bd-highlight">
                                         {% if passenger %}
-                                            <a href="">Edit</a>
+                                            <a href="{% url 'edit_passenger_details' %}">Edit</a>
                                         {% else %}
                                             <a href="{% url 'create_passenger_details' %}">Update</a>
                                         {% endif %}
