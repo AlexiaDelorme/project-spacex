@@ -137,7 +137,7 @@ def create_passenger_details_page(request):
             passenger_details.last_name = request.user.last_name
             passenger_details.save()
             messages.success(
-                request, f'Your passenger details have been updated!')
+                request, f'Your passenger details have been saved!')
             return redirect('profile')
     else:
         form = UserPassengerForm()
@@ -160,7 +160,7 @@ def create_contact_details_page(request):
             contact_details.user = request.user
             contact_details.save()
             messages.success(
-                request, f'Your contact details have been updated!')
+                request, f'Your contact details have been saved!')
             return redirect('profile')
     else:
         form = UserContactDetailForm()
@@ -171,6 +171,27 @@ def create_contact_details_page(request):
     }
 
     return render(request, 'profile/create_contact_details.html', context)
+
+
+@login_required
+def edit_passenger_details_page(request):
+
+    if request.method == 'POST':
+        form = UserPassengerForm(request.POST, instance=request.user.passenger)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, f'Your passenger details have been updated!')
+            return redirect('profile')
+    else:
+        form = UserPassengerForm(instance=request.user.passenger)
+
+    context = {
+        "page_title": "Edit passenger",
+        "form": form
+    }
+
+    return render(request, 'profile/edit_passenger_details.html', context)
 
 
 @login_required
