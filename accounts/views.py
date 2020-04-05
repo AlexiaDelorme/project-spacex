@@ -8,7 +8,7 @@ from .forms import (
     UserSignupForm,
     UserContactDetailForm,
     UserUpdateForm,
-    PassengerForm
+    UserPassengerForm
 )
 
 
@@ -126,6 +126,31 @@ def profile_page(request):
 
 
 @login_required
+def create_passenger_details_page(request):
+
+    if request.method == 'POST':
+        form = UserPassengerForm(request.POST)
+        if form.is_valid():
+            passenger_details = form.save(commit=False)
+            passenger_details.user = request.user
+            passenger_details.first_name = request.user.first_name
+            passenger_details.last_name = request.user.last_name
+            passenger_details.save()
+            messages.success(
+                request, f'Your passenger details have been updated!')
+            return redirect('profile')
+    else:
+        form = UserPassengerForm()
+
+    context = {
+        "page_title": "Passenger details",
+        "form": form
+    }
+
+    return render(request, 'profile/create_passenger_details.html', context)
+
+
+@login_required
 def create_contact_details_page(request):
 
     if request.method == 'POST':
@@ -135,17 +160,17 @@ def create_contact_details_page(request):
             contact_details.user = request.user
             contact_details.save()
             messages.success(
-                request, f'Your account details have been updated!')
+                request, f'Your contact details have been updated!')
             return redirect('profile')
     else:
         form = UserContactDetailForm()
 
     context = {
-        "page_title": "Create contact",
+        "page_title": "Contact details",
         "form": form
     }
 
-    return render(request, 'create_contact_details.html', context)
+    return render(request, 'profile/create_contact_details.html', context)
 
 
 @login_required
@@ -161,16 +186,16 @@ def edit_contact_details_page(request):
             u_form.save()
             c_form.save()
             messages.success(
-                request, f'Your account details have been updated!')
+                request, f'Your contact details have been updated!')
             return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
         c_form = UserContactDetailForm(instance=request.user.contactdetail)
 
     context = {
-        "page_title": "Contact details",
+        "page_title": "Edit contact",
         "u_form": u_form,
         "c_form": c_form
     }
 
-    return render(request, 'edit_contact_details.html', context)
+    return render(request, 'profile/edit_contact_details.html', context)
