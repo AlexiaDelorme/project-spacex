@@ -29,6 +29,16 @@ class UserUpdateForm(forms.ModelForm):
         fields = ['email']
 
 
+class UserPassengerForm(forms.ModelForm):
+    class Meta:
+        model = Passenger
+        fields = [
+            'birth_date',
+            'citizenship',
+            'passport_id',
+        ]
+
+
 class UserContactDetailForm(forms.ModelForm):
     class Meta:
         model = ContactDetail
