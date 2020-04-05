@@ -43,14 +43,24 @@
                             <!-- Passenger details -->
                             <div class="card mt-5">
                                 <div class="card-body">
-                                    {% if passenger %}
-                                        <div class="d-flex flex-row-reverse bd-highlight"><a href="">Edit</a></div>
-                                    {% else %}
-                                    {% endif %}
+                                    <div class="d-flex flex-row-reverse bd-highlight">
+                                        {% if passenger %}
+                                            <a href="">Edit</a>
+                                        {% else %}
+                                            <a href="{% url 'create_passenger_details' %}">Update</a>
+                                        {% endif %}
+                                    </div>
                                     <h4 class="font-weight-bold">Passenger</h4>
                                     <div class="row">
                                         <div class="col-4 text-left">
-                                            <p>Full name<br>Date of birth<br>Passport</p>
+                                            <p>
+                                                Full name<br>
+                                                {% if passenger %}
+                                                    Date of birth<br>
+                                                    Passport
+                                                {% else %}
+                                                {% endif %}
+                                            </p>
                                         </div>
                                         <div class="col-8 text-right">
                                             <p>
@@ -59,11 +69,13 @@
                                                     {{ passenger.birth_date }}<br>
                                                     {{ passenger.passport_id }}<br>
                                                 {% else %}
-                                                    N/A <br>
-                                                    N/A <br>
                                                 {% endif %}
                                             </p>
                                         </div>
+                                        {% if passenger %}
+                                        {% else %}
+                                            <div class="card-body text-center"> You have not provided your passenger details yet!</div>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
@@ -71,10 +83,13 @@
                             <!-- Contact details -->
                             <div class="card mt-5">
                                 <div class="card-body">
-                                    {% if contact %}
-                                        <div class="d-flex flex-row-reverse bd-highlight"><a href="{% url 'edit_contact_details' %}">Edit</a></div>
-                                    {% else %}
-                                    {% endif %}
+                                    <div class="d-flex flex-row-reverse bd-highlight">
+                                        {% if contact %}
+                                            <a href="{% url 'edit_contact_details' %}">Edit</a>
+                                        {% else %}
+                                            <a href="{% url 'create_contact_details' %}">Update</a>
+                                        {% endif %}
+                                    </div>
                                     <h4 class="font-weight-bold">Contact</h4>
                                     {% if contact %}
                                         <div class="row">
@@ -92,9 +107,7 @@
                                             </div>
                                         </div>
                                     {% else %}
-                                        <div class="card-body text-center">
-                                            You have not provided your details yet! <a href="{% url 'create_contact_details' %}">Update</a>
-                                        </div>
+                                        <div class="card-body text-center"> You have not provided your details yet!</div>
                                     {% endif %}
                                 </div>
                             </div>
