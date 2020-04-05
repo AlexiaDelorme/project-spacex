@@ -12,6 +12,6 @@ urlpatterns = [
     path('login/', login_page, name='login'),
     path('signup/', signup_page, name='signup'),
     path('profile/', profile_page, name='profile'),
-    path('contact-details/', include('accounts.urls_contact')),
+    path('details/', include('accounts.urls_profile')),
     path('password-reset/', include('accounts.urls_reset'))
 ]
