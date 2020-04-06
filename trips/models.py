@@ -59,4 +59,4 @@ class Trip(models.Model):
     img = models.ManyToManyField(TripImage)
 
     def __str__(self):
-        return self.title
+        return self.destination
