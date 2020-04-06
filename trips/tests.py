@@ -8,5 +8,5 @@ from .models import Trip
 class TripTests(TestCase):
        
     def test_str(self):
-        test_title = Trip(title='A trip')
-        self.assertEqual(str(test_title), 'A trip')
+        test_destination = Trip(destination='A destination')
+        self.assertEqual(str(test_destination), 'A destination')
