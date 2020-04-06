@@ -27,8 +27,6 @@
                 <h1 class="text-uppercase">{{ trip.title }}</h1>
             </div>
 
-            {{ string_departures }}
-
 			<!-- Big image -->
 			<div class="col-lg-7">
 				<img class="img-fluid img-box" src="{{ trip.img.all.0.img.url }}" alt="{{ trip.img.all.0.img_name }}">
@@ -55,6 +53,7 @@
                 </div>
 
                 <form id="select-trip-form" method="POST" class="col-12">
+                    {% csrf_token %}
                     
                     <div class="form-group">
                         <label for="exampleFormControlSelect1"><i class="fas fa-space-shuttle"></i> Departure site</label>
