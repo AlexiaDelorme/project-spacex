@@ -23,9 +23,7 @@ class ContactDetail(models.Model):
 
 class Passenger(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=30, blank=False)
-    last_name = models.CharField(max_length=150, blank=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     birth_date = models.DateField(blank=False)
     citizenship = models.CharField(max_length=30, blank=False)
     passport_id = models.CharField(max_length=30, blank=False)

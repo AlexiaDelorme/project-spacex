@@ -51,15 +51,3 @@ class UserContactDetailForm(forms.ModelForm):
             'town_or_city',
             'country'
         ]
-
-
-class PassengerForm(forms.ModelForm):
-    class Meta:
-        model = Passenger
-        fields = [
-            'first_name',
-            'last_name',
-            'birth_date',
-            'citizenship',
-            'passport_id'
-        ]
