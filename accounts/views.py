@@ -133,8 +133,6 @@ def create_passenger_details_page(request):
         if form.is_valid():
             passenger_details = form.save(commit=False)
             passenger_details.user = request.user
-            passenger_details.first_name = request.user.first_name
-            passenger_details.last_name = request.user.last_name
             passenger_details.save()
             messages.success(
                 request, f'Your passenger details have been saved!')
