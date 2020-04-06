@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
 from .models import ContactDetail, Passenger
 from .forms import (
@@ -10,6 +11,7 @@ from .forms import (
     UserUpdateForm,
     UserPassengerForm
 )
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 @login_required
@@ -218,3 +220,25 @@ def edit_contact_details_page(request):
     }
 
     return render(request, 'profile/edit_contact_details.html', context)
+
+
+def edit_password_page(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(
+                request, f'Your password has been successfully updated!')
+            return redirect('profile')
+        # else:
+            # messages.error(request, f'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+
+    context = {
+        "page_title": "Edit password",
+        "form": form
+    }
+
+    return render(request, 'profile/edit_password.html', context)
