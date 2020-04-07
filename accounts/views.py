@@ -124,7 +124,7 @@ def profile_page(request):
                 "user": user
             }
 
-    return render(request, 'profile.html', context)
+    return render(request, 'profile/profile.html', context)
 
 
 @login_required
