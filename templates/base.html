@@ -81,7 +81,7 @@
 							<div class="dropdown-menu dropdown-shrink" aria-labelledby="navbarDropdown">
 								{% if user.is_authenticated %}
 								<a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
-                                <a class="dropdown-item" href="">Bookings</a>
+								<a class="dropdown-item" href="">Bookings</a>
 								<a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
 								{% else %}
 								<a class="dropdown-item" href="{% url 'login' %}">Log in</a>
@@ -135,10 +135,13 @@
 							<i class="far fa-paper-plane text-primary mb-2"></i>
 							<h4 class="text-uppercase m-0">Subscribe</h4>
 							<hr class="my-4">
-							<form>
+							<form
+								action="https://gmail.us19.list-manage.com/subscribe/post?u=495c656328f99ddb3411b2c65&amp;id=d59a4db117"
+								method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+								class="validate" target="_blank" novalidate>
 								<div class="row text-right">
 									<div class="col-12">
-										<input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
+										<input type="email" name="EMAIL" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address..." required>
                                     </div>
 										<div class="col-12">
 											<button type="submit" class="btn btn-primary btn-subscribe mx-auto mt-2">Subscribe</button>
@@ -223,9 +226,9 @@
 
 	{% if page_name == "all trips" %}
 
-    <!-- Bootstrap date picker -->
-    <script src="{% static 'js/datepicker.js' %}"></script>
-    
+	<!-- Bootstrap date picker -->
+	<script src="{% static 'js/datepicker.js' %}"></script>
+
 	{% endif %}
 
 	<!-- Custom scripts for this template -->
