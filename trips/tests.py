@@ -5,8 +5,8 @@ from django.test import TestCase
 from .models import Trip
 
 # Create your tests here.
-class TripTests(TestCase):
+# class TripTests(TestCase):
        
-    def test_str(self):
-        test_destination = Trip(destination='A destination')
-        self.assertEqual(str(test_destination), 'A destination')
+    # def test_str(self):
+        # test_destination = Trip(destination='A destination')
+        # self.assertEqual(str(test_destination), 'A destination')
