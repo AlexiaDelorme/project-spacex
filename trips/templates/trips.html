@@ -21,13 +21,13 @@
 <section class="projects-section pb-5 bg-light">
 	<div class="container">
 
-		{% for trip in trips %}
+		{% for trip in trip_categories %}
 
             {% if forloop.counter|divisibleby:2 %}
                 <!-- Trip card - even -->
                 <div class="row justify-content-center no-gutters mb-5">
                     <div class="col-lg-8">
-                        <img class="img-fluid" src="{{ trip.img.all.0.img.url }}" alt="{{ trip.img.all.0.img_name }}">
+                        <img class="img-fluid" src="{{ trip.img.all.0.img_file.url }}" alt="{{ trip.img.all.0.img_name }}">
                         <a href="{% url 'trip_detail' trip.id %}" class="d-none d-md-block btn btn-book btn-light" role="button">Trip Details</a>
                     </div>
                     <div class="col-lg-4 order-lg-first">
@@ -54,7 +54,7 @@
                 <!-- Trip card - odd -->
                 <div class="row justify-content-center no-gutters mb-5">
                     <div class="col-lg-8">
-                        <img class="img-fluid" src="{{ trip.img.all.0.img.url }}" alt="{{ trip.img.all.0.img_name }}">
+                        <img class="img-fluid" src="{{ trip.img.all.0.img_file.url }}" alt="{{ trip.img.all.0.img_name }}">
                         <a href="{% url 'trip_detail' trip.id %}" class="d-none d-md-block btn btn-book-odd btn-light" role="button">Trip Details</a>
                     </div>
                     <div class="col-lg-4">

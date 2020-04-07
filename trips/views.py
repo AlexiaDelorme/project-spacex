@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404
 from django.core import serializers
 from django.forms.models import model_to_dict
-from .models import Trip
+from .models import Trip, TripCategory
 import json
 
 
@@ -13,11 +13,11 @@ def faq_page(request):
 
 
 def trips_page(request):
-    trips = Trip.objects.all()
+    trip_categories = TripCategory.objects.all()
     context = {
         "page_title": "All Trips",
         "page_name": "all trips",
-        "trips": trips
+        "trip_categories": trip_categories
     }
     return render(request, "trips.html", context)
 
