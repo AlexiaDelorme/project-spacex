@@ -6,20 +6,9 @@ from django.db import models
 from django.conf import settings
 
 
-class Date(models.Model):
-    date = models.DateField()
-
-    class Meta:
-        ordering = ['date']
-
-    def __str__(self):
-        return f"{self.date}"
-
-
-class Departure(models.Model):
+class DepartureSite(models.Model):
     site_name = models.CharField(max_length=100)
     country = models.CharField(max_length=50)
-    date = models.ManyToManyField(Date)
 
     class Meta:
         ordering = ['country']
@@ -37,7 +26,7 @@ class RequiredDocument(models.Model):
 
 class TripImage(models.Model):
     img_name = models.CharField(max_length=50)
-    img = models.ImageField(blank=True, upload_to='trip_pics')
+    img_file = models.ImageField(blank=True, upload_to='trip_pics')
 
     class Meta:
         ordering = ['img_name']
@@ -46,17 +35,26 @@ class TripImage(models.Model):
         return self.img_name
 
 
-class Trip(models.Model):
+class TripCategory(models.Model):
     title = models.CharField(max_length=50)
     destination = models.CharField(max_length=30)
     duration = models.IntegerField()
-    price = models.IntegerField()
-    departure = models.ManyToManyField(Departure)
-    slot = models.IntegerField()
-    description = models.TextField()
     distance = models.IntegerField()
+    price = models.IntegerField()
+    description = models.TextField()
     required_document = models.ManyToManyField(RequiredDocument)
     img = models.ManyToManyField(TripImage)
 
     def __str__(self):
         return self.destination
+
+
+class Trip(models.Model):
+    category = models.ForeignKey(TripCategory, on_delete=models.CASCADE)
+    departure_site = models.ForeignKey(DepartureSite, on_delete=models.CASCADE)
+    departure_date = models.DateField()
+    return_date = models.DateField()
+    slot = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.category} - {self.departure_site} - {self.departure_date}"
