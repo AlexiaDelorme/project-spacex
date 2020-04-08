@@ -28,6 +28,7 @@ def trip_detail_page(request, pk):
     departure_sites = DepartureSite.objects.all()
     context = {
         "page_title": "Detail",
+        "page_name": "trip details",
         "trip_category": trip_category,
         "trips": trips,
         "departure_sites": departure_sites
