@@ -162,6 +162,9 @@ img.img-fluid.img-box {
 
 input#datepicker {
     border-color: rgb(206, 212, 218);
+    font-family: Nunito;
+    padding: .375rem .75rem;
+    color: #495057;
 }
 
  /*
