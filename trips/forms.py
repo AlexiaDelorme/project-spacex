@@ -1,22 +1,15 @@
 from django import forms
+from .models import DepartureSite
 
 
 class TripSearchForm(forms.Form):
-    """Trip search form for all trips listing page"""
 
-    DEPARTURE_CHOICES = (
-        ("1", "Departure site 1"),
-        ("2", "Departure site 2"),
-        ("3", "Departure site 3"),
-        ("4", "Departure site 4")
-    )
-
-    destination = forms.CharField()
-
-    departure_site = forms.ChoiceField(
-        choices=DEPARTURE_CHOICES
+    departure_site = forms.ModelChoiceField(
+        queryset=DepartureSite.objects.all(),
+        empty_label="Choose site"
     )
     departure_date = forms.DateField()
+    passenger_number = forms.IntegerField(max_value=5, min_value=1)
 
     class Meta:
-        fields = ['destination', 'departure_site', 'departure_date']
+        fields = ['departure_site', 'departure_date', 'passenger_number']

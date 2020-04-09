@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, get_object_or_404
-from django.core import serializers
-from django.forms.models import model_to_dict
+from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.contrib import messages
 from .models import Trip, TripCategory, DepartureSite
-import json
+from .forms import TripSearchForm
 
 
 def faq_page(request):
@@ -23,14 +22,24 @@ def trips_page(request):
 
 
 def trip_detail_page(request, pk):
+
+    if request.method == "POST":
+        form = TripSearchForm(request.POST)
+        if form.is_valid():
+            messages.success(
+                request, "SUCCESS - Your form was sent to the server")
+            return redirect(reverse('all_trips'))
+
+    else:
+        form = TripSearchForm()
+
     trip_category = get_object_or_404(TripCategory, pk=pk)
     trips = Trip.objects.all().filter(category=trip_category)
-    departure_sites = DepartureSite.objects.all()
     context = {
         "page_title": "Detail",
         "page_name": "trip details",
         "trip_category": trip_category,
         "trips": trips,
-        "departure_sites": departure_sites
+        "form": form
     }
     return render(request, "trip_detail.html", context)
