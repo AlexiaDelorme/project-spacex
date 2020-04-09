@@ -144,18 +144,6 @@ All Trips
     -ms-transform: translate(-50%, -50%);
 }
 
-/*Custom class for datepicker */
-
-.datepicker td, .datepicker th {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 0.85rem;
-}
-
-.datepicker {
-    margin-bottom: 3rem;
-}
-
  /*
 Trip detail 
  */
@@ -170,6 +158,10 @@ img.img-fluid.img-box {
     height: 550px;
     width: 100%;
     object-fit: cover;
+}
+
+input#datepicker {
+    border-color: rgb(206, 212, 218);
 }
 
  /*

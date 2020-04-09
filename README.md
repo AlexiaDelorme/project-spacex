@@ -233,7 +233,7 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
     - Click on `Go to App` and click on the green `Authorize gitpod.io`
     - Agree to the terms and then create your free account
 2. Add gitpod browser extension for Chrome:
-    - Go to [GitPod Chrome Browser Extension ](https://chrome.google.com/webstore/detail/gitpod-online-ide/dodmmooeoklaejobgleioelladacbeki)
+    - Go to [GitPod Chrome Browser Extension](https://chrome.google.com/webstore/detail/gitpod-online-ide/dodmmooeoklaejobgleioelladacbeki)
     - Search for "gitpod" in chrome web store search bar
     - Click on `Add to Chrome` then click on `Add to extension`
 3. Clone this project repository from github
@@ -276,7 +276,7 @@ To be updated
 <a name="code"/>
 
 ### Code
-- xx
+- [Datepicker](https://jsbin.com/culagonula/edit?html,js,output)
 
 <a name="ack"/>
 
