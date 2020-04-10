@@ -277,6 +277,7 @@ To be updated
 
 ### Code
 - [Datepicker](https://jsbin.com/culagonula/edit?html,js,output)
+- [Timeline](https://bootsnipp.com/tags/timeline/4)
 
 <a name="ack"/>
 
