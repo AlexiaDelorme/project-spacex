@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block header %}
+
+<!-- Header -->
+<header class="trips-head">
+	<div class="container d-flex align-items-center">
+		<div class="mx-auto text-center">
+			<h1 class="text-light mx-auto my-0">Trips results</h1>
+		</div>
+	</div>
+</header>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Trips results cards -->
+<section class="pt-5 pb-3 bg-light">
+	<div class="container">
+
+		<div class="row mx-auto">
+            {% for trip in trips %}
+			<div class="col-12 col-lg-9 mx-auto mb-5">
+				<div class="card">
+					<div class="card-header text-uppercase">
+						Return Ticket
+					</div>
+					<div class="card-body">
+                        <div class="row">
+
+                            <div class="col-8">
+                                <ul class="timeline">
+                                    <li>
+                                        <p class="card-text">{{ trip.departure_site }}</p>
+                                        <p class="card-text"><i class="fas fa-plane-departure"></i> {{ trip.departure_date }}</p>
+                                    </li>
+                                    <li>
+                                        <p class="card-text">{{ trip.category.destination }}</p>
+                                        <p class="card-text"><i class="fas fa-plane-arrival"></i> {{ trip.return_date }}</p>
+                                    </li>
+                                </ul>
+                                <div class="mt-5 col-12 text-left">
+                                    <img class="spacex-book" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> SPX3523
+                                </div>
+                            </div>
+                                
+                            <div class="col-4 text-right">
+                                <p class="card-text">€ {{ trip.category.price|intcomma }}</p>
+                                <img class="trip-img-thumbnail mb-3" src="{{ trip.category.img.all.0.img_file.url }}" alt="{{ trip.category.img.all.0.img_name }}">
+                                <a href="#" class="btn btn-primary">Book Trip</a>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+            {% endfor %}
+		</div>
+
+	</div>
+</section>
+
+{% endblock %}
