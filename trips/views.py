@@ -43,3 +43,13 @@ def trip_detail_page(request, pk):
         "form": form
     }
     return render(request, "trip_detail.html", context)
+
+
+def trips_results_page(request):
+    trips = Trip.objects.all()
+    context = {
+        "page_title": "Results",
+        "page_name": "results",
+        "trips": trips,
+    }
+    return render(request, "trips_results.html", context)
