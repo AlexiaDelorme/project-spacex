@@ -34,16 +34,16 @@
                             <div class="col-8">
                                 <ul class="timeline">
                                     <li>
-                                        <p class="card-text">{{ trip.departure_site }}</p>
-                                        <p class="card-text"><i class="fas fa-plane-departure"></i> {{ trip.departure_date }}</p>
+                                        <p class="card-text">{{ trip.departure_site }} ({{ trip.departure_site.site_code }})</p>
+                                        <p class="card-text"><i class="fas fa-plane-departure"></i> {{ trip.departure_date }} - {{ trip.departure_time }}</p>
                                     </li>
                                     <li>
-                                        <p class="card-text">{{ trip.category.destination }}</p>
-                                        <p class="card-text"><i class="fas fa-plane-arrival"></i> {{ trip.return_date }}</p>
+                                        <p class="card-text">{{ trip.category.destination }} ({{ trip.category.destination_code }})</p>
+                                        <p class="card-text"><i class="fas fa-plane-arrival"></i> {{ trip.return_date }} - {{ trip.departure_time }}</p>
                                     </li>
                                 </ul>
                                 <div class="mt-5 col-12 text-left">
-                                    <img class="spacex-book" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> SPX3523
+                                    <img class="spacex-book" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ trip.trip_reference }}
                                 </div>
                             </div>
                                 
