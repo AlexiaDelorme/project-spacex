@@ -46,6 +46,10 @@
                                 </div>
                                 <div class="col-8 text-right">
                                     <p>
+                                        {% if passenger %}
+                                            {{ passenger.title }}.
+                                        {% else %}
+                                        {% endif %}
                                         {{ user.first_name }} {{ user.last_name }}<br>
                                         {% if passenger %}
                                             {{ passenger.birth_date }}<br>
