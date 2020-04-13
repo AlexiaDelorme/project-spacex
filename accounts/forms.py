@@ -30,6 +30,16 @@ class UserUpdateForm(forms.ModelForm):
 
 
 class UserPassengerForm(forms.ModelForm):
+    birth_date = forms.DateField(
+        label='<i class="fas fa-calendar-day"></i> Birth Date',
+        widget=forms.TextInput(
+            attrs={
+                'id': 'datepicker',
+                'class': 'bg-white'
+            }
+        )
+    )
+
     class Meta:
         model = Passenger
         fields = [

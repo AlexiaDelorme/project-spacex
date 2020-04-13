@@ -31,7 +31,7 @@
 		rel="stylesheet">
 
 	
-	{% if page_name == "trip details" %}
+	{% if page_name == "trip details" or "edit_passenger_details" or "create_passenger_details" %}
 
     <!-- CDN for datepicker -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -228,7 +228,7 @@
 
 	{% endif %}
 
-	{% if page_name == "trip details" %}
+	{% if page_name == "trip details" or "edit_passenger_details" or "create_passenger_details" %}
 
 	<!-- Datepicker script -->
 	<script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
