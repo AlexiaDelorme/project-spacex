@@ -4,11 +4,14 @@ from __future__ import unicode_literals
 import os
 from django.db import models
 from django.conf import settings
+from django_countries.fields import CountryField
+from datetime import timedelta
 
 
 class DepartureSite(models.Model):
     site_name = models.CharField(max_length=100)
-    country = models.CharField(max_length=50)
+    country = CountryField()
+    site_code = models.CharField(max_length=30)
 
     class Meta:
         ordering = ['country']
@@ -37,7 +40,8 @@ class TripImage(models.Model):
 
 class TripCategory(models.Model):
     title = models.CharField(max_length=50)
-    destination = models.CharField(max_length=30)
+    destination = models.CharField(max_length=50)
+    destination_code = models.CharField(max_length=30)
     duration = models.IntegerField()
     distance = models.IntegerField()
     price = models.IntegerField()
@@ -53,8 +57,15 @@ class Trip(models.Model):
     category = models.ForeignKey(TripCategory, on_delete=models.CASCADE)
     departure_site = models.ForeignKey(DepartureSite, on_delete=models.CASCADE)
     departure_date = models.DateField()
-    return_date = models.DateField()
+    departure_time = models.TimeField()
     slot = models.IntegerField()
+
+    @property
+    def return_date(self):
+        return self.departure_date + timedelta(days=self.category.duration)
+
+    def trip_reference(self):
+        return f"SPX{self.id}"
 
     def __str__(self):
         return f"{self.category} - {self.departure_site} - {self.departure_date}"
