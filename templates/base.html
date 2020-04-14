@@ -56,7 +56,7 @@
 			<a class="navbar-brand" href="{% url 'home' %}">
 				<img src="{% static 'img/logo.png' %}" width="auto" height="80" alt="Logo SpaceX">
             </a>
-				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
@@ -71,7 +71,7 @@
 								Trips
 							</a>
 							<div class="dropdown-menu dropdown-shrink" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="{% url 'all_trips' %}">All</a>
+								<a class="dropdown-item" href="{% url 'trips_categories' %}">All</a>
 								<a class="dropdown-item" href="{% url 'faq' %}">FAQs</a>
 							</div>
 						</li>
@@ -169,7 +169,7 @@
 							<h4 class="text-uppercase m-0">Links</h4>
 							<hr class="my-4">
 							<div class="small text-black-50 justify-content-center">
-								<a class="d-block" href="{% url 'all_trips' %}">Trips</a>
+								<a class="d-block" href="{% url 'trips_categories' %}">Trips</a>
 								<a class="d-block" href="#">Scientists</a>
 								<a class="d-block" href="{% url 'faq' %}">FAQ</a>
 							</div>

@@ -11,14 +11,14 @@ def faq_page(request):
     return render(request, "faq.html", {"page_title": "FAQs"})
 
 
-def trips_page(request):
+def trips_categories_page(request):
     trip_categories = TripCategory.objects.all()
     context = {
         "page_title": "All Trips",
         "page_name": "all trips",
         "trip_categories": trip_categories
     }
-    return render(request, "trips.html", context)
+    return render(request, "trips_categories.html", context)
 
 
 def trip_detail_page(request, pk):
@@ -28,7 +28,7 @@ def trip_detail_page(request, pk):
         if form.is_valid():
             messages.success(
                 request, "SUCCESS - Your form was sent to the server")
-            return redirect(reverse('all_trips'))
+            return redirect(reverse('trips_categories'))
 
     else:
         form = TripSearchForm()
