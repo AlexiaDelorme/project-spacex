@@ -52,7 +52,7 @@
 							</p>
 						</div>
 
-						<form id="select-trip-form" method="POST" class="col-12">
+						<form id="select-trip-form" action="{% url 'trips_results' trip_category.id %}" method="POST" class="col-12">
 							{% csrf_token %}
 
                             {{ form|crispy }}
