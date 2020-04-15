@@ -44,11 +44,13 @@ def trips_results_page(request, pk):
     departure_date = form.get('departure_date')
     passenger_number = int(form.get('passenger_number'))
 
+    print(departure_date)
+
     trip_category = get_object_or_404(TripCategory, pk=pk)
     trips = Trip.objects.all().filter(
         category=trip_category,
         departure_site=departure_site,
-        departure_date__gte=('2020-05-15')
+        departure_date__gte=(departure_date)
     )
 
     trip_price = (trip_category.price)*passenger_number
