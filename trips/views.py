@@ -42,18 +42,22 @@ def trips_results_page(request, pk):
     form = request.POST
     departure_site = form.get('departure_site')
     departure_date = form.get('departure_date')
-    passenger_number = form.get('passenger_number')
+    passenger_number = int(form.get('passenger_number'))
 
     trip_category = get_object_or_404(TripCategory, pk=pk)
     trips = Trip.objects.all().filter(
         category=trip_category,
         departure_site=departure_site,
-        departure_date__gte=date(departure_date)
+        departure_date__gte=('2020-05-15')
     )
+
+    trip_price = (trip_category.price)*passenger_number
 
     context = {
         "page_title": "Results",
         "page_name": "results",
         "trips": trips,
+        "passenger_number": passenger_number,
+        "trip_price": trip_price,
     }
     return render(request, "trips_results.html", context)

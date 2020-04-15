@@ -48,7 +48,8 @@
                             </div>
                                 
                             <div class="col-4 text-right">
-                                <p class="card-text">€ {{ trip.category.price|intcomma }}</p>
+                                <p class="card-text"><i class="fas fa-user-friends"></i> {{ passenger_number}} passenger(s)</p>
+                                <p class="card-text">€ {{ trip_price|intcomma }}</p>
                                 <img class="trip-img-thumbnail mb-3" src="{{ trip.category.img.all.0.img_file.url }}" alt="{{ trip.category.img.all.0.img_name }}">
                                 <a href="#" class="btn btn-primary">Book Trip</a>
                             </div>
