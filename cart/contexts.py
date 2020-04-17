@@ -10,7 +10,7 @@ def cart_contents(request):
     total = 0
     trip_count = 0
 
-    for id, passenger in cart_items():
+    for id, passenger in cart.items():
         trip = get_object_or_404(Trip, pk=id)
         total += passenger * trip.category.price
         trip_count += passenger
