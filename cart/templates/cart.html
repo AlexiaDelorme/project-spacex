@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load crispy_forms_tags %}
+
+{% block header %}
+
+<!-- Header -->
+<header class="trips-head">
+	<div class="container d-flex align-items-center">
+		<div class="mx-auto text-center">
+			<h1 class="text-light mx-auto my-0">Your cart</h1>
+		</div>
+	</div>
+</header>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Trip detail section -->
+<section class="mt-5 mb-5">
+	<div class="container">
+		<div class="row">
+
+        {% for item in cart_items %}
+
+            <h3>{{ item.trip.category.destination }}</h3>
+
+        {% endfor %}
+
+		</div>
+	</div>
+</section>
+
+{% endblock %}
