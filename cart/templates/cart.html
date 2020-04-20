@@ -25,18 +25,20 @@
 
             <div class="col-12 col-md-10 col-lg-8 jumbotron mx-auto">
 
+            {% for item in cart_items %}
+
                 <!-- Trip recap -->
                 <div class="col-12">
                     <div class="row">
 
                         <div class="col-3">
-                            <img class="trip-img-thumbnail mb-3" src="{% static 'img/moon-3.png' %}" alt="Moon Image">
+                            <img class="trip-img-thumbnail mb-3" src="{{ item.trip.category.img.all.0.img_file.url }}" alt="Moon Image">
                         </div>
 
                         <div class="col-9 text-right">
-                            <h2 class="mb-4">Trip to the Moon <i class="far fa-window-close"></i></h2>
-                            From 20 Feb 2021 to 21 Feb 2021 <br>
-                            <img class="spacex-book pb-2 text-right" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> 1699
+                            <h2 class="mb-4">Trip to the {{ item.trip.category.destination }} <i class="far fa-window-close"></i></h2>
+                            From {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
+                            <img class="spacex-book pb-2 text-right" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ item.trip.trip_reference }}
                         </div>
 
                     </div>
@@ -52,12 +54,11 @@
                             <div class="row">
 
                                 <div class="col-5 text-left">
-                                    <h3>KCC</h3>
+                                    <h3>{{ item.trip.departure_site.site_code }}</h3>
                                     <p>
-                                    Florida, USA <br>
-                                    May 1, 2020 <br>
-                                    noon <br>
-                                    Terminal C  
+                                    {{ item.trip.departure_site }} <br>
+                                    {{ item.trip.return_date }} <br>
+                                    {{ item.trip.departure_time }} <br>
                                     </p>
                                 </div>
 
@@ -67,11 +68,11 @@
                                     
                                 <div class="col-5 text-right">
 
-                                    <h3>XSB</h3>
+                                    <h3>{{ item.trip.category.destination_code }}</h3>
                                     <p>
-                                    Moon Base Camp <br>
-                                    May 2, 2020 <br>
-                                    noon <br> 
+                                    {{ item.trip.category.destination }}  <br>
+                                    {{ item.trip.return_date }} <br>
+                                    {{ item.trip.departure_time }} <br> 
                                     </p>
                                     
                                 </div>
@@ -81,6 +82,7 @@
 
                     </div>
                 </div>
+                {% endfor %}
 
                 <!-- Total cart & checkout -->
                 <div class="col-12 mt-5 text-right">
