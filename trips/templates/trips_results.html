@@ -51,8 +51,13 @@
                                 <p class="card-text"><i class="fas fa-user-friends"></i> {{ passenger_number}} passenger(s)</p>
                                 <p class="card-text">€ {{ trip_price|intcomma }}</p>
                                 <img class="trip-img-thumbnail mb-3" src="{{ trip.category.img.all.0.img_file.url }}" alt="{{ trip.category.img.all.0.img_name }}">
-                                <a href="{% url 'add_to_cart' trip.id %}" class="btn btn-primary">Book Trip</a>
+                                <form id="select-trip-form" action="{% url 'add_to_cart' trip.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <input id="passenger" type="hidden" value="{{ passenger_number}}">
+                                    <button type="submit" class="btn btn-primary">Book Trip</button>
+                                </form>
                             </div>
+                            	
                         </div>
 					</div>
 				</div>
