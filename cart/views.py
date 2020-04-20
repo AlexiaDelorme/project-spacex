@@ -7,9 +7,10 @@ def view_cart(request):
     return render(request, "cart.html")
 
 
-def add_to_cart(request, id, passenger):
-    passenger = int(request.POST.get('passenger_number'))
-
+def add_to_cart(request, pk):
+    passenger = int(request.POST.get('passenger'))
+    id = pk
+    
     cart = request.session.get('cart', {})
     if id in cart:
         cart[id] = int(cart[id])+passenger
@@ -21,7 +22,7 @@ def add_to_cart(request, id, passenger):
 
 
 def adjust_cart(request, id):
-    passenger = int(request.POST.get('passenger_number'))
+    passenger = int(request.POST.get('passenger'))
     cart = request.session.get('cart', {})
 
     if passenger > 0:
