@@ -25,13 +25,15 @@
             {% for trip in trips %}
 			<div class="col-12 col-lg-9 mx-auto mb-5">
 				<div class="card">
+
 					<div class="card-header text-uppercase">
 						Round Trip Ticket
 					</div>
+
 					<div class="card-body">
                         <div class="row">
 
-                            <div class="col-8">
+                            <div class="col-12 col-md-8 mb-3">
                                 <ul class="timeline">
                                     <li>
                                         <p class="card-text">{{ trip.departure_site }} ({{ trip.departure_site.site_code }})</p>
@@ -47,10 +49,12 @@
                                 </div>
                             </div>
                                 
-                            <div class="col-4 text-right">
-                                <p class="card-text"><i class="fas fa-user-friends"></i> {{ passenger_number}} passenger(s)</p>
-                                <p class="card-text">€ {{ trip_price|intcomma }}</p>
-                                <img class="trip-img-thumbnail mb-3" src="{{ trip.category.img.all.0.img_file.url }}" alt="{{ trip.category.img.all.0.img_name }}">
+                            <div class="col-12 col-md-4 text-left text-md-right mt-3 mb-3 pl-5 pl-md-0 pr-0 pr-md-5">
+                                <img class="trip-img-thumbnail mb-3 d-none d-md-block" src="{{ trip.category.img.all.0.img_file.url }}" alt="{{ trip.category.img.all.0.img_name }}">
+                                <p class="card-text">
+                                    <i class="fas fa-user-friends"></i> {{ passenger_number}} passenger(s) <br>
+                                    € {{ trip_price|intcomma }}
+                                </p>
                                 <form id="select-trip-form" action="{% url 'add_to_cart' trip.id %}" method="POST">
                                     {% csrf_token %}
                                     <input id="passenger" type="hidden" value="{{ passenger_number}}">
@@ -60,6 +64,7 @@
                             	
                         </div>
 					</div>
+
 				</div>
 			</div>
             {% endfor %}
