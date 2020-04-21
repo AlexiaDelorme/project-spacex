@@ -89,7 +89,7 @@ About
     background-size: cover;
 }
 
-.about-head h1 {
+.about-head h1, .trip-header {
     font-family: 'Varela Round';
     letter-spacing: 0.6rem;
 }
@@ -165,6 +165,16 @@ input#datepicker {
     font-family: Nunito;
     padding: .375rem .75rem;
     color: #495057;
+}
+
+@media (min-width: 992px) {
+    .jumbotron.jumbotron-trip {
+        height: 550px;
+    }
+}
+
+.jumbotron.jumbotron-trip {
+    padding: 1.5rem;
 }
 
  /*

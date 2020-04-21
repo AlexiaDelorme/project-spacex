@@ -25,45 +25,51 @@
 		<div class="row">
 
 			<div class="col-12 text-center mt-5 mb-5">
-				<h1 class="text-uppercase">{{ trip_category.title }}</h1>
+				<h1 class="trip-header text-uppercase">{{ trip_category.title }}</h1>
 			</div>
 
 			<!-- Big image -->
-			<div class="col-lg-7">
+			<div class="col-12 col-lg-7 mx-auto">
 				<img class="img-fluid img-box" src="{{ trip_category.img.all.0.img_file.url }}" alt="{{ trip_category.img.all.0.img_name }}">
             </div>
 
-				<!-- Small images -->
-				<div class="col-lg-2">
-					{% for trip_image in trip_category.img.all %}
-					<img class="trip-img-thumbnail mb-3" src="{{ trip_image.img_file.url }}" alt="{{ trip_image.img_name }}">
+			<!-- Small images -->
+			<div class="col-12 col-lg-2 mx-auto">
+				{% for trip_image in trip_category.img.all %}
+					<img class="trip-img-thumbnail mb-3 mt-3 mr-3 mt-lg-0 mr-lg-0" src="{{ trip_image.img_file.url }}" alt="{{ trip_image.img_name }}">
                 {% endfor %}
             </div>
 
-					<!-- Trip details -->
-					<div class="col-lg-3 jumbotron">
+            <!-- Trip details -->
+            <div class="col-12 col-lg-3 jumbotron jumbotron-trip mx-auto">
+                <div class="row">
 
-						<div class="col-12">
-							<h2>{{ trip_category.destination }}</h2>
-							<p>
-								<i class="far fa-clock"></i> {{ trip_category.duration }} Day</br>
-								{{ trip_category.distance|intcomma }} Km</br>
-								€ {{ trip_category.price|intcomma }}</br>
-							</p>
-						</div>
+                    <div class="col-12 col-md-6 col-lg-12 text-center text-lg-left">
+                        <h2>{{ trip_category.destination }}</h2>
+                        <p>
+                            <i class="far fa-clock"></i> {{ trip_category.duration }} Day</br>
+                            {{ trip_category.distance|intcomma }} Km</br>
+                            € {{ trip_category.price|intcomma }}</br>
+                        </p>
+                    </div>
 
-						<form id="select-trip-form" action="{% url 'trips_results' trip_category.id %}" method="POST" class="col-12">
-							{% csrf_token %}
+                    <div class="col-10 col-sm-8 col-md-6 col-lg-12 mx-auto">
+
+                        <form id="select-trip-form" action="{% url 'trips_results' trip_category.id %}" method="POST">
+                            {% csrf_token %}
 
                             {{ form|crispy }}
+                            
+                            <div class="form-group text-right">
+                                <button type="submit" class="btn btn-primary btn-subscribe">Search</button>
+                            </div>
 
-							<div class="form-group text-right">
-								<button type="submit" class="btn btn-primary btn-subscribe">Search</button>
-							</div>
-
-						</form>
-
-					</div>
+                        </form>
+                    
+                    </div>
+                
+                </div>
+            </div>
 
 				</div>
 
