@@ -12,7 +12,7 @@ def add_to_cart(request, pk):
     id = pk
 
     cart = request.session.get('cart', {})
-    
+
     if id in cart:
         cart[id] = int(cart[id])+passenger
     else:
