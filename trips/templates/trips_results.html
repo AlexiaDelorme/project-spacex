@@ -37,11 +37,17 @@
                                 <ul class="timeline">
                                     <li>
                                         <p class="card-text">{{ trip.departure_site }} ({{ trip.departure_site.site_code }})</p>
-                                        <p class="card-text"><i class="fas fa-plane-departure"></i> {{ trip.departure_date }} - {{ trip.departure_time }}</p>
+                                        <p class="card-text">
+                                            <i class="fas fa-space-shuttle"></i> Departs<br>
+                                            {{ trip.departure_date }} - {{ trip.departure_time }}
+                                        </p>
                                     </li>
                                     <li>
                                         <p class="card-text">{{ trip.category.destination }} ({{ trip.category.destination_code }})</p>
-                                        <p class="card-text"><i class="fas fa-plane-arrival"></i> {{ trip.return_date }} - {{ trip.departure_time }}</p>
+                                        <p class="card-text">
+                                            <i class="fas fa-space-shuttle"></i> Returns<br>
+                                            {{ trip.return_date }} - {{ trip.departure_time }}
+                                        </p>
                                     </li>
                                 </ul>
                                 <div class="mt-5 col-12 text-left">
