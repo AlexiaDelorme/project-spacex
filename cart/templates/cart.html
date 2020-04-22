@@ -25,25 +25,21 @@
 
             {% if cart_items %}
 
-                <div class="col-12 col-md-10 col-lg-7 jumbotron mx-auto">
+                <div class="col-12 col-md-10 col-lg-8 jumbotron mx-auto">
 
                 {% for item in cart_items %}
 
                     <!-- Trip recap -->
                     <div class="col-12 mb-2">
-                        <div class="row text-left text-lg-right">
+                        <div class="row text-left text-md-right">
 
-                            <div class="col-2">
-                                <i class="far fa-trash-alt remove-item-icon"></i>
-                            </div>
-
-                            <div class="col-11 col-lg-7">
+                            <div class="col-12 col-md-8">
                                 <h1 class="mb-4">Trip to the {{ item.trip.category.destination }} </h1>
                                 From {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
                                 <img class="spacex-book pb-2 text-right" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ item.trip.trip_reference }}
                             </div>
 
-                            <div class="col-12 col-lg-3">
+                            <div class="col-12 col-md-4 d-none d-md-block">
                                 <img class="trip-img-thumbnail mb-3" src="{{ item.trip.category.img.all.0.img_file.url }}" alt="Moon Image">
                             </div>
 
@@ -59,7 +55,7 @@
                             <div class="card-body">
                                 <div class="row">
 
-                                    <div class="col-12 col-lg-5 text-left">
+                                    <div class="col-12 col-md-5 text-left">
                                         <h3>{{ item.trip.departure_site.site_code }}</h3>
                                         <p>
                                         {{ item.trip.departure_site }} <br>
