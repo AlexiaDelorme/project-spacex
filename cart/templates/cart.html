@@ -9,7 +9,7 @@
 <header class="trips-head">
 	<div class="container d-flex align-items-center">
 		<div class="mx-auto text-center">
-			<h1 class="text-light mx-auto my-0">Your cart</h1>
+			<h1 class="text-light mx-auto my-0"><i class="fas fa-luggage-cart"></i></h1>
 		</div>
 	</div>
 </header>
@@ -23,78 +23,94 @@
 	<div class="container">
 		<div class="row">
 
-            <div class="col-12 col-md-10 col-lg-8 jumbotron mx-auto">
+            {% if cart_items %}
 
-            {% for item in cart_items %}
+                <div class="col-12 col-md-10 col-lg-7 jumbotron mx-auto">
 
-                <!-- Trip recap -->
-                <div class="col-12">
-                    <div class="row">
+                {% for item in cart_items %}
 
-                        <div class="col-3">
-                            <img class="trip-img-thumbnail mb-3" src="{{ item.trip.category.img.all.0.img_file.url }}" alt="Moon Image">
-                        </div>
+                    <!-- Trip recap -->
+                    <div class="col-12 mb-2">
+                        <div class="row text-left text-lg-right">
 
-                        <div class="col-9 text-right">
-                            <h2 class="mb-4">Trip to the {{ item.trip.category.destination }} <i class="far fa-window-close"></i></h2>
-                            From {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
-                            <img class="spacex-book pb-2 text-right" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ item.trip.trip_reference }}
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Trip detail -->   
-                <div class="col-12">
-                    <div class="card">
-
-                        <div class="card-header text-uppercase text-center">Round Trip Ticket</div>
-
-                        <div class="card-body">
-                            <div class="row">
-
-                                <div class="col-5 text-left">
-                                    <h3>{{ item.trip.departure_site.site_code }}</h3>
-                                    <p>
-                                    {{ item.trip.departure_site }} <br>
-                                    {{ item.trip.return_date }} <br>
-                                    {{ item.trip.departure_time }} <br>
-                                    </p>
-                                </div>
-
-                                <div class="col-2 text-center">
-                                    <i class="fas fa-space-shuttle"></i>
-                                </div>
-                                    
-                                <div class="col-5 text-right">
-
-                                    <h3>{{ item.trip.category.destination_code }}</h3>
-                                    <p>
-                                    {{ item.trip.category.destination }}  <br>
-                                    {{ item.trip.return_date }} <br>
-                                    {{ item.trip.departure_time }} <br> 
-                                    </p>
-                                    
-                                </div>
-
+                            <div class="col-2">
+                                <i class="far fa-trash-alt remove-item-icon"></i>
                             </div>
+
+                            <div class="col-11 col-lg-7">
+                                <h1 class="mb-4">Trip to the {{ item.trip.category.destination }} </h1>
+                                From {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
+                                <img class="spacex-book pb-2 text-right" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ item.trip.trip_reference }}
+                            </div>
+
+                            <div class="col-12 col-lg-3">
+                                <img class="trip-img-thumbnail mb-3" src="{{ item.trip.category.img.all.0.img_file.url }}" alt="Moon Image">
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
-                {% endfor %}
 
-                <!-- Total cart & checkout -->
-                <div class="col-12 mt-5 text-right">
+                    <!-- Trip detail -->   
+                    <div class="col-12">
+                        <div class="card">
 
-                    <h2>TOTAL: 10 000</h2>
-                    <p>Tax included</p>
-                    <a href="" class="btn btn-primary">Checkout</a>
-                
+                            <div class="card-header text-uppercase text-left text-md-center">Round Trip Ticket</div>
+
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="col-12 col-lg-5 text-left">
+                                        <h3>{{ item.trip.departure_site.site_code }}</h3>
+                                        <p>
+                                        {{ item.trip.departure_site }} <br>
+                                        {{ item.trip.return_date }} <br>
+                                        {{ item.trip.departure_time }} <br>
+                                        </p>
+                                    </div>
+
+                                    <div class="col-12 col-md-2 text-left text-md-center mt-2 mb-4 mt-md-0 mb-md-0">
+                                        <i class="fas fa-space-shuttle"></i>
+                                    </div>
+                                        
+                                    <div class="col-12 col-md-5 text-left text-md-right">
+
+                                        <h3>{{ item.trip.category.destination_code }}</h3>
+                                        <p>
+                                        {{ item.trip.category.destination }}  <br>
+                                        {{ item.trip.return_date }} <br>
+                                        {{ item.trip.departure_time }} <br> 
+                                        </p>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <!-- Total cart & checkout -->
+                    <div class="col-12 mt-5 text-left text-md-right">
+
+                        <h2>TOTAL: 10 000</h2>
+                        <p>Tax included</p>
+                        <a href="" class="btn btn-primary">Checkout</a>
+                    
+                    </div>
+        
                 </div>
-    
-            </div>
-            
+
+            {% else %}
+
+                <div class="col-12 col-md-10 col-lg-8 mx-auto text-center mt-5 mb-5">
+                    <h4>Your cart is currently empty, search for your next trip now!</h4>
+                    <a href="{% url 'trips_categories' %}" class="btn btn-primary mt-5">Browse Trips</a>
+                </div>
+                							
+
+            {% endif %}
+
 		</div>
 	</div>
 </section>
