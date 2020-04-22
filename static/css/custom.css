@@ -248,3 +248,11 @@ Accounts
     background-attachment: scroll;
     background-size: cover;
 }
+
+/*
+Cart
+ */
+
+.remove-item-icon{
+    font-size: 2rem;
+}
