@@ -213,7 +213,7 @@ ul.timeline > li:before {
 }
 
 .spacex-book{
-    width: 85px;
+    width: 80px;
     height: auto;
 }
 
@@ -255,4 +255,9 @@ Cart
 
 .remove-item-icon{
     font-size: 2rem;
+}
+
+.btn-adjust {
+    padding: .5rem .5rem;
+    font-size: 70%;
 }

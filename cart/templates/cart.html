@@ -59,8 +59,8 @@
                                         <h3>{{ item.trip.departure_site.site_code }}</h3>
                                         <p>
                                         {{ item.trip.departure_site }} <br>
-                                        {{ item.trip.return_date }} <br>
-                                        {{ item.trip.departure_time }} <br>
+                                        {{ item.trip.departure_date }} <br>
+                                        {{ item.trip.departure_time|time:"H:i A" }} <br>
                                         </p>
                                     </div>
 
@@ -74,7 +74,7 @@
                                         <p>
                                         {{ item.trip.category.destination }}  <br>
                                         {{ item.trip.return_date }} <br>
-                                        {{ item.trip.departure_time }} <br> 
+                                        {{ item.trip.departure_time|time:"H:i A" }} <br> 
                                         </p>
                                         
                                     </div>
@@ -85,8 +85,16 @@
                         </div>
                     </div>
 
-                    <!-- Trip price -->
+                    <!-- Trip price & passenger -->
                     <div class="col-12 mt-3 text-left text-md-right">
+                        <form  class="form-inline mt-3 mb-3 justify-content-md-end" method="POST" action="{% url 'adjust_cart' item.id %}">
+                        {% csrf_token %}
+                            <div class="form-group">
+                                <label class="mr-2" for="inputPassenger"><i class="fas fa-user-friends"></i> Passenger(s)</label>
+								<input class="mr-2 text-center" type="number" id="inputPassenger" min="0" max="{{ item.trip.slot }}" class="form-control" value="{{ item.passenger }}"> 
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-adjust">Adjust</button>
+                        </form>
                         <h4>€ {{ item.trip.category.price|intcomma }}</h4>
                     </div>
 
