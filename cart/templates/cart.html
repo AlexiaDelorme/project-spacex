@@ -27,78 +27,83 @@
 
                 <div class="col-12 col-md-10 col-lg-8 jumbotron mx-auto">
 
-                {% for item in cart_items %}
+                    {% for item in cart_items %}
+                        <div class="mb-5">
+                    
+                            <!-- Trip recap -->
+                            <div class="col-12 mb-2">
+                                <div class="row text-left text-md-right">
 
-                    <!-- Trip recap -->
-                    <div class="col-12 mb-2">
-                        <div class="row text-left text-md-right">
-
-                            <div class="col-12 col-md-8">
-                                <h1 class="mb-4">Trip to the {{ item.trip.category.destination }} </h1>
-                                From {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
-                                <img class="spacex-book pb-2 text-right" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ item.trip.trip_reference }}
-                            </div>
-
-                            <div class="col-12 col-md-4 d-none d-md-block">
-                                <img class="trip-img-thumbnail mb-3" src="{{ item.trip.category.img.all.0.img_file.url }}" alt="Moon Image">
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Trip detail -->   
-                    <div class="col-12">
-                        <div class="card">
-
-                            <div class="card-header text-uppercase text-left text-md-center">Round Trip Ticket</div>
-
-                            <div class="card-body">
-                                <div class="row">
-
-                                    <div class="col-12 col-md-5 text-left">
-                                        <h3>{{ item.trip.departure_site.site_code }}</h3>
-                                        <p>
-                                        {{ item.trip.departure_site }} <br>
-                                        {{ item.trip.departure_date }} <br>
-                                        {{ item.trip.departure_time|time:"H:i A" }} <br>
-                                        </p>
+                                    <div class="col-12 col-md-8">
+                                        <h1 class="mb-4">Trip to the {{ item.trip.category.destination }} </h1>
+                                        From {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
+                                        <img class="spacex-book pb-2 text-right" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ item.trip.trip_reference }}
                                     </div>
 
-                                    <div class="col-12 col-md-2 text-left text-md-center mt-2 mb-4 mt-md-0 mb-md-0">
-                                        <i class="fas fa-space-shuttle"></i>
-                                    </div>
-                                        
-                                    <div class="col-12 col-md-5 text-left text-md-right">
-
-                                        <h3>{{ item.trip.category.destination_code }}</h3>
-                                        <p>
-                                        {{ item.trip.category.destination }}  <br>
-                                        {{ item.trip.return_date }} <br>
-                                        {{ item.trip.departure_time|time:"H:i A" }} <br> 
-                                        </p>
-                                        
+                                    <div class="col-12 col-md-4 d-none d-md-block">
+                                        <img class="trip-img-thumbnail mb-3" src="{{ item.trip.category.img.all.0.img_file.url }}" alt="Moon Image">
                                     </div>
 
                                 </div>
                             </div>
 
-                        </div>
-                    </div>
+                            <!-- Trip detail -->   
+                            <div class="col-12">
+                                <div class="card">
 
-                    <!-- Trip price & passenger -->
-                    <div class="col-12 mt-3 text-left text-md-right">
-                        <form  class="form-inline mt-3 mb-3 justify-content-md-end" method="POST" action="{% url 'adjust_cart' item.id %}">
-                        {% csrf_token %}
-                            <div class="form-group">
-                                <label class="mr-2" for="inputPassenger"><i class="fas fa-user-friends"></i> Passenger(s)</label>
-								<input class="mr-2 text-center" type="number" id="inputPassenger" min="0" max="{{ item.trip.slot }}" class="form-control" value="{{ item.passenger }}"> 
+                                    <div class="card-header text-uppercase text-left text-md-center">Round Trip Ticket</div>
+
+                                    <div class="card-body">
+                                        <div class="row">
+
+                                            <div class="col-12 col-md-5 text-left">
+                                                <h3>{{ item.trip.departure_site.site_code }}</h3>
+                                                <p>
+                                                {{ item.trip.departure_site }} <br>
+                                                {{ item.trip.departure_date }} <br>
+                                                {{ item.trip.departure_time|time:"H:i A" }} <br>
+                                                </p>
+                                            </div>
+
+                                            <div class="col-12 col-md-2 text-left text-md-center mt-2 mb-4 mt-md-0 mb-md-0">
+                                                <i class="fas fa-space-shuttle"></i>
+                                            </div>
+                                                
+                                            <div class="col-12 col-md-5 text-left text-md-right">
+
+                                                <h3>{{ item.trip.category.destination_code }}</h3>
+                                                <p>
+                                                {{ item.trip.category.destination }}  <br>
+                                                {{ item.trip.return_date }} <br>
+                                                {{ item.trip.departure_time|time:"H:i A" }} <br> 
+                                                </p>
+                                                
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-adjust">Adjust</button>
-                        </form>
-                        <input id="tripPrice" value="{{ item.trip.category.price }}" type="hidden">
-                        <h4 id="totalTripPrice">€ {{ item.trip.category.price|intcomma }}</h4>
-                    </div>
 
+                            <!-- Trip price & passenger -->
+                            <div class="col-12 mt-3 text-left text-md-right">
+                                <form  class="form-inline mt-3 mb-3 justify-content-md-end" method="POST" action="{% url 'adjust_cart' item.id %}">
+                                {% csrf_token %}
+                                    <div class="form-group">
+                                        <label class="mr-2" for="inputPassenger"><i class="fas fa-user-friends"></i> Passenger(s)</label>
+                                        <input class="mr-2 text-center passengerAdjust" type="number" id="inputPassenger" min="0" max="{{ item.trip.slot }}" class="form-control" value="{{ item.passenger }}">
+                                        <input class="tripPrice" value="{{ item.trip.category.price }}" type="hidden">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-adjust">Adjust</button>
+                                </form>
+                                <div class="d-inline-flex">
+                                    <h4 class="mr-2">€</h4>
+                                    <h4 class="totalPrice">{{ item.sub_total|intcomma }}</h4>
+                                </div>   
+                            </div>
+
+                        </div>
                     {% endfor %}
 
                     <div class="col-12 mt-5 mb-3">
@@ -107,7 +112,10 @@
                     
                     <!-- Total cart & checkout -->
                     <div class="col-12 mt-5 text-left text-md-right">
-                        <h2>TOTAL: € {{ total|intcomma }}</h2>
+                        <div class="d-inline-flex">
+                            <h2 class="mr-2">TOTAL: €</h2>
+                            <h2 id="totalCartPrice">{{ total|intcomma }}</h2>
+                        </div>
                         <p>Tax included</p>
                         <a href="" class="btn btn-primary">Checkout</a>
                     </div>
