@@ -47,11 +47,16 @@
     })
 
     // Update total price per trip according to passenger number  
-    var tripPrice = $("#tripPrice").val();
-    $("#inputPassenger").change(function () {
+    $(".passengerAdjust").change(function () {
         var inputPassenger = $(this).val();
+        var tripPrice = $(this).siblings(".tripPrice").val();
         var totalTripPrice = (inputPassenger * tripPrice).toLocaleString();
-        $("#totalTripPrice").text("€ "+totalTripPrice);
+        $(this).parents("form").siblings(".d-inline-flex").children(".totalPrice").text(totalTripPrice);
+        var sum = 0;
+        $(".totalPrice").each(function () {
+            sum += parseFloat($(this).text().replace(/,/g, ''));
+        });
+        $("#totalCartPrice").text(sum.toLocaleString());
     });
 
 })(jQuery); // End of use strict
