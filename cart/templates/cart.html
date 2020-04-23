@@ -95,7 +95,8 @@
                             </div>
                             <button type="submit" class="btn btn-primary btn-adjust">Adjust</button>
                         </form>
-                        <h4>€ {{ item.trip.category.price|intcomma }}</h4>
+                        <input id="tripPrice" value="{{ item.trip.category.price }}" type="hidden">
+                        <h4 id="totalTripPrice">€ {{ item.trip.category.price|intcomma }}</h4>
                     </div>
 
                     {% endfor %}

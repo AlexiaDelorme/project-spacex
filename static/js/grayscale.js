@@ -46,10 +46,12 @@
         $('.img-box').attr("src", $(this).attr("src"))
     })
 
-    // Update book trip form on departure site select
-    $("#departureSiteSelected").change(function () {
-        var departureSiteSelected = $(this).children("option:selected").val();
-        alert("You have selected the option - " + departureSiteSelected);
+    // Update total price per trip according to passenger number  
+    var tripPrice = $("#tripPrice").val();
+    $("#inputPassenger").change(function () {
+        var inputPassenger = $(this).val();
+        var totalTripPrice = (inputPassenger * tripPrice).toLocaleString();
+        $("#totalTripPrice").text("€ "+totalTripPrice);
     });
 
-}) (jQuery); // End of use strict
+})(jQuery); // End of use strict
