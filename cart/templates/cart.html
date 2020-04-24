@@ -91,8 +91,8 @@
                                 <form  class="form-inline mt-3 mb-3 justify-content-md-end" method="POST" action="{% url 'adjust_cart' item.id %}">
                                 {% csrf_token %}
                                     <div class="form-group">
-                                        <label class="mr-2" for="inputPassenger"><i class="fas fa-user-friends"></i> Passenger(s)</label>
-                                        <input class="mr-2 text-center passengerAdjust" type="number" id="inputPassenger" min="0" max="{{ item.trip.slot }}" class="form-control" value="{{ item.passenger }}">
+                                        <label class="mr-2" for="passenger"><i class="fas fa-user-friends"></i> Passenger(s)</label>
+                                        <input id="passenger" class="mr-2 text-center passengerAdjust" type="number" min="0" max="{{ item.trip.slot }}" class="form-control" value="{{ item.passenger }}">
                                         <input class="tripPrice" value="{{ item.trip.category.price }}" type="hidden">
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-adjust">Adjust</button>
