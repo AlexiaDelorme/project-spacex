@@ -29,8 +29,11 @@ Navbar
         color: rgba(255,255,255,.75);
     }
 
-
+    .dropdown-menu.dropdown-shrink.show {
+        margin-top: -2rem;
+    }
 }
+
 
  /*
  Footer
@@ -264,4 +267,11 @@ Cart
 
 .badge-info {
     background-color: #64a19d;
+}
+
+.badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
 }
