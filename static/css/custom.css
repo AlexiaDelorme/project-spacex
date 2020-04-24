@@ -261,3 +261,7 @@ Cart
     padding: .5rem .5rem;
     font-size: 70%;
 }
+
+.badge-info {
+    background-color: #64a19d;
+}
