@@ -188,6 +188,7 @@ def edit_passenger_details_page(request):
 
     context = {
         "page_title": "Edit passenger",
+        "page_name": "edit passenger",
         "form": form
     }
 

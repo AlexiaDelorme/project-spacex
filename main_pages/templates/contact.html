@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block header %}
@@ -44,5 +45,22 @@
 		</div>
 	</div>
 </section>
+
+{% endblock %}
+
+{% block script %}
+
+<!-- EmailJS API script -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js">
+</script>
+<script type="text/javascript">
+    const emailjsUser = '{{emailjs_user}}';
+</script>
+<script src="{% static 'js/email.js' %}"></script>
+
+<!-- Google map API script -->
+<script src="{% static 'js/google.js' %}"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_api_key }}&callback=initMap">
+</script>
 
 {% endblock %}
