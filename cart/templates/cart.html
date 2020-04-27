@@ -34,11 +34,14 @@
                             <div class="col-12 mb-2">
                                 <div class="row text-left text-md-right">
                                     <div class="col-12 col-md-8">
-                                        <a class="remove-item btn btn-light float-left" id="remove_{{ item.id }}"><i class="fas fa-trash-alt fa-2x"></i></a>
+                                        <form method="POST" action="{% url 'remove_from_cart' item.id %}">
+                                            {% csrf_token %}
+                                            <button class="btn btn-light float-left" type="submit"><i class="fas fa-trash-alt fa-2x"></i></button>
+                                        </form>
                                         <h1 class="mb-4">Trip to the {{ item.trip.category.destination }} </h1>
                                         From {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
                                         <img class="spacex-book pb-2 text-right" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ item.trip.trip_reference }}
-                                    </div>
+                                    </div> 
 
                                     <div class="col-12 col-md-4 d-none d-md-block">
                                         <img class="trip-img-thumbnail mb-3" src="{{ item.trip.category.img.all.0.img_file.url }}" alt="Moon Image">
