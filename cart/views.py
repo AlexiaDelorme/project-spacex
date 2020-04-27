@@ -1,16 +1,18 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponse
 
 # Create your views here.
 
 
 def view_cart(request):
+    """Render the cart content page"""
+
     return render(request, "cart.html")
 
 
-def add_to_cart(request, pk):
-    passenger = int(request.POST.get('passenger'))
-    id = pk
+def add_to_cart(request, id):
+    """Add passenger(s) for a specified trip to the cart"""
 
+    passenger = int(request.POST.get('passenger'))
     cart = request.session.get('cart', {})
 
     if id in cart:
@@ -22,10 +24,10 @@ def add_to_cart(request, pk):
     return redirect(reverse('view_cart'))
 
 
-def adjust_cart(request, pk):
-    passenger = int(request.POST.get('passenger'))
-    id = pk
+def adjust_cart(request, id):
+    """Ajust passenger number for a specified trip"""
 
+    passenger = int(request.POST.get('passenger'))
     cart = request.session.get('cart', {})
 
     if passenger > 0:
@@ -35,3 +37,18 @@ def adjust_cart(request, pk):
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
+
+
+def remove_from_cart(request, id):
+    """Remove a specified trip from the cart"""
+
+    try:
+        cart = request.session.get('cart', {})
+
+        cart.pop(id)
+
+        request.session['cart'] = cart
+        return HttpResponse(status=200)
+    except Exception as e:
+        return HttpResponse(status=500)
+
