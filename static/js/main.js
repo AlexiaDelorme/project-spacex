@@ -18,9 +18,12 @@ $(document).ready(function () {
         });
         $("#totalCartPrice").text(sum.toLocaleString());
         // itemID is an empty <span> of the cart.html file to get the url-for item.id
-        var itemID =  $(this).parents("form").children("span[id^=item-id-]").attr("id").replace("item-id-", "");
-        $.post(`/cart/adjust/${itemID}/`, {passenger: inputPassenger}); // ajax call without refreshing page
+        // var itemID =  $(this).parents("form").children("span[id^=item-id-]").attr("id").replace("item-id-", "");
+        // $.post(`/cart/adjust/${itemID}/`, {passenger: inputPassenger}); // ajax call without refreshing page
+        var form = $(this).parents("form");
+        form.submit();
     });
+    
 
     // Set up datepicker
 	$("#datepicker").datepicker({
