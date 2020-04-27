@@ -42,13 +42,9 @@ def adjust_cart(request, id):
 def remove_from_cart(request, id):
     """Remove a specified trip from the cart"""
 
-    try:
-        cart = request.session.get('cart', {})
+    cart = request.session.get('cart', {})
 
-        cart.pop(id)
+    cart.pop(id)
 
-        request.session['cart'] = cart
-        return HttpResponse(status=200)
-    except Exception as e:
-        return HttpResponse(status=500)
-
+    request.session['cart'] = cart
+    return redirect(reverse('view_cart'))
