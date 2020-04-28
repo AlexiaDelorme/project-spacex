@@ -36,7 +36,7 @@
                                     <div class="col-12 col-md-8">
                                         <form method="POST" action="{% url 'remove_from_cart' item.id %}">
                                             {% csrf_token %}
-                                            <button class="btn btn-light float-left" type="submit"><i class="fas fa-trash-alt fa-2x"></i></button>
+                                            <button class="remove-item btn btn-light float-left" type="submit"><i class="fas fa-trash-alt fa-2x"></i></button>
                                         </form>
                                         <h1 class="mb-4">Trip to the {{ item.trip.category.destination }} </h1>
                                         From {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
@@ -93,11 +93,10 @@
                             <div class="col-12 mt-3 text-left text-md-right">
                                 <form  class="form-inline mt-3 mb-3 justify-content-md-end" method="POST" action="{% url 'adjust_cart' item.id %}">
                                 {% csrf_token %}
-                                    <span id="item-id-{{ item.id }}"></span>
                                     <div class="form-group">
                                         <label class="mr-2" for="passenger"><i class="fas fa-user-friends"></i> Passenger(s)</label>
                                         <input id="passenger" name="passenger" class="mr-2 text-center passengerAdjust" type="number" min="1" max="{{ item.trip.slot }}" class="form-control" value="{{ item.passenger }}">
-                                        <input class="tripPrice" value="{{ item.trip.category.price }}" type="hidden">
+                                        <input class="tripPrice" id="remove_{{ item.id }}" value="{{ item.trip.category.price }}" type="hidden">
                                     </div>
                                 </form>
                                 <div class="d-inline-flex">
@@ -137,5 +136,14 @@
 		</div>
 	</div>
 </section>
+
+{% endblock %}
+
+{% block script %}
+
+<!-- CSRF token -->
+<script type="text/javascript">
+    const csrfToken = '{{ csrf_token }}';
+</script>
 
 {% endblock %}
