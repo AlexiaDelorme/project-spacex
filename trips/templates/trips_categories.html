@@ -26,7 +26,7 @@
                 <div class="row justify-content-center no-gutters mb-5">
                     <div class="col-lg-8">
                         <img class="img-fluid" src="{{ trip.img.all.0.img_file.url }}" alt="{{ trip.img.all.0.img_name }}">
-                        <a href="{% url 'trip_detail' trip.id %}" class="d-none d-md-block btn btn-book btn-light" role="button">Trip Details</a>
+                        <a href="{% url 'trip_detail' trip.id %}" class="d-none d-md-block btn btn-light btn-book float-right mr-5" role="button">Trip Details</a>
                     </div>
                     <div class="col-lg-4 order-lg-first">
                         <div class="bg-black text-center h-100 project">
@@ -41,7 +41,7 @@
                                         <i class="fas fa-calendar-day"></i>
                                         Many departures
                                     </p>
-                                    <a href="{% url 'trip_detail' trip.id %}" class="mx-auto d-block d-md-none btn btn-light" role="button">Trip Details</a>
+                                    <a href="{% url 'trip_detail' trip.id %}" class="d-md-none btn btn-light" role="button">Trip Details</a>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                 <div class="row justify-content-center no-gutters mb-5">
                     <div class="col-lg-8">
                         <img class="img-fluid" src="{{ trip.img.all.0.img_file.url }}" alt="{{ trip.img.all.0.img_name }}">
-                        <a href="{% url 'trip_detail' trip.id %}" class="d-none d-md-block btn btn-book-odd btn-light" role="button">Trip Details</a>
+                        <a href="{% url 'trip_detail' trip.id %}" class="d-none d-md-block btn btn-light btn-book float-left ml-5" role="button">Trip Details</a>
                     </div>
                     <div class="col-lg-4">
                         <div class="bg-black text-center h-100 project">
@@ -68,7 +68,7 @@
                                         <i class="fas fa-calendar-day"></i>
                                         Many departures
                                     </p>
-                                    <a href="{% url 'trip_detail' trip.id %}" class="mx-auto d-block d-md-none btn btn-light" role="button">Trip Details</a>
+                                    <a href="{% url 'trip_detail' trip.id %}" class="d-md-none btn btn-light" role="button">Trip Details</a>
                                 </div>
                             </div>
                         </div>
