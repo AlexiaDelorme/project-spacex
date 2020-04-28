@@ -33,18 +33,20 @@ def adjust_cart(request, id):
     if passenger > 0:
         cart[id] = passenger
     else:
-        cart.pop(id)
+        str_id = str(id)
+        cart.pop(str_id)
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
 
 
 def remove_from_cart(request, id):
+    
     """Remove a specified trip from the cart"""
 
     cart = request.session.get('cart', {})
-
-    cart.pop(id)
+    str_id = str(id)
+    cart.pop(str_id)
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
