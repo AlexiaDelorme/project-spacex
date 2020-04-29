@@ -19,9 +19,86 @@
 {% block content %}
 
 <!-- Passenger section -->
-<section class="mt-5 mb-5">
+<section class="bg-light">
+	<div class="container pt-5 pb-5">
+		<div class="row">
 
+            <!-- Passenger Details -->
+			<div class="col-12 col-lg-6">
 
+                <h2 class="mb-5">Passenger details</h2>
+
+                <div>
+                    <label class="mb-3" for="traveling-passenger">
+                      Who is the main passenger for this trip?
+                    </label>
+                    <select id="traveling-passenger" name="traveling-passenger" class="passenger-traveling-select">
+                        <option value="1" selected>{{ user.first_name }} {{ user.last_name }}</option>
+                        <option value="2">I am booking for another passenger</option>
+                    </select>
+                </div>
+
+                <!-- Passenger Form -->
+				<form class="mt-5" id="passenger-form" method="POST">
+					{% csrf_token %}
+
+					<fieldset class="form-group">
+						{{ form|crispy }}
+					</fieldset>
+
+					<div class="form-group text-right">
+						<button type="submit" class="btn btn-primary btn-subscribe">Confirm</button>
+					</div>
+
+				</form>
+
+			</div>
+            
+            <!-- Booking recap -->
+			<div class="col-12 col-lg-6 mt-3 mt-lg-0">
+				
+                <h2 class="mb-5">Your booking</h2>
+
+                {% if cart_items %}
+
+                    {% for item in cart_items %}
+
+                        <!-- Trip recap -->
+                        <div class="row mb-2">
+                            <div class="col-7 text-left">
+                                <h3 class="mb-4">Trip to the {{ item.trip.category.destination }} </h3>
+                                <p>From {{ item.trip.departure_date }} to {{ item.trip.return_date }} </p>
+                            </div>
+                            <div class="col-5 text-right">
+                                <h3 class="mb-4">€ {{ item.sub_total|intcomma }}</h3>
+                            </div> 
+                        </div>
+
+                    {% endfor %}
+
+                        <div class="mt-5 mb-3"><hr></div>
+
+                        <!-- Total cart -->
+                        <div class="mt-5 mb-2 text-right">
+                            <h3>TOTAL: € {{ total|intcomma }}</h3>
+                            <p>Tax included</p>
+                        </div>
+
+                        <div class="row mt-5 mb-3">
+                            <div class="col-6 text-left">
+                                <button type="button" class="btn btn-light"><i class="fas fa-caret-left"></i> Return to cart</button>
+                            </div>
+                            <div class="col-6 text-right">
+                                <button type="button" class="btn btn-primary">Confirm & pay</button>
+                            </div>
+                        </div>
+
+                {% endif %}
+				
+			</div>
+
+		</div>
+	</div>
 </section>
 
 {% endblock %}
