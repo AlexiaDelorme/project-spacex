@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse
+from django.contrib import auth, messages
 
 # Create your views here.
 
@@ -21,6 +22,8 @@ def add_to_cart(request, id):
         cart[id] = cart.get(id, passenger)
 
     request.session['cart'] = cart
+
+    messages.success(request, "Your trip was added to your cart!")
     return redirect(reverse('view_cart'))
 
 
@@ -41,7 +44,6 @@ def adjust_cart(request, id):
 
 
 def remove_from_cart(request, id):
-    
     """Remove a specified trip from the cart"""
 
     cart = request.session.get('cart', {})
@@ -49,4 +51,6 @@ def remove_from_cart(request, id):
     cart.pop(str_id)
 
     request.session['cart'] = cart
+
+    messages.success(request, "Item removed from cart")
     return redirect(reverse('view_cart'))
