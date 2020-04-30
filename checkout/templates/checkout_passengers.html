@@ -26,7 +26,7 @@
             <!-- Passenger Details -->
 			<div class="col-12 col-lg-6">
 
-                <h2 class="mb-5">Passenger details</h2>
+                <h1 class="mt-3 mb-5">Passenger details</h1>
 
                 <div>
                     <label class="mb-3" for="traveling-passenger">
@@ -57,20 +57,23 @@
             <!-- Booking recap -->
 			<div class="col-12 col-lg-6 mt-3 mt-lg-0">
 				
-                <h2 class="mb-5">Your booking</h2>
+                <h1 class="mt-3 mb-5">Your booking</h1>
 
                 {% if cart_items %}
 
                     {% for item in cart_items %}
 
                         <!-- Trip recap -->
-                        <div class="row mb-2">
+                        <div class="row mb-3">
                             <div class="col-7 text-left">
                                 <h3 class="mb-4">Trip to the {{ item.trip.category.destination }} </h3>
-                                <p>From {{ item.trip.departure_date }} to {{ item.trip.return_date }} </p>
+                                <p> {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
+                                    From {{ item.trip.departure_site }}
+                                </p>
                             </div>
                             <div class="col-5 text-right">
                                 <h3 class="mb-4">€ {{ item.sub_total|intcomma }}</h3>
+                                <p><i class="fas fa-user-friends"></i> {{ item.passenger }} x € {{ item.trip.category.price |intcomma }}</p>
                             </div> 
                         </div>
 
@@ -86,10 +89,10 @@
 
                         <div class="row mt-5 mb-3">
                             <div class="col-6 text-left">
-                                <button type="button" class="btn btn-light"><i class="fas fa-caret-left"></i> Return to cart</button>
+                                <a href="{% url 'view_cart' %}"><button type="button" class="btn btn-light"><i class="fas fa-caret-left"></i> Return to cart</button></a>
                             </div>
                             <div class="col-6 text-right">
-                                <button type="button" class="btn btn-primary">Confirm & pay</button>
+                               <a href=""><button type="button" class="btn btn-primary">Confirm & pay</button></a>
                             </div>
                         </div>
 
