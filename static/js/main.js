@@ -47,4 +47,9 @@ $(document).ready(function () {
         format: 'yyyy-mm-dd'
     });
 
+    // Modal
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+
 });
