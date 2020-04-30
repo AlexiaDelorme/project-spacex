@@ -61,11 +61,30 @@
                                     <i class="fas fa-user-friends"></i> {{ passenger_number}} passenger(s) <br>
                                     € {{ trip_price|intcomma }}
                                 </p>
-                                <form action="{% url 'add_to_cart' trip.id %}" method="POST">
+                                <form method="POST">
                                     {% csrf_token %}
                                     <input id="passenger" name="passenger" type="hidden" value="{{ passenger_number }}">
-                                    <button type="submit" class="btn btn-primary">Book Trip</button>
+                                    <button type="button" class="btn btn-primary btn-cart" id="add_{{trip.id}}"  data-toggle="modal" data-target="#exampleModalCenter">Book trip</button>
                                 </form>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Your trip was added to the cart!</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        Would you like to proceed to checkout?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick="refresh">Keep shopping</button>
+                                        <a href="{% url 'checkout_passengers' %}"><button type="button" class="btn btn-primary">Checkout</button></a>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+
                             </div>
                             	
                         </div>
@@ -78,5 +97,14 @@
 
 	</div>
 </section>
+
+{% endblock %}
+
+{% block script %}
+
+<!-- CSRF token -->
+<script type="text/javascript">
+    const csrfToken = '{{ csrf_token }}';
+</script>
 
 {% endblock %}

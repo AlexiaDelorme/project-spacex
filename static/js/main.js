@@ -40,6 +40,20 @@ $(document).ready(function () {
 
     });
 
+    $(".btn-cart").click(function() {
+
+        // Add to cart without reloading the page
+        var inputPassenger = $(this).prev('input').val();
+        console.log(inputPassenger);
+        var itemId = $(this).attr("id").split("add_")[1];
+        console.log(itemId);
+
+        var url = `/cart/add/${itemId}/`;
+        var data = { 'csrfmiddlewaretoken': csrfToken, 'passenger': inputPassenger };
+        $.post(url, data);
+
+    });
+
     // Set up datepicker
     $("#datepicker").datepicker({
         autoclose: true,
