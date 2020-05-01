@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required
-def checkout_passengers_page(request):
+def checkout_confirm_page(request):
     """Render page to provide passengers details"""
 
     user = User.objects.get(email=request.user.email)
@@ -29,4 +29,4 @@ def checkout_passengers_page(request):
         "form": form
     }
 
-    return render(request, "checkout_passengers.html", context)
+    return render(request, "checkout_confirm.html", context)
