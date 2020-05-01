@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import User
-from accounts.models import ContactDetail
-from accounts.forms import UserContactDetailForm
+from accounts.models import ContactDetail, Passenger
+from accounts.forms import UserContactDetailForm, UserPassengerForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
 
@@ -31,7 +31,7 @@ def checkout_confirm_page(request):
                 form.save()
                 messages.success(
                     request, f'Your contact details have been saved!')
-                return redirect('view_cart')
+                return redirect('checkout_passengers')
         else:
             form = UserContactDetailForm(instance=request.user.contactdetail)
 
@@ -45,7 +45,7 @@ def checkout_confirm_page(request):
                 contact_details.save()
                 messages.success(
                     request, f'Your contact details have been saved!')
-                return redirect('view_cart')
+                return redirect('checkout_passengers')
         else:
             form = UserContactDetailForm()
 
@@ -56,3 +56,29 @@ def checkout_confirm_page(request):
     }
 
     return render(request, "checkout_confirm.html", context)
+
+
+@login_required
+def checkout_passengers_page(request):
+    """Render page to provide passengers details"""
+
+    user = User.objects.get(email=request.user.email)
+
+    # Check if user already provided passenger details
+    try:
+        passenger = Passenger.objects.get(user=request.user)
+    except Passenger.DoesNotExist:
+        passenger = None
+
+    if passenger is not None:
+        form = UserPassengerForm(instance=request.user.passenger)
+    else:
+        form = UserPassengerForm()
+
+    context = {
+        "page_title": "Passenger details",
+        "user": user,
+        "form": form
+    }
+
+    return render(request, "checkout_passengers.html", context)
