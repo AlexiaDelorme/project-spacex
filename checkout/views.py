@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import User
-from accounts.models import Passenger
-from accounts.forms import UserPassengerForm
+from accounts.models import ContactDetail
+from accounts.forms import UserContactDetailForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -14,17 +14,17 @@ def checkout_passengers_page(request):
     user = User.objects.get(email=request.user.email)
 
     try:
-        passenger = Passenger.objects.get(user=request.user)
-    except Passenger.DoesNotExist:
-        passenger = None
+        contact = ContactDetail.objects.get(user=request.user)
+    except ContactDetail.DoesNotExist:
+        contact = None
 
-    if passenger is not None:
-        form = UserPassengerForm(instance=request.user.passenger)
+    if contact is not None:
+        form = UserContactDetailForm(instance=request.user.contactdetail)
     else:
-        form = UserPassengerForm()
+        form = UserContactDetailForm()
 
     context = {
-        "page_title": "Passenger details",
+        "page_title": "Booker details",
         "user": user,
         "form": form
     }
