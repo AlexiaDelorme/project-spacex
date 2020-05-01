@@ -21,8 +21,39 @@
 <!-- Register passenger section -->
 <section class="bg-light">
 	<div class="container pt-5 pb-5">
-		<div class="row mx-auto">
+		<div class="row">
             
+            {% for item in cart_items %}
+                <div class="col-12 col-md-10 mx-auto jumbotron">
+
+                    <!-- Trip recap -->
+                    <div class="col-12 mb-2 text-left"> 
+                        <h3 class="mb-2">Trip to the {{ item.trip.category.destination }} </h3>
+                        <p> {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
+                        From {{ item.trip.departure_site }}
+                        </p>     
+                    </div>
+
+                    <!-- Passengers --> 
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header text-uppercase text-left text-md-center">1st Passenger</div>
+                            <div class="card-body">
+                                <div class="row">
+               
+                                    <select id="traveling-passenger" name="traveling-passenger" class="passenger-traveling-select">
+                                        <option value="1" selected>{{ user.first_name }} {{ user.last_name }}</option>
+                                        <option value="2">I am booking for another passenger</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+  
+                </div>
+            {% endfor %}
 
 		</div>
 	</div>
