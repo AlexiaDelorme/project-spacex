@@ -1,0 +1,50 @@
+{% load crispy_forms_tags %}
+<form method="POST">
+    {% csrf_token %}
+
+    <div class="form-row">
+        <div class="form-group col-12">
+            <label for="{{ form.title.id_for_label }}">Title</label>
+            {{ form.title.errors }}
+            <div class="row text-left ml-2">
+                {% for radio in form.title %}
+                    <div class="form-check col-2"> 
+                        <input type="radio" class="form-check-input" name="form.title.id_for_label" id="radio.id_for_label" value="{{radio.choice_label}}">
+                        <label for="{{ radio.id_for_label }}" class="form-check-label"> {{ radio.choice_label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>   
+    </div> 
+
+    <div class="form-row">
+        <div class="form-group col-12 col-md-5">
+            {{ form.birth_month.errors }}
+            {{ form.birth_month|as_crispy_field }}
+        </div>
+        <div class="form-group col-4 col-md-3">
+            {{ form.birth_day.errors }}
+            {{ form.birth_day|as_crispy_field  }}
+        </div>
+        <div class="form-group col-8 col-md-4">
+            {{ form.birth_year.errors }}
+            {{ form.birth_year|as_crispy_field }}
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-12 col-md-7">
+            {{ form.citizenship.errors }}
+            {{ form.citizenship|as_crispy_field  }}
+        </div>
+        <div class="form-group col-12 col-md-5">
+            {{ form.passport_id.errors }}
+            {{ form.passport_id|as_crispy_field }}
+        </div>
+    </div>
+
+    <div class="form-group col-12 text-right">
+        <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+
+</form>
