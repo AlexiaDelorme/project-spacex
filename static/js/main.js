@@ -1,12 +1,16 @@
 $(document).ready(function () {
 
-    // Image thumbnail for trips page
+    /*
+        Set up image thumbnail for trip details page
+    */
     $('.trip-img-thumbnail').click(function (e) {
         e.preventDefault();
         $('.img-box').attr("src", $(this).attr("src"))
     })
 
-    // Update total price per trip according to passenger number  
+    /*
+        Update cart information according to changes in passenger number
+    */
     $(".passengerAdjust").change(function () {
 
         var inputPassenger = $(this).val();
@@ -16,14 +20,14 @@ $(document).ready(function () {
         var totalTripPrice = (inputPassenger * tripPrice).toLocaleString();
         $(this).parents("form").siblings(".d-inline-flex").children(".totalPrice").text(totalTripPrice);
 
-        // Update amount for total cart
+        // Update amount for the total cart
         var sum = 0;
         $(".totalPrice").each(function () {
             sum += parseFloat($(this).text().replace(/,/g, ''));
         });
         $("#totalCartPrice").text(sum.toLocaleString());
 
-        // Update number of cart item in navbar
+        // Update number of cart item in the navbar
         var cartItem = 0;
         $(".passengerAdjust").each(function () {
             cartItem += parseFloat($(this).val());
@@ -40,9 +44,11 @@ $(document).ready(function () {
 
     });
 
-    $(".btn-cart").click(function() {
+    /*
+        Add item to the cart without reload the page
+    */
+    $(".btn-cart").click(function () {
 
-        // Add to cart without reloading the page
         var inputPassenger = $(this).prev('input').val();
         console.log(inputPassenger);
         var itemId = $(this).attr("id").split("add_")[1];
@@ -54,14 +60,18 @@ $(document).ready(function () {
 
     });
 
-    // Set up datepicker
+    /*
+        Set up datepicker for trip search form
+    */
     $("#datepicker").datepicker({
         autoclose: true,
         todayHighlight: true,
         format: 'yyyy-mm-dd'
     });
 
-    // Modal
+    /*
+        Set up bootstrap modal script
+    */
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
     })
