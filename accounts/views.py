@@ -22,6 +22,8 @@ def logout_page(request):
 
 
 def login_page(request):
+    """Render login form page and provide user feedback if needed.
+    Redirect user to their profile if already logged in."""
 
     if request.user.is_authenticated:
         return redirect(reverse('profile'))
@@ -51,6 +53,7 @@ def login_page(request):
 
 
 def signup_page(request):
+    """Render sign up form page and provide user feedback if needed."""
 
     if request.user.is_authenticated:
         return redirect(reverse('profile'))
@@ -84,20 +87,25 @@ def signup_page(request):
 
 @login_required
 def profile_page(request):
+    """Render user profile page with their personal information:
+    contact details, passenger information (if provided yet)"""
 
     user = User.objects.get(email=request.user.email)
 
+    # Check if user has already provided contact details
     try:
         contact = ContactDetail.objects.get(user=request.user)
     except ContactDetail.DoesNotExist:
         contact = None
 
+    # Check if user has already provided passenger info
     try:
         passenger = Passenger.objects.get(user=request.user)
     except Passenger.DoesNotExist:
         passenger = None
 
     if contact is not None:
+        # User has provided both contact and passenger info
         if passenger is not None:
             context = {
                 "page_title": "Profile",
@@ -105,6 +113,7 @@ def profile_page(request):
                 "contact": contact,
                 "passenger": passenger
             }
+        # User has only provided contact details
         else:
             context = {
                 "page_title": "Profile",
@@ -112,12 +121,14 @@ def profile_page(request):
                 "contact": contact
             }
     else:
+        # User has only provided passenger info
         if passenger is not None:
             context = {
                 "page_title": "Profile",
                 "user": user,
                 "passenger": passenger
             }
+        # User has not provided neither contact nor passenger info
         else:
             context = {
                 "page_title": "Profile",
@@ -129,6 +140,7 @@ def profile_page(request):
 
 @login_required
 def create_passenger_details_page(request):
+    """Render form to register passenger info"""
 
     if request.method == 'POST':
         form = UserPassengerForm(request.POST)
@@ -152,6 +164,7 @@ def create_passenger_details_page(request):
 
 @login_required
 def create_contact_details_page(request):
+    """Render form to register contact details"""
 
     if request.method == 'POST':
         form = UserContactDetailForm(request.POST)
@@ -175,6 +188,7 @@ def create_contact_details_page(request):
 
 @login_required
 def edit_passenger_details_page(request):
+    """Render form to edit passenger info"""
 
     if request.method == 'POST':
         form = UserPassengerForm(request.POST, instance=request.user.passenger)
@@ -197,6 +211,7 @@ def edit_passenger_details_page(request):
 
 @login_required
 def edit_contact_details_page(request):
+    """Render form to edit contact details (including email)"""
 
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
@@ -224,6 +239,8 @@ def edit_contact_details_page(request):
 
 
 def edit_password_page(request):
+    """Render form to edit user's password"""
+
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
