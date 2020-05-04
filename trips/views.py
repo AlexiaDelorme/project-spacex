@@ -13,24 +13,27 @@ def faq_page(request):
 
 
 def trips_categories_page(request):
+    """Render page to browse trips by categories/types of destination"""
+
     trip_categories = TripCategory.objects.all()
     context = {
         "page_title": "Trips categories",
-        "page_name": "trip categories",
         "trip_categories": trip_categories
     }
     return render(request, "trips_categories.html", context)
 
 
 def trip_detail_page(request, pk):
+    """View trip detail about a specific trip category/destination"""
 
     form = TripSearchForm()
 
+    # Return all the trips matching the trip category id
     trip_category = get_object_or_404(TripCategory, pk=pk)
     trips = Trip.objects.all().filter(category=trip_category)
+
     context = {
         "page_title": "Detail",
-        "page_name": "trip details",
         "trip_category": trip_category,
         "trips": trips,
         "form": form
@@ -39,13 +42,15 @@ def trip_detail_page(request, pk):
 
 
 def trips_results_page(request, pk):
+    """Display trips matching the criteria provided by the user in their form"""
+
+    # Load fields provided in the form
     form = request.POST
     departure_site = form.get('departure_site')
     departure_date = form.get('departure_date')
     passenger_number = int(form.get('passenger_number'))
 
-    print(departure_date)
-
+    # Return all trips matching the criteria provided in the form
     trip_category = get_object_or_404(TripCategory, pk=pk)
     trips = Trip.objects.all().filter(
         category=trip_category,
@@ -57,7 +62,6 @@ def trips_results_page(request, pk):
 
     context = {
         "page_title": "Results",
-        "page_name": "results",
         "trips": trips,
         "passenger_number": passenger_number,
         "trip_price": trip_price,
