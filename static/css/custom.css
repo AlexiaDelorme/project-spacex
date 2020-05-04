@@ -272,3 +272,11 @@ Checkout
     font-size: 70%;
 }
 
+.collapse-container .content {
+    display: none;
+}
+
+.card-header.header {
+    background-color: #64a19d;
+    color: white;
+}
