@@ -9,10 +9,15 @@ def home_page(request):
 
 
 def about_page(request):
+    """Render relevant information about the company."""
+
     return render(request, "about.html", {"page_title": "About Us"})
 
 
 def contact_page(request):
+    """Render contact form for user to get in touch with the company.
+    Provide information on the location of the company."""
+
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -24,14 +29,13 @@ def contact_page(request):
             messages.error(
                 request, f'Sorry, we were enable to send your request!'
             )
-        
+
     else:
         form = ContactForm()
     emailjs_user = settings.EMAILJS_USER
     google_api_key = settings.GOOGLE_API_KEY
     context = {
         "page_title": "Contact Us",
-        "page_name": "contact",
         "form": form,
         "emailjs_user": emailjs_user,
         "google_api_key": google_api_key
