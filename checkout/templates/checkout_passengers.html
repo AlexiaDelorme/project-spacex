@@ -57,7 +57,7 @@
                                     </select>
 								</div>
 
-								<div class="mt-5 col-12" class="user-passenger-form" value="1">
+								<div class="mt-5 col-12 user-passenger-form" value="1">
 									<!-- Passenger details form -->
 									{% include 'components/user_passenger_form.html' %}
 								</div>
@@ -101,9 +101,9 @@
     */
     $(".passenger-traveling-select").change(function(){
         if( $(this).val() == "1" ) {
-            $(this).parent().siblings(".user-passenger-form").show();
+            $(this).parent("div").siblings(".user-passenger-form").show();
         } else {
-            $(this).parent().siblings(".user-passenger-form").hide();
+            $(this).parent("div").siblings(".user-passenger-form").hide();
         }
     });
 </script>
