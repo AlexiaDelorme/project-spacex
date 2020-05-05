@@ -26,12 +26,9 @@
 			{% for item in cart_items %}
 			<div class="col-12 col-md-10 mx-auto jumbotron">
 
-				<!-- Trip recap -->
 				<div class="col-12 mb-2 text-left">
-					<h3 class="mb-2">Trip to the {{ item.trip.category.destination }} </h3>
-					<p> {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
-                        From {{ item.trip.departure_site }}
-                        </p>
+					<!-- Trip recap -->
+                        {% include 'components/trip_recap.html' %}
 				</div>
 
 				<!-- Passengers -->

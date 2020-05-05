@@ -52,18 +52,7 @@
                     {% for item in cart_items %}
 
                         <!-- Trip recap -->
-                        <div class="row mb-3">
-                            <div class="col-7 text-left">
-                                <h3 class="mb-4">Trip to the {{ item.trip.category.destination }} </h3>
-                                <p> {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
-                                    From {{ item.trip.departure_site }}
-                                </p>
-                            </div>
-                            <div class="col-5 text-right">
-                                <h3 class="mb-4">€ {{ item.sub_total|intcomma }}</h3>
-                                <p><i class="fas fa-user-friends"></i> {{ item.passenger }} x € {{ item.trip.category.price |intcomma }}</p>
-                            </div> 
-                        </div>
+                        {% include 'components/trip_recap.html' %}
 
                     {% endfor %}
 
