@@ -67,3 +67,19 @@ def trips_results_page(request, pk):
         "trip_price": trip_price,
     }
     return render(request, "trips_results.html", context)
+
+
+def trips_all_page(request):
+    """Display all the trips available for booking"""
+
+    trips = Trip.objects.all()
+    trip_categories = TripCategory.objects.all()
+    form = TripSearchForm()
+
+    context = {
+        "page_title": "Search all",
+        "trips": trips,
+        "trip_categories": trip_categories,
+        "form": form
+    }
+    return render(request, "trips_all.html", context)
