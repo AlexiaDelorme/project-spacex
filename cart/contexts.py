@@ -27,5 +27,6 @@ def cart_contents(request):
     return {
         'cart_items': cart_items,
         'total': total,
-        'trip_count': trip_count
+        'trip_count': trip_count,
+        'per_id_count': len(cart_items)
     }

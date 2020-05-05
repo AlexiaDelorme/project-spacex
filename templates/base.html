@@ -102,8 +102,8 @@
 						<li class="nav-item">
 							<a class="nav-link" href="{% url 'view_cart' %}">
                                 <i class="fas fa-luggage-cart"></i>
-                                {% if trip_count > 0 %}
-                                    <label id="cart-label" class="badge badge-info">{{ trip_count }}</label>
+                                {% if per_id_count > 0 %}
+                                    <label id="cart-label" class="badge badge-info">{{ per_id_count }}</label>
                                 {% endif %}
                             </a>
 						</li>
