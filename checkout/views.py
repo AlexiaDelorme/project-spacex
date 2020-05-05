@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import User
 from accounts.models import ContactDetail, Passenger
 from accounts.forms import UserContactDetailForm, UserPassengerForm
+from .forms import OtherPassengerForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
 
@@ -75,10 +76,12 @@ def checkout_passengers_page(request):
     else:
         form = UserPassengerForm()
 
+    o_form = OtherPassengerForm()
     context = {
         "page_title": "Passenger details",
         "user": user,
-        "form": form
+        "form": form,
+        "o_form": o_form
     }
 
     return render(request, "checkout_passengers.html", context)
