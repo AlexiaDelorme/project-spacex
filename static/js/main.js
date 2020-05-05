@@ -9,6 +9,29 @@ $(document).ready(function () {
     })
 
     /*
+        Add item to the cart without reload the page
+    */
+    $(".btn-cart").click(function () {
+
+        var inputPassenger = $(this).prev('input').val();
+        console.log(inputPassenger);
+        var itemId = $(this).attr("id").split("add_")[1];
+        console.log(itemId);
+
+        var url = `/cart/add/${itemId}/`;
+        var data = { 'csrfmiddlewaretoken': csrfToken, 'passenger': inputPassenger };
+        $.post(url, data);
+
+    });
+
+    /*
+        Reload trip results page if user wants to keep shopping
+    */
+    $("#btn-keep-shopping").click(function() {
+        location.reload();
+    });
+
+    /*
         Update cart information according to changes in passenger number
     */
     $(".passengerAdjust").change(function () {
@@ -39,22 +62,6 @@ $(document).ready(function () {
         // Update cart content without reloading the page
         var itemId = $(this).siblings(".tripPrice").attr("id").split("remove_")[1];
         var url = `/cart/adjust/${itemId}/`;
-        var data = { 'csrfmiddlewaretoken': csrfToken, 'passenger': inputPassenger };
-        $.post(url, data);
-
-    });
-
-    /*
-        Add item to the cart without reload the page
-    */
-    $(".btn-cart").click(function () {
-
-        var inputPassenger = $(this).prev('input').val();
-        console.log(inputPassenger);
-        var itemId = $(this).attr("id").split("add_")[1];
-        console.log(itemId);
-
-        var url = `/cart/add/${itemId}/`;
         var data = { 'csrfmiddlewaretoken': csrfToken, 'passenger': inputPassenger };
         $.post(url, data);
 
