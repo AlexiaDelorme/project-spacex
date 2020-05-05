@@ -1,0 +1,61 @@
+{% load crispy_forms_tags %}
+<form method="POST" id="trip-{{ item.id }}_passenger-{{ forloop.counter }}">
+    {% csrf_token %}
+
+    <div class="form-row">
+        <div class="form-group col-12">
+            <label for="{{ o_form.title.id_for_label }}">Title</label>
+            {{ o_form.title.errors }}
+            <div class="row text-left ml-2">
+                {% for radio in o_form.title %}
+                    <div class="form-check col-2"> 
+                        <input type="radio" class="form-check-input" name="o_form.title.id_for_label" id="radio.id_for_label" value="{{radio.choice_label}}">
+                        <label for="{{ radio.id_for_label }}" class="form-check-label"> {{ radio.choice_label }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>   
+    </div> 
+
+    <div class="form-row">
+        <div class="form-group col-12 col-sm-6">
+            {{ o_form.first_name.errors }}
+            {{ o_form.first_name|as_crispy_field }}
+        </div>
+        <div class="form-group col-12 col-sm-6">
+            {{ o_form.last_name.errors }}
+            {{ o_form.last_name|as_crispy_field  }}
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-12 col-md-5">
+            {{ o_form.birth_month.errors }}
+            {{ o_form.birth_month|as_crispy_field }}
+        </div>
+        <div class="form-group col-4 col-md-3">
+            {{ o_form.birth_day.errors }}
+            {{ o_form.birth_day|as_crispy_field  }}
+        </div>
+        <div class="form-group col-8 col-md-4">
+            {{ o_form.birth_year.errors }}
+            {{ o_form.birth_year|as_crispy_field }}
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-12 col-md-7">
+            {{ o_form.citizenship.errors }}
+            {{ o_form.citizenship|as_crispy_field  }}
+        </div>
+        <div class="form-group col-12 col-md-5">
+            {{ o_form.passport_id.errors }}
+            {{ o_form.passport_id|as_crispy_field }}
+        </div>
+    </div>
+
+    <div class="text-right">
+        <button class="btn btn-primary" type="submit">Register passenger</button>
+    </div>
+
+</form>
