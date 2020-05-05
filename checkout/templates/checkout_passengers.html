@@ -36,31 +36,43 @@
 
 				<!-- Passengers -->
 				{% for i in item.passenger_range %}
-				<div class="col-12">
+				<div class="col-12 mb-3">
 					<div class="card collapse-container">
 
 						<div class="card-header header text-uppercase text-left">
 							<b><i class="fas fa-user"></i> Passenger {{ forloop.counter }}</b> Adult
 						</div>
 
-						<div class="card-body content">
+						<div class="card-body content mb-3">
 							<div class="row">
 
-								<div class="col-12">
-									<p>Who is traveling?</p>
-								</div>
+                                {% if forloop.counter == 1 %}
+                                    <div class="col-12">
+                                        <p>Who is traveling?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <select id="traveling-passenger" name="traveling-passenger" class="passenger-traveling-select">
+                                                    <option value="1" selected>{{ user.first_name }} {{ user.last_name }}</option>
+                                                    <option value="2">I am booking for another passenger</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mt-5 col-12 user-passenger-form">
+                                        <!-- User passenger details form -->
+                                        {% include 'components/user_passenger_form.html' %}
+                                    </div>
 
-								<div class="col-12">
-									<select id="traveling-passenger" name="traveling-passenger" class="passenger-traveling-select">
-                                                <option value="1" selected>{{ user.first_name }} {{ user.last_name }}</option>
-                                                <option value="2">I am booking for another passenger</option>
-                                    </select>
-								</div>
+                                    <div class="mt-5 col-12 other-passenger-form">
+                                        <!-- Other passenger details form -->
+                                        {% include 'components/other_passenger_form.html' %}
+                                    </div>
 
-								<div class="mt-5 col-12 user-passenger-form" value="1">
-									<!-- Passenger details form -->
-									{% include 'components/user_passenger_form.html' %}
-								</div>
+                                {% else %}
+                                    <div class="mt-3 col-12">
+                                        <!-- Other passenger details form -->
+                                        {% include 'components/other_passenger_form.html' %}
+                                    </div>
+                                {% endif %}
 
 							</div>
 						</div>
@@ -99,11 +111,14 @@
     /*
         Display passenger form according to user selection
     */
+    $(".other-passenger-form").hide();
     $(".passenger-traveling-select").change(function(){
         if( $(this).val() == "1" ) {
             $(this).parent("div").siblings(".user-passenger-form").show();
+            $(this).parent("div").siblings(".other-passenger-form").hide();
         } else {
             $(this).parent("div").siblings(".user-passenger-form").hide();
+            $(this).parent("div").siblings(".other-passenger-form").show();
         }
     });
 </script>
