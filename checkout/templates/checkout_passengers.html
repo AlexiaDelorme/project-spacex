@@ -35,13 +35,12 @@
 				</div>
 
 				<!-- Passengers -->
-				{% for x in "2" %}
-				{{item.passenger}}
+				{% for i in item.passenger_range %}
 				<div class="col-12">
 					<div class="card collapse-container">
 
 						<div class="card-header header text-uppercase text-left">
-							<b><i class="fas fa-user"></i> Passenger 1</b> Adult
+							<b><i class="fas fa-user"></i> Passenger {{ forloop.counter }}</b> Adult
 						</div>
 
 						<div class="card-body content">
