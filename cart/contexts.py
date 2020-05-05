@@ -14,12 +14,14 @@ def cart_contents(request):
         trip = get_object_or_404(Trip, pk=id)
         sub_total = passenger * trip.category.price
         total += sub_total
+        passenger_range = range(passenger)
         trip_count += passenger
         cart_items.append({
             'id': id,
             'passenger': passenger,
             'trip': trip,
-            'sub_total': sub_total
+            'sub_total': sub_total,
+            'passenger_range': passenger_range
         })
     
     return {
