@@ -21,20 +21,13 @@
 <nav class="navbar navbar-light bg-white shadow-sm pt-5">
 	<div class="container">
 
-		<form id="search-trip-form" method="GET" class="col-12">
+		<form id="search-trip-form" method="POST" class="col-12">
         {% csrf_token %}
 			<div class="form-row">
 
                 <div class="form-group col-12 col-sm-6 col-lg-3 pr-2">
-                    <label for="id_trip_category" class=" requiredField">
-                        Destination<span class="asteriskField">*</span>
-                    </label>
-                    <select name="trip_category" class="select form-control" required="" id="id_trip_category">
-                        <option value="" selected="">Choose destination</option>
-                        {% for category in trip_categories %}
-                            <option value="{{ category.id }}">{{ category.destination }}</option>
-                        {% endfor %}
-                    </select>    
+                    {{ form.destination.errors }}
+                    {{ form.destination|as_crispy_field }}
                 </div>
                 <div class="form-group col-12 col-sm-6 col-lg-3 pr-2">
                     {{ form.departure_site.errors }}
@@ -100,8 +93,13 @@
                             <div class="col-12 col-md-4 text-left text-md-right mt-3 mb-3 pl-5 pl-md-0 pr-0 pr-md-5">
                                 <img class="trip-img-thumbnail img-display mb-3" src="{{ trip.category.img.all.0.img_file.url }}" alt="{{ trip.category.img.all.0.img_name }}">
                                 <p class="card-text">
-                                    <i class="fas fa-user-friends"></i> {{ trip.slot }} slot(s) <br>
-                                    <b>Price</b> € {{ trip.category.price|intcomma }}
+                                    {% if passenger_number and trip_price %}
+                                        <i class="fas fa-user-friends"></i> {{ passenger_number}} passenger(s) <br>
+                                        € {{ trip_price|intcomma }}
+                                    {% else %}
+                                        <i class="fas fa-user-friends"></i> {{ trip.slot }} slot(s) <br>
+                                        <b>Price</b> € {{ trip.category.price|intcomma }}
+                                    {% endif %}
                                 </p>
                                 <form method="POST">
                                     {% csrf_token %}

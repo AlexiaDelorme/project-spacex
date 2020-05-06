@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
 from .models import Trip, TripCategory, DepartureSite
-from .forms import TripSearchForm
+from .forms import TripSearchForm, AllTripSearchForm
 from datetime import datetime, date
 
 
@@ -72,14 +72,45 @@ def trips_results_page(request, pk):
 def trips_all_page(request):
     """Display all the trips available for booking"""
 
-    trips = Trip.objects.all()
     trip_categories = TripCategory.objects.all()
-    form = TripSearchForm()
 
-    context = {
-        "page_title": "Search all",
-        "trips": trips,
-        "trip_categories": trip_categories,
-        "form": form
-    }
+    if request.method == "POST":
+
+        # Set fields provided in the form as variable for query
+        form = AllTripSearchForm(request.POST)
+        category_id = int(request.POST['destination'])
+        departure_site = request.POST['departure_site']
+        departure_date = request.POST['departure_date']
+        passenger_number = int(request.POST['passenger_number'])
+
+        # Return all trips matching the criteria provided in the form
+        trip_category = get_object_or_404(TripCategory, pk=category_id)
+        trips = Trip.objects.all().filter(
+            category=trip_category,
+            departure_site=departure_site,
+            departure_date__gte=(departure_date)
+        )
+
+        trip_price = (trip_category.price)*passenger_number
+
+        context = {
+            "page_title": "Search all",
+            "trips": trips,
+            "trip_categories": trip_categories,
+            "form": form,
+            "passenger_number": passenger_number,
+            "trip_price": trip_price,
+        }
+
+    else:
+        trips = Trip.objects.all()
+        form = AllTripSearchForm()
+
+        context = {
+            "page_title": "Search all",
+            "trips": trips,
+            "trip_categories": trip_categories,
+            "form": form
+        }
+
     return render(request, "trips_all.html", context)
