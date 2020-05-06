@@ -16,6 +16,10 @@ Navbar
 }
 
 @media (min-width: 992px) {
+
+    #mainNav{
+        font-size: 85%;
+    }
     
     .dropdown-shrink.dropdown-menu.show {
         background: transparent;
@@ -218,6 +222,22 @@ ul.timeline > li:before {
     .img-display {
         display: inline;
     }
+}
+
+ /*
+Trips all
+ */
+
+@media (min-width: 992px) {
+
+    nav.navbar.navbar-light.bg-white.shadow-sm.pt-5 {
+        font-size: 85%;
+    }
+
+    button.btn.btn-primary.btn-subscribe {
+        margin-top: 1.7rem;
+    }
+
 }
 
  /*
