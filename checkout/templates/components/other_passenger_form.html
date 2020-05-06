@@ -3,17 +3,9 @@
     {% csrf_token %}
 
     <div class="form-row">
-        <div class="form-group col-12">
-            <label for="{{ o_form.title.id_for_label }}">Title</label>
-            {{ o_form.title.errors }}
-            <div class="row text-left ml-2">
-                {% for radio in o_form.title %}
-                    <div class="form-check col-2"> 
-                        <input type="radio" class="form-check-input" name="o_form.title.id_for_label" id="radio.id_for_label" value="{{radio.choice_label}}">
-                        <label for="{{ radio.id_for_label }}" class="form-check-label"> {{ radio.choice_label }}</label>
-                    </div>
-                {% endfor %}
-            </div>
+        <div class="form-group col-12 radio-title">
+            {{ form.title.errors }}
+            {{ form.title|as_crispy_field }}
         </div>   
     </div> 
 
