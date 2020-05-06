@@ -68,6 +68,13 @@ $(document).ready(function () {
     });
 
     /*
+        Customize title radio input for passengers forms
+    */
+    var parentWrapper = $(".radio-title").children("#div_id_title").children("div");
+    $(parentWrapper).addClass("row text-left ml-2");
+    $(parentWrapper).children(".form-check").addClass("col-2");
+
+    /*
         Set up datepicker for trip search form
     */
     $("#datepicker").datepicker({
