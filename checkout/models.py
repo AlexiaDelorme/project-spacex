@@ -1,7 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
+from trips.models import Trip
+from accounts.models import Passenger
 from django_countries.fields import CountryField
 
 # Create your models here.
+
+
 class OtherPassenger(models.Model):
 
     CHOICES_TITLE = [
@@ -36,3 +41,14 @@ class OtherPassenger(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+"""
+class BookingReference(models.Model):
+    booking_user = models.ForeignKey(User, on_delete=models.PROTECT)
+    trip = models.ForeignKey(Trip, on_delete=models.PROTECT)
+    user_passenger = models.ForeignKey(Passenger, on_delete=models.PROTECT)
+    passengers = models.ManyToManyField(OtherPassenger, blank=True)
+
+    def __str__(self):
+        return self.id
+"""
