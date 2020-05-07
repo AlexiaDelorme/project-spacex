@@ -240,6 +240,10 @@ Trips all
 
 }
 
+.input-group.text-left.text-md-right.mb-3 {
+    display: block;
+}
+
  /*
 FAQ
  */
