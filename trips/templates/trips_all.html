@@ -22,29 +22,29 @@
 	<div class="container">
 
 		<form id="search-trip-form" method="POST" class="col-12">
-        {% csrf_token %}
+			{% csrf_token %}
 			<div class="form-row">
 
-                <div class="form-group col-12 col-sm-6 col-lg-3 pr-2">
-                    {{ form.destination.errors }}
-                    {{ form.destination|as_crispy_field }}
-                </div>
-                <div class="form-group col-12 col-sm-6 col-lg-3 pr-2">
-                    {{ form.departure_site.errors }}
-                    {{ form.departure_site|as_crispy_field }}
-                </div>
-                <div class="form-group col-12 col-sm-6 col-lg-2 pr-2">
-                    {{ form.departure_date.errors }}
-                    {{ form.departure_date|as_crispy_field  }}
-                </div>
-                <div class="form-group col-12 col-sm-6 col-lg-2 pr-2">
-                    {{ form.passenger_number.errors }}
-                    {{ form.passenger_number|as_crispy_field }}
-                </div>
+				<div class="form-group col-12 col-sm-6 col-lg-3 pr-2">
+					{{ form.destination.errors }}
+					{{ form.destination|as_crispy_field }}
+				</div>
+				<div class="form-group col-12 col-sm-6 col-lg-3 pr-2">
+					{{ form.departure_site.errors }}
+					{{ form.departure_site|as_crispy_field }}
+				</div>
+				<div class="form-group col-12 col-sm-6 col-lg-2 pr-2">
+					{{ form.departure_date.errors }}
+					{{ form.departure_date|as_crispy_field  }}
+				</div>
+				<div class="form-group col-12 col-sm-6 col-lg-2 pr-2">
+					{{ form.passenger_number.errors }}
+					{{ form.passenger_number|as_crispy_field }}
+				</div>
 
-                <div class="form-group col-4 col-lg-2">
-                    <button type="submit" class="btn btn-primary btn-subscribe"><i class="fas fa-search"></i> Search</button>
-                </div>
+				<div class="form-group col-4 col-lg-2">
+					<button type="submit" class="btn btn-primary btn-subscribe"><i class="fas fa-search"></i> Search</button>
+				</div>
 
 			</div>
 		</form>
@@ -57,7 +57,7 @@
 	<div class="container">
 
 		<div class="row mx-auto">
-            {% for trip in trips %}
+			{% for trip in trips %}
 			<div class="col-12 col-lg-9 mx-auto mb-5">
 				<div class="card">
 
@@ -66,76 +66,77 @@
 					</div>
 
 					<div class="card-body">
-                        <div class="row">
+						<div class="row">
 
-                            <div class="col-12 col-md-8 mb-3">
-                                <ul class="timeline">
-                                    <li>
-                                        <p class="card-text">{{ trip.departure_site }} ({{ trip.departure_site.site_code }})</p>
-                                        <p class="card-text">
-                                            <i class="fas fa-space-shuttle"></i> Departs<br>
+							<div class="col-12 col-md-8 mb-3">
+								<ul class="timeline">
+									<li>
+										<p class="card-text">{{ trip.departure_site }}
+											({{ trip.departure_site.site_code }})</p>
+										<p class="card-text">
+											<i class="fas fa-space-shuttle"></i> Departs<br>
                                             {{ trip.departure_date }} - {{ trip.departure_time|time:"H:i A" }}
                                         </p>
-                                    </li>
-                                    <li>
-                                        <p class="card-text">{{ trip.category.destination }} ({{ trip.category.destination_code }})</p>
-                                        <p class="card-text">
-                                            <i class="fas fa-space-shuttle"></i> Returns<br>
+									</li>
+									<li>
+										<p class="card-text">{{ trip.category.destination }}
+											({{ trip.category.destination_code }})</p>
+										<p class="card-text">
+											<i class="fas fa-space-shuttle"></i> Returns<br>
                                             {{ trip.return_date }} - {{ trip.departure_time|time:"H:i A" }}
                                         </p>
-                                    </li>
-                                </ul>
-                                <div class="mt-5 col-12 text-left">
-                                    <img class="spacex-book pb-2" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ trip.trip_reference }}
+									</li>
+								</ul>
+								<div class="mt-5 col-12 text-left">
+									<img class="spacex-book pb-2" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ trip.trip_reference }}
                                 </div>
-                            </div>
-                                
-                            <div class="col-12 col-md-4 text-left text-md-right mt-3 mb-3 pl-5 pl-md-0 pr-0 pr-md-5">
-                                <img class="trip-img-thumbnail img-display mb-3" src="{{ trip.category.img.all.0.img_file.url }}" alt="{{ trip.category.img.all.0.img_name }}">
-                                <p class="card-text">
-                                    {% if passenger_number and trip_price %}
-                                        <i class="fas fa-user-friends"></i> {{ passenger_number}} passenger(s) <br>
+								</div>
+
+								<div
+									class="col-12 col-md-4 text-left text-md-right mt-3 mb-3 pl-5 pl-md-0 pr-0 pr-md-5">
+									<img class="trip-img-thumbnail img-display mb-3" src="{{ trip.category.img.all.0.img_file.url }}" alt="{{ trip.category.img.all.0.img_name }}">
+									<p class="card-text">
+										{% if passenger_number and trip_price %}
+										<i class="fas fa-user-friends"></i> {{ passenger_number}} passenger(s) <br>
                                         € {{ trip_price|intcomma }}
                                     {% else %}
-                                        <i class="fas fa-user-friends"></i> {{ trip.slot }} slot(s) <br>
-                                        <b>Price</b> € {{ trip.category.price|intcomma }}
-                                    {% endif %}
-                                </p>
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <input id="passenger" name="passenger" type="hidden" value="{{ passenger_number }}">
-                                    <button type="button" class="btn btn-primary btn-cart" id="add_{{trip.id}}"  data-toggle="modal" data-target="#exampleModalCenter">Book trip</button>
-                                </form>
+										<i class="fas fa-user-friends"></i> {{ trip.slot }} slot(s) <br>
+										<b>Price</b> € {{ trip.category.price|intcomma }}
+										{% endif %}
+									</p>
+									{% if passenger_number and trip_price %}
+									<form method="POST">
+										{% csrf_token %}
+										<input id="passenger" name="passenger" type="hidden" value="{{ passenger_number }}">
+										<button type="button" class="btn btn-primary btn-cart" id="add_{{trip.id}}"  data-toggle="modal" data-target="#exampleModalCenter">Book trip</button>
+									</form>
+									{% else %}
+									<form method="POST">
+										{% csrf_token %}
+										<div class="input-group text-left text-md-right mb-3">
+											<i class="fas fa-user-friends pt-1 mr-2"></i>
+											<input type="button" value="-" class="button-minus" data-field="passenger">
+											<input type="number" id="passenger" name="passenger" step="1" min="1" max="5" value="1" class="quantity-field pl-3" required>
+											<input type="button" value="+" class="button-plus" data-field="passenger">
+                                        </div>
+											<button type="button" class="btn btn-primary btn-cart" id="add_{{trip.id}}"  data-toggle="modal" data-target="#exampleModalCenter">Book trip</button>
+									</form>
+									{% endif %}
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Your trip was added to the cart!</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        Would you like to proceed to checkout?
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" id="btn-keep-shopping" data-dismiss="modal">Keep shopping</button>
-                                        <a href="{% url 'checkout_confirm' %}"><button type="button" class="btn btn-primary">Checkout</button></a>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
+									<!-- Modal -->
+									{% include 'components/modal.html' %}
 
-                            </div>
-                            	
-                        </div>
+								</div>
+
+							</div>
+						</div>
+
 					</div>
-
 				</div>
+				{% endfor %}
 			</div>
-            {% endfor %}
-		</div>
 
-	</div>
+		</div>
 </section>
 
 {% endblock %}
@@ -145,6 +146,45 @@
 <!-- CSRF token -->
 <script type="text/javascript">
     const csrfToken = '{{ csrf_token }}';
+    
+    // Code credit: http://jsfiddle.net/polaszk/1oyfxoor/
+
+    function incrementValue(e) {
+    e.preventDefault();
+    var fieldName = $(e.target).data('field');
+    var parent = $(e.target).closest('div');
+    var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+    if (!isNaN(currentVal)) {
+        parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
+    } else {
+        parent.find('input[name=' + fieldName + ']').val(0);
+    }
+    }
+
+    function decrementValue(e) {
+    e.preventDefault();
+    var fieldName = $(e.target).data('field');
+    var parent = $(e.target).closest('div');
+    var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+    if (!isNaN(currentVal) && currentVal > 0) {
+        parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
+    } else {
+        parent.find('input[name=' + fieldName + ']').val(0);
+    }
+    }
+
+    $('.input-group').on('click', '.button-plus', function(e) {
+    incrementValue(e);
+    });
+
+    $('.input-group').on('click', '.button-minus', function(e) {
+    decrementValue(e);
+    });
+    
+    // End of code
+
 </script>
 
 {% endblock %}
