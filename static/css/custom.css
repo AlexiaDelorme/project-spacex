@@ -18,11 +18,13 @@ Navbar
 @media (min-width: 992px) {
 
     #mainNav{
-        font-size: 85%;
+        font-size: 95%;
     }
     
     .dropdown-shrink.dropdown-menu.show {
         background: transparent;
+        font-size: 95%;
+        margin-top: -2rem;
     }
 
     .dropdown-shrink .dropdown-item {
@@ -33,9 +35,6 @@ Navbar
         color: rgba(255,255,255,.75);
     }
 
-    .dropdown-menu.dropdown-shrink.show {
-        margin-top: -2rem;
-    }
 }
 
 
