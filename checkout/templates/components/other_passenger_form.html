@@ -1,11 +1,11 @@
 {% load crispy_forms_tags %}
-<form method="POST" id="trip_{{ item.id }}">
+<form class="passenger-form" method="POST" action="{% url 'save_passenger' item.id %}">
     {% csrf_token %}
 
     <div class="form-row">
         <div class="form-group col-12 radio-title">
-            {{ form.title.errors }}
-            {{ form.title|as_crispy_field }}
+            {{ o_form.title.errors }}
+            {{ o_form.title|as_crispy_field }}
         </div>   
     </div> 
 
@@ -47,7 +47,7 @@
     </div>
 
     <div class="text-right">
-        <button class="btn btn-primary btn-register-passenger" type="submit">Register passenger</button>
+        <button class="btn btn-primary" type="submit">Register passenger</button>
     </div>
 
 </form>
