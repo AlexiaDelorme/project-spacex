@@ -18,10 +18,11 @@ def cart_contents(request):
         trip_count += passenger
         cart_items.append({
             'id': id,
-            'passenger': passenger,
             'trip': trip,
-            'sub_total': sub_total,
-            'passenger_range': passenger_range
+            'passenger': passenger,
+            'passenger_id': [],
+            'passenger_range': passenger_range,
+            'sub_total': sub_total
         })
     
     return {
