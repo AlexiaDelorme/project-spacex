@@ -92,6 +92,8 @@ def save_passenger_to_cart(request, id):
     Then assign their id to the corresponding trip in the cart.
     The id corresponds to the trip that the passenger has been registered."""
 
+    print("You reached it to the view")
+    
     try:
         # Save passenger form and set their confirmation status to false
         passenger_form = request.POST
