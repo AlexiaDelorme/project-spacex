@@ -34,6 +34,7 @@ class OtherPassenger(models.Model):
     birth_year = models.IntegerField()
     citizenship = CountryField()
     passport_id = models.CharField(max_length=30)
+    confirmation_status = models.BooleanField(default=False)
 
     @property
     def birth_date(self):
