@@ -1,5 +1,5 @@
 {% load crispy_forms_tags %}
-<form method="POST" id="trip-{{ item.id }}_passenger-{{ forloop.counter }}">
+<form method="POST" id="trip_{{ item.id }}">
     {% csrf_token %}
 
     <div class="form-row">
@@ -47,7 +47,7 @@
     </div>
 
     <div class="text-right">
-        <button class="btn btn-primary" type="submit">Register passenger</button>
+        <button class="btn btn-primary btn-register-passenger" type="submit">Register passenger</button>
     </div>
 
 </form>
