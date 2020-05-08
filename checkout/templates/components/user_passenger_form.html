@@ -1,5 +1,5 @@
 {% load crispy_forms_tags %}
-<form method="POST" id="trip_{{ item.id }}">
+<form method="POST" tripid="trip_{{ item.id }}">
     {% csrf_token %}
 
     <div class="form-row">
