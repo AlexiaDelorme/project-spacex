@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib.auth.models import User
 from accounts.models import ContactDetail, Passenger
 from accounts.forms import UserContactDetailForm, UserPassengerForm
@@ -32,7 +32,7 @@ def checkout_confirm_page(request):
                 form.save()
                 messages.success(
                     request, f'Your contact details have been saved!')
-                return redirect('checkout_passengers')
+                return redirect(reverse('checkout_passengers'))
         else:
             form = UserContactDetailForm(instance=request.user.contactdetail)
 
@@ -46,7 +46,7 @@ def checkout_confirm_page(request):
                 contact_details.save()
                 messages.success(
                     request, f'Your contact details have been saved!')
-                return redirect('checkout_passengers')
+                return redirect(reverse('checkout_passengers'))
         else:
             form = UserContactDetailForm()
 
@@ -85,3 +85,30 @@ def checkout_passengers_page(request):
     }
 
     return render(request, "checkout_passengers.html", context)
+
+
+def save_passenger_to_cart(request, id):
+    """Temporarily save passenger as object in the db.
+    Then assign their id to the corresponding trip in the cart.
+    The id corresponds to the trip that the passenger has been registered."""
+
+    try:
+        # Save passenger form and set their confirmation status to false
+        passenger_form = request.POST
+        passenger_form = passenger_form.save(commit=False)
+        passenger_form.confirmation_status = False
+        passenger_form.save()
+        # Get the id of this newly created passenger instance
+        passenger_id = passenger_form.id
+
+        cart = request.session.get('cart', {})
+
+        # Add this passenger id to the corresponding trip in cart
+        trip = cart[id]
+        trip["passenger_id"].append(passenger_id)
+        
+        request.session['cart'] = cart
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        return HttpResponse(status=500)
