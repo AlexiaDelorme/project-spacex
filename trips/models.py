@@ -58,6 +58,7 @@ class Trip(models.Model):
     departure_site = models.ForeignKey(DepartureSite, on_delete=models.CASCADE)
     departure_date = models.DateField()
     departure_time = models.TimeField()
+    return_time = models.TimeField()
     slot = models.IntegerField()
 
     @property
