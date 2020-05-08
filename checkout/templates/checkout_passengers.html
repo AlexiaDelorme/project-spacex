@@ -38,6 +38,7 @@
 
 						<div class="card-header header text-uppercase text-left">
 							<b><i class="fas fa-user"></i> Passenger {{ forloop.counter }}</b> Adult
+                            <span class="checkmark">&#9989;</span>
 						</div>
 
 						<div class="card-body content mb-3">
@@ -89,13 +90,11 @@
 
 {% block script %}
 
-<!-- CSRF token -->
 <script type="text/javascript">
-	const csrfToken = '{{ csrf_token }}';
-</script>
 
-<!-- Script specific to the page -->
-<script>
+    // CSRF token
+    const csrfToken = '{{ csrf_token }}';
+    
 	/*
         Hide and show collapsable content for passenger form
     */
@@ -128,17 +127,19 @@
     /*
         Submit passenger form without reloading the page
     */
-        $(".btn-register-passenger").click(function () {
+    $(".checkmark").hide();
+    $(".passenger-form").submit(function(e){
+        e.preventDefault();
 
-            form = $(this).parent("form");
-            var tripId = $(this).parent("form").attr("id").split("trip_")[1];
-            console.log(tripId);
+        // collapse card-body
 
-            var url = `/save-passenger/${tripId}/`;
-            var data = { 'csrfmiddlewaretoken': csrfToken, form };
-            $.post(url, data);
+        // Submit form
+        $(this).submit();
 
+        // Add class that displays a div that says passenger registered
+        $(this).parents(".card-body").siblings(".card-header").children(".checkmark").show();
     });
+    
 </script>
 
 {% endblock %}
