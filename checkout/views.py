@@ -93,13 +93,13 @@ def save_passenger_to_cart(request, id):
     The id corresponds to the trip that the passenger has been registered."""
 
     print("You've made it to the view")
-    
+
     try:
         # Save passenger form and set their confirmation status to false
         passenger_form = request.POST
-        passenger_form = passenger_form.save(commit=False)
-        passenger_form.confirmation_status = False
-        passenger_form.save()
+        passenger = passenger_form.save(commit=False)
+        passenger.confirmation_status = False
+        passenger.save()
         # Get the id of this newly created passenger instance
         passenger_id = passenger_form.id
 
@@ -108,7 +108,7 @@ def save_passenger_to_cart(request, id):
         # Add this passenger id to the corresponding trip in cart
         trip = cart[id]
         trip["passenger_id"].append(passenger_id)
-        
+
         request.session['cart'] = cart
         return HttpResponse(status=200)
 
