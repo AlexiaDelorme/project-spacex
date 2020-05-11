@@ -133,17 +133,21 @@
 
         var form = $(this).serialize();
         var tripId = $(this).attr("tripid").split("trip_")[1];
-        console.log(tripId);
 
         var url = `/save-passenger/${tripId}/`;
         var data = { 'csrfmiddlewaretoken': csrfToken, 'form': form };
         
         $.post(url, data);
 
-        // collapse card-body
-
         // Add class that displays a div that says passenger registered
         $(this).parents(".card-body").siblings(".card-header").children(".checkmark").show();
+
+        // Collapse card-body
+        $cardBody = $(this).parents(".card-body")
+        $cardBody.slideToggle(500, function () {
+            return $cardBody.is(":visible");
+        });
+        
     });
     
 </script>
