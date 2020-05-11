@@ -41,3 +41,9 @@ def contact_page(request):
         "google_api_key": google_api_key
     }
     return render(request, "contact.html", context)
+
+
+def scientists_page(request):
+    """Render information for scientists regarding research trips and flights"""
+
+    return render(request, "scientists.html", {"page_title": "Scientific services"})
