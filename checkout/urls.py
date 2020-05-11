@@ -1,5 +1,8 @@
 from django.urls import path
-from .views import checkout_confirm_page, checkout_passengers_page, save_passenger_to_cart
+from .views import (
+    checkout_confirm_page,
+    checkout_passengers_page,
+    save_passenger_to_cart)
 
 
 urlpatterns = [
