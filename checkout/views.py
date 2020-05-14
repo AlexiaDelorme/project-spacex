@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib.auth.models import User
 from accounts.models import ContactDetail, Passenger
+from .models import OtherPassenger
 from accounts.forms import UserContactDetailForm, UserPassengerForm
 from .forms import OtherPassengerForm
 from django.contrib.auth.decorators import login_required
@@ -92,25 +93,25 @@ def save_passenger_to_cart(request, id):
     Then assign their id to the corresponding trip in the cart.
     The id corresponds to the trip that the passenger has been registered."""
 
-    print("You've made it to the view")
+    # Save passenger form and set their confirmation status to false
+    passenger_form = OtherPassenger(request.POST)
+    print(passenger_form)
+    passenger = passenger_form.save(commit=False)
+    passenger.confirmation_status = False
+    passenger.save()
+    # Get the id of this newly created passenger instance
+    passenger_id = passenger_form.id
 
-    try:
-        # Save passenger form and set their confirmation status to false
-        passenger_form = request.POST
-        passenger = passenger_form.save(commit=False)
-        passenger.confirmation_status = False
-        passenger.save()
-        # Get the id of this newly created passenger instance
-        passenger_id = passenger_form.id
+    cart = request.session.get('cart', {})
 
-        cart = request.session.get('cart', {})
+    # Add this passenger id to the corresponding trip in cart
+    if id in cart:
+        cart[id] = cart[id].append(passenger_id)
+    else:
+        cart[id] = cart.get(id, [passenger_id])
 
-        # Add this passenger id to the corresponding trip in cart
-        trip = cart[id]
-        trip["passenger_id"].append(passenger_id)
+    request.session['cart'] = cart
+    print(cart)
 
-        request.session['cart'] = cart
-        return HttpResponse(status=200)
+    return redirect(reverse('home'))
 
-    except Exception as e:
-        return HttpResponse(status=500)
