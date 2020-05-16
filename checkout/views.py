@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.models import User
 from accounts.models import ContactDetail, Passenger
-from .models import OtherPassenger
+from .models import OtherPassenger, BookingReference
+from trips.models import Trip
 from accounts.forms import UserContactDetailForm, UserPassengerForm
 from .forms import OtherPassengerForm
 from django.contrib.auth.decorators import login_required
@@ -31,6 +32,22 @@ def checkout_confirm_page(request):
                 instance=request.user.contactdetail)
             if form.is_valid():
                 form.save()
+
+                # ----- Code under test
+                # Create booking reference for trips in cart
+                cart = request.session.get('cart', {})
+                booking_references = []
+                for id in cart:
+                    globals()["booking_"+str(id)] = BookingReference.objects.create(
+                        booker=User.objects.get(id=request.user.id),
+                        trip=Trip.objects.get(id=id)
+                    )
+                    print(globals()["booking_"+str(id)])
+                    booking_references.append(globals()["booking_"+str(id)])
+                    request.session['booking_references'] = booking_references
+                    print(booking_references)
+                # ----- End of code under test
+
                 messages.success(
                     request, f'Your contact details have been saved!')
                 return redirect(reverse('checkout_passengers'))
@@ -94,24 +111,33 @@ def save_passenger_to_cart(request, id):
     The id corresponds to the trip that the passenger has been registered."""
 
     # Save passenger form and set their confirmation status to false
-    passenger_form = OtherPassenger(request.POST)
-    print(passenger_form)
-    passenger = passenger_form.save(commit=False)
-    passenger.confirmation_status = False
-    passenger.save()
+    passenger_form = OtherPassengerForm(request.POST)
+    print(request.POST)
+    registered_passenger = passenger_form.save(commit=False)
+    registered_passenger.confirmation_status = False
+    registered_passenger.save()
     # Get the id of this newly created passenger instance
-    passenger_id = passenger_form.id
+    passenger_id = registered_passenger.id
+    print(passenger_id)
 
     cart = request.session.get('cart', {})
+    print(cart)
 
     # Add this passenger id to the corresponding trip in cart
-    if id in cart:
-        cart[id] = cart[id].append(passenger_id)
-    else:
-        cart[id] = cart.get(id, [passenger_id])
+    # ----- Tutor code (Stephen)
+    # if id in cart:
+    # cart[id] = cart[id].append(passenger_id)
+    # else:
+    # cart[id] = cart.get(id, [passenger_id])
+    # ----- end Stephen code
+
+    # My code
+    # ------ this is the way to convert the first cart key (ie: '3') to an integer
+    trip = int(next(iter(cart.keys())))
+    # trip = cart[id]  # ------- this was your original line for variable 'trip'
+    # trip["passenger_id"].append(passenger_id)  # ----- temporarily comment-out to get page to load
 
     request.session['cart'] = cart
     print(cart)
 
     return redirect(reverse('home'))
-
