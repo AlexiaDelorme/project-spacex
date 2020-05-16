@@ -43,13 +43,14 @@ class OtherPassenger(models.Model):
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
-"""
+
 class BookingReference(models.Model):
-    booking_user = models.ForeignKey(User, on_delete=models.PROTECT)
+    booker = models.ForeignKey(User, on_delete=models.PROTECT)
     trip = models.ForeignKey(Trip, on_delete=models.PROTECT)
-    user_passenger = models.ForeignKey(Passenger, on_delete=models.PROTECT)
-    passengers = models.ManyToManyField(OtherPassenger, blank=True)
+    user_passenger = models.ForeignKey(
+        Passenger, on_delete=models.PROTECT, blank=True)
+    other_passenger = models.ManyToManyField(OtherPassenger, blank=True)
+    confirmation_status = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.id
-"""
+        return f"Ref: {self.id} - {self.trip}"
