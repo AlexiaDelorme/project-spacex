@@ -135,7 +135,7 @@
         var tripId = $(this).attr("tripid").split("trip_")[1];
 
         var url = `/checkout/save-passenger/${tripId}/`;
-        var data = { 'csrfmiddlewaretoken': csrfToken, 'id': tripId, 'form': form };
+        var data = { 'csrfmiddlewaretoken': csrfToken, 'form': form };
         
         $.post(url, data);
 
