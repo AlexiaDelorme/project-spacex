@@ -13,7 +13,22 @@ $(document).ready(function () {
     */
     $(".btn-cart").click(function () {
 
-        var inputPassenger = $(this).prev('input').val();
+        var inputPassenger = $(this).prev("input").val();
+        var itemId = $(this).attr("id").split("add_")[1];
+
+        var url = `/cart/add/${itemId}/`;
+        var data = { 'csrfmiddlewaretoken': csrfToken, 'passenger': inputPassenger };
+        $.post(url, data);
+
+    });
+
+    /*
+        Version for trip_all.html
+    */
+    $(".btn-cart-2").click(function () {
+
+        var inputPassenger = $(this).siblings(".input-group").children(".quantity-field").val();
+        console.log(inputPassenger);
         var itemId = $(this).attr("id").split("add_")[1];
 
         var url = `/cart/add/${itemId}/`;

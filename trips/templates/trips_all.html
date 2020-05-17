@@ -119,7 +119,7 @@
 											<input type="number" id="passenger" name="passenger" step="1" min="1" max="5" value="1" class="quantity-field pl-3" required>
 											<input type="button" value="+" class="button-plus" data-field="passenger">
                                         </div>
-											<button type="button" class="btn btn-primary btn-cart" id="add_{{trip.id}}"  data-toggle="modal" data-target="#exampleModalCenter">Book trip</button>
+										<button type="button" class="btn btn-primary btn-cart-2" id="add_{{trip.id}}"  data-toggle="modal" data-target="#exampleModalCenter">Book trip</button>
 									</form>
 									{% endif %}
 
@@ -147,7 +147,7 @@
 <script type="text/javascript">
     const csrfToken = '{{ csrf_token }}';
     
-    // Code credit: http://jsfiddle.net/polaszk/1oyfxoor/
+    // ------ Code credit: http://jsfiddle.net/polaszk/1oyfxoor/
 
     function incrementValue(e) {
     e.preventDefault();
@@ -183,7 +183,7 @@
     decrementValue(e);
     });
 
-    // End of code credit 
+    // ------ End of code credit 
 
 </script>
 
