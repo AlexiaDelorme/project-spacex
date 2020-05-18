@@ -2,7 +2,7 @@ from django.urls import path
 from .views import (
     checkout_confirm_page,
     checkout_passengers_page,
-    save_passenger_to_cart)
+    save_passenger_to_booking)
 
 
 urlpatterns = [
@@ -18,7 +18,7 @@ urlpatterns = [
     ),
     path(
         'save-passenger/<int:id>/',
-        save_passenger_to_cart,
+        save_passenger_to_booking,
         name='save_passenger'
     ),
 ]
