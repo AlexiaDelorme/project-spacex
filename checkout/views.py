@@ -35,17 +35,25 @@ def checkout_confirm_page(request):
 
                 # ----- Code under test
                 # Create booking reference for trips in cart
+
                 cart = request.session.get('cart', {})
-                booking_references = []
+                ref = {}
+
                 for id in cart:
-                    globals()["booking_"+str(id)] = BookingReference.objects.create(
+                    print(f"The trip id is {id}")
+                    # Create booking ref object
+                    booking_obj = BookingReference.objects.create(
                         booker=User.objects.get(id=request.user.id),
                         trip=Trip.objects.get(id=id)
                     )
-                    print(globals()["booking_"+str(id)])
-                    booking_references.append(globals()["booking_"+str(id)])
-                    request.session['booking_references'] = booking_references
-                    print(booking_references)
+                    # Get id of this booking ref object
+                    booking_id = booking_obj.id
+                    print(f"The booking id is {booking_id}")
+                    # Store this booking id as value in ref dictionary
+                    ref[id] = ref.get(id, booking_id)
+
+                request.session['booking_references'] = ref
+                print(ref)
                 # ----- End of code under test
 
                 messages.success(
@@ -82,6 +90,10 @@ def checkout_passengers_page(request):
     """Render page to provide passengers details"""
 
     user = User.objects.get(email=request.user.email)
+
+    # Print booking references stored in the session
+    booking_references = request.session.get('booking_references', {})
+    print(f"The booking references stored in the session {booking_references}")
 
     # Check if user already provided passenger details
     try:
