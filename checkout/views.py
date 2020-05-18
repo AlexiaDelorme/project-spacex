@@ -91,10 +91,6 @@ def checkout_passengers_page(request):
 
     user = User.objects.get(email=request.user.email)
 
-    # Print booking references stored in the session
-    booking_references = request.session.get('booking_references', {})
-    print(f"The booking references stored in the session {booking_references}")
-
     # Check if user already provided passenger details
     try:
         passenger = Passenger.objects.get(user=request.user)
@@ -117,39 +113,25 @@ def checkout_passengers_page(request):
     return render(request, "checkout_passengers.html", context)
 
 
-def save_passenger_to_cart(request, id):
+def save_passenger_to_booking(request, id):
     """Temporarily save passenger as object in the db.
-    Then assign their id to the corresponding trip in the cart.
-    The id corresponds to the trip that the passenger has been registered."""
+    Then assign their id to the corresponding booking reference.
+    The id corresponds to the trip that the passenger will be registered to."""
 
-    # Save passenger form and set their confirmation status to false
+    # Save passenger form
     passenger_form = OtherPassengerForm(request.POST)
     print(request.POST)
-    registered_passenger = passenger_form.save(commit=False)
-    registered_passenger.confirmation_status = False
-    registered_passenger.save()
+    registered_passenger = passenger_form.save()
     # Get the id of this newly created passenger instance
     passenger_id = registered_passenger.id
-    print(passenger_id)
 
-    cart = request.session.get('cart', {})
-    print(cart)
+    # Add this passenger id to the corresponding booking reference
+    booking_references = request.session.get('booking_references', {})
+    booking_id = booking_references[str(id)]
+    booking_obj = get_object_or_404(BookingReference, id=booking_id)
+    booking_obj.other_passenger.add(
+        OtherPassenger.objects.get(id=passenger_id)
+    )
 
-    # Add this passenger id to the corresponding trip in cart
-    # ----- Tutor code (Stephen)
-    # if id in cart:
-    # cart[id] = cart[id].append(passenger_id)
-    # else:
-    # cart[id] = cart.get(id, [passenger_id])
-    # ----- end Stephen code
-
-    # My code
-    # ------ this is the way to convert the first cart key (ie: '3') to an integer
-    trip = int(next(iter(cart.keys())))
-    # trip = cart[id]  # ------- this was your original line for variable 'trip'
-    # trip["passenger_id"].append(passenger_id)  # ----- temporarily comment-out to get page to load
-
-    request.session['cart'] = cart
-    print(cart)
-
+    print("IT WORKED, BRAVO!")
     return redirect(reverse('home'))
