@@ -48,7 +48,7 @@ class BookingReference(models.Model):
     booker = models.ForeignKey(User, on_delete=models.PROTECT)
     trip = models.ForeignKey(Trip, on_delete=models.PROTECT)
     user_passenger = models.ForeignKey(
-        Passenger, on_delete=models.PROTECT, blank=True)
+        Passenger, on_delete=models.PROTECT, blank=True, null=True)
     other_passenger = models.ManyToManyField(OtherPassenger, blank=True)
     confirmation_status = models.BooleanField(default=False)
 
