@@ -133,5 +133,5 @@ def save_passenger_to_booking(request, id):
         OtherPassenger.objects.get(id=passenger_id)
     )
 
-    print("IT WORKED, BRAVO!")
-    return redirect(reverse('home'))
+    messages.success(request, "Passenger saved!")
+    return redirect(reverse('checkout_passengers'))
