@@ -37,7 +37,8 @@
 					<div class="card collapse-container">
 
 						<div class="card-header header text-uppercase text-left">
-							<b><i class="fas fa-user"></i> Passenger {{ forloop.counter }}</b> Adult
+							<b><i class="fas fa-user"></i> Passenger {{ forloop.counter }}</b> 
+                            <span class="passenger-name"> Adult</span>
                             <span class="checkmark">&#9989;</span>
 						</div>
 
@@ -138,7 +139,17 @@
         $.post(url, data);
 
         // Add class that displays a div that says passenger registered
+
+        // Add checkmark on saved passenger
         $(this).parents(".card-body").siblings(".card-header").children(".checkmark").show();
+
+        /* Display saved passenger name
+        var firstName = $(this).children("input[name='first_name']").val();
+        console.log(firstName);
+        */ 
+
+        $(this).addClass("saved-passenger");
+        $(this).removeClass("passenger-form");
 
         // Collapse card-body
         $cardBody = $(this).parents(".card-body")
