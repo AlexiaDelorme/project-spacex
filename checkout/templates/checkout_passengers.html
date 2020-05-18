@@ -131,11 +131,9 @@
     $(".passenger-form").submit(function(e){
         e.preventDefault();
 
-        var form = $(this).serialize();
         var tripId = $(this).attr("tripid").split("trip_")[1];
-
         var url = `/checkout/save-passenger/${tripId}/`;
-        var data = { 'csrfmiddlewaretoken': csrfToken, 'form': form };
+        var data = $(this).serialize();
         
         $.post(url, data);
 
