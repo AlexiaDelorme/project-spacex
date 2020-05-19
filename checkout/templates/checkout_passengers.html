@@ -148,10 +148,10 @@
         $(this).addClass("saved-passenger");
         $(this).removeClass("passenger-form");
 
-        // Collapse card-body
+        // Hide card-body containing passenger form
         $cardBody = $(this).parents(".card-body")
-        $cardBody.slideToggle(500, function () {
-            return $cardBody.is(":visible");
+        $cardBody.hide(500, function () {
+            return $cardBody.prev().off();
         });
 
     });
