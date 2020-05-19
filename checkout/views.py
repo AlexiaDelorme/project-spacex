@@ -11,7 +11,7 @@ from django.contrib import auth, messages
 # Create your views here.
 
 
-@login_required
+@login_required(redirect_field_name='next')
 def checkout_confirm_page(request):
     """Render page to confirm checkcout and booker's contact details"""
 
