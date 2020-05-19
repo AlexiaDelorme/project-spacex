@@ -33,7 +33,7 @@ def checkout_confirm_page(request):
             if form.is_valid():
                 form.save()
 
-                # Create booking reference for trips in cart
+                # Create booking reference for trips
                 cart = request.session.get('cart', {})
                 ref = {}
                 for id in cart:
@@ -64,7 +64,7 @@ def checkout_confirm_page(request):
                 contact_details.user = request.user
                 contact_details.save()
 
-                # Create booking reference for trips in cart
+                # Create booking reference for trips
                 cart = request.session.get('cart', {})
                 ref = {}
                 for id in cart:
