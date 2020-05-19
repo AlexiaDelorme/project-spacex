@@ -17,24 +17,32 @@ Navbar
 
 @media (min-width: 992px) {
 
-    #mainNav{
+    #mainNav, .dropdown-menu.show {
         font-size: 95%;
     }
     
-    .dropdown-shrink.dropdown-menu.show {
+    .dropdown-menu.show {
         background: transparent;
-        font-size: 95%;
         margin-top: -2rem;
     }
 
-    .dropdown-shrink .dropdown-item {
+    .dropdown-item {
         color: rgba(255,255,255,.5);
     }
 
-    .dropdown-shrink .dropdown-item:focus, .dropdown-shrink .dropdown-item:hover {
+    .dropdown-item:focus, .dropdown-item:hover {
         color: rgba(255,255,255,.75);
     }
 
+    .dropdown-shrink.dropdown-menu.show {
+        background-color: #fff;
+        margin-top: 0;
+    }
+
+    .dropdown-shrink .dropdown-item  {
+        color: #161616;
+    }
+    
 }
 
 
