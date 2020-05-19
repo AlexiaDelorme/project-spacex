@@ -21,37 +21,6 @@ def logout_page(request):
     return redirect(reverse('login'))
 
 
-def login_page(request):
-    """Render login form page and provide user feedback if needed.
-    Redirect user to their profile if already logged in."""
-
-    if request.user.is_authenticated:
-        return redirect(reverse('profile'))
-
-    if request.method == "POST":
-        login_form = UserLoginForm(request.POST)
-
-        if login_form.is_valid():
-            user = auth.authenticate(username=request.POST['username'],
-                                     password=request.POST['password'])
-
-            if user:
-                auth.login(user=user, request=request)
-                messages.success(request, "You have successfully logged in!")
-                return redirect(reverse('profile'))
-            else:
-                login_form.add_error(
-                    None, "Your username or password is incorrect")
-
-    else:
-        login_form = UserLoginForm()
-    context = {
-        "page_title": "Log In",
-        "form": login_form
-    }
-    return render(request, "login.html", context)
-
-
 def signup_page(request):
     """Render sign up form page and provide user feedback if needed."""
 
