@@ -33,14 +33,10 @@ def checkout_confirm_page(request):
             if form.is_valid():
                 form.save()
 
-                # ----- Code under test
                 # Create booking reference for trips in cart
-
                 cart = request.session.get('cart', {})
                 ref = {}
-
                 for id in cart:
-                    print(f"The trip id is {id}")
                     # Create booking ref object
                     booking_obj = BookingReference.objects.create(
                         booker=User.objects.get(id=request.user.id),
@@ -48,13 +44,9 @@ def checkout_confirm_page(request):
                     )
                     # Get id of this booking ref object
                     booking_id = booking_obj.id
-                    print(f"The booking id is {booking_id}")
                     # Store this booking id as value in ref dictionary
                     ref[id] = ref.get(id, booking_id)
-
                 request.session['booking_references'] = ref
-                print(ref)
-                # ----- End of code under test
 
                 messages.success(
                     request, f'Your contact details have been saved!')
@@ -67,9 +59,26 @@ def checkout_confirm_page(request):
         if request.method == 'POST':
             form = UserContactDetailForm(request.POST)
             if form.is_valid():
+                # Save new contact details
                 contact_details = form.save(commit=False)
                 contact_details.user = request.user
                 contact_details.save()
+
+                # Create booking reference for trips in cart
+                cart = request.session.get('cart', {})
+                ref = {}
+                for id in cart:
+                    # Create booking ref object
+                    booking_obj = BookingReference.objects.create(
+                        booker=User.objects.get(id=request.user.id),
+                        trip=Trip.objects.get(id=id)
+                    )
+                    # Get id of this booking ref object
+                    booking_id = booking_obj.id
+                    # Store this booking id as value in ref dictionary
+                    ref[id] = ref.get(id, booking_id)
+                request.session['booking_references'] = ref
+
                 messages.success(
                     request, f'Your contact details have been saved!')
                 return redirect(reverse('checkout_passengers'))
