@@ -30,11 +30,11 @@
     var navbarCollapse = function () {
         if ($("#mainNav").offset().top > 100) {
             $("#mainNav").addClass("navbar-shrink");
-            // Test
+            // Apply same logic to dropdown menu
             $(".dropdown-menu").addClass("dropdown-shrink")
         } else {
             $("#mainNav").removeClass("navbar-shrink");
-            // Test
+            // Apply same logic to dropdown menu
             $(".dropdown-menu").removeClass("dropdown-shrink")
         }
     };
