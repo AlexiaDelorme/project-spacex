@@ -21,67 +21,108 @@
 <!-- Register passenger section -->
 <section class="bg-light">
 	<div class="container pt-5 pb-5">
-		<div class="row">
+		<div class="row mx-auto">
 
-			{% for item in cart_items %}
-			<div class="col-12 col-md-10 mx-auto jumbotron">
+            <!-- Passengers registration -->
+            <div class="col-12 col-lg-7 pr-lg-5">
 
-				<div class="col-12 mb-2 text-left">
-					<!-- Trip recap -->
-					{% include 'components/trip_recap.html' %}
-				</div>
+                <h1 class="mt-3 mb-5">Register Passenger</h1>
 
-				<!-- Passengers -->
-				{% for i in item.passenger_range %}
-				<div class="col-12 mb-3">
-					<div class="card collapse-container">
+                {% for item in cart_items %}
+                <div class="col-12 mx-auto jumbotron">
 
-						<div class="card-header header text-uppercase text-left">
-							<b><i class="fas fa-user"></i> Passenger {{ forloop.counter }} </b> 
-                            <span class="checkmark">&#9989; </span>
-                            <span class="passenger-name">Adult</span>
-						</div>
+                    <div class="col-12 mb-2 text-left">
+                        <!-- Trip recap -->
+                        {% include 'components/trip_recap.html' %}
+                    </div>
 
-						<div class="card-body content mb-3">
-							<div class="row">
+                    <!-- Passengers -->
+                    {% for i in item.passenger_range %}
+                    <div class="col-12 mb-3">
+                        <div class="card collapse-container">
 
-								{% if forloop.counter == 1 %}
-								<div class="col-12">
-									<p>Who is traveling?</p>
-								</div>
-								<div class="col-12">
-									<select id="traveling-passenger" name="traveling-passenger" class="passenger-traveling-select">
-                                                    <option value="1" selected>{{ user.first_name }} {{ user.last_name }}</option>
-                                                    <option value="2">I am booking for another passenger</option>
-                                        </select>
-								</div>
+                            <div class="card-header header text-uppercase text-left">
+                                <b><i class="fas fa-user"></i> Passenger {{ forloop.counter }} </b> 
+                                <span class="checkmark">&#9989; </span>
+                                <span class="passenger-name">Adult</span>
+                            </div>
 
-								<div class="mt-5 col-12 user-passenger-form">
-									<!-- User passenger details form -->
-									{% include 'components/user_passenger_form.html' %}
-								</div>
+                            <div class="card-body content mb-3">
+                                <div class="row">
 
-								<div class="mt-5 col-12 other-passenger-form">
-									<!-- Other passenger details form -->
-									{% include 'components/other_passenger_form.html' %}
-								</div>
+                                    {% if forloop.counter == 1 %}
+                                    <div class="col-12">
+                                        <p>Who is traveling?</p>
+                                    </div>
+                                    <div class="col-12">
+                                        <select id="traveling-passenger" name="traveling-passenger" class="passenger-traveling-select">
+                                                        <option value="1" selected>{{ user.first_name }} {{ user.last_name }}</option>
+                                                        <option value="2">I am booking for another passenger</option>
+                                            </select>
+                                    </div>
 
-								{% else %}
-								<div class="mt-3 col-12">
-									<!-- Other passenger details form -->
-									{% include 'components/other_passenger_form.html' %}
-								</div>
-								{% endif %}
+                                    <div class="mt-5 col-12 user-passenger-form">
+                                        <!-- User passenger details form -->
+                                        {% include 'components/user_passenger_form.html' %}
+                                    </div>
 
-							</div>
-						</div>
+                                    <div class="mt-5 col-12 other-passenger-form">
+                                        <!-- Other passenger details form -->
+                                        {% include 'components/other_passenger_form.html' %}
+                                    </div>
 
-					</div>
-				</div>
-				{% endfor %}
+                                    {% else %}
+                                    <div class="mt-3 col-12">
+                                        <!-- Other passenger details form -->
+                                        {% include 'components/other_passenger_form.html' %}
+                                    </div>
+                                    {% endif %}
 
-			</div>
-			{% endfor %}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                {% endfor %}
+		    </div>
+
+            <!-- Booking recap -->
+            <div class="col-12 col-lg-5 mt-3 mt-lg-0">
+                
+                <h1 class="mt-3 mb-5">Your booking</h1>
+
+                {% if cart_items %}
+
+                    {% for item in cart_items %}
+
+                        <!-- Trip recap -->
+                        {% include 'components/trip_recap.html' %}
+
+                    {% endfor %}
+
+                        <div class="mt-5 mb-3"><hr></div>
+
+                        <!-- Total cart -->
+                        <div class="mt-5 mb-2 text-right">
+                            <h3>TOTAL: € {{ total|intcomma }}</h3>
+                            <p>Tax included</p>
+                        </div>
+
+                        <div class="row mt-5 mb-3">
+                            <div class="col-6 text-left">
+                                <a href=""><button type="button" class="btn btn-light"><i class="fas fa-caret-left"></i> Return to contact</button></a>
+                            </div>
+                            <div class="col-6 text-right">
+                                <button id="" type="button" class="btn btn-primary">Proceed Payment</button>
+                            </div>
+                        </div>
+
+                {% endif %}
+                
+            </div>
 
 		</div>
 	</div>
