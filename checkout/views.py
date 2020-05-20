@@ -144,3 +144,8 @@ def save_passenger_to_booking(request, id):
 
     messages.success(request, "Passenger saved!")
     return redirect(reverse('checkout_passengers'))
+
+
+def checkout_payment_page(request):
+
+    return render(request, "checkout_payment.html")

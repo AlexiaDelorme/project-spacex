@@ -2,7 +2,8 @@ from django.urls import path
 from .views import (
     checkout_confirm_page,
     checkout_passengers_page,
-    save_passenger_to_booking)
+    save_passenger_to_booking,
+    checkout_payment_page)
 
 
 urlpatterns = [
@@ -21,4 +22,5 @@ urlpatterns = [
         save_passenger_to_booking,
         name='save_passenger'
     ),
+    path('payment/', checkout_payment_page, name='checkout_payment'),
 ]
