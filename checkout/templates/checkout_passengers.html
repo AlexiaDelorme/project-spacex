@@ -117,6 +117,7 @@
                             </div>
                             <div class="col-6 text-right">
                                 <button id="btn-payment" type="button" class="btn btn-primary">Proceed Payment</button>
+                                <a id="url-payment" class="d-none" href="{% url 'checkout_payment' %}"></a>
                             </div>
                         </div>
 
@@ -131,13 +132,14 @@
 {% endblock %}
 
 {% block script %}
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 <script type="text/javascript">
 
     // CSRF token
     const csrfToken = '{{ csrf_token }}';
-    
+
+    // Total passengers in cart
+    const totalPassenger = '{{ trip_count }}'
+
 	/*
         Hide and show collapsable content for passenger form
     */
@@ -204,22 +206,22 @@
     /*
         Display passenger form according to user selection
     */
-    $("#btn-payment").click(function(){
-        var allPassengerSaved = $('#form :not(.saved-passenger)').length == 0;
-        console.log(allPassengerSaved);
-        if (allPassengerSaved = true) {
+    $("#btn-payment").click(function() {
+        // Check how many passenger forms have been submitted
+        var totalPassengerSaved = $('.saved-passenger').length;
+        // Compare if number of passengers saved = total number of passenger in cart
+        if (totalPassengerSaved == totalPassenger) {
+            $('#url-payment')[0].click();
+        } else {
             swal({
                 title: "Ooopsie!",
                 text: "You have to register all passengers before proceeding to the payment!",
                 icon: "warning",
                 button: "ok",
             });
-        } else {
-            // Proceed to the payment
         }
     });
 
-    	
 </script>
 
 {% endblock %}
