@@ -116,7 +116,7 @@
                                 <a href=""><button type="button" class="btn btn-light"><i class="fas fa-caret-left"></i> Return to contact</button></a>
                             </div>
                             <div class="col-6 text-right">
-                                <button id="" type="button" class="btn btn-primary">Proceed Payment</button>
+                                <button id="btn-payment" type="button" class="btn btn-primary">Proceed Payment</button>
                             </div>
                         </div>
 
@@ -131,6 +131,7 @@
 {% endblock %}
 
 {% block script %}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script type="text/javascript">
 
@@ -195,8 +196,30 @@
             return $cardBody.prev().off();
         });
 
+        // Alert success to user
+        swal(firstName+" "+lastName, "This passenger was saved", "success");
+
     });
-    
+
+    /*
+        Display passenger form according to user selection
+    */
+    $("#btn-payment").click(function(){
+        var allPassengerSaved = $('#form :not(.saved-passenger)').length == 0;
+        console.log(allPassengerSaved);
+        if (allPassengerSaved = true) {
+            swal({
+                title: "Ooopsie!",
+                text: "You have to register all passengers before proceeding to the payment!",
+                icon: "warning",
+                button: "ok",
+            });
+        } else {
+            // Proceed to the payment
+        }
+    });
+
+    	
 </script>
 
 {% endblock %}
