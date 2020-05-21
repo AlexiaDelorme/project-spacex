@@ -138,7 +138,7 @@
     const csrfToken = '{{ csrf_token }}';
 
     // Total passengers in cart
-    const totalPassenger = '{{ trip_count }}'
+    var totalPassenger = '{{ trip_count }}';
 
 	/*
         Hide and show collapsable content for passenger form
@@ -173,6 +173,7 @@
         Submit passenger form without reloading the page
     */
     $(".checkmark").hide();
+
     $(".passenger-form").submit(function(e){
         e.preventDefault();
 
@@ -199,7 +200,38 @@
         });
 
         // Alert success to user
-        swal(firstName+" "+lastName, "This passenger was saved", "success");
+        swal(firstName+" "+lastName, "Passenger was saved", "success");
+
+    });
+
+    // Form to register authenticated user as passenger
+    $(".user-form").submit(function(e){
+        e.preventDefault();
+
+        var tripId = $(this).attr("tripid").split("trip_")[1];
+        var url = `/checkout/save-user-passenger/${tripId}/`;
+        var data = $(this).serialize();
+        
+        // $.post(url, data);
+
+        // Add checkmark and display passenger name
+        $(this).parents(".card-body").siblings(".card-header").children(".checkmark").show();
+        var firstName = '{{ user.first_name }}';
+        var lastName = '{{ user.last_name }}';
+        $(this).parents(".card-body").siblings(".card-header").children(".passenger-name").text(firstName+" "+lastName);
+        
+        // Amend class type on passenger saved
+        $(this).addClass("saved-passenger");
+        $(this).removeClass("user-form");
+
+        // Hide card-body containing passenger form
+        $cardBody = $(this).parents(".card-body")
+        $cardBody.hide(500, function () {
+            return $cardBody.prev().off();
+        });
+
+        // Alert success to user
+        swal(firstName+" "+lastName, "Passenger was saved", "success");
 
     });
 
