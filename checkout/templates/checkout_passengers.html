@@ -212,7 +212,7 @@
         var url = `/checkout/save-user-passenger/${tripId}/`;
         var data = $(this).serialize();
         
-        // $.post(url, data);
+        $.post(url, data);
 
         // Add checkmark and display passenger name
         $(this).parents(".card-body").siblings(".card-header").children(".checkmark").show();
