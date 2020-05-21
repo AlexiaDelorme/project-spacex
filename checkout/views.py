@@ -129,17 +129,14 @@ def save_passenger_to_booking(request, id):
 
     # Save passenger form
     passenger_form = OtherPassengerForm(request.POST)
-    print(request.POST)
     registered_passenger = passenger_form.save()
-    # Get the id of this newly created passenger instance
-    passenger_id = registered_passenger.id
 
-    # Add this passenger id to the corresponding booking reference
+    # Add this passenger to the corresponding booking reference
     booking_references = request.session.get('booking_references', {})
     booking_id = booking_references[str(id)]
     booking_obj = get_object_or_404(BookingReference, id=booking_id)
     booking_obj.other_passenger.add(
-        OtherPassenger.objects.get(id=passenger_id)
+        registered_passenger
     )
 
     messages.success(request, "Passenger saved!")
@@ -159,30 +156,28 @@ def save_user_passenger_to_booking(request, id):
     except Passenger.DoesNotExist:
         passenger = None
 
-    user_passenger_form = UserPassengerForm(request.POST)
-
     # Save existing passenger details for this user
     if passenger is not None:
+        user_passenger_form = UserPassengerForm(
+            request.POST,
+            instance=request.user.passenger
+        )
         registered_passenger = user_passenger_form.save()
 
     # Create new instance of passenger model for this user
     else:
+        user_passenger_form = UserPassengerForm(request.POST)
         registered_passenger = user_passenger_form.save(commit=False)
         registered_passenger.user = request.user
         registered_passenger.save()
 
-    # Get the id of this passenger instance
-    passenger_id = registered_passenger.id
-
-    # Add this passenger id to the corresponding booking reference
+    # Add this passenger to the corresponding booking reference
     booking_references = request.session.get('booking_references', {})
     booking_id = booking_references[str(id)]
-    print(f"The booking id is {booking_id}")
     booking_obj = get_object_or_404(BookingReference, id=booking_id)
-    print(f"The booking object is {booking_obj}")
-    booking_obj.user_passenger = Passenger.objects.get(id=passenger_id)
+    booking_obj.user_passenger = registered_passenger
+    booking_obj.save()
 
-    print("YOU MADE IT THERE!")
     messages.success(request, "Passenger saved!")
     return redirect(reverse('checkout_passengers'))
 
