@@ -124,7 +124,7 @@ def checkout_passengers_page(request):
 
 def save_passenger_to_booking(request, id):
     """Temporarily save passenger as object in the db.
-    Then assign their id to the corresponding booking reference.
+    Then, assign their id to the corresponding booking reference.
     The id corresponds to the trip that the passenger will be registered to."""
 
     # Save passenger form
@@ -142,6 +142,47 @@ def save_passenger_to_booking(request, id):
         OtherPassenger.objects.get(id=passenger_id)
     )
 
+    messages.success(request, "Passenger saved!")
+    return redirect(reverse('checkout_passengers'))
+
+
+def save_user_passenger_to_booking(request, id):
+    """Save passenger details for autehnticated user.
+    Then, assign their id to the corresponding booking reference.
+    The id corresponds to the trip that the passenger will be registered to."""
+
+    user = User.objects.get(email=request.user.email)
+
+    # Check if user already provided passenger details
+    try:
+        passenger = Passenger.objects.get(user=request.user)
+    except Passenger.DoesNotExist:
+        passenger = None
+
+    user_passenger_form = UserPassengerForm(request.POST)
+
+    # Save existing passenger details for this user
+    if passenger is not None:
+        registered_passenger = user_passenger_form.save()
+
+    # Create new instance of passenger model for this user
+    else:
+        registered_passenger = user_passenger_form.save(commit=False)
+        registered_passenger.user = request.user
+        registered_passenger.save()
+
+    # Get the id of this passenger instance
+    passenger_id = registered_passenger.id
+
+    # Add this passenger id to the corresponding booking reference
+    booking_references = request.session.get('booking_references', {})
+    booking_id = booking_references[str(id)]
+    print(f"The booking id is {booking_id}")
+    booking_obj = get_object_or_404(BookingReference, id=booking_id)
+    print(f"The booking object is {booking_obj}")
+    booking_obj.user_passenger = Passenger.objects.get(id=passenger_id)
+
+    print("YOU MADE IT THERE!")
     messages.success(request, "Passenger saved!")
     return redirect(reverse('checkout_passengers'))
 
