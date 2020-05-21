@@ -23,6 +23,51 @@ $(document).ready(function () {
     });
 
     /*
+        Remove item from cart after user confirmed his choice
+    */
+
+    $(".remove-cart-form").submit(function (e) {
+
+        e.preventDefault();
+
+        swal({
+            title: "Are you sure?",
+            text: "This trip will be removed from your cart.",
+            icon: "warning",
+            buttons: {
+                cancel: "Cancel",
+                catch: {
+                    text: "Delete",
+                    value: "delete"
+                },
+            },
+        })
+            .then((value) => {
+                switch (value) {
+                    case "delete":
+                        swal("This trip was removed from your cart!", {
+                            icon: "success"
+                        })
+                            // Sent form to delete item from cart
+                            .then((value) => {
+                                var itemId = $(this).attr("tripid").split("trip_")[1];
+                                $.ajax({
+                                    type: "POST",
+                                    url: `/cart/remove/${itemId}/`,
+                                    data: $(this).serialize(),
+                                    success: function() {   
+                                        location.reload();  
+                                    }
+                                });
+                            });
+                        break;
+                    default:
+                        swal("The trip is still in your cart!");
+                }
+            });
+    });
+
+    /*
         Version for trip_all.html
     */
     $(".btn-cart-2").click(function () {
@@ -40,7 +85,7 @@ $(document).ready(function () {
     /*
         Reload trip results page if user wants to keep shopping
     */
-    $("#btn-keep-shopping").click(function() {
+    $("#btn-keep-shopping").click(function () {
         location.reload();
     });
 
@@ -77,6 +122,13 @@ $(document).ready(function () {
         var url = `/cart/adjust/${itemId}/`;
         var data = { 'csrfmiddlewaretoken': csrfToken, 'passenger': inputPassenger };
         $.post(url, data);
+
+        swal({
+            title: "Cart updated!",
+            text: "We have adjusted the number of passengers for this trip.",
+            icon: "success",
+            button: "ok",
+        });
 
     });
 

@@ -34,7 +34,7 @@
                             <div class="col-12 mb-2">
                                 <div class="row text-left text-md-right">
                                     <div class="col-12 col-md-8">
-                                        <form method="POST" action="{% url 'remove_from_cart' item.id %}">
+                                        <form class="remove-cart-form" method="POST" tripid="trip_{{ item.id }}">
                                             {% csrf_token %}
                                             <button class="remove-item btn btn-light float-left" type="submit"><i class="fas fa-trash-alt fa-2x"></i></button>
                                         </form>
