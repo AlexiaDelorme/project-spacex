@@ -1,11 +1,24 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
+from checkout.models import BookingReference
 
 # Create your views here.
 
 
 def view_cart(request):
     """Render the cart content page"""
+
+    # Clear existing booking references
+    if 'booking_references' in request.session:
+        booking_references = request.session['booking_references']
+        for key in booking_references:
+            # Delete booking ref object
+            book_ref = BookingReference.objects.filter(id=booking_references[key])
+            print(f"Booking reference to delete: {book_ref}")
+            BookingReference.objects.filter(id=booking_references[key]).delete()
+        # Delete session variable
+        del request.session['booking_references']
+        print(f"The session booking_references was deleted")
 
     return render(request, "cart.html")
 
