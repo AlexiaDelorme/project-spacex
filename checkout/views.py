@@ -32,22 +32,6 @@ def checkout_confirm_page(request):
                 instance=request.user.contactdetail)
             if form.is_valid():
                 form.save()
-
-                # Create booking reference for trips
-                cart = request.session.get('cart', {})
-                ref = {}
-                for id in cart:
-                    # Create booking ref object
-                    booking_obj = BookingReference.objects.create(
-                        booker=User.objects.get(id=request.user.id),
-                        trip=Trip.objects.get(id=id)
-                    )
-                    # Get id of this booking ref object
-                    booking_id = booking_obj.id
-                    # Store this booking id as value in ref dictionary
-                    ref[id] = ref.get(id, booking_id)
-                request.session['booking_references'] = ref
-
                 messages.success(
                     request, f'Your contact details have been saved!')
                 return redirect(reverse('checkout_passengers'))
@@ -63,22 +47,6 @@ def checkout_confirm_page(request):
                 contact_details = form.save(commit=False)
                 contact_details.user = request.user
                 contact_details.save()
-
-                # Create booking reference for trips
-                cart = request.session.get('cart', {})
-                ref = {}
-                for id in cart:
-                    # Create booking ref object
-                    booking_obj = BookingReference.objects.create(
-                        booker=User.objects.get(id=request.user.id),
-                        trip=Trip.objects.get(id=id)
-                    )
-                    # Get id of this booking ref object
-                    booking_id = booking_obj.id
-                    # Store this booking id as value in ref dictionary
-                    ref[id] = ref.get(id, booking_id)
-                request.session['booking_references'] = ref
-
                 messages.success(
                     request, f'Your contact details have been saved!')
                 return redirect(reverse('checkout_passengers'))
@@ -96,9 +64,31 @@ def checkout_confirm_page(request):
 
 @login_required
 def checkout_passengers_page(request):
-    """Render page to provide passengers details"""
+    """Create booking reference for each trip in cart.
+    Render page to provide passengers details"""
 
     user = User.objects.get(email=request.user.email)
+
+    # Create booking reference for trips
+
+    if 'booking_references' not in request.session:
+        cart = request.session.get('cart', {})
+        ref = {}
+        for id in cart:
+            # Create booking ref object
+            booking_obj = BookingReference.objects.create(
+                booker=user,
+                trip=Trip.objects.get(id=id)
+            )
+            # Get id of this booking ref object
+            booking_id = booking_obj.id
+            # Store this booking id as value in ref dictionary
+            ref[id] = ref.get(id, booking_id)
+        request.session['booking_references'] = ref
+        print(f"The session was empty {ref}")
+    else:
+        ref = request.session.get('booking_references', {})
+        print(f"The session is not empty {ref}")
 
     # Check if user already provided passenger details
     try:
