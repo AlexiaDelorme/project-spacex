@@ -6,15 +6,14 @@ from checkout.models import BookingReference
 
 
 def view_cart(request):
-    """Render the cart content page"""
+    """Render the cart content page and empty session variable
+    'booking_references' in case user interrupted checkout process"""
 
     # Clear existing booking references
     if 'booking_references' in request.session:
         booking_references = request.session['booking_references']
         for key in booking_references:
             # Delete booking ref object
-            book_ref = BookingReference.objects.filter(id=booking_references[key])
-            print(f"Booking reference to delete: {book_ref}")
             BookingReference.objects.filter(id=booking_references[key]).delete()
         # Delete session variable
         del request.session['booking_references']
