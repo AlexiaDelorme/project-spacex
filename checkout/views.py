@@ -70,7 +70,6 @@ def checkout_passengers_page(request):
     user = User.objects.get(email=request.user.email)
 
     # Create booking reference for trips
-
     if 'booking_references' not in request.session:
         cart = request.session.get('cart', {})
         ref = {}
@@ -85,10 +84,6 @@ def checkout_passengers_page(request):
             # Store this booking id as value in ref dictionary
             ref[id] = ref.get(id, booking_id)
         request.session['booking_references'] = ref
-        print(f"The session was empty {ref}")
-    else:
-        ref = request.session.get('booking_references', {})
-        print(f"The session is not empty {ref}")
 
     # Check if user already provided passenger details
     try:

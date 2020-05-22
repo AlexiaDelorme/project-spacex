@@ -17,7 +17,6 @@ def view_cart(request):
             BookingReference.objects.filter(id=booking_references[key]).delete()
         # Delete session variable
         del request.session['booking_references']
-        print(f"The session booking_references was deleted")
 
     return render(request, "cart.html")
 
