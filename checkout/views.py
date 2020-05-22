@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.conf import settings
 from django.contrib.auth.models import User
 from accounts.models import ContactDetail, Passenger
-from .models import OtherPassenger, BookingReference
+from .models import BookingReference
 from trips.models import Trip
 from accounts.forms import UserContactDetailForm, UserPassengerForm
-from .forms import OtherPassengerForm
+from .forms import OtherPassengerForm, PaymentForm
 from django.contrib.auth.decorators import login_required
-from django.contrib import auth, messages
+from django.contrib import messages
+import stripe
 
 # Create your views here.
 
@@ -167,6 +169,47 @@ def save_user_passenger_to_booking(request, id):
     return redirect(reverse('checkout_passengers'))
 
 
+stripe.api_key = settings.STRIPE_SECRET
+
+
 def checkout_payment_page(request):
 
-    return render(request, "checkout_payment.html")
+    if request.method == "POST":
+
+        payment_form = PaymentForm(request.POST)
+
+        if payment_form.is_valid():
+
+            # Make stripe payment
+            try:
+                customer = stripe.Charge.create(
+                    amount=int(total * 100),
+                    currency="EUR",
+                    description=request.user.email,
+                    card=payment_form.cleaned_data['stripe_id']
+                )
+            except stripe.error.CardError:
+                messages.error(request, "Your card was declined!")
+
+            if customer.paid:
+                messages.error(request, "You have successfully paid")
+                request.session['cart'] = {}
+                return redirect(reverse('products'))
+            else:
+                messages.error(request, "Unable to take payment")
+
+        else:
+            print(payment_form.errors)
+            messages.error(
+                request, "We were unable to take a payment with that card!")
+
+    else:
+        payment_form = PaymentForm()
+
+    context = {
+        "page_title": "Payment",
+        "form": payment_form,
+        "publishable": settings.STRIPE_PUBLISHABLE
+    }
+
+    return render(request, "checkout_payment.html", context)
