@@ -25,7 +25,8 @@ def checkout_confirm_page(request):
         booking_references = request.session['booking_references']
         for key in booking_references:
             # Delete booking ref object
-            BookingReference.objects.filter(id=booking_references[key]).delete()
+            BookingReference.objects.filter(
+                id=booking_references[key]).delete()
         # Delete session variable
         del request.session['booking_references']
         print("booking references session existed and was successfully deleted")
@@ -223,6 +224,8 @@ def checkout_payment_page(request):
 
                 # Empty cart
                 request.session['cart'] = {}
+                # Delete session variable
+                del request.session['booking_references']
 
                 messages.success(request, "You have successfully paid")
                 return redirect(reverse('home'))
