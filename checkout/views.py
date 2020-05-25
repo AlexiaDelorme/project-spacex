@@ -15,9 +15,22 @@ import stripe
 
 @login_required(redirect_field_name='next')
 def checkout_confirm_page(request):
-    """Render page to confirm checkcout and booker's contact details"""
+    """Render page to confirm checkout and booker's contact details"""
 
     user = User.objects.get(email=request.user.email)
+
+    # Clear existing booking references
+    # (if user has clicked prev btn on passenger page)
+    if 'booking_references' in request.session:
+        booking_references = request.session['booking_references']
+        for key in booking_references:
+            # Delete booking ref object
+            BookingReference.objects.filter(id=booking_references[key]).delete()
+        # Delete session variable
+        del request.session['booking_references']
+        print("booking references session existed and was successfully deleted")
+    else:
+        print("no existing booking references in session var")
 
     # Check if user already provided contact details
     try:
