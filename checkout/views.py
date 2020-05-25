@@ -192,9 +192,22 @@ def checkout_payment_page(request):
                 messages.error(request, "Your card was declined!")
 
             if customer.paid:
-                messages.error(request, "You have successfully paid")
+                # Set booking references to status confirmend
+                booking_references = request.session.get(
+                    'booking_references', {})
+                for key in booking_references:
+                    booking_obj = get_object_or_404(
+                        BookingReference,
+                        id=booking_references[key]
+                    )
+                    booking_obj.confirmation_status = True
+                    booking_obj.save()
+
+                # Empty cart
                 request.session['cart'] = {}
-                return redirect(reverse('products'))
+
+                messages.success(request, "You have successfully paid")
+                return redirect(reverse('home'))
             else:
                 messages.error(request, "Unable to take payment")
 
