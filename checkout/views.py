@@ -192,6 +192,11 @@ def checkout_payment_page(request):
         payment_form = PaymentForm(request.POST)
 
         if payment_form.is_valid():
+            cart = request.session.get('cart', {})
+            total = 0
+            for id, passenger in cart.items():
+                trip = get_object_or_404(Trip, pk=id)
+                total = passenger * trip.category.price
 
             # Make stripe payment
             try:
