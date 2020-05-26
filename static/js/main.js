@@ -9,17 +9,41 @@ $(document).ready(function () {
     })
 
     /*
-        Add item to the cart without reload the page
+        Add item to the cart and confirm it to the user using alert
+        Request user if they want to keep shopping or go to cart
     */
-    $(".btn-cart").click(function () {
+    $(".add-to-cart").submit(function(e) {
 
-        var inputPassenger = $(this).prev("input").val();
+        e.preventDefault();
+
+        var inputPassenger = $(this).find("input#passenger").val();
         var itemId = $(this).attr("id").split("add_")[1];
 
         var url = `/cart/add/${itemId}/`;
         var data = { 'csrfmiddlewaretoken': csrfToken, 'passenger': inputPassenger };
         $.post(url, data);
 
+        swal({
+            title: "Thanks!",
+            text: "This trip was successfully added to your cart!",
+            icon: "success",
+            buttons: {
+                cancel: "Keep shopping",
+                catch: {
+                    text: "Go to cart",
+                    value: "cart"
+                },
+            },
+        })
+            .then((value) => {
+                switch (value) {
+                    case "cart":
+                        window.location.replace("/cart/");
+                        break;
+                    default:
+                        location.reload();
+                }
+            });
     });
 
     /*
@@ -55,8 +79,8 @@ $(document).ready(function () {
                                     type: "POST",
                                     url: `/cart/remove/${itemId}/`,
                                     data: $(this).serialize(),
-                                    success: function() {   
-                                        location.reload();  
+                                    success: function () {
+                                        location.reload();
                                     }
                                 });
                             });

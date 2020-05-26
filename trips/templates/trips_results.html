@@ -61,14 +61,11 @@
                                     <i class="fas fa-user-friends"></i> {{ passenger_number}} passenger(s) <br>
                                     € {{ trip_price|intcomma }}
                                 </p>
-                                <form method="POST">
+                                <form class="add-to-cart" method="POST" id="add_{{trip.id}}">
                                     {% csrf_token %}
                                     <input id="passenger" name="passenger" type="hidden" value="{{ passenger_number }}">
-                                    <button type="button" class="btn btn-primary btn-cart" id="add_{{trip.id}}"  data-toggle="modal" data-target="#exampleModalCenter">Book trip</button>
+                                    <button type="submit" class="btn btn-primary btn-cart">Book trip</button>
                                 </form>
-
-                                <!-- Modal -->
-                                {% include 'components/modal.html' %}
 
                             </div>
                             	
