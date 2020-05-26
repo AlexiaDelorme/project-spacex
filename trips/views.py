@@ -66,6 +66,7 @@ def trips_results_page(request, pk):
         "passenger_number": passenger_number,
         "trip_price": trip_price,
     }
+    messages.success(request, "Results for your trip search")
     return render(request, "trips_results.html", context)
 
 
@@ -101,6 +102,7 @@ def trips_all_page(request):
             "passenger_number": passenger_number,
             "trip_price": trip_price,
         }
+        messages.success(request, "Results for your trip search")
 
     else:
         trips = Trip.objects.all()
