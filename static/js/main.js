@@ -16,7 +16,7 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-        var inputPassenger = $(this).find("input#passenger").val();
+        var inputPassenger = $(this).children("input#passenger").val();
         var itemId = $(this).attr("id").split("add_")[1];
 
         var url = `/cart/add/${itemId}/`;
@@ -89,28 +89,6 @@ $(document).ready(function () {
                         swal("The trip is still in your cart!");
                 }
             });
-    });
-
-    /*
-        Version for trip_all.html
-    */
-    $(".btn-cart-2").click(function () {
-
-        var inputPassenger = $(this).siblings(".input-group").children(".quantity-field").val();
-        console.log(inputPassenger);
-        var itemId = $(this).attr("id").split("add_")[1];
-
-        var url = `/cart/add/${itemId}/`;
-        var data = { 'csrfmiddlewaretoken': csrfToken, 'passenger': inputPassenger };
-        $.post(url, data);
-
-    });
-
-    /*
-        Reload trip results page if user wants to keep shopping
-    */
-    $("#btn-keep-shopping").click(function () {
-        location.reload();
     });
 
     /*
