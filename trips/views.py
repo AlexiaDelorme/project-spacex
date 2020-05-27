@@ -66,7 +66,7 @@ def trips_results_page(request, pk):
         "passenger_number": passenger_number,
         "trip_price": trip_price,
     }
-    messages.success(request, "Results for your trip search")
+    messages.info(request, "Please, see below the result(s) for your search")
     return render(request, "trips_results.html", context)
 
 
@@ -102,7 +102,8 @@ def trips_all_page(request):
             "passenger_number": passenger_number,
             "trip_price": trip_price,
         }
-        messages.success(request, "Results for your trip search")
+        messages.info(
+            request, "Please, see below the result(s) for your search")
 
     else:
         trips = Trip.objects.all()

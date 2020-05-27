@@ -34,7 +34,7 @@ def add_to_cart(request, id):
 
     request.session['cart'] = cart
 
-    messages.success(request, "Your trip was added to your cart!")
+    messages.success(request, "This trip was added to your cart")
     return redirect(reverse('view_cart'))
 
 
@@ -63,5 +63,5 @@ def remove_from_cart(request, id):
 
     request.session['cart'] = cart
 
-    messages.success(request, "Item removed from cart")
+    messages.success(request, "This trip was removed from your cart")
     return redirect(reverse('view_cart'))

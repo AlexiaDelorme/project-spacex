@@ -49,7 +49,7 @@ def checkout_contact_page(request):
             if form.is_valid():
                 form.save()
                 messages.success(
-                    request, f'Your contact details have been saved!')
+                    request, "Your contact details have been saved")
                 return redirect(reverse('checkout_passengers'))
         else:
             form = UserContactDetailForm(instance=request.user.contactdetail)
@@ -64,7 +64,7 @@ def checkout_contact_page(request):
                 contact_details.user = request.user
                 contact_details.save()
                 messages.success(
-                    request, f'Your contact details have been saved!')
+                    request, "Your contact details have been saved")
                 return redirect(reverse('checkout_passengers'))
         else:
             form = UserContactDetailForm()
@@ -140,7 +140,7 @@ def save_passenger_to_booking(request, id):
         registered_passenger
     )
 
-    messages.success(request, "Passenger saved!")
+    messages.success(request, "Passenger details have been saved")
     return redirect(reverse('checkout_passengers'))
 
 
@@ -179,7 +179,7 @@ def save_user_passenger_to_booking(request, id):
     booking_obj.user_passenger = registered_passenger
     booking_obj.save()
 
-    messages.success(request, "Passenger saved!")
+    messages.success(request, "Passenger details have been saved")
     return redirect(reverse('checkout_passengers'))
 
 
@@ -208,7 +208,7 @@ def checkout_payment_page(request):
                     card=payment_form.cleaned_data['stripe_id']
                 )
             except stripe.error.CardError:
-                messages.error(request, "Your card was declined!")
+                messages.warning(request, "Your card was declined!")
 
             if customer.paid:
                 # Set booking references to status confirmend
@@ -229,16 +229,17 @@ def checkout_payment_page(request):
 
                 messages.success(
                     request,
-                    "Your payment was accepted and your booking is confirmed!"
+                    "Your payment was accepted and your booking is confirmed"
                 )
                 return redirect(reverse('checkout_confirmation'))
             else:
-                messages.error(request, "Unable to take payment")
+                messages.warning(
+                    request, "Sorry, we were unable to take payment")
 
         else:
             print(payment_form.errors)
-            messages.error(
-                request, "We were unable to take a payment with that card!")
+            messages.warning(
+                request, "We were unable to take a payment with that card")
 
     else:
         payment_form = PaymentForm()

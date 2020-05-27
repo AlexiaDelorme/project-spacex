@@ -22,12 +22,12 @@ def contact_page(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             messages.success(
-                request, f'Thank your request was sent!'
+                request, "Thanks, your request was sent to SpaceX"
             )
             return redirect('contact')
         else:
-            messages.error(
-                request, f'Sorry, we were enable to send your request!'
+            messages.warning(
+                request, "Sorry, we were enable to send your request"
             )
 
     else:
