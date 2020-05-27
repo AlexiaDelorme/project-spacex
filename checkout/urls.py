@@ -4,7 +4,8 @@ from .views import (
     checkout_passengers_page,
     save_passenger_to_booking,
     save_user_passenger_to_booking,
-    checkout_payment_page)
+    checkout_payment_page,
+    checkout_confirmation_page)
 
 
 urlpatterns = [
@@ -29,4 +30,9 @@ urlpatterns = [
         name='save_user_passenger'
     ),
     path('payment/', checkout_payment_page, name='checkout_payment'),
+    path(
+        'confirmation/',
+        checkout_confirmation_page,
+        name='checkout_confirmation'
+    ),
 ]

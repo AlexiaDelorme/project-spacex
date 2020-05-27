@@ -227,8 +227,11 @@ def checkout_payment_page(request):
                 # Delete session variable
                 del request.session['booking_references']
 
-                messages.success(request, "You have successfully paid")
-                return redirect(reverse('home'))
+                messages.success(
+                    request,
+                    "Your payment was accepted and your booking is confirmed!"
+                )
+                return redirect(reverse('checkout_confirmation'))
             else:
                 messages.error(request, "Unable to take payment")
 
@@ -248,7 +251,7 @@ def checkout_payment_page(request):
 
     return render(request, "checkout_payment.html", context)
 
-"""
+
 def checkout_confirmation_page(request):
 
     context = {
@@ -256,5 +259,4 @@ def checkout_confirmation_page(request):
         "publishable": settings.STRIPE_PUBLISHABLE
     }
 
-    return render(request, "checkout_payment.html", context)
-"""
+    return render(request, "checkout_confirmation.html", context)
