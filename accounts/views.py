@@ -41,8 +41,10 @@ def signup_page(request):
                 messages.success(request, "Your account has been created")
                 return redirect(reverse('profile'))
             else:
-                messages.error(
-                    request, "We were unable to register your account.")
+                messages.warning(
+                    request, "We were unable to register your account")
+        else:
+            messages.warning(request, "Please correct the error(s) below")
 
     else:
         signup_form = UserSignupForm()
@@ -118,8 +120,10 @@ def create_passenger_details_page(request):
             passenger_details.user = request.user
             passenger_details.save()
             messages.success(
-                request, f'Your passenger details have been saved!')
+                request, "Your passenger details have been saved")
             return redirect('profile')
+        else:
+            messages.warning(request, "Please correct the error(s) below")
     else:
         form = UserPassengerForm()
 
@@ -142,8 +146,10 @@ def create_contact_details_page(request):
             contact_details.user = request.user
             contact_details.save()
             messages.success(
-                request, f'Your contact details have been saved!')
+                request, "Your contact details have been saved")
             return redirect('profile')
+        else:
+            messages.warning(request, "Please correct the error(s) below")
     else:
         form = UserContactDetailForm()
 
@@ -164,8 +170,10 @@ def edit_passenger_details_page(request):
         if form.is_valid():
             form.save()
             messages.success(
-                request, f'Your passenger details have been updated!')
+                request, "Your passenger details have been updated")
             return redirect('profile')
+        else:
+            messages.warning(request, "Please correct the error(s) below")
     else:
         form = UserPassengerForm(instance=request.user.passenger)
 
@@ -192,8 +200,10 @@ def edit_contact_details_page(request):
             u_form.save()
             c_form.save()
             messages.success(
-                request, f'Your contact details have been updated!')
+                request, "Your contact details have been updated")
             return redirect('profile')
+        else:
+            messages.warning(request, "Please correct the error(s) below")
     else:
         u_form = UserUpdateForm(instance=request.user)
         c_form = UserContactDetailForm(instance=request.user.contactdetail)
@@ -216,10 +226,10 @@ def edit_password_page(request):
             user = form.save()
             update_session_auth_hash(request, user)
             messages.success(
-                request, f'Your password has been successfully updated!')
+                request, "Your password has been updated")
             return redirect('profile')
-        # else:
-            # messages.error(request, f'Please correct the error below.')
+        else:
+            messages.warning(request, "Please correct the error(s) below")
     else:
         form = PasswordChangeForm(request.user)
 
