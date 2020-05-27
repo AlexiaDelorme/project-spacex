@@ -14,7 +14,7 @@ import stripe
 
 
 @login_required(redirect_field_name='next')
-def checkout_confirm_page(request):
+def checkout_contact_page(request):
     """Render page to confirm checkout and booker's contact details"""
 
     user = User.objects.get(email=request.user.email)
@@ -75,7 +75,7 @@ def checkout_confirm_page(request):
         "form": form
     }
 
-    return render(request, "checkout_confirm.html", context)
+    return render(request, "checkout_contact.html", context)
 
 
 @login_required
@@ -247,3 +247,14 @@ def checkout_payment_page(request):
     }
 
     return render(request, "checkout_payment.html", context)
+
+"""
+def checkout_confirmation_page(request):
+
+    context = {
+        "page_title": "Confirmation",
+        "publishable": settings.STRIPE_PUBLISHABLE
+    }
+
+    return render(request, "checkout_payment.html", context)
+"""

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    checkout_confirm_page,
+    checkout_contact_page,
     checkout_passengers_page,
     save_passenger_to_booking,
     save_user_passenger_to_booking,
@@ -9,9 +9,9 @@ from .views import (
 
 urlpatterns = [
     path(
-        'confirm/',
-        checkout_confirm_page,
-        name='checkout_confirm'
+        'contact/',
+        checkout_contact_page,
+        name='checkout_contact'
     ),
     path(
         'passengers/',
