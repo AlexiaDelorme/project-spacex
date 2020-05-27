@@ -16,7 +16,7 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-        var inputPassenger = $(this).children("input#passenger").val();
+        var inputPassenger = $(this).find("input#passenger").val();
         var itemId = $(this).attr("id").split("add_")[1];
 
         var url = `/cart/add/${itemId}/`;
