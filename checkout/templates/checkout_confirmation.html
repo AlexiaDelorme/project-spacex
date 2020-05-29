@@ -9,7 +9,7 @@
 <header class="trips-head">
 	<div class="container d-flex align-items-center">
 		<div class="mx-auto text-center">
-			<h1 class="text-light mx-auto my-0">Confirmation</h1>
+			<h1 class="text-light mx-auto my-0"><i class="fas fa-rocket"></i> </h1>
 		</div>
 	</div>
 </header>
@@ -21,39 +21,15 @@
 <!-- Confirmation section -->
 <section class="bg-light">
 	<div class="container pt-5 pb-5">
-		<div class="row mx-auto">
+		<div class="row">
 
             <!-- Confirmation text -->
-            <div class="col-12 col-lg-6 mx-auto">
-
+            <div class="col-12 col-md-10 col-lg-8 mx-auto text-center mt-5 mb-5">
                 <h1 class="mt-3 mb-5">Your trip is confirmed!</h1>
-
-		    </div>
-
-            <!-- Booking recap -->
-            <div class="col-12 col-lg-6 mt-3 mt-lg-0">
-                
-                <h1 class="mt-3 mb-5">Your booking</h1>
-
-                {% if cart_items %}
-
-                    {% for item in cart_items %}
-
-                        <!-- Trip recap -->
-                        {% include 'components/trip_recap.html' %}
-
-                    {% endfor %}
-
-                        <div class="mt-5 mb-3"><hr></div>
-
-                        <!-- Total cart -->
-                        <div class="mt-5 mb-2 text-right">
-                            <h3>TOTAL: € {{ total|intcomma }}</h3>
-                            <p>Tax included</p>
-                        </div>
-
-                {% endif %}
-                
+                <p>We deeply thank your for trusting SpaceX and booking this trip with us. <br>
+                Our team will shortly get in touch with you regarding the preparation of your trip.</p>
+                <p>You can now access your upcoming trip(s) by checking the booking section in your profile.</p>
+                <a href="{% url 'trips_all' %}" class="btn btn-primary mt-5">Browse Trips</a>
             </div>
 
 		</div>
