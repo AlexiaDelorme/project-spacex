@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
 from .models import ContactDetail, Passenger
+from checkout.models import BookingReference
 from .forms import (
     UserLoginForm,
     UserSignupForm,
@@ -239,3 +240,17 @@ def edit_password_page(request):
     }
 
     return render(request, 'profile/edit_password.html', context)
+
+
+@login_required
+def bookings_page(request):
+    """Render list of upcoming and past trips booked by the user"""
+
+    bookings = BookingReference.objects.all().filter(booker=request.user)
+
+    context = {
+        "page_title": "Bookings",
+        "bookings": bookings
+    }
+
+    return render(request, 'profile/bookings.html', context)

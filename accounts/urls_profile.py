@@ -5,7 +5,8 @@ from .views import (
     create_contact_details_page,
     edit_passenger_details_page,
     edit_contact_details_page,
-    edit_password_page
+    edit_password_page,
+    bookings_page
 )
 
 
@@ -31,4 +32,5 @@ urlpatterns = [
         'edit-password/',
         edit_password_page,
         name='edit_password'),
+    path('bookings/', bookings_page, name='bookings'),
 ]
