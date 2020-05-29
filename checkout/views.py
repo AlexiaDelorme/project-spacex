@@ -208,10 +208,10 @@ def checkout_payment_page(request):
                     card=payment_form.cleaned_data['stripe_id']
                 )
             except stripe.error.CardError:
-                messages.warning(request, "Your card was declined!")
+                messages.warning(request, "Your card was declined")
 
             if customer.paid:
-                # Set booking references to status confirmend
+                # Set booking references to status confirmed
                 booking_references = request.session.get(
                     'booking_references', {})
                 for key in booking_references:
@@ -237,7 +237,6 @@ def checkout_payment_page(request):
                     request, "Sorry, we were unable to take payment")
 
         else:
-            print(payment_form.errors)
             messages.warning(
                 request, "We were unable to take a payment with that card")
 
