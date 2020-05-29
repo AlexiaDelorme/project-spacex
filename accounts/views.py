@@ -246,7 +246,8 @@ def edit_password_page(request):
 def bookings_page(request):
     """Render list of upcoming and past trips booked by the user"""
 
-    bookings = BookingReference.objects.all().filter(booker=request.user)
+    bookings = BookingReference.objects.all().filter(
+        booker=request.user, confirmation_status=True)
 
     context = {
         "page_title": "Bookings",
