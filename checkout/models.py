@@ -34,7 +34,6 @@ class OtherPassenger(models.Model):
     birth_year = models.IntegerField()
     citizenship = CountryField()
     passport_id = models.CharField(max_length=30)
-    confirmation_status = models.BooleanField(default=False)
 
     @property
     def birth_date(self):
@@ -47,6 +46,7 @@ class OtherPassenger(models.Model):
 class BookingReference(models.Model):
     booker = models.ForeignKey(User, on_delete=models.PROTECT)
     trip = models.ForeignKey(Trip, on_delete=models.PROTECT)
+    passenger_number = models.PositiveIntegerField()
     user_passenger = models.ForeignKey(
         Passenger, on_delete=models.PROTECT, blank=True, null=True)
     other_passenger = models.ManyToManyField(OtherPassenger, blank=True)
