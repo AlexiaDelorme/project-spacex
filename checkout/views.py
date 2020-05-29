@@ -93,7 +93,8 @@ def checkout_passengers_page(request):
             # Create booking ref object
             booking_obj = BookingReference.objects.create(
                 booker=user,
-                trip=Trip.objects.get(id=id)
+                trip=Trip.objects.get(id=id),
+                passenger_number=cart[id]
             )
             # Get id of this booking ref object
             booking_id = booking_obj.id
@@ -148,8 +149,6 @@ def save_user_passenger_to_booking(request, id):
     """Save passenger details for autehnticated user.
     Then, assign their id to the corresponding booking reference.
     The id corresponds to the trip that the passenger will be registered to."""
-
-    user = User.objects.get(email=request.user.email)
 
     # Check if user already provided passenger details
     try:
