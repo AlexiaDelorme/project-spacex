@@ -279,6 +279,7 @@ To be updated
 - [Datepicker](https://jsbin.com/culagonula/edit?html,js,output)
 - [Timeline](https://bootsnipp.com/tags/timeline/4)
 - [Collapsable](http://jsfiddle.net/hungerpain/eK8X5/7/)
+- [Progress tracker](https://stackoverflow.com/questions/5213753/build-step-progress-bar-css-and-jquery)
 
 <a name="ack"/>
 

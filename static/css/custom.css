@@ -324,6 +324,7 @@ ul.timeline > li:before {
 
  /*
     Progress tracker for checkout
+    <--------------- Code credit: http://jsfiddle.net/kevindmorgan/tuPrn/
  */
 
 .visuallyhidden {
@@ -388,3 +389,6 @@ ul.timeline > li:before {
 .wizard-progress .active-step .step-num {
     background-color:  #64a19d;
 }
+/*
+    <--------------- End of code credit
+*/
