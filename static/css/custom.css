@@ -1,5 +1,5 @@
  /*
-Navbar
+    Navbar
  */
 
 .dropdown-menu.show {
@@ -47,7 +47,7 @@ Navbar
 
 
  /*
- Footer
+    Footer
  */
 
 input#inputEmail {
@@ -67,7 +67,7 @@ input#inputEmail {
 }
 
  /*
-Home
+    Home
  */
 
  .testimony-section hr, .stat-section hr {
@@ -91,7 +91,7 @@ Home
 }
 
  /*
-About
+    About
  */
 
 .about-head {
@@ -109,7 +109,7 @@ About
 }
 
  /*
-Contact
+    Contact
  */
 
  #map {
@@ -125,7 +125,7 @@ Contact
 }
 
  /*
-Trip categories
+    Trip categories
  */
 
  .trips-head {
@@ -149,7 +149,7 @@ Trip categories
 }
 
  /*
-Trip detail 
+    Trip detail 
  */
 
 .trip-img-thumbnail {
@@ -182,7 +182,7 @@ input#datepicker {
 }
 
  /*
-Trip results
+    Trip results
  */
 
 ul.timeline {
@@ -232,7 +232,7 @@ ul.timeline > li:before {
 }
 
  /*
-Trips all
+    Trips all
  */
 
 @media (min-width: 992px) {
@@ -252,7 +252,7 @@ Trips all
 }
 
  /*
-FAQ
+    FAQ
  */
 
 #faq .btn-link {
@@ -271,7 +271,7 @@ FAQ
 }
 
 /*
-Accounts
+    Accounts
  */
 
   .accounts-head {
@@ -284,7 +284,7 @@ Accounts
 }
 
 /*
-Cart
+    Cart
  */
 
 .badge-info {
@@ -306,7 +306,7 @@ Cart
 }
 
 /*
-Checkout
+    Checkout
  */
 
 .btn{
@@ -320,4 +320,71 @@ Checkout
 .card-header.header {
     background-color: #64a19d;
     color: white;
+}
+
+ /*
+    Progress tracker for checkout
+ */
+
+.visuallyhidden {
+    display: none;
+}
+
+.wizard-progress {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+    float: left;
+    white-space: nowrap;
+}
+
+.wizard-progress li {
+    float: left;
+    margin-right: 50px;
+    text-align: center;
+    position: relative;
+    width: 100px;
+}
+
+.wizard-progress .step-name {
+    display: table-cell;
+    height: 32px;
+    vertical-align: bottom;
+    text-align: center;
+    width: 100px;
+}
+
+.wizard-progress .step-name-wrapper {
+    display: table-cell;
+    height: 100%;
+    vertical-align: bottom;
+}
+
+.wizard-progress .step-num {
+    font-size: 14px;
+    font-weight: bold;
+    width: 20px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.wizard-progress .step-num:after {
+    content: "";
+    display: block;
+    background: white;
+    height: 3px;
+    width: 120px;
+    position: absolute;
+    bottom: 10px;
+    left: 65px;
+}
+
+.wizard-progress li:last-of-type .step-num:after {
+    display: none;
+}
+
+.wizard-progress .active-step .step-num {
+    background-color:  #64a19d;
 }
