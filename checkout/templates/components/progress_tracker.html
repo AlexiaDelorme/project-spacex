@@ -1,0 +1,84 @@
+<!-- Progress Tracker -->
+
+{% if checkout_pg == 'contact' %}
+
+<ol class="wizard-progress clearfix">
+    <li class="active-step">
+        <span class="step-name">Contact</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">1</span>
+    </li>
+    <li>
+        <span class="step-name">Passengers</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">2</span>
+    </li>
+    <li>
+        <span class="step-name">Payment</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">3</span>
+    </li>
+    <li>
+        <span class="step-name">Confirmation</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">4</span>
+    </li>
+</ol>
+
+{% elif checkout_pg == 'passengers' %}
+
+<ol class="wizard-progress clearfix">
+    <li class="active-step">
+        <span class="step-name">Contact</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">1</span>
+    </li>
+    <li class="active-step">
+        <span class="step-name">Passengers</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">2</span>
+    </li>
+    <li>
+        <span class="step-name">Payment</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">3</span>
+    </li>
+    <li>
+        <span class="step-name">Confirmation</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">4</span>
+    </li>
+</ol>
+
+{% elif checkout_pg == 'payment' %}
+<ol class="wizard-progress clearfix">
+    <li class="active-step">
+        <span class="step-name">Contact</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">1</span>
+    </li>
+    <li class="active-step">
+        <span class="step-name">Passengers</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">2</span>
+    </li>
+    <li class="active-step">
+        <span class="step-name">Payment</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">3</span>
+    </li>
+    <li>
+        <span class="step-name">Confirmation</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">4</span>
+    </li>
+</ol>
+
+{% else %}
+<ol class="wizard-progress clearfix">
+    <li class="active-step">
+        <span class="step-name">Contact</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">1</span>
+    </li>
+    <li class="active-step">
+        <span class="step-name">Passengers</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">2</span>
+    </li>
+    <li class="active-step">
+        <span class="step-name">Payment</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">3</span>
+    </li>
+    <li class="active-step">
+        <span class="step-name">Confirmation</span>
+        <span class="visuallyhidden">Step </span><span class="step-num">4</span>
+    </li>
+</ol>
+{% endif %}

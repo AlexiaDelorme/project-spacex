@@ -70,7 +70,8 @@ def checkout_contact_page(request):
             form = UserContactDetailForm()
 
     context = {
-        "page_title": "Booker details",
+        "page_title": "Contact details",
+        "checkout_pg": "contact",
         "user": user,
         "form": form
     }
@@ -116,6 +117,7 @@ def checkout_passengers_page(request):
     o_form = OtherPassengerForm()
     context = {
         "page_title": "Passenger details",
+        "checkout_pg": "passengers",
         "user": user,
         "form": form,
         "o_form": o_form
@@ -244,6 +246,7 @@ def checkout_payment_page(request):
 
     context = {
         "page_title": "Payment",
+        "checkout_pg": "payment",
         "form": payment_form,
         "publishable": settings.STRIPE_PUBLISHABLE
     }
@@ -255,6 +258,7 @@ def checkout_confirmation_page(request):
 
     context = {
         "page_title": "Confirmation",
+        "checkout_pg": "confirmation",
         "publishable": settings.STRIPE_PUBLISHABLE
     }
 
