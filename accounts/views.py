@@ -26,7 +26,7 @@ def signup_page(request):
     """Render sign up form page and provide user feedback if needed."""
 
     if request.user.is_authenticated:
-        return redirect(reverse('profile'))
+        return redirect(reverse('login_success'))
 
     if request.method == "POST":
         signup_form = UserSignupForm(request.POST)
@@ -40,7 +40,8 @@ def signup_page(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "Your account has been created")
-                return redirect(reverse('profile'))
+
+                return redirect(reverse('login_success'))
             else:
                 messages.warning(
                     request, "We were unable to register your account")
@@ -255,3 +256,15 @@ def bookings_page(request):
     }
 
     return render(request, 'profile/bookings.html', context)
+
+
+def login_success(request):
+    """
+    Redirects users based on whether they are in the checkout process
+    """
+    if request.session.get('referrer', 'checkout'):
+        # set this back to none so it doesn't always return the checkout
+        request.session['referrer'] = 'none'
+        return redirect(reverse('checkout_contact'))
+    else:
+        return redirect(reverse('profile'))
