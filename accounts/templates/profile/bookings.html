@@ -18,73 +18,96 @@
 		<div class="row mx-auto align-items-center">
 
 			<div class="mx-auto text-center">
-				<h2 class="text-center">Upcoming Trip(s)</h2>
+				<h2 class="text-center">Your Trip(s)</h2>
 			</div>
 
 			<div class="col-12"> 
                 <div class="col-12 col-lg-8 mx-auto">
 
                     <!-- Booking details -->
-                    <div class="card mt-5">
-                        <div class="card-body">
-                            {% if bookings %}
-                                {% for booking in bookings %}
-                                    <div class="d-flex flex-row-reverse bd-highlight">
-                                        <a href="">View details</a>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-12 text-left">
-                                            <div class="col-12">
-                                                <h3 class="font-weight-bold mb-4">Trip to the {{ booking.trip.category.destination }} </h3> 
-                                                <p>Reference: {{ booking.trip.departure_site.site_code }}{{ booking.trip.category.destination_code }}{{ booking.id }}</p>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="card">
+                    {% if bookings %}
 
-                                                    <div class="card-header text-uppercase text-left text-md-center"><img class="spacex-book pb-2 text-right" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ booking.trip.trip_reference }} </div>
+                        {% for booking in bookings %}
+                        <div class="card mt-5">
+                            <div class="card-body">
+                                <div class="d-flex flex-row-reverse bd-highlight">
+                                    <a href="">View details</a>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-12 text-left">
 
-                                                    <div class="card-body">
-                                                        <div class="row">
+                                        <div class="col-12">
+                                            <h3 class="font-weight-bold mb-4">Trip to the {{ booking.trip.category.destination }} </h3>
+                                            <div class="row mb-3">
+                                                <div class="col-12 col-md-6 text-left">
+                                                    <i class="fas fa-user-friends"></i> {{ booking.passenger_number }} Passengers <br>
+                                                    {% if booking.user_passenger %}
+                                                        {{ booking.user_passenger.user.first_name }} {{ booking.user_passenger.user.last_name }} <br>
+                                                    {% else %}
+                                                    {% endif %}
 
-                                                            <div class="col-12 col-md-5 text-left">
-                                                                <h3>{{ booking.trip.departure_site.site_code }}</h3>
-                                                                <p>
-                                                                {{ booking.trip.departure_site }} <br>
-                                                                {{ booking.trip.departure_date }} <br>
-                                                                {{ booking.trip.departure_time|time:"H:i A" }} <br>
-                                                                </p>
-                                                            </div>
-
-                                                            <div class="col-12 col-md-2 text-left text-md-center mt-2 mb-4 mt-md-0 mb-md-0">
-                                                                <i class="fas fa-space-shuttle"></i>
-                                                            </div>
-                                                                
-                                                            <div class="col-12 col-md-5 text-left text-md-right">
-
-                                                                <h3>{{ booking.trip.category.destination_code }}</h3>
-                                                                <p>
-                                                                {{ booking.trip.category.destination }}  <br>
-                                                                {{ booking.trip.return_date }} <br>
-                                                                {{ booking.trip.return_time|time:"H:i A" }} <br> 
-                                                                </p>
-                                                                
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-
+                                                    {%  if booking.other_passenger %}
+                                                        {% for passenger in booking.other_passenger.all %}
+                                                            {{ passenger.first_name }} {{ passenger.last_name }} <br>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                    {% endif %}
+                                                </div>
+                                                <div class="col-12 col-md-6 text-left text-md-right mt-2 mt-md-0">
+                                                    Reference: {{ booking.trip.departure_site.site_code }}{{ booking.trip.category.destination_code }}{{ booking.id }}
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                {% endfor %}
-                            {% else %}
-                                <div class="card-body text-center">You have no upcoming trips for now!</div>
-                            {% endif %}
-                        </div>
-                    </div>
 
-                </div> 
+                                        <div class="col-12">
+                                            <div class="card">
+
+                                                <div class="card-header text-uppercase text-left text-md-center"><img class="spacex-book pb-2 text-right" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ booking.trip.trip_reference }} </div>
+
+                                                <div class="card-body">
+                                                    <div class="row">
+
+                                                        <div class="col-12 col-md-5 text-left">
+                                                            <h3>{{ booking.trip.departure_site.site_code }}</h3>
+                                                            <p>
+                                                            {{ booking.trip.departure_site }} <br>
+                                                            {{ booking.trip.departure_date }} <br>
+                                                            {{ booking.trip.departure_time|time:"H:i A" }} <br>
+                                                            </p>
+                                                        </div>
+
+                                                        <div class="col-12 col-md-2 text-left text-md-center mt-2 mb-4 mt-md-0 mb-md-0">
+                                                            <i class="fas fa-space-shuttle"></i>
+                                                        </div>
+                                                            
+                                                        <div class="col-12 col-md-5 text-left text-md-right">
+
+                                                            <h3>{{ booking.trip.category.destination_code }}</h3>
+                                                            <p>
+                                                            {{ booking.trip.category.destination }}  <br>
+                                                            {{ booking.trip.return_date }} <br>
+                                                            {{ booking.trip.return_time|time:"H:i A" }} <br> 
+                                                            </p>
+                                                            
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    {% else %}
+                        <div class="card-body text-center">You have no upcoming trips for now!</div>
+                    {% endif %}
+                    
+                </div>
 			</div>
 
 		</div>
