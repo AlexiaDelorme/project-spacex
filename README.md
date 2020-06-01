@@ -280,9 +280,10 @@ To be updated
 - [Timeline](https://bootsnipp.com/tags/timeline/4)
 - [Collapsable](http://jsfiddle.net/hungerpain/eK8X5/7/)
 - [Progress tracker](https://stackoverflow.com/questions/5213753/build-step-progress-bar-css-and-jquery)
+- [Login success view](https://stackoverflow.com/questions/16824004/django-conditional-login-redirect/16824337#16824337)
 
 <a name="ack"/>
 
 ### Acknowledgements
-- My Code Institute mentor, Nishant Kumar, for his patience and great support throughout this project! 
-- xx
+- My Code Institute mentor, Nishant Kumar, for his patience and great support throughout this project.
+- Kevin from the Code Institute Tutor Team for helping me set up a "login success" view to enable users to be redirected back to the checkout page if they had to register to an account.
