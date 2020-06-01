@@ -2,19 +2,22 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from checkout.models import BookingReference
 
-# Create your views here.
-
 
 def view_cart(request):
     """Render the cart content page and empty session variable
     'booking_references' in case user interrupted checkout process"""
+
+    # Check if user authenticated and if not set referrer to checkout
+    if not request.user.is_authenticated:
+        request.session['referrer'] = 'checkout'
 
     # Clear existing booking references
     if 'booking_references' in request.session:
         booking_references = request.session['booking_references']
         for key in booking_references:
             # Delete booking ref object
-            BookingReference.objects.filter(id=booking_references[key]).delete()
+            BookingReference.objects.filter(
+                id=booking_references[key]).delete()
         # Delete session variable
         del request.session['booking_references']
 
