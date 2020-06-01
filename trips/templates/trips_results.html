@@ -23,57 +23,62 @@
 
 		<div class="row mx-auto">
             {% for trip in trips %}
-			<div class="col-12 col-lg-9 mx-auto mb-5">
-				<div class="card">
+                <div class="col-12 col-lg-9 mx-auto mb-5">
+                    <div class="card">
 
-					<div class="card-header text-uppercase">
-						Round Trip Ticket
-					</div>
-
-					<div class="card-body">
-                        <div class="row">
-
-                            <div class="col-12 col-md-8 mb-3">
-                                <ul class="timeline">
-                                    <li>
-                                        <p class="card-text">{{ trip.departure_site }} ({{ trip.departure_site.site_code }})</p>
-                                        <p class="card-text">
-                                            <i class="fas fa-space-shuttle"></i> Departs<br>
-                                            {{ trip.departure_date }} - {{ trip.departure_time|time:"H:i A" }}
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="card-text">{{ trip.category.destination }} ({{ trip.category.destination_code }})</p>
-                                        <p class="card-text">
-                                            <i class="fas fa-space-shuttle"></i> Returns<br>
-                                            {{ trip.return_date }} - {{ trip.departure_time|time:"H:i A" }}
-                                        </p>
-                                    </li>
-                                </ul>
-                                <div class="mt-5 col-12 text-left">
-                                    <img class="spacex-book pb-2" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ trip.trip_reference }}
-                                </div>
-                            </div>
-                                
-                            <div class="col-12 col-md-4 text-left text-md-right mt-3 mb-3 pl-5 pl-md-0 pr-0 pr-md-5">
-                                <img class="trip-img-thumbnail img-display mb-3" src="{{ trip.category.img.all.0.img_file.url }}" alt="{{ trip.category.img.all.0.img_name }}">
-                                <p class="card-text">
-                                    <i class="fas fa-user-friends"></i> {{ passenger_number}} passenger(s) <br>
-                                    € {{ trip_price|intcomma }}
-                                </p>
-                                <form class="add-to-cart" method="POST" id="add_{{trip.id}}">
-                                    {% csrf_token %}
-                                    <input id="passenger" name="passenger" type="hidden" value="{{ passenger_number }}">
-                                    <button type="submit" class="btn btn-primary btn-cart">Book trip</button>
-                                </form>
-
-                            </div>
-                            	
+                        <div class="card-header text-uppercase">
+                            Round Trip Ticket
                         </div>
-					</div>
 
-				</div>
-			</div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-12 col-md-8 mb-3">
+                                    <ul class="timeline">
+                                        <li>
+                                            <p class="card-text">{{ trip.departure_site }} ({{ trip.departure_site.site_code }})</p>
+                                            <p class="card-text">
+                                                <i class="fas fa-space-shuttle"></i> Departs<br>
+                                                {{ trip.departure_date }} - {{ trip.departure_time|time:"H:i A" }}
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="card-text">{{ trip.category.destination }} ({{ trip.category.destination_code }})</p>
+                                            <p class="card-text">
+                                                <i class="fas fa-space-shuttle"></i> Returns<br>
+                                                {{ trip.return_date }} - {{ trip.departure_time|time:"H:i A" }}
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <div class="mt-5 col-12 text-left">
+                                        <img class="spacex-book pb-2" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ trip.trip_reference }}
+                                    </div>
+                                </div>
+                                    
+                                <div class="col-12 col-md-4 text-left text-md-right mt-3 mb-3 pl-5 pl-md-0 pr-0 pr-md-5">
+                                    <img class="trip-img-thumbnail img-display mb-3" src="{{ trip.category.img.all.0.img_file.url }}" alt="{{ trip.category.img.all.0.img_name }}">
+                                    <p class="card-text">
+                                        <i class="fas fa-user-friends"></i> {{ passenger_number}} passenger(s) <br>
+                                        € {{ trip_price|intcomma }}
+                                    </p>
+                                    <form class="add-to-cart" method="POST" id="add_{{trip.id}}">
+                                        {% csrf_token %}
+                                        <input id="passenger" name="passenger" type="hidden" value="{{ passenger_number }}">
+                                        <button type="submit" class="btn btn-primary btn-cart">Book trip</button>
+                                    </form>
+
+                                </div>
+                                    
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12 col-md-10 col-lg-8 mx-auto text-center mt-5 mb-5">
+                    <h4>Sorry, there are no trips available for your search.</h4>
+                    <a href="{% url 'trips_all' %}" class="btn btn-primary mt-5">New Search</a>
+                </div>
             {% endfor %}
 		</div>
 
