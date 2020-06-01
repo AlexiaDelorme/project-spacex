@@ -4,8 +4,6 @@ from trips.models import Trip
 from accounts.models import Passenger
 from django_countries.fields import CountryField
 
-# Create your models here.
-
 
 class OtherPassenger(models.Model):
 

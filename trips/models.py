@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-import os
 from django.db import models
-from django.conf import settings
 from django_countries.fields import CountryField
 from datetime import timedelta
 
