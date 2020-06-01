@@ -260,10 +260,10 @@ def bookings_page(request):
 
 def login_success(request):
     """
-    Redirects users based on whether they are in the checkout process
+    Redirects users based on whether they are about to checkout
     """
     if request.session.get('referrer', 'checkout'):
-        # set this back to none so it doesn't always return the checkout
+        # Set this back to none so it doesn't always return the checkout
         request.session['referrer'] = 'none'
         return redirect(reverse('checkout_contact'))
     else:
