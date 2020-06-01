@@ -12,7 +12,7 @@ class DepartureSite(models.Model):
         ordering = ['country']
 
     def __str__(self):
-        return f"{self.site_name}, {self.country}"
+        return f"{self.site_name}, {self.country.name}"
 
 
 class RequiredDocument(models.Model):
