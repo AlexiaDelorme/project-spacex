@@ -147,6 +147,9 @@ input#inputEmail {
     z-index: 50;
     position: relative;
 }
+.class-margin-bottom{
+    margin-bottom: 5rem!important;
+}
 
  /*
     Trip detail 

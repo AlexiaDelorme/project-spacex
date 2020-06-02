@@ -23,7 +23,7 @@
 
             {% if forloop.counter|divisibleby:2 %}
                 <!-- Trip card - even -->
-                <div class="row justify-content-center no-gutters mb-5">
+                <div class="row justify-content-center no-gutters class-margin-bottom">
                     <div class="col-lg-8">
                         <img class="img-fluid" src="{{ trip.img.all.0.img_file.url }}" alt="{{ trip.img.all.0.img_name }}">
                         <a href="{% url 'trip_detail' trip.id %}" class="d-none d-md-block btn btn-light btn-book float-right mr-5" role="button">Trip Details</a>
@@ -50,7 +50,7 @@
 
 		    {% else %}
                 <!-- Trip card - odd -->
-                <div class="row justify-content-center no-gutters mb-5">
+                <div class="row justify-content-center no-gutters class-margin-bottom">
                     <div class="col-lg-8">
                         <img class="img-fluid" src="{{ trip.img.all.0.img_file.url }}" alt="{{ trip.img.all.0.img_name }}">
                         <a href="{% url 'trip_detail' trip.id %}" class="d-none d-md-block btn btn-light btn-book float-left ml-5" role="button">Trip Details</a>
