@@ -32,7 +32,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get('HOSTNAME'),
-    'localhost'
+    'localhost',
+    'project-spacex.herokuapp.com/'
 ]
 
 
