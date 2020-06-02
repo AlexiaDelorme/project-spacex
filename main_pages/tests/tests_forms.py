@@ -11,4 +11,10 @@ class TestContactForm(TestCase):
     def test_correct_message_for_missing_field(self):
         form = ContactForm({'first': ''})
         self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors['first'], [f'This field is required.'])
+        self.assertIn('first', form.errors.keys())
+        self.assertEqual(form.errors['first'][0], 'This field is required.')
+
+    def test_fields_are_explicit_in_form_metaclass(self):
+        form = ContactForm()
+        self.assertEqual(form.Meta.fields, [
+                         'subject', 'first', 'last', 'email', 'message'])
