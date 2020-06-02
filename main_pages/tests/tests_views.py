@@ -21,7 +21,7 @@ class TestMainPageViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'contact.html')
         self.assertEqual(type(contact_form), ContactForm)
-        # Testing post request
+        # Testing successful post request
         post_form = {
             'subject': 'Information Request',
             'first': 'Test',
@@ -31,6 +31,16 @@ class TestMainPageViews(TestCase):
         }
         post_response = self.client.post('/main/contact/', post_form)
         self.assertRedirects(post_response, '/main/contact/')
+        # Testing failed post request
+        post_form = {
+            'subject': 'Information Request',
+            'first': '',
+        }
+        post_response = self.client.post('/main/contact/', post_form)
+        messages = list(post_response.context['messages'])
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(
+            str(messages[0]), 'Sorry, we were enable to send your request')
 
     def test_get_scientists_page(self):
         response = self.client.get('/main/scientists/')
