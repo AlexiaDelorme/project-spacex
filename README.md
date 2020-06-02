@@ -2,14 +2,11 @@
 
 # [SpaceX]()
 
-Project currently under early stage of development. 
-
 ## Table of Contents
 1. [UX](#ux)
     - [User Stories](#user-stories)
     - [Design](#design)
     - [Wireframes](#wireframes)
-    - [Flowchart](#flowchart)
     - [Database structure](#db)
 
 2. [Features](#features)
@@ -88,10 +85,6 @@ You can find all my wireframes below:
 - Home page
 - ...
 
-<a name="flowchart"/>
-
-## Flowchart
-
 <a name="db"/>
 
 ## Database structure
@@ -140,11 +133,8 @@ You can find all my wireframes below:
 
 ## Libraries
 
-##### [Django](https://www.djangoproject.com)
-- I used Django as my Python framework to build this website. 
-
-##### [Jinja](https://jinja.palletsprojects.com/en/2.10.x/)
-- ?
+##### [Django 3](https://www.djangoproject.com)
+- I used Django 3 as my Python framework to build this website. 
 
 ##### [Bootstrap](https://getbootstrap.com/)
 - I used Bootstrap as the main framework for HTML.
@@ -162,9 +152,6 @@ You can find all my wireframes below:
 
 ## Tools
 
-##### [draw.io](https://www.draw.io#)
-- I used this diagram tool to structure my data flow during the planning phase of this project.
-
 ##### [Balsamiq](https://balsamiq.com/) 
 - I used Balsamiq to design my wireframes during the planning phase of this project.
 
@@ -172,8 +159,8 @@ You can find all my wireframes below:
 - During this project, I migrated to Gitpod as my credentials for AWS Cloud 9 expired.
 - I therefore completed this project using Gitpod IDE. 
 
-##### [Postgres or MySQL]()
-- ?
+##### [Postgres]()
+- 
 
 ##### [Git & GitHub](https://github.com/)
 - I used Git for version control. 
@@ -260,7 +247,7 @@ To be updated
 <a name="content"/>
 
 ### Content
-- xx
+- 
 
 <a name="media"/>
 
