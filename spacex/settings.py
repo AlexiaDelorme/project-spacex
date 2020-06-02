@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    os.environ.get('HEROKU_HOSTNAME'),
+    os.environ.get('HOSTNAME'),
     'localhost',
 ]
 
@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'spacex.wsgi.application'
 if "DATABASE_URL" in os.environ:
     print("Postgres URL found, using it as db")
     DATABASES = {
-        "default": dj_database_url.parse(os.getenv("DATABASE_URL"))
+        "default": dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
     print("Postgres URL not found, using sqlite3 instead")
