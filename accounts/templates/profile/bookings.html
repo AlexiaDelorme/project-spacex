@@ -30,8 +30,8 @@
                         {% for booking in bookings %}
                         <div class="card mt-5">
                             <div class="card-body">
-                                <div class="d-flex flex-row-reverse bd-highlight">
-                                    <a href="">View details</a>
+                                <div class="d-flex flex-row-reverse booking-ref-class">
+                                    Ref: {{ booking.trip.departure_site.site_code }}{{ booking.trip.category.destination_code }}{{ booking.id }}
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-12 text-left">
@@ -54,7 +54,7 @@
                                                     {% endif %}
                                                 </div>
                                                 <div class="col-12 col-md-6 text-left text-md-right mt-2 mt-md-0">
-                                                    Reference: {{ booking.trip.departure_site.site_code }}{{ booking.trip.category.destination_code }}{{ booking.id }}
+                                                    Booked on "add order date on model"
                                                 </div>
                                             </div>
                                         </div>

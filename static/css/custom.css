@@ -395,3 +395,12 @@ ul.timeline > li:before {
 /*
     <--------------- End of code credit
 */
+
+/*
+    Bookings
+*/
+
+.booking-ref-class{
+    color: #64a19d;
+    font-weight: 600;
+}
