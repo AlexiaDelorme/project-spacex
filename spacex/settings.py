@@ -91,6 +91,7 @@ WSGI_APPLICATION = 'spacex.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 if "DATABASE_URL" in os.environ:
+    print("Postgres URL found, using it as db")
     DATABASES = {
         "default": dj_database_url.parse(os.getenv("DATABASE_URL"))
     }
