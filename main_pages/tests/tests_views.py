@@ -34,5 +34,7 @@ class TestMainPageViews(TestCase):
 
     def test_get_scientists_page(self):
         response = self.client.get('/main/scientists/')
+        context = response.context['page_title']
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'scientists.html')
+        self.assertEqual(context, 'Scientific services')
