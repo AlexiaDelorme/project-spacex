@@ -32,6 +32,7 @@ def contact_page(request):
 
     else:
         form = ContactForm()
+
     emailjs_user = settings.EMAILJS_USER
     google_api_key = settings.GOOGLE_API_KEY
     context = {
@@ -44,6 +45,9 @@ def contact_page(request):
 
 
 def scientists_page(request):
-    """Render information for scientists regarding research trips and flights"""
+    """Render information regarding scientific research trips"""
 
-    return render(request, "scientists.html", {"page_title": "Scientific services"})
+    context = {
+        "page_title": "Scientific services"
+    }
+    return render(request, "scientists.html", context)
