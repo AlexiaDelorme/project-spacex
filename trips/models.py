@@ -18,6 +18,9 @@ class DepartureSite(models.Model):
 class RequiredDocument(models.Model):
     name = models.CharField(max_length=100)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
         return self.name
 
@@ -47,6 +50,9 @@ class TripCategory(models.Model):
     required_document = models.ManyToManyField(RequiredDocument)
     img = models.ManyToManyField(TripImage)
 
+    class Meta:
+        ordering = ['destination']
+
     def __str__(self):
         return self.destination
 
@@ -58,6 +64,9 @@ class Trip(models.Model):
     departure_time = models.TimeField()
     return_time = models.TimeField()
     slot = models.IntegerField()
+
+    class Meta:
+        ordering = ['departure_date']
 
     @property
     def return_date(self):
