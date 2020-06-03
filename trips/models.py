@@ -34,6 +34,9 @@ class TripImage(models.Model):
 
 
 class TripCategory(models.Model):
+    class Meta:
+        verbose_name_plural = 'Trip Categories'
+
     title = models.CharField(max_length=50)
     destination = models.CharField(max_length=50)
     destination_code = models.CharField(max_length=30)
