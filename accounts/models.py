@@ -14,6 +14,10 @@ class ContactDetail(models.Model):
     town_or_city = models.CharField(max_length=40)
     country = CountryField()
 
+    @property
+    def full_name(self):
+        return f"{self.user.first_name} {self.user.last_name}"
+    
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name}"
 
@@ -49,6 +53,10 @@ class Passenger(models.Model):
     @property
     def birth_date(self):
         return f"{self.birth_month} {self.birth_day}, {self.birth_year}"
+    
+    @property
+    def full_name(self):
+        return f"{self.user.first_name} {self.user.last_name}"
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name}"
