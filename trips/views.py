@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
 from .models import Trip, TripCategory, DepartureSite
 from .forms import TripSearchForm, AllTripSearchForm
 from datetime import datetime, date
+from django.core.paginator import Paginator
 
 
 def faq_page(request):
@@ -58,11 +56,16 @@ def trips_results_page(request, pk):
         departure_date__gte=(departure_date)
     )
 
+    # Set pagination for trips results
+    paginator = Paginator(trips, 5) # Show 5 trips per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     trip_price = (trip_category.price)*passenger_number
 
     context = {
         "page_title": "Results",
-        "trips": trips,
+        "page_obj": page_obj,
         "passenger_number": passenger_number,
         "trip_price": trip_price,
     }
@@ -92,11 +95,16 @@ def trips_all_page(request):
             departure_date__gte=(departure_date)
         )
 
+        # Set pagination for trips results
+        paginator = Paginator(trips, 5) # Show 5 trips per page.
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
         trip_price = (trip_category.price)*passenger_number
 
         context = {
             "page_title": "Search all",
-            "trips": trips,
+            "page_obj": page_obj,
             "trip_categories": trip_categories,
             "form": form,
             "passenger_number": passenger_number,
@@ -106,12 +114,19 @@ def trips_all_page(request):
             request, "Please, see below the result(s) for your search")
 
     else:
+
         trips = Trip.objects.all()
+
+        # Set pagination for trips results
+        paginator = Paginator(trips, 5) # Show 5 trips per page.
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
         form = AllTripSearchForm()
 
         context = {
             "page_title": "Search all",
-            "trips": trips,
+            "page_obj": page_obj,
             "trip_categories": trip_categories,
             "form": form
         }
