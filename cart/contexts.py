@@ -24,7 +24,7 @@ def cart_contents(request):
             'passenger_range': passenger_range,
             'sub_total': sub_total
         })
-    
+
     return {
         'cart_items': cart_items,
         'total': total,

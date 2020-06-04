@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 from .models import ContactDetail, Passenger
 from checkout.models import BookingReference
 from .forms import (
-    UserLoginForm,
     UserSignupForm,
     UserContactDetailForm,
     UserUpdateForm,
@@ -253,18 +252,17 @@ def bookings_page(request):
     upcoming_bookings = BookingReference.objects.all().filter(
         booker=request.user,
         confirmation_status=True,
-        trip__departure_date__gte=today)#.order_by('order_date')
+        trip__departure_date__gte=today)  # .order_by('order_date')
 
     passed_bookings = BookingReference.objects.all().filter(
         booker=request.user,
         confirmation_status=True,
-        trip__departure_date__lt=today)#.order_by('order_date')
+        trip__departure_date__lt=today)  # .order_by('order_date')
 
     context = {
         "page_title": "Bookings",
         "upcoming_bookings": upcoming_bookings,
         "passed_bookings": passed_bookings,
-
     }
 
     return render(request, 'profile/bookings.html', context)

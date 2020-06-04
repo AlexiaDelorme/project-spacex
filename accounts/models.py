@@ -17,7 +17,7 @@ class ContactDetail(models.Model):
     @property
     def full_name(self):
         return f"{self.user.first_name} {self.user.last_name}"
-    
+
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name}"
 
@@ -53,7 +53,7 @@ class Passenger(models.Model):
     @property
     def birth_date(self):
         return f"{self.birth_month} {self.birth_day}, {self.birth_year}"
-    
+
     @property
     def full_name(self):
         return f"{self.user.first_name} {self.user.last_name}"

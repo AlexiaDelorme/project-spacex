@@ -10,8 +10,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 import stripe
 
-# Create your views here.
-
 
 @login_required(redirect_field_name='next')
 def checkout_contact_page(request):

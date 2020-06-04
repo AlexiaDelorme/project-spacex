@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import ContactDetail, Passenger
 
-# Register your models here.
+
 class ContactAdmin(admin.ModelAdmin):
     list_display = (
         'user',
@@ -11,6 +11,7 @@ class ContactAdmin(admin.ModelAdmin):
     )
 
     ordering = ('user',)
+
 
 class PassengerAdmin(admin.ModelAdmin):
     list_display = (
@@ -24,5 +25,6 @@ class PassengerAdmin(admin.ModelAdmin):
     ordering = ('user',)
 
 
+# Register your models here.
 admin.site.register(ContactDetail, ContactAdmin)
 admin.site.register(Passenger, PassengerAdmin)

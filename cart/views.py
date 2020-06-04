@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse
-from django.contrib import auth, messages
+from django.contrib import messages
 from checkout.models import BookingReference
 
 

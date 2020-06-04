@@ -1,8 +1,7 @@
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
-from .models import Trip, TripCategory, DepartureSite
+from .models import Trip, TripCategory
 from .forms import TripSearchForm, AllTripSearchForm
-from datetime import datetime, date
 from django.core.paginator import Paginator
 
 
@@ -40,7 +39,7 @@ def trip_detail_page(request, pk):
 
 
 def trips_results_page(request, pk):
-    """Display trips matching the criteria provided by the user in their form"""
+    """Display trips matching the criteria provided in the form"""
 
     # Load fields provided in the form
     form = request.POST
@@ -57,7 +56,7 @@ def trips_results_page(request, pk):
     )
 
     # Set pagination for trips results
-    paginator = Paginator(trips, 5) # Show 5 trips per page.
+    paginator = Paginator(trips, 5)  # Show 5 trips per page.
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -96,7 +95,7 @@ def trips_all_page(request):
         )
 
         # Set pagination for trips results
-        paginator = Paginator(trips, 5) # Show 5 trips per page.
+        paginator = Paginator(trips, 5)  # Show 5 trips per page.
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
@@ -118,7 +117,7 @@ def trips_all_page(request):
         trips = Trip.objects.all()
 
         # Set pagination for trips results
-        paginator = Paginator(trips, 5) # Show 5 trips per page.
+        paginator = Paginator(trips, 5)  # Show 5 trips per page.
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 

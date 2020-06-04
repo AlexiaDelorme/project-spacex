@@ -5,7 +5,8 @@ from .views import (
     save_passenger_to_booking,
     save_user_passenger_to_booking,
     checkout_payment_page,
-    checkout_confirmation_page)
+    checkout_confirmation_page
+)
 
 
 urlpatterns = [
