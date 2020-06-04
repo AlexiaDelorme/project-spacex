@@ -13,6 +13,7 @@ from .forms import (
     UserPassengerForm
 )
 from django.contrib.auth.forms import PasswordChangeForm
+from datetime import date
 
 
 @login_required
@@ -247,12 +248,23 @@ def edit_password_page(request):
 def bookings_page(request):
     """Render list of upcoming and past trips booked by the user"""
 
-    bookings = BookingReference.objects.all().filter(
-        booker=request.user, confirmation_status=True)
+    today = date.today()
+
+    upcoming_bookings = BookingReference.objects.all().filter(
+        booker=request.user,
+        confirmation_status=True,
+        trip__departure_date__gte=today)#.order_by('order_date')
+
+    passed_bookings = BookingReference.objects.all().filter(
+        booker=request.user,
+        confirmation_status=True,
+        trip__departure_date__lt=today)#.order_by('order_date')
 
     context = {
         "page_title": "Bookings",
-        "bookings": bookings
+        "upcoming_bookings": upcoming_bookings,
+        "passed_bookings": passed_bookings,
+
     }
 
     return render(request, 'profile/bookings.html', context)
