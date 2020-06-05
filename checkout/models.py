@@ -48,6 +48,7 @@ class BookingReference(models.Model):
     user_passenger = models.ForeignKey(
         Passenger, on_delete=models.PROTECT, blank=True, null=True)
     other_passenger = models.ManyToManyField(OtherPassenger, blank=True)
+    order_date = models.DateField(blank=True, null=True)
     confirmation_status = models.BooleanField(default=False)
 
     def __str__(self):

@@ -7,6 +7,7 @@ from trips.models import Trip
 from accounts.forms import UserContactDetailForm, UserPassengerForm
 from .forms import OtherPassengerForm, PaymentForm
 from django.contrib.auth.decorators import login_required
+from datetime import datetime 
 from django.contrib import messages
 import stripe
 
@@ -219,6 +220,7 @@ def checkout_payment_page(request):
                         id=booking_references[key]
                     )
                     booking_obj.confirmation_status = True
+                    booking_obj.order_date = datetime.now()
                     booking_obj.save()
 
                 # Empty cart
