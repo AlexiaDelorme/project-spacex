@@ -7,7 +7,7 @@ from trips.models import Trip
 from accounts.forms import UserContactDetailForm, UserPassengerForm
 from .forms import OtherPassengerForm, PaymentForm
 from django.contrib.auth.decorators import login_required
-from datetime import datetime 
+from datetime import datetime
 from django.contrib import messages
 import stripe
 
@@ -15,6 +15,10 @@ import stripe
 @login_required(redirect_field_name='next')
 def checkout_contact_page(request):
     """Render page to confirm checkout and booker's contact details"""
+
+    # Redirect users to cart if they try to access this page with an empty cart
+    if not request.session.get('cart'):
+        return redirect('view_cart')
 
     user = User.objects.get(email=request.user.email)
 
@@ -28,9 +32,6 @@ def checkout_contact_page(request):
                 id=booking_references[key]).delete()
         # Delete session variable
         del request.session['booking_references']
-        print("booking references session existed and was successfully deleted")
-    else:
-        print("no existing booking references in session var")
 
     # Check if user already provided contact details
     try:
@@ -80,8 +81,12 @@ def checkout_contact_page(request):
 
 @login_required
 def checkout_passengers_page(request):
-    """Create booking reference for each trip in cart.
-    Render page to provide passengers details"""
+    """Create booking reference for each trip in cart. Render page to provide
+    passengers details"""
+
+    # Redirect users to cart if they try to access this page with an empty cart
+    if not request.session.get('cart'):
+        return redirect('view_cart')
 
     user = User.objects.get(email=request.user.email)
 
@@ -125,10 +130,11 @@ def checkout_passengers_page(request):
     return render(request, "checkout_passengers.html", context)
 
 
+@login_required
 def save_passenger_to_booking(request, id):
-    """Temporarily save passenger as object in the db.
-    Then, assign their id to the corresponding booking reference.
-    The id corresponds to the trip that the passenger will be registered to."""
+    """Temporarily save passenger as object in the db. Then, assign their id
+    to the corresponding booking reference. The id corresponds to the trip that
+    the passenger will be registered to."""
 
     # Save passenger form
     passenger_form = OtherPassengerForm(request.POST)
@@ -146,10 +152,11 @@ def save_passenger_to_booking(request, id):
     return redirect(reverse('checkout_passengers'))
 
 
+@login_required
 def save_user_passenger_to_booking(request, id):
-    """Save passenger details for autehnticated user.
-    Then, assign their id to the corresponding booking reference.
-    The id corresponds to the trip that the passenger will be registered to."""
+    """Save passenger details for autehnticated user. Then, assign their id
+    to the corresponding booking reference. The id corresponds to the trip
+    that the passenger will be registered to."""
 
     # Check if user already provided passenger details
     try:
@@ -186,7 +193,12 @@ def save_user_passenger_to_booking(request, id):
 stripe.api_key = settings.STRIPE_SECRET
 
 
+@login_required
 def checkout_payment_page(request):
+
+    # Redirect users to cart if they try to access this page with an empty cart
+    if not request.session.get('cart'):
+        return redirect('view_cart')
 
     if request.method == "POST":
 
@@ -254,7 +266,12 @@ def checkout_payment_page(request):
     return render(request, "checkout_payment.html", context)
 
 
+@login_required
 def checkout_confirmation_page(request):
+
+    # Redirect users to cart if they try to access this page with an empty cart
+    if not request.session.get('cart'):
+        return redirect('view_cart')
 
     context = {
         "page_title": "Confirmation",
