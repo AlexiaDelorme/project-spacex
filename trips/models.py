@@ -66,7 +66,7 @@ class Trip(models.Model):
     slot = models.IntegerField()
 
     class Meta:
-        ordering = ['departure_date']
+        ordering = ['-departure_date']
 
     @property
     def return_date(self):
