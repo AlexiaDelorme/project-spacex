@@ -72,6 +72,7 @@ class Trip(models.Model):
     def return_date(self):
         return self.departure_date + timedelta(days=self.category.duration)
 
+    @property
     def trip_reference(self):
         return f"SPX{self.id}"
 
