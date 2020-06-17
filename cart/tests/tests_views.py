@@ -29,33 +29,20 @@ class TestCartViewPage(TestCase):
 
         self.assertEqual(session['referrer'], 'checkout')
 
-    def test_cart_page_session_logged_in(self):
-        """Test that session variable 'referrer' is empty when user is logged
-        in."""
-
-        # Log in dummy user
-        client = Client()
-        logged_in = client.login(username='test', password='12345678')
-
-        self.client.get('/cart/')
-        session = self.client.session
-
-        self.assertTrue(logged_in)
-        # Test block failing
-        # self.assertNotIn('referrer', session, msg=None)
-
     def test_booking_references_session_variable(self):
         """Test booking_references session variable being deleted if it already
         exists in the view."""
 
-        self.client.get('/cart/')
-        session = self.client.session
-
         # manually sets booking_references session variable
+        session = self.client.session
         session['booking_references'] = {'1': '1', '2': '2'}
         session.save()
 
-        self.assertEqual(session['booking_references'], {'1': '1', '2': '2'})
+        # check if session var being deleted when user gets to cart url
+        self.client.get('/cart/')
+        session = self.client.session
+
+        self.assertNotIn('booking_references', session, msg=None)
 
 
 class TestAddToCartView(TestCase):
@@ -91,6 +78,7 @@ class TestAddToCartView(TestCase):
         expected_cart = {str(self.trip_1.id): 2}
         # messages = list(response.context['messages'])
 
+        # add item to cart
         self.assertEqual(session['cart'], expected_cart)
         self.assertEqual(response.status_code,  302)
         self.assertEqual(response.url, "/cart/")
@@ -104,10 +92,11 @@ class TestAddToCartView(TestCase):
         session['cart'] = {'1': 1}
         session.save()
 
-        # add item to the cart
+        # add item to cart and amend passenger number
         url = "/cart/add/" + str(self.trip_1.id) + "/"
         response = self.client.post(url, {'passenger': '3'})
         expected_cart = {str(self.trip_1.id): 3}
+        session = self.client.session
 
         self.assertEqual(session['cart'], expected_cart)
         self.assertEqual(response.status_code,  302)
@@ -138,13 +127,15 @@ class TestAdjustCartView(TestCase):
             departure_date='2020-07-15', departure_time='06:00:00',
             return_time='12:00:00', slot='15'
         )
+
+    def test_adjust_cart(self):
+
         # manually sets cart session variable
         session = self.client.session
         session['cart'] = {'1': 1}
         session.save()
 
-    def test_adjust_cart(self):
-
+        # adjust passenger number in cart
         url = "/cart/adjust/" + str(self.trip_1.id) + "/"
         response = self.client.post(url, {'passenger': '3'})
         session = self.client.session
@@ -156,20 +147,32 @@ class TestAdjustCartView(TestCase):
 
     def test_adjust_cart_passenger_equals_0(self):
 
+        # manually sets cart session variable
+        session = self.client.session
+        session['cart'] = {'1': 1}
+        session.save()
+
+        # adjust passenger to 0
         url = "/cart/adjust/" + str(self.trip_1.id) + "/"
         response = self.client.post(url, {'passenger': '0'})
         session = self.client.session
 
-        self.assertNotIn('cart', session, msg=None)
+        self.assertEqual(session['cart'], {})
         self.assertEqual(response.status_code,  302)
         self.assertEqual(response.url, "/cart/")
 
     def test_remove_from_cart(self):
 
+        # manually sets cart session variable
+        session = self.client.session
+        session['cart'] = {'1': 1}
+        session.save()
+
+        # removes item from cart
         url = "/cart/remove/" + str(self.trip_1.id) + "/"
         response = self.client.post(url)
         session = self.client.session
 
-        self.assertNotIn('cart', session, msg=None)
+        self.assertEqual(session['cart'], {})
         self.assertEqual(response.status_code,  302)
         self.assertEqual(response.url, "/cart/")
