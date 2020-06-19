@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block header %}
 <!-- Header -->
@@ -27,7 +28,7 @@
 				</p>
 			</div>
 		</div>
-		<img src="static/img/nasa-eva.png" class="img-fluid" alt="Nasa Astronaut">
+		<img src="{% static 'img/nasa-eva.png' %}" class="img-fluid" alt="Nasa Astronaut">
     </div>
 </section>
 
@@ -38,7 +39,7 @@
 		<!-- Trips for individuals -->
 		<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
 			<div class="col-lg-6">
-				<img class="img-fluid" src="static/img/iss-nasa.jpg" alt="">
+				<img class="img-fluid" src="{% static 'img/iss-nasa.jpg' %}" alt="Individuals">
             </div>
 			<div class="col-lg-6">
 				<div class="bg-black text-center h-100 project">
@@ -62,7 +63,7 @@
 		<!-- Trips for scientists -->
 		<div class="row justify-content-center no-gutters">
 			<div class="col-lg-6">
-				<img class="img-fluid" src="static/img/scientists.jpg" alt="">
+				<img class="img-fluid" src="{% static 'img/scientists.jpg' %}" alt="Scientists">
             </div>
 			<div class="col-lg-6 order-lg-first">
 				<div class="bg-black text-center h-100 project">
