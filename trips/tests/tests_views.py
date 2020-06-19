@@ -36,7 +36,7 @@ class TestTripsPages(TestCase):
         self.assertTemplateUsed(response, 'faq.html')
 
     def test_get_trips_categories_page(self):
-        
+
         response = self.client.get('/trips/categories/')
         context = response.context
 
