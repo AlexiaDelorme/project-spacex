@@ -29,14 +29,12 @@ class TestTripsPages(TestCase):
         )
 
     def test_get_faq_page(self):
-
         response = self.client.get('/trips/faq/')
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'faq.html')
 
     def test_get_trips_categories_page(self):
-
         response = self.client.get('/trips/categories/')
         context = response.context
 
@@ -46,7 +44,6 @@ class TestTripsPages(TestCase):
         self.assertTemplateUsed(response, 'trips_categories.html')
 
     def test_get_trip_detail_page(self):
-
         url = "/trips/detail/" + str(self.cat_1.id) + "/"
         response = self.client.get(url)
         trip_form = response.context['form']
@@ -56,7 +53,6 @@ class TestTripsPages(TestCase):
         self.assertEqual(type(trip_form), TripSearchForm)
 
     def test_post_results_page(self):
-
         url = "/trips/results/" + str(self.cat_1.id) + "/"
         form = {
             'departure_site': self.dep_site_1.id,
@@ -69,7 +65,6 @@ class TestTripsPages(TestCase):
         self.assertTemplateUsed(response, 'trips_results.html')
 
     def test_get_all_trips_page(self):
-
         response = self.client.get('/trips/all/')
         trip_form = response.context['form']
 
@@ -78,7 +73,6 @@ class TestTripsPages(TestCase):
         self.assertEqual(type(trip_form), AllTripSearchForm)
 
     def test_post_all_trips_page(self):
-
         url = "/trips/all/"
         form = {
             'destination': self.cat_1.id,
