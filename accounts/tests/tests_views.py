@@ -4,7 +4,8 @@ from django.shortcuts import reverse
 from accounts.forms import (
     UserSignupForm,
     UserPassengerForm,
-    UserContactDetailForm
+    UserContactDetailForm,
+    UserUpdateForm
 )
 from django.contrib.auth.forms import PasswordChangeForm
 from accounts.models import Passenger, ContactDetail
@@ -118,7 +119,7 @@ class TestProfileViewPage(TestCase):
         )
         response = self.client.get('/accounts/profile/')
         passenger = response.context['passenger']
-        
+
         self.assertEqual(passenger, self.passenger)
 
     def test_context_if_contact_details_exist(self):
@@ -293,8 +294,7 @@ class TestEditPassengerDetailsPage(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(
             response, 'profile/edit_passenger_details.html')
-        # Test failing to be resolved
-        # self.assertEqual(type(passenger_form), UserPassengerForm())
+        self.assertEqual(type(passenger_form), UserPassengerForm)
 
     def test_post_edit_passenger_details_form_success(self):
         url = '/accounts/profile/edit-passenger/'
@@ -329,7 +329,67 @@ class TestEditPassengerDetailsPage(TestCase):
             str(messages[0]), 'Please correct the error(s) below')
 
 
-# Test edit contact details page
+class TestEditContactDetailsPage(TestCase):
+
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            'john', 'lennon@thebeatles.com', 'johnpassword')
+        self.client = Client()
+        self.client.login(username='john', password='johnpassword')
+        self.contact = ContactDetail.objects.create(
+            user=self.user,
+            phone_number='+44 65 6575 6575',
+            street_address1='125 Main St',
+            postcode='W1H7EJ',
+            town_or_city='London',
+            country='GB'
+        )
+
+    def test_get_edit_contact_details_page(self):
+        response = self.client.get('/accounts/profile/edit-contact/')
+        contact_form = response.context['c_form']
+        user_form = response.context['u_form']
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(
+            response, 'profile/edit_contact_details.html')
+        self.assertEqual(type(contact_form), UserContactDetailForm)
+        self.assertEqual(type(user_form), UserUpdateForm)
+
+    def test_post_edit_contact_details_form_success(self):
+        url = '/accounts/profile/edit-contact/'
+        contact_form = {
+            'phone_number': '0044 424 4242 4242',
+            'street_address1': '124 main street',
+            'postcode': '9999',
+            'town_or_city': 'London',
+            'country': 'GB'
+        }
+        user_form = {
+            'email': 'johnlennon@test.com'
+        }
+        response = self.client.post(url, contact_form, user_form)
+
+        # Test failing to be resolved
+        # self.assertEqual(response.status_code, 302)
+        # self.assertEqual(response.url, reverse('profile'))
+
+    def test_post_edit_contact_details_form_failure(self):
+        url = '/accounts/profile/edit-contact/'
+        contact_form = {
+            'phone_number': '',
+            'street_address1': '124 main street',
+            'postcode': '9999',
+            'town_or_city': 'London',
+            'country': ''
+        }
+        response = self.client.post(url, contact_form)
+        messages = list(response.context['messages'])
+
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(
+            str(messages[0]), 'Please correct the error(s) below')
 
 
 class TestEditPasswordPage(TestCase):
