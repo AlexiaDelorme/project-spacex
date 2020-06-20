@@ -7,7 +7,7 @@ from accounts.forms import (
     UserContactDetailForm
 )
 from django.contrib.auth.forms import PasswordChangeForm
-from accounts.models import Passenger
+from accounts.models import Passenger, ContactDetail
 
 
 class TestLogoutView(TestCase):
@@ -89,6 +89,76 @@ class TestSignUpViewPage(TestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(
             str(messages[0]), 'Please correct the error(s) below')
+
+
+class TestProfileViewPage(TestCase):
+
+    def setUp(self):
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            'john', 'lennon@thebeatles.com', 'johnpassword')
+        self.client = Client()
+        self.client.login(username='john', password='johnpassword')
+
+    def test_get_profile_page(self):
+        response = self.client.get('/accounts/profile/')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'profile/profile.html')
+
+    def test_context_if_passenger_details_exist(self):
+        self.passenger = Passenger.objects.create(
+            user=self.user,
+            title='Mr',
+            birth_month='October',
+            birth_day='9',
+            birth_year='1940',
+            citizenship='GB',
+            passport_id='UK00000'
+        )
+        response = self.client.get('/accounts/profile/')
+        passenger = response.context['passenger']
+        
+        self.assertEqual(passenger, self.passenger)
+
+    def test_context_if_contact_details_exist(self):
+        self.contact = ContactDetail.objects.create(
+            user=self.user,
+            phone_number='+44 65 6575 6575',
+            street_address1='125 Main St',
+            postcode='W1H7EJ',
+            town_or_city='London',
+            country='GB'
+        )
+        response = self.client.get('/accounts/profile/')
+        contact = response.context['contact']
+
+        self.assertEqual(contact, self.contact)
+
+    def test_context_if_passenger_and_contact_details_exist(self):
+        self.passenger = Passenger.objects.create(
+            user=self.user,
+            title='Mr',
+            birth_month='October',
+            birth_day='9',
+            birth_year='1940',
+            citizenship='GB',
+            passport_id='UK00000'
+        )
+        self.contact = ContactDetail.objects.create(
+            user=self.user,
+            phone_number='+44 65 6575 6575',
+            street_address1='125 Main St',
+            postcode='W1H7EJ',
+            town_or_city='London',
+            country='GB'
+        )
+        response = self.client.get('/accounts/profile/')
+        passenger = response.context['passenger']
+        contact = response.context['contact']
+
+        self.assertEqual(passenger, self.passenger)
+        self.assertEqual(contact, self.contact)
 
 
 class TestCreatePassengerDetailsPage(TestCase):
