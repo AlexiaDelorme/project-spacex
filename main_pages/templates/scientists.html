@@ -4,11 +4,11 @@
 {% block header %}
 <!-- Header -->
 <header class="about-head">
-	<div class="container d-flex align-items-center">
-		<div class="mx-auto text-center">
-			<h1 class="text-light mx-auto my-0">Scientific Research Trips</h1>
-		</div>
-	</div>
+  <div class="container d-flex align-items-center">
+    <div class="mx-auto text-center">
+      <h1 class="text-light mx-auto my-0">Scientific Research Trips</h1>
+    </div>
+  </div>
 </header>
 {% endblock %}
 
@@ -16,88 +16,117 @@
 
 <!-- Scientific trips Section -->
 <section class="projects-section pb-3 bg-light">
-	<div class="container">
+  <div class="container">
+    <!-- Introduction -->
+    <div class="row mb-5">
+      <div class="col-10 text-center mx-auto">
+        <h3>
+          Our main activity is to organise scientific research trips to space as
+          well as scientific parabolic flights for research in gravity or
+          microgravity.
+        </h3>
+      </div>
+    </div>
 
-        <!-- Introduction -->
-        <div class="row mb-5">
-            <div class="col-10 text-center mx-auto">
-                <h3>Our main activity is to organise scientific research trips to space as well as scientific parabolic flights for research in gravity or microgravity.</h3>
+    <!-- Presentation -->
+    <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+      <div class="col-lg-6">
+        <img
+          class="img-fluid"
+          src="{% static 'img/space-takeoff.jpg' %}"
+          alt="Img Presentation"
+        />
+      </div>
+      <div class="col-lg-6">
+        <div class="bg-black text-center h-100 project">
+          <div class="d-flex h-100">
+            <div class="project-text w-100 my-auto text-center text-lg-left">
+              <h4 class="text-white mb-3">Examples of experiments</h4>
+              <ul class="mb-0 text-white-50">
+                <li>Biology</li>
+                <li>Quantum physics</li>
+                <li>Medicine</li>
+                <li>Equivalence principles</li>
+              </ul>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
 
-		<!-- Presentation -->
-		<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-			<div class="col-lg-6">
-				<img class="img-fluid" src="{% static 'img/space-takeoff.jpg' %}" alt="Img Presentation">
+    <!-- History -->
+    <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+      <div class="col-lg-6">
+        <img
+          class="img-fluid"
+          src="{% static 'img/moon-3.png' %}"
+          alt="Img History"
+        />
+      </div>
+      <div class="col-lg-6 order-lg-first">
+        <div class="bg-black text-center h-100 project">
+          <div class="d-flex h-100">
+            <div class="project-text w-100 my-auto text-center text-lg-left">
+              <h4 class="text-white mb-3">
+                Process for research trips/flights
+              </h4>
+              <ol class="mb-0 text-white-50">
+                <li>Application</li>
+                <li>Selection process</li>
+                <li>Experiment development</li>
+                <li>Tests and validation</li>
+                <li>Trip preparation</li>
+              </ol>
             </div>
-				<div class="col-lg-6">
-					<div class="bg-black text-center h-100 project">
-						<div class="d-flex h-100">
-							<div class="project-text w-100 my-auto text-center text-lg-left">
-								<h4 class="text-white mb-3">Examples of experiments</h4>
-								<ul class="mb-0 text-white-50">
-                                    <li>Biology</li>
-                                    <li>Quantum physics</li>
-                                    <li>Medicine</li>
-                                    <li>Equivalence principles</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-			<!-- History -->
-			<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-				<div class="col-lg-6">
-					<img class="img-fluid" src="{% static 'img/moon-3.png' %}" alt="Img History">
+    <!-- Services -->
+    <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+      <div class="col-lg-6">
+        <img
+          class="img-fluid"
+          src="{% static 'img/spacex-team.jpg' %}"
+          alt="Services Img"
+        />
+      </div>
+      <div class="col-lg-6">
+        <div class="bg-black text-center h-100 project">
+          <div class="d-flex h-100">
+            <div class="project-text w-100 my-auto text-center text-lg-left">
+              <h4 class="text-white mb-3">Gravity or microgravity?</h4>
+              <ul class="mb-0 text-white-50">
+                <li>
+                  Advantages of spacecraft: long weightlessness periods, human
+                  subject research, microgravity level 10 -6 g.
+                </li>
+                <li>
+                  Disadvantages of spacecraft: expensive, complex procedures,
+                  technical constraints, long time before retrieving experiments
+                  results.
+                </li>
+                <li>
+                  Advantages of aircraft: limited cost, easy to use, limited
+                  technical constraints, faster procedures.
+                </li>
+                <li>
+                  Disadvantages of aircraft: fractioned weightlessness period,
+                  microgravity level around 10-2 g.
+                </li>
+              </ul>
             </div>
-					<div class="col-lg-6 order-lg-first">
-						<div class="bg-black text-center h-100 project">
-							<div class="d-flex h-100">
-								<div class="project-text w-100 my-auto text-center text-lg-left">
-									<h4 class="text-white mb-3">Process for research trips/flights</h4>
-                                    <ol class="mb-0 text-white-50">
-                                        <li>Application</li>
-                                        <li>Selection process</li>
-                                        <li>Experiment development</li>
-                                        <li>Tests and validation</li>
-                                        <li>Trip preparation</li>
-                                    </ol>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-				<!-- Services -->
-				<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-					<div class="col-lg-6">
-						<img class="img-fluid" src="{% static 'img/spacex-team.jpg' %}" alt="Services Img">
-            </div>
-						<div class="col-lg-6">
-							<div class="bg-black text-center h-100 project">
-								<div class="d-flex h-100">
-									<div class="project-text w-100 my-auto text-center text-lg-left">
-										<h4 class="text-white mb-3">Gravity or microgravity?</h4>
-										<ul class="mb-0 text-white-50">
-											<li>Advantages of spacecraft</li>
-											<li>Disadvantages of spacecraft</li>
-											<li>Advantages of aircraft</li>
-                                            <li>Disadvantages of aircraft</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Button to trips -->
-					<div class="text-center mt-5 mb-5">
-						<a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a>
-					</div>
-
-				</div>
+    <!-- Button to trips -->
+    <div class="text-center mt-5 mb-5">
+      <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a>
+    </div>
+  </div>
 </section>
 
 {% endblock %}
