@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User
 from django.test import Client, RequestFactory, TestCase
 from django.shortcuts import reverse
-from accounts.models import ContactDetail
+from accounts.models import ContactDetail, Passenger
 from trips.models import TripCategory, Trip, DepartureSite
-from accounts.forms import UserContactDetailForm
+from accounts.forms import UserContactDetailForm, UserPassengerForm
 
 
 class TestCheckoutContactViewPage(TestCase):
@@ -133,6 +133,77 @@ class TestCheckoutContactViewPage(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('checkout_passengers'))
+
+
+class TestCheckoutPassengersViewPage(TestCase):
+
+    def setUp(self):
+
+        # create dummy user and initialize session
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            'john', 'lennon@thebeatles.com', 'johnpassword')
+        self.client = Client()
+        self.client.login(username='john', password='johnpassword')
+
+        # create dummy instance of the trip object
+        self.cat_1 = TripCategory.objects.create(
+            title='Trip to the Moon',
+            destination='Moon',
+            destination_code='MNX',
+            duration=1,
+            distance=400000,
+            price=10000,
+            description='bla bla bla'
+        )
+        self.dep_site_1 = DepartureSite.objects.create(
+            site_name='Kourou',
+            country='French Guiana',
+            site_code='CSG'
+        )
+        self.trip_1 = Trip.objects.create(
+            category=self.cat_1, departure_site=self.dep_site_1,
+            departure_date='2020-07-15', departure_time='06:00:00',
+            return_time='12:00:00', slot='15'
+        )
+
+    def test_get_redirected_if_cart_empty_for_checkout_passengers(self):
+        response = self.client.get('/checkout/passengers/')
+
+        self.assertEqual(response.status_code,  302)
+        self.assertEqual(response.url, reverse('view_cart'))
+
+    def test_get_checkout_passengers_page(self):
+        # set cart
+        session = self.client.session
+        session['cart'] = {'1': 1}
+        session.save()
+        # get url
+        response = self.client.get('/checkout/passengers/')
+
+        self.assertEqual(response.status_code,  200)
+        self.assertTemplateUsed(response, 'checkout_passengers.html')
+
+    def test_form_in_context_if_passenger_exists(self):
+        # set passenger details
+        self.passenger = Passenger.objects.create(
+            user=self.user,
+            title='Mr',
+            birth_month='October',
+            birth_day='9',
+            birth_year='1940',
+            citizenship='GB',
+            passport_id='UK00000'
+        )
+        # set cart
+        session = self.client.session
+        session['cart'] = {'1': 1}
+        session.save()
+        # ger url
+        response = self.client.get('/checkout/passengers/')
+        form = response.context['form']
+
+        self.assertEqual(type(form), UserPassengerForm)
 
 
 class TestCheckoutConfirmationViewPage(TestCase):
