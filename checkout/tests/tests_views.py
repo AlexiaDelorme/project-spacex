@@ -38,7 +38,7 @@ class TestCheckoutContactViewPage(TestCase):
             return_time='12:00:00', slot='15'
         )
 
-    def test_get_redirected_if_cart_empty(self):
+    def test_get_redirected_if_cart_empty_for_checkout_contact(self):
         response = self.client.get('/checkout/contact/')
 
         self.assertEqual(response.status_code,  302)
@@ -133,3 +133,53 @@ class TestCheckoutContactViewPage(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('checkout_passengers'))
+
+
+class TestCheckoutConfirmationViewPage(TestCase):
+
+    def setUp(self):
+
+        # create dummy user and initialize session
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            'john', 'lennon@thebeatles.com', 'johnpassword')
+        self.client = Client()
+        self.client.login(username='john', password='johnpassword')
+
+        # create dummy instance of the trip object
+        self.cat_1 = TripCategory.objects.create(
+            title='Trip to the Moon',
+            destination='Moon',
+            destination_code='MNX',
+            duration=1,
+            distance=400000,
+            price=10000,
+            description='bla bla bla'
+        )
+        self.dep_site_1 = DepartureSite.objects.create(
+            site_name='Kourou',
+            country='French Guiana',
+            site_code='CSG'
+        )
+        self.trip_1 = Trip.objects.create(
+            category=self.cat_1, departure_site=self.dep_site_1,
+            departure_date='2020-07-15', departure_time='06:00:00',
+            return_time='12:00:00', slot='15'
+        )
+
+    def test_get_redirected_if_cart_empty_for_checkout_confirmation(self):
+        response = self.client.get('/checkout/confirmation/')
+
+        self.assertEqual(response.status_code,  302)
+        self.assertEqual(response.url, reverse('view_cart'))
+
+    def test_get_checkout_confirmation_page(self):
+        # set cart
+        session = self.client.session
+        session['cart'] = {'1': 1}
+        session.save()
+        # get url
+        response = self.client.get('/checkout/confirmation/')
+
+        self.assertEqual(response.status_code,  200)
+        self.assertTemplateUsed(response, 'checkout_confirmation.html')
