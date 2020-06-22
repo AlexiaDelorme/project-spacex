@@ -359,21 +359,18 @@ class TestEditContactDetailsPage(TestCase):
 
     def test_post_edit_contact_details_form_success(self):
         url = '/accounts/profile/edit-contact/'
-        contact_form = {
+        contact_and_user_form = {
             'phone_number': '0044 424 4242 4242',
             'street_address1': '124 main street',
             'postcode': '9999',
             'town_or_city': 'London',
-            'country': 'GB'
-        }
-        user_form = {
+            'country': 'GB',
             'email': 'johnlennon@test.com'
         }
-        response = self.client.post(url, contact_form, user_form)
+        response = self.client.post(url, contact_and_user_form)
 
-        # Test failing to be resolved
-        # self.assertEqual(response.status_code, 302)
-        # self.assertEqual(response.url, reverse('profile'))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse('profile'))
 
     def test_post_edit_contact_details_form_failure(self):
         url = '/accounts/profile/edit-contact/'
