@@ -274,7 +274,7 @@ def login_success(request):
     """
     if request.session.get('referrer', 'checkout'):
         # Set this back to none so it doesn't always return the checkout
-        request.session['referrer'] = 'none'
+        request.session['referrer'] = None
         return redirect(reverse('checkout_contact'))
     else:
         return redirect(reverse('profile'))

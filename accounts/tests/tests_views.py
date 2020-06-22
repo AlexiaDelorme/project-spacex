@@ -459,17 +459,21 @@ class TestLoginSuccessView(TestCase):
 
     def test_login_success_view(self):
 
+        # manually sets referrer session variable to None
+        session = self.client.session
+        session['referrer'] = None
+        session.save()
+
         response = self.client.get('/accounts/login_success/')
         session = self.client.session
 
-        self.assertEqual(session['referrer'], 'none')
+        self.assertEqual(session['referrer'], None)
         self.assertEqual(response.status_code, 302)
-        # Test failing to be resolved
-        # self.assertEqual(response.url, reverse('profile'))
+        self.assertEqual(response.url, reverse('profile'))
 
     def test_login_success_referrer_checkout(self):
 
-        # manually sets referrer session variable to checkout
+        # manually sets referrer session variable to 'checkout'
         session = self.client.session
         session['referrer'] = 'checkout'
         session.save()
@@ -477,6 +481,6 @@ class TestLoginSuccessView(TestCase):
         response = self.client.get('/accounts/login_success/')
         session = self.client.session
 
-        self.assertEqual(session['referrer'], 'none')
+        self.assertEqual(session['referrer'], None)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('checkout_contact'))
