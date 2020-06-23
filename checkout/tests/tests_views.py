@@ -246,7 +246,7 @@ class TestSavePassengersViews(TestCase):
             passenger_number=1,
         )
 
-    def test_save_other_passenger_form_success(self):
+    def test_save_other_passenger(self):
         # set 'booking_references'
         session = self.client.session
         session['booking_references'] = {
@@ -273,7 +273,7 @@ class TestSavePassengersViews(TestCase):
         self.assertIsInstance(passenger, OtherPassenger)
         # self.assertIsInstance(passenger, self.booking_1.other_passenger)
 
-    def test_save_user_passenger_form_if_passenger_instance_does_not_exist(self):
+    def test_save_user_passenger_if_passenger_does_not_exist(self):
         # set 'booking_references'
         session = self.client.session
         session['booking_references'] = {
@@ -282,10 +282,10 @@ class TestSavePassengersViews(TestCase):
         # set url and post form
         url = "/checkout/save-user-passenger/" + str(self.trip_1.id) + "/"
         user_passenger_form = {
-            'title': 'Mrs',
-            'birth_month': 'January',
-            'birth_day': '1',
-            'birth_year': '1980',
+            'title': 'Mr',
+            'birth_month': 'October',
+            'birth_day': '9',
+            'birth_year': '1940',
             'citizenship': 'GB',
             'passport_id': 'UK00000',
         }
@@ -296,6 +296,38 @@ class TestSavePassengersViews(TestCase):
         self.assertEqual(response.url, reverse('checkout_passengers'))
         self.assertIsInstance(passenger, Passenger)
         # self.assertEqual(passenger, self.booking_1.user_passenger)
+
+    def test_save_user_passenger_if_passenger_exists(self):
+        # create passenger instance
+        self.passenger = Passenger.objects.create(
+            user=self.user,
+            title='Mr',
+            birth_month='January',
+            birth_day='9',
+            birth_year='1940',
+            citizenship='GB',
+            passport_id='UKXXXXX'
+        )
+        # set 'booking_references'
+        session = self.client.session
+        session['booking_references'] = {
+            str(self.trip_1.id): str(self.booking_1.id)}
+        session.save()
+        # set url and post form
+        url = "/checkout/save-user-passenger/" + str(self.trip_1.id) + "/"
+        user_passenger_form = {
+            'title': 'Mr',
+            'birth_month': 'October',
+            'birth_day': '9',
+            'birth_year': '1940',
+            'citizenship': 'GB',
+            'passport_id': 'UK00000',
+        }
+        self.client.post(url, user_passenger_form)
+        passenger = Passenger.objects.filter(id=self.user.id).first()
+
+        self.assertEqual('UK00000', passenger.passport_id)
+        self.assertEqual('October', passenger.birth_month)
 
 
 class TestCheckoutConfirmationViewPage(TestCase):
