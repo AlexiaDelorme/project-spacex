@@ -76,14 +76,10 @@ class TestAddToCartView(TestCase):
         response = self.client.post(url, {'passenger': '2'})
         session = self.client.session
         expected_cart = {str(self.trip_1.id): 2}
-        # messages = list(response.context['messages'])
 
-        # add item to cart
         self.assertEqual(session['cart'], expected_cart)
         self.assertEqual(response.status_code,  302)
         self.assertEqual(response.url, "/cart/")
-        # self.assertEqual(len(messages), 1)
-        # self.assertEqual(str(messages[0]), 'This trip was added to your cart')
 
     def test_add_to_cart_if_not_empty(self):
 
