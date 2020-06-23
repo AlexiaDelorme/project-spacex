@@ -5,6 +5,7 @@ from accounts.models import ContactDetail, Passenger
 from trips.models import TripCategory, Trip, DepartureSite
 from checkout.models import BookingReference, OtherPassenger
 from accounts.forms import UserContactDetailForm, UserPassengerForm
+from checkout.forms import PaymentForm
 
 
 class TestCheckoutContactViewPage(TestCase):
@@ -328,6 +329,107 @@ class TestSavePassengersViews(TestCase):
 
         self.assertEqual('UK00000', passenger.passport_id)
         self.assertEqual('October', passenger.birth_month)
+
+
+class TestCheckoutPaymentViewPage(TestCase):
+
+    def setUp(self):
+
+        # create dummy user and initialize session
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            'john', 'lennon@thebeatles.com', 'johnpassword')
+        self.client = Client()
+        self.client.login(username='john', password='johnpassword')
+
+        # create dummy instance of the trip object
+        self.cat_1 = TripCategory.objects.create(
+            title='Trip to the Moon',
+            destination='Moon',
+            destination_code='MNX',
+            duration=1,
+            distance=400000,
+            price=10000,
+            description='bla bla bla'
+        )
+        self.dep_site_1 = DepartureSite.objects.create(
+            site_name='Kourou',
+            country='French Guiana',
+            site_code='CSG'
+        )
+        self.trip_1 = Trip.objects.create(
+            category=self.cat_1, departure_site=self.dep_site_1,
+            departure_date='2020-07-15', departure_time='06:00:00',
+            return_time='12:00:00', slot='15'
+        )
+
+        # create dummy instance of the booking reference object
+        self.booking_1 = BookingReference.objects.create(
+            booker=self.user,
+            trip=self.trip_1,
+            passenger_number=1,
+        )
+
+    def test_get_redirected_if_cart_empty_for_checkout_payment(self):
+        response = self.client.get('/checkout/payment/')
+
+        self.assertEqual(response.status_code,  302)
+        self.assertEqual(response.url, reverse('view_cart'))
+
+    def test_get_checkout_payment_page(self):
+        # set cart
+        session = self.client.session
+        session['cart'] = {'1': 1}
+        session.save()
+        # get url
+        response = self.client.get('/checkout/payment/')
+        payment_form = response.context['form']
+
+        self.assertEqual(type(payment_form), PaymentForm)
+
+        self.assertEqual(response.status_code,  200)
+        self.assertTemplateUsed(response, 'checkout_payment.html')
+
+    def test_post_payment_form_success(self):
+        # set 'booking_references' and 'cart'
+        session = self.client.session
+        session['booking_references'] = {'1': '1'}
+        session['cart'] = {'1': 1}
+        session.save()
+        # set url and post payment form
+        url = '/checkout/payment/'
+        payment_form = {
+            'credit_card_number': '4242424242424242',
+            'cvv': '999',
+            'expiry_month': 'November',
+            'expiry_year': '2021',
+            # 'stripe_id': '' ???
+        }
+        response = self.client.post(url, payment_form)
+
+        # self.assertEqual(response.status_code,  302)
+        # self.assertTemplateUsed(response.url, reverse('checkout_confirmation'))
+
+    def test_post_payment_form_failure(self):
+        # set cart
+        session = self.client.session
+        session['cart'] = {'1': 1}
+        session.save()
+        # set url and post payment form
+        url = '/checkout/payment/'
+        payment_form = {
+            'credit_card_number': '4242424242424242',
+            'cvv': '000',
+            'expiry_month': '',
+            'expiry_year': '2019'
+        }
+        response = self.client.post(url, payment_form)
+        messages = list(response.context['messages'])
+
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(
+            str(messages[0]),
+            'We were unable to take a payment with that card')
 
 
 class TestCheckoutConfirmationViewPage(TestCase):
