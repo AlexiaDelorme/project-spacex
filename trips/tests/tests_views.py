@@ -56,8 +56,7 @@ class TestTripsPages(TestCase):
         url = "/trips/results/" + str(self.cat_1.id) + "/"
         form = {
             'departure_site': self.dep_site_1.id,
-            'departure_date': self.trip_1.departure_date,
-            'passenger_number': '1'
+            'departure_date': self.trip_1.departure_date
         }
         response = self.client.post(url, form)
 
@@ -77,8 +76,7 @@ class TestTripsPages(TestCase):
         form = {
             'destination': self.cat_1.id,
             'departure_site': self.dep_site_1.id,
-            'departure_date': self.trip_1.departure_date,
-            'passenger_number': '1'
+            'departure_date': self.trip_1.departure_date
         }
         response = self.client.post(url, form)
 
