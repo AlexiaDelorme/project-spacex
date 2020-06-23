@@ -45,7 +45,6 @@ def trips_results_page(request, pk):
     form = request.POST
     departure_site = form.get('departure_site')
     departure_date = form.get('departure_date')
-    passenger_number = int(form.get('passenger_number'))
 
     # Return all trips matching the criteria provided in the form
     trip_category = get_object_or_404(TripCategory, pk=pk)
@@ -60,13 +59,9 @@ def trips_results_page(request, pk):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    trip_price = (trip_category.price)*passenger_number
-
     context = {
         "page_title": "Results",
-        "page_obj": page_obj,
-        "passenger_number": passenger_number,
-        "trip_price": trip_price,
+        "page_obj": page_obj
     }
     messages.info(request, "Please, see below the result(s) for your search")
     return render(request, "trips_results.html", context)
