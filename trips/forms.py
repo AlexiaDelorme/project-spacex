@@ -22,18 +22,12 @@ class AllTripSearchForm(forms.Form):
             }
         )
     )
-    passenger_number = forms.IntegerField(
-        label='<i class="fas fa-users"></i> Passenger(s)',
-        max_value=5,
-        min_value=1
-    )
 
     class Meta:
         fields = [
             'destination',
             'departure_site',
-            'departure_date',
-            'passenger_number'
+            'departure_date'
         ]
 
 
@@ -53,11 +47,6 @@ class TripSearchForm(forms.Form):
             }
         )
     )
-    passenger_number = forms.IntegerField(
-        label='<i class="fas fa-users"></i> Passenger(s)',
-        max_value=5,
-        min_value=1
-    )
 
     class Meta:
-        fields = ['departure_site', 'departure_date', 'passenger_number']
+        fields = ['departure_site', 'departure_date']
