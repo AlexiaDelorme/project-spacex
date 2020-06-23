@@ -3,6 +3,7 @@ from django.test import Client, RequestFactory, TestCase
 from django.shortcuts import reverse
 from accounts.models import ContactDetail, Passenger
 from trips.models import TripCategory, Trip, DepartureSite
+from checkout.models import BookingReference, OtherPassenger
 from accounts.forms import UserContactDetailForm, UserPassengerForm
 
 
@@ -204,6 +205,97 @@ class TestCheckoutPassengersViewPage(TestCase):
         form = response.context['form']
 
         self.assertEqual(type(form), UserPassengerForm)
+
+
+class TestSavePassengersViews(TestCase):
+
+    def setUp(self):
+
+        # create dummy user and initialize session
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            'john', 'lennon@thebeatles.com', 'johnpassword')
+        self.client = Client()
+        self.client.login(username='john', password='johnpassword')
+
+        # create dummy instance of the trip object
+        self.cat_1 = TripCategory.objects.create(
+            title='Trip to the Moon',
+            destination='Moon',
+            destination_code='MNX',
+            duration=1,
+            distance=400000,
+            price=10000,
+            description='bla bla bla'
+        )
+        self.dep_site_1 = DepartureSite.objects.create(
+            site_name='Kourou',
+            country='French Guiana',
+            site_code='CSG'
+        )
+        self.trip_1 = Trip.objects.create(
+            category=self.cat_1, departure_site=self.dep_site_1,
+            departure_date='2020-07-15', departure_time='06:00:00',
+            return_time='12:00:00', slot='15'
+        )
+
+        # create dummy instance of the booking reference object
+        self.booking_1 = BookingReference.objects.create(
+            booker=self.user,
+            trip=self.trip_1,
+            passenger_number=1,
+        )
+
+    def test_save_other_passenger_form_success(self):
+        # set 'booking_references'
+        session = self.client.session
+        session['booking_references'] = {
+            str(self.trip_1.id): str(self.booking_1.id)}
+        session.save()
+        # set url and post form
+        url = "/checkout/save-passenger/" + str(self.trip_1.id) + "/"
+        other_passenger_form = {
+            'title': 'Mrs',
+            'first_name': 'Jane',
+            'last_name': 'Doe',
+            'birth_month': 'January',
+            'birth_day': '1',
+            'birth_year': '1980',
+            'citizenship': 'GB',
+            'passport_id': 'UK00000',
+        }
+        response = self.client.post(url, other_passenger_form)
+        passenger = OtherPassenger.objects.filter(
+            first_name='Jane', last_name='Doe').first()
+
+        self.assertEqual(response.status_code,  302)
+        self.assertEqual(response.url, reverse('checkout_passengers'))
+        self.assertIsInstance(passenger, OtherPassenger)
+        # self.assertIsInstance(passenger, self.booking_1.other_passenger)
+
+    def test_save_user_passenger_form_if_passenger_instance_does_not_exist(self):
+        # set 'booking_references'
+        session = self.client.session
+        session['booking_references'] = {
+            str(self.trip_1.id): str(self.booking_1.id)}
+        session.save()
+        # set url and post form
+        url = "/checkout/save-user-passenger/" + str(self.trip_1.id) + "/"
+        user_passenger_form = {
+            'title': 'Mrs',
+            'birth_month': 'January',
+            'birth_day': '1',
+            'birth_year': '1980',
+            'citizenship': 'GB',
+            'passport_id': 'UK00000',
+        }
+        response = self.client.post(url, user_passenger_form)
+        passenger = Passenger.objects.filter(id=self.user.id).first()
+
+        self.assertEqual(response.status_code,  302)
+        self.assertEqual(response.url, reverse('checkout_passengers'))
+        self.assertIsInstance(passenger, Passenger)
+        # self.assertEqual(passenger, self.booking_1.user_passenger)
 
 
 class TestCheckoutConfirmationViewPage(TestCase):
