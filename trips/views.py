@@ -84,7 +84,6 @@ def trips_all_page(request):
         category_id = int(request.POST['destination'])
         departure_site = request.POST['departure_site']
         departure_date = request.POST['departure_date']
-        passenger_number = int(request.POST['passenger_number'])
 
         # Return all trips matching the criteria provided in the form
         trip_category = get_object_or_404(TripCategory, pk=category_id)
@@ -95,20 +94,10 @@ def trips_all_page(request):
         )
 
         # Set pagination for trips results
-        paginator = Paginator(trips, 5)  # Show 5 trips per page.
+        paginator = Paginator(trips, 5)  # Show 5 trips per page
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
-        trip_price = (trip_category.price)*passenger_number
-
-        context = {
-            "page_title": "Search all",
-            "page_obj": page_obj,
-            "trip_categories": trip_categories,
-            "form": form,
-            "passenger_number": passenger_number,
-            "trip_price": trip_price,
-        }
         messages.info(
             request, "Please, see below the result(s) for your search")
 
@@ -117,17 +106,17 @@ def trips_all_page(request):
         trips = Trip.objects.all()
 
         # Set pagination for trips results
-        paginator = Paginator(trips, 5)  # Show 5 trips per page.
+        paginator = Paginator(trips, 5)  # Show 5 trips per page
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
 
         form = AllTripSearchForm()
 
-        context = {
-            "page_title": "Search all",
-            "page_obj": page_obj,
-            "trip_categories": trip_categories,
-            "form": form
-        }
+    context = {
+        "page_title": "Search all",
+        "page_obj": page_obj,
+        "trip_categories": trip_categories,
+        "form": form
+    }
 
     return render(request, "trips_all.html", context)
