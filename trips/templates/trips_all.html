@@ -118,7 +118,7 @@
                                                     <div class="input-group text-left text-md-right mb-3">
                                                         <i class="fas fa-user-friends pt-1 mr-2"></i>
                                                         <input type="button" value="-" class="button-minus" data-field="passenger">
-                                                        <input type="number" id="passenger" name="passenger" step="1" min="1" max="5" value="1" class="quantity-field pl-3" required>
+                                                        <input type="number" id="passenger" name="passenger" step="1" min="1" max="{{ trip.slot }}" value="1" class="quantity-field pl-3" required>
                                                         <input type="button" value="+" class="button-plus" data-field="passenger">
                                                     </div>
                                                     <button type="submit" class="btn btn-primary btn-cart">Book trip</button>
