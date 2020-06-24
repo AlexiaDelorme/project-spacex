@@ -234,6 +234,11 @@ def checkout_payment_page(request):
                     booking_obj.confirmation_status = True
                     booking_obj.order_date = datetime.now()
                     booking_obj.save()
+                # Decrement trip slots by number of passengers booked
+                for id, passenger in cart.items():
+                    booked_trip = get_object_or_404(Trip, pk=id)
+                    booked_trip.slot -= passenger
+                    booked_trip.save()
 
                 # Empty cart
                 request.session['cart'] = {}
@@ -268,10 +273,6 @@ def checkout_payment_page(request):
 
 @login_required
 def checkout_confirmation_page(request):
-
-    # Redirect users to cart if they try to access this page with an empty cart
-    if not request.session.get('cart'):
-        return redirect('view_cart')
 
     context = {
         "page_title": "Confirmation",
