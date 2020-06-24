@@ -464,12 +464,6 @@ class TestCheckoutConfirmationViewPage(TestCase):
             return_time='12:00:00', slot='15'
         )
 
-    def test_get_redirected_if_cart_empty_for_checkout_confirmation(self):
-        response = self.client.get('/checkout/confirmation/')
-
-        self.assertEqual(response.status_code,  302)
-        self.assertEqual(response.url, reverse('view_cart'))
-
     def test_get_checkout_confirmation_page(self):
         # set cart
         session = self.client.session
