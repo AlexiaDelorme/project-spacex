@@ -47,7 +47,7 @@ $(document).ready(function () {
     });
 
     /*
-        Buttons to increment or decrement passenger number
+        Functions to increment or decrement passenger number
     */
 
     // ------ Code credit: http://jsfiddle.net/polaszk/1oyfxoor/
@@ -78,15 +78,40 @@ $(document).ready(function () {
         }
     }
 
+    // ------ End of code credit
+
+    /*
+        Buttons to increment or decrement passenger number
+    */
+
     $('.input-group').on('click', '.button-plus', function(e) {
-        incrementValue(e);
+        var inputPassenger = $(this).prev("input#passenger").val();
+        var maxSlot = $(this).prev("input#passenger").attr("max");
+        if ( inputPassenger >= maxSlot ) {
+            swal({
+                title: "Sorry!",
+                text: "The number of seats for this trip is limited to "+ maxSlot +" passenger(s).",
+                icon: "warning",
+                button: "ok",
+            });
+        } else {
+            incrementValue(e);
+        } 
     });
 
     $('.input-group').on('click', '.button-minus', function(e) {
-        decrementValue(e);
+        var inputPassenger = $(this).next("input#passenger").val();
+        if ( inputPassenger-1 <= 0 ) {
+            swal({
+                title: "Sorry!",
+                text: "You must select at least 1 passenger to book a trip.",
+                icon: "warning",
+                button: "ok",
+            });
+        } else {
+            decrementValue(e);
+        }
     });
-
-    // ------ End of code credit 
 
     /*
         Remove item from cart after user confirmed his choice
