@@ -35,10 +35,10 @@
 # UX
 
 **Project definition**
-- “SpaceX" is the first ever travel agency that organizes trips in space with multiple destinations in close collaboration with aerospace entities and governments. 
+- “SpaceX" is the first ever travel agency that organizes trips to space with multiple destinations in close collaboration with aerospace entities and governments. 
 - The purpose of this web app is to provide customers who would like to travel to space with an online platform where they can book for their very first trip to space. 
 - Users can browse for all the trips that are offered by the space travel agency. 
-- Different types of trips are offered according to the clients type. 
+- Different types of trips are offered according to the type of client. 
 
 **Project stakeholders**
 - Individuals – the agency offers recreational space travels for individuals.
@@ -49,20 +49,20 @@
 ## User Stories
 
 As a general user, I expect:
-- To have convenient access of all the trips that the travel agency offers.
-- The website to have a neat and elegant design with an optimal architecture and layout.
-- The website to be intuitive and easy to navigate so that I can find what I need in the most effective manner.
-- To easily find information i.e. identify key information for a specific trips and if needed, be able to get access to more details.
-- To easily find information about the travel company and see their entire range of offers. I also want to have their contact details and be able to get in touch with them through a contact form.  
-- To be able to research trips based on specific filters such as the client’s type, price, duration, pictures… 
-- To read testimonies from previous customers so that I have a clear vision of the experience offered. 
-- To be advised of the remaining slots if the trip is almost sold out and register to a waiting list if it is already sold out. 
-- To be able to book a trip and then be able to register/log in to an account with minimal steps to confirm my order.
-- The website to display my order details for each steps of the checkout (booking till payment) and receive an email once my booking has been completed. 
-- The website to be fully responsive on any devices: mobile, tablet, desktop. 
-- The website to be fully interactive so that I get clear feedback on any action I undertake (complete a form, process a payment, log in, log out etc…).
-- As a business or scientist, I want to easily find information on the application process and gets a pricing estimate for my request. 
-- As a logged in user, I want to be able to access my information details (personal information and past bookings), update them and delete my account permanently if necessary. 
+1. To have convenient access of all the trips that the travel agency offers.
+2. The website to have a neat and elegant design with an optimal architecture and layout.
+3. The website to be intuitive and easy to navigate so that I can find what I need in the most effective manner.
+4. To easily find information i.e. identify key information for a specific trips and if needed, be able to get access to more details.
+5. To easily find information about the travel company and see their entire range of offers. I also want to have their contact details and be able to get in touch with them through a contact form.  
+6. To be able to research trips by destination, departure site and date.
+7. To read testimonies from previous customers so that I have a clear vision of the experience offered. 
+8. To be advised of the remaining slots if the trip is almost sold out and register to a waiting list if it is already sold out. 
+9. To be able to book a trip and then be able to register/log in to an account with minimal steps to confirm my order.
+10. The website to display my order details for each steps of the checkout and receive an email once my booking has been completed. 
+11. The website to be fully responsive on any devices: mobile, tablet, desktop. 
+12. The website to be fully interactive so that I get clear feedback on any action I undertake (complete a form, process a payment, log in, log out etc…).
+13. As a business or scientist, I want to easily find information on the application process and gets a pricing estimate for my request. 
+14. As a user, I want to be able to access (and update) my personal information, upcoming and post bookings.
 
 <a name="design"/>
 
@@ -80,10 +80,18 @@ As a general user, I expect:
 
 I have used Balsamiq to create my wireframes. I first brainstormed on the structure and then created the site map. There are of course some differences with the final project as these wireframes were created during the preparation phase. 
 
-You can find all my wireframes below:
-(To be updated)
-- Home page
-- ...
+- [Site map](https://ibb.co/zN65GX4)
+- [Home](https://ibb.co/jVm6JrF)
+- [About](https://ibb.co/bdr9KKZ)
+- [Contact](https://ibb.co/kBvmCfX)
+- [Faqs](https://ibb.co/R7JvT8D)
+- [Trips](https://ibb.co/HxvZ031)
+- [Listing](https://ibb.co/QpDMB0q)
+- [Cart](https://ibb.co/8245hzx)
+- [Checkout 1](https://ibb.co/p23PnLq)
+- [Checkout 2](https://ibb.co/tbTtV4g)
+- [Checkout 3](https://ibb.co/RPzkxDJ)
+- [Profile](https://ibb.co/82s4YQ5)
 
 <a name="db"/>
 
