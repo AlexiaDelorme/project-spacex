@@ -80,18 +80,18 @@ As a general user, I expect:
 
 I have used Balsamiq to create my wireframes. I first brainstormed on the structure and then created the site map. There are of course some differences with the final project as these wireframes were created during the preparation phase. 
 
-- [Site map](https://ibb.co/zN65GX4)
-- [Home](https://ibb.co/jVm6JrF)
-- [About](https://ibb.co/bdr9KKZ)
-- [Contact](https://ibb.co/kBvmCfX)
-- [Faqs](https://ibb.co/R7JvT8D)
-- [Trips](https://ibb.co/HxvZ031)
-- [Listing](https://ibb.co/QpDMB0q)
-- [Cart](https://ibb.co/8245hzx)
-- [Checkout 1](https://ibb.co/p23PnLq)
-- [Checkout 2](https://ibb.co/tbTtV4g)
-- [Checkout 3](https://ibb.co/RPzkxDJ)
-- [Profile](https://ibb.co/82s4YQ5)
+- [Site map](https://i.ibb.co/3kRsBpC/Site-map.png)
+- [Home](https://i.ibb.co/wJV0cz1/Home.png)
+- [About](https://i.ibb.co/nkDJLLv/About.png)
+- [Contact](https://i.ibb.co/r0NdrSH/Contact.png)
+- [Faqs](https://i.ibb.co/8XQKgk7/FAQs.png)
+- [Trips](https://i.ibb.co/0FN5kv8/Trips.png)
+- [Listing](https://i.ibb.co/jbJDKtx/Listings.png)
+- [Cart](https://i.ibb.co/wCrWvJQ/Checkout-Booking-confirmation.png)
+- [Checkout 1](https://i.ibb.co/hsKMCm0/Checkout-Info.png)
+- [Checkout 2](https://i.ibb.co/55gyb6m/Checkout-Payment.png)
+- [Checkout 3](https://i.ibb.co/ZKWpnMb/Checkout-Confirmation.png)
+- [Profile](https://i.ibb.co/DkWgrjC/Account.png)
 
 <a name="db"/>
 
