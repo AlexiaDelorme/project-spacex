@@ -390,26 +390,6 @@ class TestCheckoutPaymentViewPage(TestCase):
         self.assertEqual(response.status_code,  200)
         self.assertTemplateUsed(response, 'checkout_payment.html')
 
-    def test_post_payment_form_success(self):
-        # set 'booking_references' and 'cart'
-        session = self.client.session
-        session['booking_references'] = {'1': '1'}
-        session['cart'] = {'1': 1}
-        session.save()
-        # set url and post payment form
-        url = '/checkout/payment/'
-        payment_form = {
-            'credit_card_number': '4242424242424242',
-            'cvv': '999',
-            'expiry_month': 'November',
-            'expiry_year': '2021',
-            # 'stripe_id': '' ???
-        }
-        response = self.client.post(url, payment_form)
-
-        # self.assertEqual(response.status_code,  302)
-        # self.assertTemplateUsed(response.url, reverse('checkout_confirmation'))
-
     def test_post_payment_form_failure(self):
         # set cart
         session = self.client.session
