@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<!-- Header -->
+<header class="about-head">
+	<div class="container d-flex align-items-center">
+		<div class="mx-auto text-center">
+		</div>
+	</div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+<!-- 404 Section -->
+<section class="jumbotron pb-5 bg-light">
+	<div class="container">
+
+        <div class="">
+            <h1 class="display-4">404 - Page Not Found</h1>
+            <p class="lead">Sorry, the page you are trying to access does not exist or is temporarily unavailable.</p>
+            <hr class="my-4">
+            <p>If you would like to keep navigating on our website please click the below button to get back to the home page.</p>
+            <!-- Button to Home -->
+            <div class="text-center mt-5">
+                <a href="{% url 'home' %}" class="btn btn-primary">Go to Homepage</a>
+            </div>
+        </div>
+
+	</div>
+</section>
+
+{% endblock %}
