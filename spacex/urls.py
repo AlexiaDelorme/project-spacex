@@ -30,6 +30,10 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
 ]
 
+# Custom error pages
+handler404 = 'main_pages.views.handler404'
+handler500 = 'main_pages.views.handler500'
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)

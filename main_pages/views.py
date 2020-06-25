@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseServerError
 from django.conf import settings
 from .forms import ContactForm
 from django.contrib import messages
@@ -51,3 +52,19 @@ def scientists_page(request):
         "page_title": "Scientific services"
     }
     return render(request, "scientists.html", context)
+
+
+def handler404(request, exception):
+    return render(request, '404.html', status=404)
+
+
+def handler500(request):
+    return render(request, '500.html', status=500)
+
+
+"""
+# To be used only to recreate a 500 error
+def my_test_500_view(request):
+    # Return an "Internal Server Error" 500 response code.
+    return HttpResponseServerError
+"""
