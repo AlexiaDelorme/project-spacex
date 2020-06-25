@@ -7,24 +7,27 @@
     - [User Stories](#user-stories)
     - [Design](#design)
     - [Wireframes](#wireframes)
-    - [Database structure](#db)
 
 2. [Features](#features)
     - [Current Features](#current-features)
     - [Future Features](#future-features)
 
-3. [Technologies Used](#tech)
+3. [Database](#database)
+    - [Database choice](#db-choice)
+    - [Database structure](#db-structure)
+
+4. [Technologies Used](#tech)
     - [Languages](#languages)
     - [Libraries](#libraries)
     - [Tools](#tools)
 
-4. [Testing](#testing)
+5. [Testing](#testing)
 
-5. [Deployment](#deployment)
+6. [Deployment](#deployment)
     - [Heroku Deployment](#depl-heroku)
     - [Local Deployment (GitPod)](#depl-gitpod)
 
-6. [Credits](#credits)
+7. [Credits](#credits)
     - [Content](#content)
     - [Media](#media)
     - [Code](#code)
@@ -70,15 +73,34 @@ As a general user, I expect:
 
 ### Theme
 
+I wanted to create a website that would transport the user to space. I wanted to keep it classy and professional as well. I have tried to put some efforts on selecting visually impacting pictures. 
+
+I have used a free bootstrap theme called [Grayscale](https://startbootstrap.com/themes/grayscale/). I found it absolutely wonderful and I tried my best to stick to the theme while building my website.
+
 ### Colors
 
+The three main colors were used throughout this project.
+
+1. White - ` #fff`
+    - Background
+    - Navbar
+2. Black - `#161616`
+    - background
+3. Green - `#64a19d`
+    - Buttons
+    - Links
+    - Some icones
+
 ### Typography
+
+- The primary font family is [Nunito](https://fonts.google.com/specimen/Nunito) from Google Fonts.
+- The second font family - used mainly for headers - is [Varela Round](https://fonts.google.com/specimen/Varela+Round?selection.family=Varela+Round&sidebar.open) also from Google Fonts.
 
 <a name="wireframes"/>
 
 ## Wireframes
 
-I have used Balsamiq to create my wireframes. I first brainstormed on the structure and then created the site map. There are of course some differences with the final project as these wireframes were created during the preparation phase. 
+I have used Balsamiq to create my wireframes. I first brainstormed on the structure and then created the site map. There are some differences with the final project as these wireframes were created during the preparation phase. 
 
 - [Site map](https://i.ibb.co/3kRsBpC/Site-map.png)
 - [Home](https://i.ibb.co/wJV0cz1/Home.png)
@@ -92,10 +114,6 @@ I have used Balsamiq to create my wireframes. I first brainstormed on the struct
 - [Checkout 2](https://i.ibb.co/55gyb6m/Checkout-Payment.png)
 - [Checkout 3](https://i.ibb.co/ZKWpnMb/Checkout-Confirmation.png)
 - [Profile](https://i.ibb.co/DkWgrjC/Account.png)
-
-<a name="db"/>
-
-## Database structure
 
 <a name="features"/>
 
@@ -113,6 +131,25 @@ I have used Balsamiq to create my wireframes. I first brainstormed on the struct
 <a name="future-features"/>
 
 ## Future Features
+
+<a name="database"/>
+
+# Database
+
+<a name="db-choice"/>
+
+## Database choice
+
+### Trip model
+
+        | Name | Key in db | Validation | Field Type |
+        | ------------- | ------------- | ------------- | ------------- |
+        | Departure site | departure_site | on_delete=models.PROTECT | ForeignKey(Departure Site) |
+        | Departure date | departure_date |  | DateField() |
+
+<a name="db-structure"/>
+
+## Database structure
 
 <a name="tech"/>
 
