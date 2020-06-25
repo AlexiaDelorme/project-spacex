@@ -179,7 +179,7 @@ I have used Balsamiq to create my wireframes. I first brainstormed on the struct
 ## Libraries
 
 ##### [Django 3](https://www.djangoproject.com)
-- I used Django 3 as my Python framework to build this website. 
+- I used Django 3 as Python framework to build this website. 
 
 ##### [Bootstrap](https://getbootstrap.com/)
 - I used Bootstrap as the main framework for HTML.
@@ -188,21 +188,20 @@ I have used Balsamiq to create my wireframes. I first brainstormed on the struct
 - I used jQuery to simplify the DOM manipulation.
 
 ##### [Font Awesome](https://origin.fontawesome.com/)
-- I used Font Awesome to display social media icons for my footer.
+- I used Font Awesome to display icons.
 
 ##### [Google Fonts](https://fonts.google.com/)
-- I used one of Google fonts for my website.
+- I used two google fonts as the main font families.
 
 <a name="tools"/>
 
 ## Tools
 
 ##### [Balsamiq](https://balsamiq.com/) 
-- I used Balsamiq to design my wireframes during the planning phase of this project.
+- I used Balsamiq to design my wireframes.
 
 ##### [Gitpod](https://gitpod.io/)
-- During this project, I migrated to Gitpod as my credentials for AWS Cloud 9 expired.
-- I therefore completed this project using Gitpod IDE. 
+- I used Gitpod as my IDE for this project.
 
 ##### [Postgres]()
 - 
@@ -215,7 +214,7 @@ I have used Balsamiq to create my wireframes. I first brainstormed on the struct
 - I used Heroku to deploy and host my application.
 
 ##### [TinyPNG](https://tinypng.com)
-- I used TinyPNG to optimize the size of my images.
+- I used TinyPNG to optimize the size of the images used for this app.
 
 <a name="testing"/>
 
@@ -300,9 +299,7 @@ To be updated
 
 - The logo I used for this website was created thanks to [Hatchful](https://hatchful.shopify.com).
 - All the images used for this project were found on [Pexels](https://www.pexels.com).
-- I also used [Font Awesome](https://fontawesome.com/v4.7.0/icons/) on some icons when I could not find the proper icon in the Materialize icon library.
-- Gif used in 404 and access_denied pages: [Dribble](https://dribbble.com/search/shots/popular/animation?q=dessert)
-- Colours of footer incons when hovered: [encycolorpedia.fr](https://encycolorpedia.fr/00acee)
+- I used [Font Awesome](https://fontawesome.com/v4.7.0/icons/) for my icons.
 - Demo picture of my app used in this README file: [Am I Responsive](http://ami.responsivedesign.is/#)
 
 <a name="code"/>
