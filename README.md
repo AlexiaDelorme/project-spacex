@@ -124,9 +124,90 @@ I have used Balsamiq to create my wireframes. I first brainstormed on the struct
 ## Current Features
 
 ###### Features on every page
-- xx
+- Fixed navigation bar with:
+    - on the left: the logo
+    - in the middle: links to the different pages (home, trips, scientists, about, contact)
+    - on the right: links for account pages and cart
+- Footer with the address of the company, a subscription button and links to other pages of the website (trips, scientists, FAQ)
 
-###### Feature 1
+###### Feature 1 - Home page
+Home page with:
+- innovative concept of the travel company
+- categories of trips (individuals & scientists)
+- statistics on our trips
+- testimonials of passengers
+- button to browse trips
+
+###### Feature 2 - About page
+Synthetic page with information about the company.
+
+###### Feature 3 - Contact page
+Page with contact form and the google map location of the company.
+
+###### Feature 4 - Scientists page
+Page with information for scientists and businesses that would like to organize scientific research trips. The page provides information on the selection process. There is a button to get redirected back to the contact form. 
+
+###### Feature 5 - Trips by destination page
+Presentation of all the destinations available. For each destination, the following information is provided:
+- trip duration (in days)
+- trip distance (in km)
+- trip price (in euros)
+- departures
+- button to be redirected to the trip details
+
+###### Feature 6 - Trips details
+Description page for a specific destination. The page should display:
+- 4 high-quality pictures of the destination
+- trip information (duration, distance, price)
+- a form to look for upcoming trips to this destination
+- trip description, requirements and safety guidelines
+
+###### Feature 7 - Search all (trips) page / trips results page
+Page with the list of all the trips available. The user has the option to refine his search by submitting a form to search for a specific trip (form fields: destination, departure site and departure date). For each trip the following information should be displayed:
+- departure site
+- departure date and time
+- destination
+- return date and time
+- available slots
+- price for 1 passenger
+- option to select the passenger number with a button to book the trip
+
+###### Feature 9 - Cart page
+The shopping cart is available anywhere in the site. The cart page should display all the trips in the user's cart. For each item in the cart, the following information should be available:
+- trip destination
+- departure and return dates
+- spaceship number
+- recap of the trip with departure site (departure date and time) and destination site (return date and time)
+- number of passengers and price
+- total price of the cart
+- button to checkout
+
+###### Feature 10 - Checkout
+Checkout process step by step with the following pages:
+- (log in / sign up if the user is not logged in yet)
+- contact details form
+- forms to register passengers
+- payment form
+- confirmation of order booked
+For each step of the checkout process, a recap of the cart is available as well as a return button to get back to the previous step. 
+
+###### Feature 11 - FAQs page
+Page with all the most frequently asked questions about our trips.
+
+###### Feature 12 - Log in / Log out / Sign up pages
+Log in / sign up forms & option to log out
+
+###### Feature 13 - Password reset page
+Option to reset password by email in case users forgot it.
+
+###### Feature 14 - Profile page
+Profile page for users with an account that should display their:
+- passenger details
+- contact details
+- option to change their password
+
+###### Feature 15 - Bookings
+Page with all upcoming and/or past trips that were booked by the user. 
 
 <a name="future-features"/>
 
