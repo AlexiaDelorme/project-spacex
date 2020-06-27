@@ -221,6 +221,10 @@ Page with all upcoming and/or past trips that were booked by the user.
 
 ## Database choice
 
+<a name="db-structure"/>
+
+## Database structure
+
 ### TripCategory model
 
 Field Name | Field Type | Requirements
@@ -228,9 +232,9 @@ Field Name | Field Type | Requirements
 title | models.CharField() | max_length=50
 destination | models.CharField() | max_length=50
 destination_code | models.CharField() | max_length=30
-duration | IntegerField() | 
-distance | IntegerField() | 
-price | IntegerField() | 
+duration | models.IntegerField() | 
+distance | models.IntegerField() | 
+price | models.IntegerField() | 
 required_document | models.ManyToManyField(RequiredDocument) | blank=True
 img | models.ManyToManyField(TripImage) | blank=True
 
@@ -248,14 +252,12 @@ Field Name | Field Type | Requirements
 ------------- | ------------- | -------------
 name | models.CharField() | max_length=100
 
-
 ### TripImage model
 
 Field Name | Field Type | Requirements
 ------------- | ------------- | -------------
 img_name | models.CharField() | max_length=50
-img_file | CountryField() | 
-site_code | models.ImageField() | blank=True / upload_to='trip_pics'
+img_file | models.ImageField() | blank=True / upload_to='trip_pics'
 
 ### Trip model
 
@@ -263,14 +265,61 @@ Field Name | Field Type | Requirements
 ------------- | ------------- | -------------
 category | models.ForeignKey(TripCategory) | on_delete=models.CASCADE
 departure_site | models.ForeignKey(DepartureSite) | on_delete=models.CASCADE
-departure_date | DateField() | 
-departure_time | TimeField() | 
-return_time | TimeField() | 
-slott | IntegerField() |
+departure_date | models.DateField() | 
+departure_time | models.TimeField() | 
+return_time | models.TimeField() | 
+slot | models.IntegerField() |
 
-<a name="db-structure"/>
+### ContactDetail model
 
-## Database structure
+Field Name | Field Type | Requirements
+------------- | ------------- | -------------
+user | models.OneToOneField(User) | on_delete=models.CASCADE
+phone_number | models.CharField() | max_length=20
+street_address1 | models.CharField() | max_length=50
+street_address2 | models.CharField() | max_length=50, blank=True, null=True
+state | models.CharField() | max_length=20
+postcode | models.CharField() | max_length=20
+town_or_city | models.CharField() | max_length=40
+country | CountryField() |
+
+### Passenger model
+
+Field Name | Field Type | Requirements
+------------- | ------------- | -------------
+user | models.OneToOneField(User) | on_delete=models.CASCADE
+title | models.CharField() | max_length=10, choices=CHOICES_TITLE
+birth_month | models.CharField() | max_length=20, choices=CHOICES_MONTH
+birth_day | models.IntegerField() | 
+birth_year | models.IntegerField() | 
+citizenship | CountryField() | 
+passport_id | models.CharField() | max_length=30
+confirmation_status | models.BooleanField() | default=False
+
+### OtherPassenger model
+
+Field Name | Field Type | Requirements
+------------- | ------------- | -------------
+title | models.CharField() | max_length=10, choices=CHOICES_TITLE
+first_name| models.CharField() | max_length=100
+last_name| models.CharField() | max_length=100
+birth_month | models.CharField() | max_length=20, choices=CHOICES_MONTH
+birth_day | models.IntegerField() | 
+birth_year | models.IntegerField() | 
+citizenship | CountryField() | 
+passport_id | models.CharField() | max_length=30
+
+### BookingReference model
+
+Field Name | Field Type | Requirements
+------------- | ------------- | -------------
+booker | models.ForeignKey(User) | on_delete=models.PROTECT
+trip | models.ForeignKey(Trip) | on_delete=models.PROTECT
+passenger_number | models.PositiveIntegerField() | 
+user_passenger | models.ForeignKey(Passenger) | on_delete=models.PROTECT, blank=True, null=True
+other_passenger | models.ManyToManyField(OtherPassenger) | blank=True
+order_date | models.DateField() | blank=True, null=True
+confirmation_status | models.BooleanField() | default=False
 
 <a name="tech"/>
 
