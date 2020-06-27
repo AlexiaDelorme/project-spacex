@@ -221,12 +221,52 @@ Page with all upcoming and/or past trips that were booked by the user.
 
 ## Database choice
 
+### TripCategory model
+
+Field Name | Field Type | Requirements
+------------- | ------------- | -------------
+title | models.CharField() | max_length=50
+destination | models.CharField() | max_length=50
+destination_code | models.CharField() | max_length=30
+duration | IntegerField() | 
+distance | IntegerField() | 
+price | IntegerField() | 
+required_document | models.ManyToManyField(RequiredDocument) | blank=True
+img | models.ManyToManyField(TripImage) | blank=True
+
+### DepartureSite model
+
+Field Name | Field Type | Requirements
+------------- | ------------- | -------------
+site_name | models.CharField() | max_length=100
+country | CountryField() | 
+site_code | models.CharField() | max_length=30
+
+### RequiredDocument model
+
+Field Name | Field Type | Requirements
+------------- | ------------- | -------------
+name | models.CharField() | max_length=100
+
+
+### TripImage model
+
+Field Name | Field Type | Requirements
+------------- | ------------- | -------------
+img_name | models.CharField() | max_length=50
+img_file | CountryField() | 
+site_code | models.ImageField() | blank=True / upload_to='trip_pics'
+
 ### Trip model
 
-        | Name | Key in db | Validation | Field Type |
-        | ------------- | ------------- | ------------- | ------------- |
-        | Departure site | departure_site | on_delete=models.PROTECT | ForeignKey(Departure Site) |
-        | Departure date | departure_date |  | DateField() |
+Field Name | Field Type | Requirements
+------------- | ------------- | -------------
+category | models.ForeignKey(TripCategory) | on_delete=models.CASCADE
+departure_site | models.ForeignKey(DepartureSite) | on_delete=models.CASCADE
+departure_date | DateField() | 
+departure_time | TimeField() | 
+return_time | TimeField() | 
+slott | IntegerField() |
 
 <a name="db-structure"/>
 
