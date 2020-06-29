@@ -20,7 +20,6 @@ def cart_contents(request):
             'id': id,
             'trip': trip,
             'passenger': passenger,
-            'passenger_id': [],
             'passenger_range': passenger_range,
             'sub_total': sub_total
         })
