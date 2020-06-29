@@ -188,8 +188,7 @@ Checkout process step by step with the following pages:
 - contact details form
 - forms to register passengers
 - payment form
-- confirmation of order booked
-For each step of the checkout process, a recap of the cart is available as well as a return button to get back to the previous step. 
+- confirmation of order booked for each step of the checkout process, a recap of the cart is available as well as a return button to get back to the previous step. 
 
 ###### Feature 11 - FAQs page
 Page with all the most frequently asked questions about our trips.
@@ -257,7 +256,7 @@ name | models.CharField() | max_length=100
 Field Name | Field Type | Requirements
 ------------- | ------------- | -------------
 img_name | models.CharField() | max_length=50
-img_file | models.ImageField() | blank=True / upload_to='trip_pics'
+img_file | models.ImageField() | blank=True, upload_to='trip_pics'
 
 ### Trip model
 
@@ -461,13 +460,16 @@ To be updated
 <a name="content"/>
 
 ### Content
-- 
+
+- For the concept of this web app, (as you could guess) I got inspired by [SpaceX](https://www.spacex.com/). I decided to keep the same name to make it more realistic, I don't think it would be an issue as it is a project for educational purposes only.
+- For contents related to microgravity, scientific experiments, general terms & conditions, and safety guidelines, I have used information from [AirZeroG](https://www.airzerog.com/). This company organizes parabolic flights in Europe for the general public.
+- For content specifically related to the trips, I looked online to get the distance from earth, I researched a list of launch sites. I have set the price and duration of each trip myself - even though for some trips it's not that realistic (Mars).
 
 <a name="media"/>
 
 ### Media
 
-- The logo I used for this website was created thanks to [Hatchful](https://hatchful.shopify.com).
+- I created the logo of this website thanks to [Hatchful](https://hatchful.shopify.com).
 - All the images used for this project were found on [Pexels](https://www.pexels.com).
 - I used [Font Awesome](https://fontawesome.com/v4.7.0/icons/) for my icons.
 - Demo picture of my app used in this README file: [Am I Responsive](http://ami.responsivedesign.is/#)
@@ -485,4 +487,4 @@ To be updated
 
 ### Acknowledgements
 - My Code Institute mentor, Nishant Kumar, for his patience and great support throughout this project.
-- Kevin from the Code Institute Tutor Team for helping me set up a "login success" view to enable users to be redirected back to the checkout page if they had to register to an account.
+- The entire team of tutors at Code Institute for their guidance and patience. 
