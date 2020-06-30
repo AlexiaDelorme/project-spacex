@@ -9,7 +9,6 @@
 <header class="trips-head">
 	<div class="container d-flex align-items-center">
 		<div class="mx-auto text-center">
-			<h1 class="text-light mx-auto my-0"></h1>
 		</div>
 	</div>
 </header>
@@ -47,9 +46,9 @@
                     <div class="col-12 col-md-6 col-lg-12 text-center text-lg-left">
                         <h2>{{ trip_category.destination }}</h2>
                         <p>
-                            <i class="far fa-clock"></i> {{ trip_category.duration }} Day</br>
-                            {{ trip_category.distance|intcomma }} Km</br>
-                            € {{ trip_category.price|intcomma }}</br>
+                            <i class="far fa-clock"></i> {{ trip_category.duration }} Day<br>
+                            {{ trip_category.distance|intcomma }} Km<br>
+                            € {{ trip_category.price|intcomma }}<br>
                         </p>
                     </div>
 
