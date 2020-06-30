@@ -401,25 +401,35 @@ All the documentation regarding the testing of this project can be found in this
 
 My application was deployed through [heroku](https://dashboard.heroku.com) using the master branch of my github repository for this project. The following steps were implemented to deploy this project:
 
-1. Install gunicorn package to run the application on Heroku.
+1. Install **gunicorn** package to run the application on Heroku.
     - `sudo pip3 install gunicorn`
-2. Install pycopg2 to connect to PostgreSQL
+2. Install **pycopg2** to connect to PostgreSQL
     - `sudo pip3 install psycopg2`
 3. Create a **requirements.txt** file
     - `sudo pip3 freeze --local > requirements.txt`
-4. Install PostgreSQL add-on
-    - `heroku addons:create heroku-postgresql:hobby-dev`
-4. Create a **Procfile**
-    - `to be updated`
-5. Create a new Heroku application
+4. Create a new Heroku application
     - Sign up to a new account if you do not already have one.
     - Create a new application by clicking on `new` then `create new app`.
     - Set the name of your application and select your region and click on `create app` to finalize the creation of your app. 
-6. Set the following config variables as environment variables:
-    - **SECRET_KEY**: `<SECRET_KEY>`
-
-To be updated
-
+5. Install PostgreSQL add-on
+    - `heroku addons:create heroku-postgresql:hobby-dev`
+6. Create a **Procfile** in the root directory
+    - content: `web: gunicorn spacex.wsgi:application`
+7. Set the following config variables as environment variables:
+**Config Var** | 
+------------- | -------------
+**AWS_ACCESS_KEY_ID** | `<AWS_ACCESS_KEY_ID>`
+**AWS_SECRET_ACCESS_KEY** | `<AWS_SECRET_ACCESS_KEY>`
+**DATABASE_URL** | `<SECRET_KEY>`
+**EMAIL_HOST_PASSWORD** | `<EMAIL_HOST_PASSWORD>`
+**EMAIL_HOST_USER** | `<EMAIL_HOST_USER>`
+**EMAILJS_USER** | `<EMAILJS_USER>`
+**GOOGLE_API_KEY** | `<GOOGLE_API_KEY>`
+**HOSTNAME** | `<HOSTNAME>`
+**SECRET_KEY** | `<SECRET_KEY>`
+**STRIPE_PUBLISHABLE** | `<STRIPE_PUBLISHABLE>`
+**STRIPE_SECRET** | `<STRIPE_SECRET>`
+**USE_AWS** | `<TRUE>`
 5. In the `Deploy` tab, choose `Connect Github` as **Deployment Method** and *Enable Automatic Deployment* from the Github master branch so that any new commit will be automatically deployed through your heroku app. 
 
 <a name="depl-gitpod"/>
@@ -437,18 +447,25 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
     - Search for "gitpod" in chrome web store search bar
     - Click on `Add to Chrome` then click on `Add to extension`
 3. Clone this project repository from github
-    - Go to my [repository]() for this project.
+    - Go to my [repository](https://github.com/AlexiaDelorme/project-spacex) for this project.
     - If you successfully installed the gitpod browser extension you should view a green `Gitpod` button in the top right corner of the repository (next to `Clone or download` button). Click the `Gitpod` button. 
-    - This will allow to open this repository directly in gitpod for editing.
-4. Set environment variables for the project
-To be updated
-
-5. db ? 
-To be updated
-
+    - This will allow you to open this repository directly in gitpod for editing.
+4. Set the following environment variables for the project
+**Envi Var** | 
+------------- | -------------
+**AWS_ACCESS_KEY_ID** | `<AWS_ACCESS_KEY_ID>`
+**AWS_SECRET_ACCESS_KEY** | `<AWS_SECRET_ACCESS_KEY>`
+**EMAIL_HOST_PASSWORD** | `<EMAIL_HOST_PASSWORD>`
+**EMAIL_HOST_USER** | `<EMAIL_HOST_USER>`
+**EMAILJS_USER** | `<EMAILJS_USER>`
+**GOOGLE_API_KEY** | `<GOOGLE_API_KEY>`
+**HOSTNAME** | `<HOSTNAME>`
+**SECRET_KEY** | `<SECRET_KEY>`
+**STRIPE_PUBLISHABLE** | `<STRIPE_PUBLISHABLE>`
+**STRIPE_SECRET** | `<STRIPE_SECRET>`
+5. The default local database for django projects is SQLite 3.
 6. Download all the dependencies necessary to run this project and listed in the **requirements.txt** file. 
     - Run the following command `pip3 install -r requirements.txt`
-
 7. Create a local development server:
     - In the workspace run the following command `Python3 manage.py runserver`.
     - You should now have a gitpod link to the deployed app. 
