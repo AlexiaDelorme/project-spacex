@@ -5,8 +5,8 @@ $(document).ready(function () {
     */
     $('.trip-img-thumbnail').click(function (e) {
         e.preventDefault();
-        $('.img-box').attr("src", $(this).attr("src"))
-    })
+        $('.img-box').attr("src", $(this).attr("src"));
+    });
 
     /*
         Add item to the cart and confirm it to the user using alert
@@ -221,7 +221,7 @@ $(document).ready(function () {
         Set up bootstrap modal script
     */
     $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-    })
+        $('#myInput').trigger('focus');
+    });
 
 });

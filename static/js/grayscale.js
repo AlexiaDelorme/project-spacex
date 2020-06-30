@@ -31,11 +31,11 @@
         if ($("#mainNav").offset().top > 100) {
             $("#mainNav").addClass("navbar-shrink");
             // Apply same logic to dropdown menu
-            $(".dropdown-menu").addClass("dropdown-shrink")
+            $(".dropdown-menu").addClass("dropdown-shrink");
         } else {
             $("#mainNav").removeClass("navbar-shrink");
             // Apply same logic to dropdown menu
-            $(".dropdown-menu").removeClass("dropdown-shrink")
+            $(".dropdown-menu").removeClass("dropdown-shrink");
         }
     };
     // Collapse now if page is not at top
