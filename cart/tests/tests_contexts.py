@@ -2,7 +2,7 @@ from django.test import TestCase
 from trips.models import TripCategory, Trip, DepartureSite
 
 
-class TestCartContext(TestCase):
+class TestCartContexts(TestCase):
 
     def setUp(self):
 
