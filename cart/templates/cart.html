@@ -38,7 +38,7 @@
                                             {% csrf_token %}
                                             <button class="remove-item btn btn-light float-left" type="submit"><i class="fas fa-trash-alt fa-2x"></i></button>
                                         </form>
-                                        <h1 class="mb-4">Trip to the {{ item.trip.category.destination }} </h1>
+                                        <h2 class="mb-4">Trip to the {{ item.trip.category.destination }} </h2>
                                         From {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
                                         <img class="spacex-book pb-2 text-right" src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo"> {{ item.trip.trip_reference }}
                                     </div> 
@@ -95,7 +95,7 @@
                                 {% csrf_token %}
                                     <div class="form-group">
                                         <label class="mr-2" for="passenger"><i class="fas fa-user-friends mr-2"></i>Passenger(s)</label>
-                                        <input id="passenger" name="passenger" class="mr-2 text-center passengerAdjust" type="number" min="1" max="{{ item.trip.slot }}" class="form-control" value="{{ item.passenger }}">
+                                        <input id="passenger" name="passenger" class="mr-2 form-control text-center passengerAdjust" type="number" min="1" max="{{ item.trip.slot }}" value="{{ item.passenger }}">
                                         <input class="tripPrice" id="remove_{{ item.id }}" value="{{ item.trip.category.price }}" type="hidden">
                                     </div>
                                 </form>
