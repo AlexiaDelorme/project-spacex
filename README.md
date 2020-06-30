@@ -416,20 +416,21 @@ My application was deployed through [heroku](https://dashboard.heroku.com) using
 6. Create a **Procfile** in the root directory
     - content: `web: gunicorn spacex.wsgi:application`
 7. Set the following config variables as environment variables:
-**Config Var** | 
-------------- | -------------
-**AWS_ACCESS_KEY_ID** | `<AWS_ACCESS_KEY_ID>`
-**AWS_SECRET_ACCESS_KEY** | `<AWS_SECRET_ACCESS_KEY>`
-**DATABASE_URL** | `<SECRET_KEY>`
-**EMAIL_HOST_PASSWORD** | `<EMAIL_HOST_PASSWORD>`
-**EMAIL_HOST_USER** | `<EMAIL_HOST_USER>`
-**EMAILJS_USER** | `<EMAILJS_USER>`
-**GOOGLE_API_KEY** | `<GOOGLE_API_KEY>`
-**HOSTNAME** | `<HOSTNAME>`
-**SECRET_KEY** | `<SECRET_KEY>`
-**STRIPE_PUBLISHABLE** | `<STRIPE_PUBLISHABLE>`
-**STRIPE_SECRET** | `<STRIPE_SECRET>`
-**USE_AWS** | `<TRUE>`
+
+Config Vars | Value
+----------- | -------------
+AWS_ACCESS_KEY_ID | `<AWS_ACCESS_KEY_ID>`
+AWS_SECRET_ACCESS_KEY | `<AWS_SECRET_ACCESS_KEY>`
+DATABASE_URL | `<DATABASE_URL>`
+EMAIL_HOST_PASSWORD | `<EMAIL_HOST_PASSWORD>`
+EMAIL_HOST_USER | `<EMAIL_HOST_USER>`
+EMAILJS_USER | `<EMAILJS_USER>`
+GOOGLE_API_KEY | `<GOOGLE_API_KEY>`
+HOSTNAME | `<HOSTNAME>`
+SECRET_KEY | `<SECRET_KEY>`
+STRIPE_PUBLISHABLE | `<STRIPE_PUBLISHABLE>`
+STRIPE_SECRET | `<STRIPE_SECRET>`
+USE_AWS | `<TRUE>`
 5. In the `Deploy` tab, choose `Connect Github` as **Deployment Method** and *Enable Automatic Deployment* from the Github master branch so that any new commit will be automatically deployed through your heroku app. 
 
 <a name="depl-gitpod"/>
@@ -450,19 +451,20 @@ To deploy this project locally using gitpod you will have to create a gitpod acc
     - Go to my [repository](https://github.com/AlexiaDelorme/project-spacex) for this project.
     - If you successfully installed the gitpod browser extension you should view a green `Gitpod` button in the top right corner of the repository (next to `Clone or download` button). Click the `Gitpod` button. 
     - This will allow you to open this repository directly in gitpod for editing.
-4. Set the following environment variables for the project
-**Envi Var** | 
-------------- | -------------
-**AWS_ACCESS_KEY_ID** | `<AWS_ACCESS_KEY_ID>`
-**AWS_SECRET_ACCESS_KEY** | `<AWS_SECRET_ACCESS_KEY>`
-**EMAIL_HOST_PASSWORD** | `<EMAIL_HOST_PASSWORD>`
-**EMAIL_HOST_USER** | `<EMAIL_HOST_USER>`
-**EMAILJS_USER** | `<EMAILJS_USER>`
-**GOOGLE_API_KEY** | `<GOOGLE_API_KEY>`
-**HOSTNAME** | `<HOSTNAME>`
-**SECRET_KEY** | `<SECRET_KEY>`
-**STRIPE_PUBLISHABLE** | `<STRIPE_PUBLISHABLE>`
-**STRIPE_SECRET** | `<STRIPE_SECRET>`
+4. Set the following environment variables for the project:
+
+Env Vars | Value
+----------- | -------------
+AWS_ACCESS_KEY_ID | `<AWS_ACCESS_KEY_ID>`
+AWS_SECRET_ACCESS_KEY | `<AWS_SECRET_ACCESS_KEY>`
+EMAIL_HOST_PASSWORD | `<EMAIL_HOST_PASSWORD>`
+EMAIL_HOST_USER | `<EMAIL_HOST_USER>`
+EMAILJS_USER | `<EMAILJS_USER>`
+GOOGLE_API_KEY | `<GOOGLE_API_KEY>`
+HOSTNAME | `<HOSTNAME>`
+SECRET_KEY | `<SECRET_KEY>`
+STRIPE_PUBLISHABLE | `<STRIPE_PUBLISHABLE>`
+STRIPE_SECRET | `<STRIPE_SECRET>`
 5. The default local database for django projects is SQLite 3.
 6. Download all the dependencies necessary to run this project and listed in the **requirements.txt** file. 
     - Run the following command `pip3 install -r requirements.txt`
