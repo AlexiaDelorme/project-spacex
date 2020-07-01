@@ -32,19 +32,48 @@ Back to [README.md](../README.md)
 - [JSHint](https://jshint.com/) was used to check the code quality for JS files.
     - The following undefined variables were reported but they are all related to the use of APIs: emailjs, google, stripe, csrftoken, swal.
     - There are two syntax warnings related to the use of syntax only available in ES6.
-- Gitpod extension for Python and Pylint-django was used to check the code quality for Python files. TO BE UPDATED
+- I used Visual Studio Code extension for Python available in Gitpod to ensure the code quality of my Python files. 
 
 <a name="python"/>
 
 ### Python
 
+I have tested my Python files using Django test framework that is built on unittest. For each app, I have created a tests folder in which I have tested - if relevant - the following files:
+- urls.py
+- views.py
+- models.py
+- forms.py
+
+#### How to run Python tests
+
+1. Run the following command in the terminal: `python3 manage.py test`
+2. If you want to only run test for a specific app, then you can run the following command: `python3 manage.py test <app_name>`
+3. In the terminal, you should view how many tests have run and the time it took to run those tests. 
+
+#### Coverage
+
+1. Run the following command in the terminal: `coverage run --source='.' manage.py test`
+2. If you want to only run test coverage for a specific app, then you can run the following command: `coverage run --source='<app_name>' manage.py test <app_name>`
+3. Then, to view the coverage report in the terminal, run the following command: `coverage report`
+4. If you would like to have details about code coverage for a specific file you can:
+    1. first run: `coverage html`
+        It should create a folder called 'htmlcov'
+    2. then run: `python3 -m http.server`
+        You should be able to open the folder 'htmlcov' and then check in details for each python files the coverage.
+
+I have managed to achieve a coverage of 95% on my project. I have 'N' (TO BE UPDATED) tests that are all passing. 
+
 <a name="js"/>
 
 ### JS
 
+For this project, JavaScript was mainly used for DOM manipulation and ajax calls. I have therefore decided to test all these functionalities manually in the [section](#manual-tests) that comes next.
+
 <a name="travis"/>
 
 ### Travis
+
+During the entire development of this project, I used [Travis](https://travis-ci.org/) to ensure continuous integration of the deployed site. 
 
 <a name="manual-tests"/>
 
