@@ -63,3 +63,10 @@ class TestMainPageViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'scientists.html')
         self.assertEqual(context, 'Scientific services')
+
+    def test_get_404_page(self):
+
+        response = self.client.get('/404/')
+
+        self.assertEqual(response.status_code, 404)
+        self.assertTemplateUsed(response, '404.html')
