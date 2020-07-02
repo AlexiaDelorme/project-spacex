@@ -18,9 +18,10 @@
 {% block content %}
 
 <!-- Breadcrumb -->
-<nav class="bg-light" aria-label="breadcrumb">
-  <ol class="breadcrumb">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-light mb-0">
     <li class="breadcrumb-item color-black"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item">Trips</li>
     <li class="breadcrumb-item"><a href="{% url 'trips_categories' %}">Destinations</a></li>
     <li class="breadcrumb-item"><a href="#">{{ trip_category.destination }}</a></li>
   </ol>
