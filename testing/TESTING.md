@@ -63,6 +63,8 @@ I have tested my Python files using Django test framework that is built on unitt
 
 I have managed to achieve a coverage of 95% on my project. I have 'N' (TO BE UPDATED) tests that are all passing. 
 
+#### Missing automated tests
+
 <a name="js"/>
 
 ### JS
@@ -83,9 +85,38 @@ During the entire development of this project, I used [Travis](https://travis-ci
 
 ### User stories
 
-This project has been tested multiple times against each user stories listed in the UX section of the [README.md](../README.md) file. 
+This project has been tested multiple times against each user stories listed in the UX section of the [README.md](../README.md) file.
 
-1. User story 1 testing
+**As a user, I expect:**
+1. **To have convenient access of all the trips that the travel agency offers.**
+    - The user can easily identify the 'Trips' menu in the navigation bar.
+    - The user has the option to look for all the trips available by clicking on 'Search all' in the dropdown menu.
+    - If the user only wants to look for the type of destination available, (s)he can click on 'Destination' in the dropdown menu. 
+2. **The website to have a neat and elegant design with an optimal architecture and layout.**
+    - The website is consistent with regards to the design and layout. 
+    - All the images are visually impacting and related with astrophysics and space.
+3. **The website to be intuitive and easy to navigate so that I can find what I need in the most effective manner.**
+    - The website has a simple architecture and is quite intuitive to navigate. 
+    - All important pages can be accessed through a fixed navbar bar that is therefore always available for the user.
+    - Some useful links are also available on the footer (trips, scientists and faq).
+4. **To easily find information i.e. identify key information for a specific trips and if needed, be able to get access to more details.**
+    - The user can have access to trips presented by destination. Key information is listed in an organized manner: trip destination, trip duration, trip distance...
+    - The user can access more details about the destination by clicking on the 'trip details' button. The user will be able to view more pictures of the destination, with key information, and a detailed trip description. 
+5. **To easily find information about the travel company and see their entire range of offers. I also want to have their contact details and be able to get in touch with them through a contact form.**
+    - The user can easily access information about the travel company by clicking on the 'About' item in the navbar. On this page, the user will have access to a small presentation of the company along with their history and all the services they provide.
+    - The user can get in touch with the company through a contact form available in the 'Contact' page. 
+6. **To be able to research trips by destination, departure site and date.**
+    - The user can research trip by destination and then on the trip details, (s)he will have the option to submit a form to look for all the available trips for this specific destination.
+    - The user can also research trips in the 'Search all' section. At the top of the results page, there is a search form where the user can look for trips with the following criteria: destination, departure site and departure date. 
+7. **To read testimonies from previous passengers and have access to FAQs.**
+    - Testimonies from previous passengers are directly available on the home page.
+    - A link to the FAQs is available in the 'trips' dropdown menu in the navbar and in the footer as well. 
+8. To be able to book a trip and then register/log in to an account with minimal steps to confirm my order.
+9. The website to display my order details for each steps of the checkout and receive an email once my booking has been completed. 
+10. The website to be fully responsive on any devices: mobile, tablet, desktop. 
+11. The website to be fully interactive so that I get clear feedback on any action I undertake (complete a form, process a payment, log in, log out etc…).
+12. As a business or scientist, I want to easily find information on the application process and gets a pricing estimate for my request. 
+13. As a user, I want to be able to access (and update) my personal information, upcoming and post bookings.
 
 <a name="features"/>
 
