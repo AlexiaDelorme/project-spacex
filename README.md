@@ -51,21 +51,20 @@
 
 ## User Stories
 
-As a general user, I expect:
+As a user, I expect:
 1. To have convenient access of all the trips that the travel agency offers.
 2. The website to have a neat and elegant design with an optimal architecture and layout.
 3. The website to be intuitive and easy to navigate so that I can find what I need in the most effective manner.
 4. To easily find information i.e. identify key information for a specific trips and if needed, be able to get access to more details.
 5. To easily find information about the travel company and see their entire range of offers. I also want to have their contact details and be able to get in touch with them through a contact form.  
 6. To be able to research trips by destination, departure site and date.
-7. To read testimonies from previous customers so that I have a clear vision of the experience offered. 
-8. To be advised of the remaining slots if the trip is almost sold out and register to a waiting list if it is already sold out. 
-9. To be able to book a trip and then be able to register/log in to an account with minimal steps to confirm my order.
-10. The website to display my order details for each steps of the checkout and receive an email once my booking has been completed. 
-11. The website to be fully responsive on any devices: mobile, tablet, desktop. 
-12. The website to be fully interactive so that I get clear feedback on any action I undertake (complete a form, process a payment, log in, log out etc…).
-13. As a business or scientist, I want to easily find information on the application process and gets a pricing estimate for my request. 
-14. As a user, I want to be able to access (and update) my personal information, upcoming and post bookings.
+7. To read testimonies from previous passengers and have access to FAQs. 
+8. To be able to book a trip and then register/log in to an account with minimal steps to confirm my order.
+9. The website to display my order details for each steps of the checkout and receive an email once my booking has been completed. 
+10. The website to be fully responsive on any devices: mobile, tablet, desktop. 
+11. The website to be fully interactive so that I get clear feedback on any action I undertake (complete a form, process a payment, log in, log out etc…).
+12. As a business or scientist, I want to easily find information on the application process and gets a pricing estimate for my request. 
+13. As a user, I want to be able to access (and update) my personal information, upcoming and post bookings.
 
 <a name="design"/>
 
@@ -210,7 +209,9 @@ Page with all upcoming and/or past trips that were booked by the user.
 
 <a name="future-features"/>
 
-## Future Features
+## Future Feature 1 - Waiting list
+
+To advise the user of the remaining slots if the trip is almost sold out and register to a waiting list if it is already sold out. 
 
 <a name="database"/>
 
