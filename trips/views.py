@@ -61,7 +61,8 @@ def trips_results_page(request, pk):
 
     context = {
         "page_title": "Results",
-        "page_obj": page_obj
+        "page_obj": page_obj,
+        "trip_category": trip_category
     }
     messages.info(request, "Please, see below the result(s) for your search")
     return render(request, "trips_results.html", context)
