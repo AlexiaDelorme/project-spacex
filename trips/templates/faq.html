@@ -16,6 +16,14 @@
 
 {% block content %}
 
+<!-- Breadcrumb -->
+<nav class="bg-light" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item color-black"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">FAQs</a></li>
+  </ol>
+</nav>
+
 <!-- FAQs Section -->
 <section id="faq" class="pt-5 pb-5"> 
 	<div class="container">

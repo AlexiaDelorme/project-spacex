@@ -17,6 +17,16 @@
 
 {% block content %}
 
+<!-- Breadcrumb -->
+<nav class="bg-light" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item color-black"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'trips_categories' %}">Destinations</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'trip_detail' trip_category.id %}">{{ trip_category.destination }}</a></li>
+    <li class="breadcrumb-item"><a href="#">Trips results</a></li>
+  </ol>
+</nav>
+
 <!-- Trips results cards -->
 <section class="pt-5 pb-3 bg-light">
 	<div class="container">
