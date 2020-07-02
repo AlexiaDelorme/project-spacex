@@ -12,6 +12,15 @@
 
 {% block content %}
 
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-light mb-0">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item">Account</li>
+    <li class="breadcrumb-item"><a href="#">My Bookings</a></li>
+  </ol>
+</nav>
+
 <!-- Booking Section -->
 <section class="pt-5 pb-5">
 	<div class="container">
