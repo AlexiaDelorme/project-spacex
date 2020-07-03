@@ -111,12 +111,26 @@ This project has been tested multiple times against each user stories listed in 
 7. **To read testimonies from previous passengers and have access to FAQs.**
     - Testimonies from previous passengers are directly available on the home page.
     - A link to the FAQs is available in the 'trips' dropdown menu in the navbar and in the footer as well. 
-8. To be able to book a trip and then register/log in to an account with minimal steps to confirm my order.
-9. The website to display my order details for each steps of the checkout and receive an email once my booking has been completed. 
-10. The website to be fully responsive on any devices: mobile, tablet, desktop. 
-11. The website to be fully interactive so that I get clear feedback on any action I undertake (complete a form, process a payment, log in, log out etc…).
-12. As a business or scientist, I want to easily find information on the application process and gets a pricing estimate for my request. 
+8. **To be able to book a trip and then register/log in to an account with minimal steps to confirm my order.**
+    - After looking for a trip, the user can easily add the trip to his/her cart. The user will be then redirected to the cart page to view the content of his/her cart. Then, the user will be able to proceed to the checkout by clicking the button at the end of the cart page.
+    - If the user is already logged in, (s)he will be able to start the checkout process.
+    - Otherwise, the user will be able to log in / register to an account and then be redirected back to the checkout process. 
+9. **The website to display my order details for each steps of the checkout and receive an email once my booking has been completed.**
+    - For each step of the checkout process, a recap of the user's booking with key information related to the trip(s) is displayed.
+    - The different steps of the checkout are very clear and indicated at the top of each page thanks to a progress bar. 
+    - SEND EMAIL AFTER BOOKING IS COMPLETED IS TO BE DONE. 
+10. **The website to be fully responsive on any devices: mobile, tablet, desktop.**
+    - This project has been created to be fully responsive on all devices' size. For each page, the wireframes are available in three sizes.
+    - Throught the developement of this project, it has been extensively tested on mobile, tablet and desktop as well as on other devices screen size available in Chrome Developer Tools. 
+11. **The website to be fully interactive so that I get clear feedback on any action I undertake (complete a form, process a payment, log in, log out etc…).**
+    - Flash messages were used to provide feedback to the user anytime an action has been triggered by the user leading to be redirected to a different view. Flash messages were used to provide feedback to the user if an action has indeed taken place when the user should be redirected to a different view than the one (s)he initiated the action.
+    - SweetAlert was used to provide feedback thanks to an alert box when the user has requested an action but this action requires a confirmation or just to provide feedback that this action is not permitted. For instance, when the user is adding a trip to his cart, then it will be asked to confirm if (s)he would like to keep shopping or go to the cart. Also JS was prioritized to provide feedback when the action the user has initiated does not imply that the user will be redirected to a different view.
+12. As a business or scientist, I want to easily find information on the application process and request information to the company. 
+    - Scientists and businesses have a dedicated page available from the navbar by clicking on 'Scientists'. 
+    - On this dedicated page, they can find information on the selection process for a scientific experiment, examples of past experiments etc... A link to the contact page is also available on this page.
 13. As a user, I want to be able to access (and update) my personal information, upcoming and post bookings.
+    - The user has access to their personal information on their 'Profile' page. The user can update their contact details, passenger details as well as their password.
+    - The user can access their upcoming or past bookings by clicking on the 'Bookings' link in the 'Account' dropdown menu in the navbar. 
 
 <a name="features"/>
 
