@@ -141,15 +141,15 @@ This project has been tested multiple times against each user stories listed in 
 1. Navbar
 
 **Test scenario:**
-- [x] Check that each following menu items display correctly when the user is not logged in (and following this order): The Pâtisserie Logo, Home, Explore, Recipes, About, Sign Up and Log In. 
-- [x] Hover over each menu items and confirm that the background colour changes from white to grey. 
-- [x] Click on `The Pâtisserie` logo, it should take the user back to the home page.
-- [x] Click on `Home`, it should take the user back to the home page.
-- [x] Click on `Explore`, it should take the user to the explore recipes page.
-- [x] Click on `Recipes`, it should take the user to the recipes by categories page.
-- [x] Click on `About`, it should take the user to the about page.
-- [x] Click on `Sign Up`, it should take the user to the sign up page.
-- [x] Click on `Log In`, it should take the user to the log in page.
+- [x] Check that the SpaceX logo displays correctly and is aligned to the left.
+- [x] Check that each following menu items display correctly and are centered: Home, Trips, Scientists, About, Contact.
+- [x] Check that the dropdown menu item for Trips displays the following links: Destination, Search All, FAQs.
+- [x] Check that the following menu items are aligned to the right: Account, Cart icon.
+- [x] Confirm that, when the user is not logged in, the dropdown menu item for Account displays the following links: Log in, Sign Up. 
+- [x] Confirm that, when the user is logged in, the dropdown menu item for Account displays the following links: Profile, Bookings, Log Out. 
+- [x] Hover over each menu items and confirm that the font-colour gets slightly highlighted.
+- [x] Confirm that for each menu item clicked, it should take the user back to the corresponding page. 
+- [x] Add a trip to the cart and confirm that the number of booked trip(s) is successfully displayed next to the cart item in the navbar.
 
 **Test result:** Successful :white_check_mark:
 
@@ -165,9 +165,12 @@ This project has been tested multiple times against each user stories listed in 
 2. Footer 
 
 **Test scenario:**
-- [x] Confirm that the icons in the footer display correctly in the following order: Facebook, Instagram, Youtube, Pinterest and Twitter.
-- [x] Hover over each icons and confirm that their colours change to the social media "referenced" colour. Example: Facebook icon should turn dark blue, Youtube icon should turn red...
-- [x] Click on each social media icon, it should take the user to the corresponding social media page, opening in a new tab. It takes the user to the home page of each social media as this is a mock project - no account was created.  
+- [x] Confirm that the footer is composed of 3 cards: Address, Subscription, Links.
+- [x] Confirm that you can subscribe to SpaceX newsletter (after confirmation through Mailchimp).
+- [x] Confirm that, when clicked, each link (Trips, Scientists, FAQs) returns to the corresponding page.
+- [x] Confirm that the icons in the footer display correctly in the following order: Facebook, Twitter, LinkedIn, YouTube.
+- [x] Hover over each icons and confirm that their colour gets slightly highlighted. 
+- [x] Click on each social media icon, it should take the user to the corresponding social media page, opening in a new tab. (It takes the user to the home page of each social media as this is a mock project - no account was created).
 
 **Test result:** Successful :white_check_mark:
 
