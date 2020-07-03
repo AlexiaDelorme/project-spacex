@@ -63,7 +63,7 @@ As a user, I expect:
 9. The website to display my order details for each steps of the checkout and receive an email once my booking has been completed. 
 10. The website to be fully responsive on any devices: mobile, tablet, desktop. 
 11. The website to be fully interactive so that I get clear feedback on any action I undertake (complete a form, process a payment, log in, log out etc…).
-12. As a business or scientist, I want to easily find information on the application process and gets a pricing estimate for my request. 
+12. As a business or scientist, I want to easily find information on the application process and request information to the company.
 13. As a user, I want to be able to access (and update) my personal information, upcoming and post bookings.
 
 <a name="design"/>
