@@ -30,6 +30,15 @@ def contact_page(request):
                 request, "Sorry, we were enable to send your request"
             )
 
+    # Auto-fill contact form if user is logged in
+    if request.user.is_authenticated:
+        user_contact = {
+            'first': request.user.first_name,
+            'last': request.user.last_name,
+            'email': request.user.email,
+        }
+        form = ContactForm(initial=user_contact)
+
     else:
         form = ContactForm()
 
