@@ -29,7 +29,7 @@
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css">
-        <link href="{% static 'css/grayscale.css' %}" rel="stylesheet">
+        <link href="{% static 'lib_grayscale/css/grayscale.css' %}" rel="stylesheet">
         <link href="{% static 'css/custom.css' %}" rel="stylesheet">
     {% endblock %}
 
@@ -81,7 +81,11 @@
 	{% endblock %}
 
     {% block postloadjs %}
-        <script src="{% static 'js/grayscale.js' %}"></script>
+        {% if checkout_pg %}
+            <!-- Do not load grayscale script -->
+        {% else %}
+            <script src="{% static 'lib_grayscale/js/grayscale.js' %}"></script>
+        {% endif %}
         <script src="{% static 'js/main.js' %}"></script>
     {% endblock %}
 
