@@ -16,7 +16,7 @@ class TestCartUrls(SimpleTestCase):
     def test_adjust_cart_url_resolves(self):
         url = reverse('adjust_cart', args=['1'])
         self.assertEquals(resolve(url).func, adjust_cart)
-    
+
     def test_remove_from_cart_url_resolves(self):
         url = reverse('remove_from_cart', args=['1'])
         self.assertEquals(resolve(url).func, remove_from_cart)

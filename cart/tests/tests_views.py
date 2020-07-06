@@ -1,4 +1,4 @@
-from django.test import TestCase, Client
+from django.test import TestCase
 from django.contrib.auth.models import User
 from trips.models import Trip, TripCategory, DepartureSite
 
@@ -6,8 +6,8 @@ from trips.models import Trip, TripCategory, DepartureSite
 class TestCartViewPage(TestCase):
 
     def setUp(self):
-        """Create a dummy instance of the User model """
 
+        # create dummy instance of the User object
         self.user = User.objects.create_user(
             username='test', email='test@test.com', password='12345678'
         )
@@ -22,7 +22,7 @@ class TestCartViewPage(TestCase):
 
     def test_cart_page_session_logged_out(self):
         """Test that session variable 'referrer' is equal to checkout when user
-        is logged out."""
+        is logged out"""
 
         self.client.get('/cart/')
         session = self.client.session
@@ -31,7 +31,7 @@ class TestCartViewPage(TestCase):
 
     def test_booking_references_session_variable(self):
         """Test booking_references session variable being deleted if it already
-        exists in the view."""
+        exists in the view"""
 
         # manually sets booking_references session variable
         session = self.client.session
@@ -48,8 +48,8 @@ class TestCartViewPage(TestCase):
 class TestAddToCartView(TestCase):
 
     def setUp(self):
-        """Create a dummy instance of the trip object"""
 
+        # create dummy instance of the Trip object
         self.cat_1 = TripCategory.objects.create(
             title='Trip to the Moon',
             destination='Moon',
@@ -99,11 +99,11 @@ class TestAddToCartView(TestCase):
         self.assertEqual(response.url, "/cart/")
 
 
-class TestAdjustCartView(TestCase):
+class TestAdjustRemoveCartViews(TestCase):
 
     def setUp(self):
-        """Create a dummy instance of the trip object"""
 
+        # create dummy instance of the Trip object
         self.cat_1 = TripCategory.objects.create(
             title='Trip to the Moon',
             destination='Moon',
