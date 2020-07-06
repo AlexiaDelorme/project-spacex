@@ -11,8 +11,8 @@ from trips.models import (
 class TripTests(TestCase):
 
     def setUp(self):
-        """Create a dummy instance of the trip object"""
 
+        # create dummy instance of the trip object
         self.cat_1 = TripCategory.objects.create(
             title='Trip to the Moon',
             destination='Moon',
@@ -53,7 +53,3 @@ class TripTests(TestCase):
 
     def test_trip_reference_property(self):
         self.assertEqual(self.trip_1.trip_reference, 'SPX1')
-
-    # test creating an error
-    # def test_trip_return_date_property(self):
-        # self.assertEqual(self.trip_1.return_date, '2020-07-16')

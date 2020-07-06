@@ -6,8 +6,8 @@ from trips.forms import TripSearchForm, AllTripSearchForm
 class TestTripsPages(TestCase):
 
     def setUp(self):
-        """Create a dummy instance of the trip object"""
 
+        # create a dummy instance of the trip object
         self.cat_1 = TripCategory.objects.create(
             title='Trip to the Moon',
             destination='Moon',
