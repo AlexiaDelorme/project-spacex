@@ -1,4 +1,5 @@
-from django.test import TestCase
+from django.contrib.auth.models import User
+from django.test import Client, RequestFactory, TestCase
 from main_pages.forms import ContactForm
 
 
@@ -27,9 +28,30 @@ class TestMainPageViews(TestCase):
         self.assertTemplateUsed(response, 'contact.html')
         self.assertEqual(type(contact_form), ContactForm)
 
+    def test_get_user_details_for_contact_form(self):
+
+        # create and log the user in
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            username='john',
+            first_name='John',
+            last_name='Lennon',
+            email='lennon@thebeatles.com',
+            password='johnpassword')
+        self.client = Client()
+        self.client.login(username='john', password='johnpassword')
+
+        # get contact page
+        response = self.client.get('/main/contact/')
+        contact_form = response.context['form']
+
+        self.assertEquals(contact_form['first'].value(), 'John')
+        self.assertEquals(contact_form['last'].value(), 'Lennon')
+        self.assertEquals(
+            contact_form['email'].value(), 'lennon@thebeatles.com')
+
     def test_post_contact_page_success(self):
 
-        # Testing successful post request
         post_form = {
             'subject': 'Information Request',
             'first': 'Test',
@@ -43,7 +65,6 @@ class TestMainPageViews(TestCase):
 
     def test_post_contact_page_failure(self):
 
-        # Testing failed post request
         post_form = {
             'subject': 'Information Request',
             'first': '',
