@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 class TestContactModel(TestCase):
 
     def setUp(self):
-        """Create a dummy instance of the contact model"""
 
+        # create dummy instance of the contact object
         self.contact1 = ContactDetail.objects.create(
             user=User.objects.create_user(
                 username='test',
@@ -37,8 +37,8 @@ class TestContactModel(TestCase):
 class TestPassengerModel(TestCase):
 
     def setUp(self):
-        """Create a dummy instance of the passenger model"""
 
+        # create dummy instance of the passenger object
         self.passenger1 = Passenger.objects.create(
             user=User.objects.create_user(
                 username='test',

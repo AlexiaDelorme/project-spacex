@@ -34,18 +34,6 @@ class TestUserUpdateForm(SimpleTestCase):
 
 class TestUserPassengerForm(SimpleTestCase):
 
-    def test_form_is_valid(self):
-        form = UserPassengerForm({
-            'title': 'Mrs',
-            'birth_month': 'January',
-            'birth_day': '10',
-            'birth_year': '1990',
-            'citizenship': 'France',
-            'passport_id': 'XXXXXX',
-        })
-
-        # self.assertTrue(form.is_valid())
-
     def test_form_is_invalid(self):
         form = UserPassengerForm({'title': ''})
 
@@ -69,17 +57,6 @@ class TestUserPassengerForm(SimpleTestCase):
 
 
 class TestUserContactDetailForm(SimpleTestCase):
-
-    def test_user_contact_detail_form_is_valid(self):
-        form = UserContactDetailForm({
-            'phone_number': '0033000000',
-            'street_address1': '32 test street',
-            'postcode': '1234',
-            'town_or_city': 'test city',
-            'country': 'France'
-        })
-
-        # self.assertTrue(form.is_valid())
 
     def test_form_is_invalid(self):
         form = UserContactDetailForm({'country': ''})
