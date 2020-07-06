@@ -180,18 +180,18 @@ This project has been tested multiple times against each user stories listed in 
 - [x] The title and the picture of the welcome section loaded successfully. 
 - [x] The navbar should be transparent, when scrolling down, it should turn white.
 - [x] 'Discover' button
-        - When hovered over, the background color should get darker. 
-        - When clicked, it should take the user further down on the home page: where the travel agency is presented.
+    - When hovered over, the background color should get darker. 
+    - When clicked, it should take the user further down on the home page: where the travel agency is presented.
 - [x] Confirm that all the pictures on the home page loaded successfully, including the ones for passengers testimonials. 
 - [x] Confirm that the following information is on the page: 
-        - innovative concept of the travel company
-        - categories of trips (individuals & scientists)
-        - statistics on our trips
-        - testimonials of passengers
-        - button to browse trips    
+    - innovative concept of the travel company
+    - categories of trips (individuals & scientists)
+    - statistics on our trips
+    - testimonials of passengers
+    - button to browse trips    
 - [x] At the bottom of the home page, get to the 'Book Your Next Trip' button
-        - When hovered over, the background color should turn white.
-        - When clicked, it should take the user to the page where all the destinations are listed.
+    - When hovered over, the background color should turn white.
+    - When clicked, it should take the user to the page where all the destinations are listed.
 
 **Test result:** Successful :white_check_mark:
 
@@ -202,8 +202,8 @@ This project has been tested multiple times against each user stories listed in 
 - [x] The navbar should be transparent, when scrolling down, it should turn white.
 - [x] Confirm that all the pictures on the page loaded successfully. 
 - [x] At the bottom of the page, get to the 'Browse Trips' button
-        - When hovered over, the background color should get darker.
-        - When clicked, it should take the user to the page where all the destinations are listed. 
+    - When hovered over, the background color should get darker.
+    - When clicked, it should take the user to the page where all the destinations are listed. 
 
 **Test result:** Successful :white_check_mark:
 
@@ -226,8 +226,8 @@ This project has been tested multiple times against each user stories listed in 
 - [x] The navbar should be transparent, when scrolling down, it should turn white.
 - [x] Confirm that all the pictures on the page loaded successfully. 
 - [x] At the bottom of the page, get to the 'Contact Us' button
-        - When hovered over, the background color should get darker.
-        - When clicked, it should take the user to the contact page. 
+    - When hovered over, the background color should get darker.
+    - When clicked, it should take the user to the contact page. 
 
 **Test result:** Successful :white_check_mark:
 
