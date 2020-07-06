@@ -176,25 +176,58 @@ This project has been tested multiple times against each user stories listed in 
 
 ###### Feature 1 - Home page
 
-**Hypothesis:** The user should be logged out to perform this test.
+**Test scenario:**
+- [x] The title and the picture of the welcome section loaded successfully. 
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] 'Discover' button
+        - When hovered over, the background color should get darker. 
+        - When clicked, it should take the user further down on the home page: where the travel agency is presented.
+- [x] Confirm that all the pictures on the home page loaded successfully, including the ones for passengers testimonials. 
+- [x] Confirm that the following information is on the page: 
+        - innovative concept of the travel company
+        - categories of trips (individuals & scientists)
+        - statistics on our trips
+        - testimonials of passengers
+        - button to browse trips    
+- [x] At the bottom of the home page, get to the 'Book Your Next Trip' button
+        - When hovered over, the background color should turn white.
+        - When clicked, it should take the user to the page where all the destinations are listed.
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 2 - About page
 
 **Test scenario:**
-- [x] The title and the picture of the welcome page loaded successfully. 
-- Our recipes section   
-    - [x] When scrolling down, the user should first see a section teaser for recipes. 
-    - [x] Confirm that the three pictures loaded successfully. 
-    - [x] When the user hovers over `EXPLORE RECIPES`, the font colour should turn pink and the border below should expand. 
-    - [x] Click on `EXPLORE RECIPES`, it should take the user to the explore recipes page. 
-- Online cookbook section
-    - [x] When scrolling down, the user should then see a section teaser for the online cookbook. 
-    - [x] Confirm that the picture loaded successfully. 
-    - [x] When the user hovers over `JOIN US`, the font colour should turn pink and the border below should expand. 
-    - [x] Click on `JOIN US`, it should take the user to the sign up page. 
-- About us section
-    - [x] When scrolling down, the user should finally see a section teaser to present the website.  
-    - [x] Confirm that the picture loaded successfully. 
-    - [x] When the user hovers over `LEARN MORE`, the font colour should turn pink and the border below should expand. 
-    - [x] Click on `LEARN MORE`, it should take the user to the sign up page. 
+- [x] The title and the picture of the header loaded successfully. 
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] Confirm that all the pictures on the page loaded successfully. 
+- [x] At the bottom of the page, get to the 'Browse Trips' button
+        - When hovered over, the background color should get darker.
+        - When clicked, it should take the user to the page where all the destinations are listed. 
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 3 - Contact page
+
+**Test scenario:**
+- [x] The title and the picture of the header loaded successfully. 
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] Confirm that the contact form and the google map loaded successfully.
+- [x] As a logged in user, confirm that the following fields of the contact form are already filled: First Name, Last Name and Email.
+- [x] Try to submit the form with a missing field and confirm that you get an alert box advising you of the missing field.
+- [x] Submit a complete form, you should get redirected back to the contact page with a green flash message confirming that the request was sent. 
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 4 - Scientists page
+
+**Test scenario:**
+- [x] The title and the picture of the header loaded successfully. 
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] Confirm that all the pictures on the page loaded successfully. 
+- [x] At the bottom of the page, get to the 'Contact Us' button
+        - When hovered over, the background color should get darker.
+        - When clicked, it should take the user to the contact page. 
 
 **Test result:** Successful :white_check_mark:
 
