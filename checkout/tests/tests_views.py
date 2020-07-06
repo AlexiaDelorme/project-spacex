@@ -47,11 +47,13 @@ class TestCheckoutContactViewPage(TestCase):
         self.assertEqual(response.url, reverse('view_cart'))
 
     def test_booking_references_session_variable(self):
+
         # set 'booking_references' and 'cart'
         session = self.client.session
         session['booking_references'] = {'1': '1'}
         session['cart'] = {'1': 1}
         session.save()
+
         # check if session var being deleted when user gets to url
         self.client.get('/checkout/contact/')
         session = self.client.session
@@ -59,6 +61,7 @@ class TestCheckoutContactViewPage(TestCase):
         self.assertNotIn('booking_references', session, msg=None)
 
     def test_get_checkout_contact_page(self):
+
         # set cart
         session = self.client.session
         session['cart'] = {'1': 1}
@@ -70,10 +73,12 @@ class TestCheckoutContactViewPage(TestCase):
         self.assertTemplateUsed(response, 'checkout_contact.html')
 
     def test_post_contact_details_if_contact_does_not_exist(self):
+
         # set cart
         session = self.client.session
         session['cart'] = {'1': 1}
         session.save()
+
         # post url and form
         url = '/checkout/contact/'
         contact_form = {
@@ -89,6 +94,7 @@ class TestCheckoutContactViewPage(TestCase):
         self.assertEqual(response.url, reverse('checkout_passengers'))
 
     def test_form_in_context_if_contact_exists(self):
+
         # set contact details
         self.contact = ContactDetail.objects.create(
             user=self.user,
@@ -98,10 +104,12 @@ class TestCheckoutContactViewPage(TestCase):
             town_or_city='London',
             country='GB'
         )
+
         # set cart
         session = self.client.session
         session['cart'] = {'1': 1}
         session.save()
+
         # ger url
         response = self.client.get('/checkout/contact/')
         contact_form = response.context['form']
@@ -109,6 +117,7 @@ class TestCheckoutContactViewPage(TestCase):
         self.assertEqual(type(contact_form), UserContactDetailForm)
 
     def test_post_contact_details_if_contact_exists(self):
+
         # set contact details
         self.contact = ContactDetail.objects.create(
             user=self.user,
@@ -118,10 +127,12 @@ class TestCheckoutContactViewPage(TestCase):
             town_or_city='London',
             country='GB'
         )
+
         # set cart
         session = self.client.session
         session['cart'] = {'1': 1}
         session.save()
+
         # post url and form
         url = '/checkout/contact/'
         contact_form = {
@@ -176,10 +187,12 @@ class TestCheckoutPassengersViewPage(TestCase):
         self.assertEqual(response.url, reverse('view_cart'))
 
     def test_get_checkout_passengers_page(self):
+
         # set cart
         session = self.client.session
         session['cart'] = {'1': 1}
         session.save()
+
         # get url
         response = self.client.get('/checkout/passengers/')
 
@@ -187,6 +200,7 @@ class TestCheckoutPassengersViewPage(TestCase):
         self.assertTemplateUsed(response, 'checkout_passengers.html')
 
     def test_form_in_context_if_passenger_exists(self):
+
         # set passenger details
         self.passenger = Passenger.objects.create(
             user=self.user,
@@ -197,10 +211,12 @@ class TestCheckoutPassengersViewPage(TestCase):
             citizenship='GB',
             passport_id='UK00000'
         )
+
         # set cart
         session = self.client.session
         session['cart'] = {'1': 1}
         session.save()
+
         # ger url
         response = self.client.get('/checkout/passengers/')
         form = response.context['form']
@@ -248,11 +264,13 @@ class TestSavePassengersViews(TestCase):
         )
 
     def test_save_other_passenger(self):
+
         # set 'booking_references'
         session = self.client.session
         session['booking_references'] = {
             str(self.trip_1.id): str(self.booking_1.id)}
         session.save()
+
         # set url and post form
         url = "/checkout/save-passenger/" + str(self.trip_1.id) + "/"
         other_passenger_form = {
@@ -272,14 +290,15 @@ class TestSavePassengersViews(TestCase):
         self.assertEqual(response.status_code,  302)
         self.assertEqual(response.url, reverse('checkout_passengers'))
         self.assertIsInstance(passenger, OtherPassenger)
-        # self.assertIsInstance(passenger, self.booking_1.other_passenger)
 
     def test_save_user_passenger_if_passenger_does_not_exist(self):
+
         # set 'booking_references'
         session = self.client.session
         session['booking_references'] = {
             str(self.trip_1.id): str(self.booking_1.id)}
         session.save()
+
         # set url and post form
         url = "/checkout/save-user-passenger/" + str(self.trip_1.id) + "/"
         user_passenger_form = {
@@ -296,9 +315,9 @@ class TestSavePassengersViews(TestCase):
         self.assertEqual(response.status_code,  302)
         self.assertEqual(response.url, reverse('checkout_passengers'))
         self.assertIsInstance(passenger, Passenger)
-        # self.assertEqual(passenger, self.booking_1.user_passenger)
 
     def test_save_user_passenger_if_passenger_exists(self):
+
         # create passenger instance
         self.passenger = Passenger.objects.create(
             user=self.user,
@@ -309,11 +328,13 @@ class TestSavePassengersViews(TestCase):
             citizenship='GB',
             passport_id='UKXXXXX'
         )
+
         # set 'booking_references'
         session = self.client.session
         session['booking_references'] = {
             str(self.trip_1.id): str(self.booking_1.id)}
         session.save()
+
         # set url and post form
         url = "/checkout/save-user-passenger/" + str(self.trip_1.id) + "/"
         user_passenger_form = {
@@ -377,10 +398,12 @@ class TestCheckoutPaymentViewPage(TestCase):
         self.assertEqual(response.url, reverse('view_cart'))
 
     def test_get_checkout_payment_page(self):
+
         # set cart
         session = self.client.session
         session['cart'] = {'1': 1}
         session.save()
+
         # get url
         response = self.client.get('/checkout/payment/')
         payment_form = response.context['form']
@@ -391,10 +414,12 @@ class TestCheckoutPaymentViewPage(TestCase):
         self.assertTemplateUsed(response, 'checkout_payment.html')
 
     def test_post_payment_form_failure(self):
+
         # set cart
         session = self.client.session
         session['cart'] = {'1': 1}
         session.save()
+
         # set url and post payment form
         url = '/checkout/payment/'
         payment_form = {
@@ -445,10 +470,12 @@ class TestCheckoutConfirmationViewPage(TestCase):
         )
 
     def test_get_checkout_confirmation_page(self):
+
         # set cart
         session = self.client.session
         session['cart'] = {'1': 1}
         session.save()
+
         # get url
         response = self.client.get('/checkout/confirmation/')
 
