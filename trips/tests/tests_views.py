@@ -34,14 +34,14 @@ class TestTripsPages(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'faq.html')
 
-    def test_get_trips_categories_page(self):
-        response = self.client.get('/trips/categories/')
+    def test_get_trips_destinations_page(self):
+        response = self.client.get('/trips/destinations/')
         context = response.context
 
         self.assertEqual(response.status_code, 200)
         self.assertIn('page_title', context)
         self.assertIn('trip_categories', context)
-        self.assertTemplateUsed(response, 'trips_categories.html')
+        self.assertTemplateUsed(response, 'trips_destinations.html')
 
     def test_get_trip_detail_page(self):
         url = "/trips/detail/" + str(self.cat_1.id) + "/"
