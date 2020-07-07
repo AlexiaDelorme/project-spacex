@@ -21,7 +21,7 @@ class BookingReferenceAdmin(admin.ModelAdmin):
         'confirmation_status',
     )
 
-    ordering = ('trip',)
+    ordering = ('trip', 'order_date')
 
 
 # Register your models here.
