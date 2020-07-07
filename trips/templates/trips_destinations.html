@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block header %}
+<!-- Header -->
+<header class="trips-head">
+	<div class="container d-flex align-items-center">
+		<div class="mx-auto text-center">
+			<h1 class="text-light mx-auto my-0">Discover our destinations</h1>
+		</div>
+	</div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-light mb-0">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item">Trips</li>
+    <li class="breadcrumb-item"><a href="#">Destinations</a></li>
+  </ol>
+</nav>
+
+<!-- Trips listing section -->
+<section class="projects-section pb-5 bg-light">
+	<div class="container">
+
+		{% for trip in trip_categories %}
+
+            {% if forloop.counter|divisibleby:2 %}
+                <!-- Trip card - even -->
+                <div class="row justify-content-center no-gutters class-margin-bottom">
+                    <div class="col-lg-8">
+                        <img class="img-fluid" src="{{ trip.img.all.0.img_file.url }}" alt="{{ trip.img.all.0.img_name }}">
+                        <a href="{% url 'trip_detail' trip.id %}" class="d-none d-md-block btn btn-light btn-book float-right mr-5" role="button">Trip Details</a>
+                    </div>
+                    <div class="col-lg-4 order-lg-first">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-center text-lg-right">
+                                    <h4 class="text-white">{{ trip.destination }}</h4>
+                                    <hr class="d-none d-lg-block mb-0 mr-0">
+                                    <p class="mt-3 mb-3 mb-md-0 text-white-50">
+                                        {{ trip.duration }} Day<br>
+                                        {{ trip.distance|intcomma }} Km<br>
+                                        € {{ trip.price|intcomma }}<br>
+                                        <i class="fas fa-calendar-day"></i>
+                                        Many departures
+                                    </p>
+                                    <a href="{% url 'trip_detail' trip.id %}" class="d-md-none btn btn-light" role="button">Trip Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+		    {% else %}
+                <!-- Trip card - odd -->
+                <div class="row justify-content-center no-gutters class-margin-bottom">
+                    <div class="col-lg-8">
+                        <img class="img-fluid" src="{{ trip.img.all.0.img_file.url }}" alt="{{ trip.img.all.0.img_name }}">
+                        <a href="{% url 'trip_detail' trip.id %}" class="d-none d-md-block btn btn-light btn-book float-left ml-5" role="button">Trip Details</a>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="bg-black text-center h-100 project">
+                            <div class="d-flex h-100">
+                                <div class="project-text w-100 my-auto text-lg-left">
+                                    <h4 class="text-white">{{ trip.destination }}</h4>
+                                    <hr class="d-none d-lg-block mb-0 ml-0">
+                                    <p class="mt-3 mb-3 mb-md-0 text-white-50">
+                                        {{ trip.duration }} Day<br>
+                                        {{ trip.distance|intcomma }} Km<br>
+                                        € {{ trip.price|intcomma }}<br>
+                                        <i class="fas fa-calendar-day"></i>
+                                        Many departures
+                                    </p>
+                                    <a href="{% url 'trip_detail' trip.id %}" class="d-md-none btn btn-light" role="button">Trip Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+		    {% endif %}
+
+		{% endfor %}
+
+	</div>
+</section>
+
+{% endblock %}
