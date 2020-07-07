@@ -15,10 +15,8 @@ def view_cart(request):
     if 'booking_references' in request.session:
         booking_references = request.session['booking_references']
         for key in booking_references:
-            # Delete booking ref object
             BookingReference.objects.filter(
                 id=booking_references[key]).delete()
-        # Delete session variable
         del request.session['booking_references']
 
     return render(request, "cart.html")

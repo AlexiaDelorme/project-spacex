@@ -252,12 +252,12 @@ def bookings_page(request):
     upcoming_bookings = BookingReference.objects.all().filter(
         booker=request.user,
         confirmation_status=True,
-        trip__departure_date__gte=today)  # .order_by('order_date')
+        trip__departure_date__gte=today)
 
     passed_bookings = BookingReference.objects.all().filter(
         booker=request.user,
         confirmation_status=True,
-        trip__departure_date__lt=today)  # .order_by('order_date')
+        trip__departure_date__lt=today)
 
     context = {
         "page_title": "Bookings",

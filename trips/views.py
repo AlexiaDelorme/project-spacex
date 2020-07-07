@@ -71,7 +71,7 @@ def trips_results_page(request, pk):
 
 
 def trips_all_page(request):
-    """Display all the trips available for booking"""
+    """Display all the trips available for booking or matching search form."""
 
     trip_categories = TripCategory.objects.all()
 

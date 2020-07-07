@@ -27,10 +27,8 @@ def checkout_contact_page(request):
     if 'booking_references' in request.session:
         booking_references = request.session['booking_references']
         for key in booking_references:
-            # Delete booking ref object
             BookingReference.objects.filter(
                 id=booking_references[key]).delete()
-        # Delete session variable
         del request.session['booking_references']
 
     # Check if user already provided contact details
@@ -101,7 +99,6 @@ def checkout_passengers_page(request):
                 trip=Trip.objects.get(id=id),
                 passenger_number=cart[id]
             )
-            # Get id of this booking ref object
             booking_id = booking_obj.id
             # Store this booking id as value in ref dictionary
             ref[id] = ref.get(id, booking_id)
@@ -136,7 +133,6 @@ def save_passenger_to_booking(request, id):
     to the corresponding booking reference. The id corresponds to the trip that
     the passenger will be registered to."""
 
-    # Save passenger form
     passenger_form = OtherPassengerForm(request.POST)
     registered_passenger = passenger_form.save()
 
