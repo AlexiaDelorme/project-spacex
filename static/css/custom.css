@@ -77,7 +77,7 @@ input#inputEmail {
 }
 
  /*
-    Home
+    Home page
  */
 
  .testimony-section hr, .stat-section hr {
@@ -101,7 +101,7 @@ input#inputEmail {
 }
 
  /*
-    About
+    About page
  */
 
 .about-head {
@@ -119,7 +119,7 @@ input#inputEmail {
 }
 
  /*
-    Contact
+    Contact page
  */
 
  #map {
@@ -135,7 +135,7 @@ input#inputEmail {
 }
 
  /*
-    Trip categories
+    Destinations page
  */
 
  .trips-head {
@@ -162,7 +162,7 @@ input#inputEmail {
 }
 
  /*
-    Trip detail 
+    Trip details page
  */
 
 .trip-img-thumbnail {
@@ -195,7 +195,7 @@ input#datepicker {
 }
 
  /*
-    Trip results
+    Trips results page
  */
 
 ul.timeline {
@@ -245,7 +245,7 @@ ul.timeline > li:before {
 }
 
  /*
-    Trips all
+    All trips page
  */
 
 @media (min-width: 992px) {
@@ -265,7 +265,7 @@ ul.timeline > li:before {
 }
 
  /*
-    FAQ
+    FAQs page
  */
 
 #faq .btn-link {
@@ -284,7 +284,7 @@ ul.timeline > li:before {
 }
 
 /*
-    Accounts
+    Account page
  */
 
   .accounts-head {
@@ -297,7 +297,7 @@ ul.timeline > li:before {
 }
 
 /*
-    Cart
+    Cart page
  */
 
 .badge-info {
@@ -319,7 +319,7 @@ ul.timeline > li:before {
 }
 
 /*
-    Checkout
+    Checkout pages
  */
 
 .btn{
@@ -407,7 +407,7 @@ ul.timeline > li:before {
 */
 
 /*
-    Bookings
+    Bookings page
 */
 
 .booking-ref-class{
