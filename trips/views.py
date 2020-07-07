@@ -53,6 +53,7 @@ def trips_results_page(request, pk):
         departure_site=departure_site,
         departure_date__gte=(departure_date)
     )
+    trip_result = len(trips)
 
     # Set pagination for trips results
     paginator = Paginator(trips, 5)  # Show 5 trips per page.
@@ -61,6 +62,7 @@ def trips_results_page(request, pk):
 
     context = {
         "page_title": "Results",
+        "trip_result": trip_result,
         "page_obj": page_obj,
         "trip_category": trip_category
     }
@@ -108,8 +110,10 @@ def trips_all_page(request):
 
         form = AllTripSearchForm()
 
+    trip_result = len(trips)
     context = {
         "page_title": "Search all",
+        "trip_result": trip_result,
         "page_obj": page_obj,
         "trip_categories": trip_categories,
         "form": form
