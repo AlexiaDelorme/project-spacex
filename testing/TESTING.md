@@ -231,6 +231,43 @@ This project has been tested multiple times against each user stories listed in 
 
 **Test result:** Successful :white_check_mark:
 
+###### Feature 5 - Trips by destination page
+
+**Test scenario:**
+- [x] The title and the picture of the header loaded successfully.
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] Click each breadcrumd links, confirm they take the user to the correct corresponding page.
+- [x] Confirm that all the pictures on the page loaded successfully. 
+- [x] Confirm that the alignment for the destination card alternates according to their index. Ie. cards with an odd index should have the picture and button aligned on the left and the key information aligned to the right. Whereas, for the cards with an even index, it should be the other way around. 
+- [x] For each destination, confirm that the following information is provided:
+    - trip duration (in days)
+    - trip distance (in km)
+    - trip price (in euros)
+    - departures
+    - button to be redirected to the trip details
+- [x] For each destination, confirm that the 'Trip Details' button work:
+    - When hovered over, the background color should get darker.
+    - When clicked, it should take the user to the listing page for the corresponding destination. 
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 6 - Trips details
+
+**Test scenario:**
+- [x] The icon title and the picture of the header loaded successfully.
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] Click each breadcrumd links, confirm they take the user to the corresponding page.
+- [x] Confirm that there are 4 pictures of the destination. Click each thumbnails, confirm that the large picture gets updated accordingly. 
+- [x] Confirm that the following features are available:
+    - trip information (duration, distance, price)
+    - a form to look for upcoming trips to this destination
+    - trip description, requirements and safety guidelines
+- [x] Test search trip form:
+    - Try to submit the form with a missing field and confirm that you get an alert box advising you that this field is required.
+    - Now submit the complete form, confirm that you get redirected back to a result page of trips matching your search criteria.
+
+**Test result:** Successful :white_check_mark:
+
 <a name="compatibility"/>
 
 ### Compatibility & Responsiveness
