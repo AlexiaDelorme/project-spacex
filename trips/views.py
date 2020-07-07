@@ -9,15 +9,15 @@ def faq_page(request):
     return render(request, "faq.html", {"page_title": "FAQs"})
 
 
-def trips_categories_page(request):
+def trips_destinations_page(request):
     """Render page to browse trips by categories/types of destination"""
 
     trip_categories = TripCategory.objects.all()
     context = {
-        "page_title": "Trips categories",
+        "page_title": "Trips destinations",
         "trip_categories": trip_categories
     }
-    return render(request, "trips_categories.html", context)
+    return render(request, "trips_destinations.html", context)
 
 
 def trip_detail_page(request, pk):
