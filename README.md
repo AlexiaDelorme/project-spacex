@@ -167,9 +167,12 @@ Page with the list of all the trips available. The user has the option to refine
 - departure date and time
 - destination
 - return date and time
+- spaceship number
+- small picture of the destination
 - available slots
 - price for 1 passenger
-- option to select the passenger number with a button to book the trip
+- select input for passengers
+- button to book the trip
 
 ###### Feature 9 - Cart page
 The shopping cart is available anywhere in the site. The cart page should display all the trips in the user's cart. For each item in the cart, the following information should be available:

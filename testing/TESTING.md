@@ -268,6 +268,37 @@ This project has been tested multiple times against each user stories listed in 
 
 **Test result:** Successful :white_check_mark:
 
+###### Feature 7 - Search all (trips) page / trips results page
+
+**Test scenario:**
+- [x] The icon title and the picture of the header loaded successfully.
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] Click each breadcrumd links, confirm they take the user to the corresponding page.
+- [x] Confirm that you get a list of all the trips available with the results number. Confirm that the pagination is working and only displays 5 trips per page.
+- [x] Confirm that for each trip, the following information is available:
+    - departure site
+    - departure date and time
+    - destination
+    - return date and time
+    - spaceship number
+    - small picture of the destination
+    - available slots
+    - price for 1 passenger
+    - select input for passengers
+    - button to book the trip
+- [x] Tests for passenger input
+    - Confirm that when the page has loaded, the default input number for passenger is 1.
+    - Click on the '-' button to decrease the passenger number to 0, confirm that you get an alert box informing you that you have to select at least 1 passenger to book a trip. 
+    - Each time you click the '+' button, confirm that it increments the passenger number by 1.
+    - Click the '+' button untill you've reached the maximum number of slots available for this trip, confirm that you get an alert box informing you that it is not possible to book for more. 
+- [x] Tests for 'Book Trip' button
+    - When hovered over, the background color should get darker.
+    - Select a correct number for passengers, click on the 'Book Trip' button, confirm that you get an alert box confirming you that the trip was added to your cart. 
+    - Click the 'Keep shopping' option on the alert box, confirm that the page reloads and the cart icon in the navbar is updated. The cart icon should display the number of trips and not the number of passengers.
+    - Click the 'Go to cart' option on the alert box, confirm that you get redirected to the cart page and that the cart icon in the navbar is updated. 
+
+**Test result:** Successful :white_check_mark:
+
 <a name="compatibility"/>
 
 ### Compatibility & Responsiveness
