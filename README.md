@@ -195,20 +195,25 @@ Checkout process step by step with the following pages:
 ###### Feature 10 - FAQs page
 Page with all the most frequently asked questions about our trips.
 
-###### Feature 11 - Log in / Log out / Sign up pages
-Log in / sign up forms & option to log out
+###### Feature 11 - Sign up page
+Sign up form to register to an account.
 
-###### Feature 12 - Password reset page
+###### Feature 12 - Login page
+Form to log in to your account.
+
+###### Feature 13 - Password reset page
 Option to reset password by email in case users forgot it.
 
-###### Feature 13 - Profile page
+###### Feature 14 - Profile page
 Profile page for users with an account that should display their:
 - passenger details
 - contact details
 - option to change their password
 
-###### Feature 14 - Bookings
+###### Feature 15 - Bookings
 Page with all upcoming and/or past trips that were booked by the user. 
+
+###### Feature 16 - Log out 
 
 <a name="future-features"/>
 
