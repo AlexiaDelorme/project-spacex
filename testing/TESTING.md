@@ -299,6 +299,44 @@ This project has been tested multiple times against each user stories listed in 
 
 **Test result:** Successful :white_check_mark:
 
+###### Feature 10 - FAQs page
+
+**Test scenario:**
+- [x] The title and the picture of the header loaded successfully. 
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] Click each breadcrumd links, confirm they take the user to the corresponding page.
+- [x] For each question, confirm that:
+    - When hovered over the title, the text color turns green.
+    - When the user clicks on the title, the card body containing the answer expands.
+    - When the user clicks back on the title, the card body should collapse. 
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 11 - Sign up page
+
+**Test scenario:**
+- [x] The picture of the header loaded successfully. 
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] Confirm that the sign up form is displayed as expected.
+- [x] Try to submit the form with a missing field and confirm that you get an alert box advising you of the missing field.
+- [x] Submit a complete form, you should get redirected back to the profile page with a green flash message confirming that your account was created.
+- [x] Now try to access the url while being logged in, confirm that you get redirected back to your profile page.
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 12 - Login page
+
+**Test scenario:**
+- [x] The picture of the header loaded successfully. 
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] Confirm that the login form is displayed as expected.
+- [x] Try to submit the form with a missing field and confirm that you get an alert box advising you of the missing field.
+- [x] Try to submit the form with an incorrect username and/or password and confirm that you get feedback on the incorrect field(s).
+- [x] Submit the form with correct username and password, you should get redirected back to the profile page.
+- [x] Now try to access the url while being logged in, confirm that you get redirected back to your profile page.
+
+**Test result:** Successful :white_check_mark:
+
 <a name="compatibility"/>
 
 ### Compatibility & Responsiveness
