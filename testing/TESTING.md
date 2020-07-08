@@ -337,6 +337,28 @@ This project has been tested multiple times against each user stories listed in 
 
 **Test result:** Successful :white_check_mark:
 
+###### Feature 13 - Password reset page
+
+**Test scenario:**
+- [x] Go to the login page, confirm that below the 'Log In' button there is a link saying 'Forgot Password?'. 
+- [x] Click on the link and confirm that you get to a form where you are asked to provide your email in order to reset your password. 
+- [x] Enter your email address and click on the button to request password reset. You should get redirected to a page confirming you that instructions to reset your password have been sent. 
+- [x] Go to your inbox and confirm that you have received an email to reset your password on 'project-spacex.herokuapp.com'. 
+- [x] Click the link inside the email, this should get you to a reset password form to provide for a new password. 
+- [x] Set your new password and then click the 'Reset password' button. You should get redirected to a page confirming you that your password has been successfully reset.
+- [x] Now try to log in with your new password and confirm that the reset was successful.
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 16 - Log out
+
+**Test scenario:**
+- [x] Try to access the url without being logged in yet, confirm that you get redirected back to the login page.
+- [x] Log in to your account and confirm that in the navbar when you click on the 'Account' dropdown menu, you have the option to 'Log out'. 
+- [x] Click the 'Log out' button and confirm that you get redirected to the login page with a green flash message saying that you have been logged out. 
+
+**Test result:** Successful :white_check_mark:
+
 <a name="compatibility"/>
 
 ### Compatibility & Responsiveness
