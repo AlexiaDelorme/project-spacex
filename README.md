@@ -174,7 +174,7 @@ Page with the list of all the trips available. The user has the option to refine
 - select input for passengers
 - button to book the trip
 
-###### Feature 9 - Cart page
+###### Feature 8 - Cart page
 The shopping cart is available anywhere in the site. The cart page should display all the trips in the user's cart. For each item in the cart, the following information should be available:
 - trip destination
 - departure and return dates
@@ -184,7 +184,7 @@ The shopping cart is available anywhere in the site. The cart page should displa
 - total price of the cart
 - button to checkout
 
-###### Feature 10 - Checkout
+###### Feature 9 - Checkout
 Checkout process step by step with the following pages:
 - (log in / sign up if the user is not logged in yet)
 - contact details form
@@ -192,22 +192,22 @@ Checkout process step by step with the following pages:
 - payment form
 - confirmation of order booked for each step of the checkout process, a recap of the cart is available as well as a return button to get back to the previous step. 
 
-###### Feature 11 - FAQs page
+###### Feature 10 - FAQs page
 Page with all the most frequently asked questions about our trips.
 
-###### Feature 12 - Log in / Log out / Sign up pages
+###### Feature 11 - Log in / Log out / Sign up pages
 Log in / sign up forms & option to log out
 
-###### Feature 13 - Password reset page
+###### Feature 12 - Password reset page
 Option to reset password by email in case users forgot it.
 
-###### Feature 14 - Profile page
+###### Feature 13 - Profile page
 Profile page for users with an account that should display their:
 - passenger details
 - contact details
 - option to change their password
 
-###### Feature 15 - Bookings
+###### Feature 14 - Bookings
 Page with all upcoming and/or past trips that were booked by the user. 
 
 <a name="future-features"/>
