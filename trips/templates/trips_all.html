@@ -111,12 +111,22 @@
 
                                     <div
                                         class="col-12 col-md-4 text-left text-md-right mt-3 mb-3 pl-5 pl-md-0 pr-0 pr-md-5">
+
                                         <img class="trip-img-thumbnail img-display mb-3" src="{{ trip.category.img.all.0.img_file.url }}" alt="{{ trip.category.img.all.0.img_name }}">
+
+                                        {% if trip.slot <= 5 and trip.slot > 0 %}
+                                            <div class="alert alert-warning small d-inline-block" role="alert"> <i class="fas fa-exclamation-circle"></i> Only few seat(s) left!
+                                            </div>
+                                        {% else %}
+                                        {% endif %}
+
                                         <p class="card-text">
                                             <i class="fas fa-users"></i> {{ trip.slot }} slot(s) <br>
                                             <b>Price</b> € {{ trip.category.price|intcomma }}
                                         </p>
-                                        <form class="add-to-cart" method="POST" id="add_{{trip.id}}">
+
+                                        {% if trip.slot > 0 %}
+                                            <form class="add-to-cart" method="POST" id="add_{{trip.id}}">
                                             {% csrf_token %}
                                             <div class="input-group text-left text-md-right mb-3">
                                                 <i class="fas fa-user-friends pt-1 mr-2"></i>
@@ -125,7 +135,13 @@
                                                 <input type="button" value="+" class="button-plus" data-field="passenger">
                                             </div>
                                             <button type="submit" class="btn btn-primary btn-cart">Book trip</button>
-                                        </form>
+                                            </form>
+                                        {% else %}
+                                            <div class="alert alert-danger small d-inline-block" role="alert">
+                                                <i class="fas fa-exclamation-triangle"></i> This trip is sold out!
+                                            </div>
+                                        {% endif %}
+
                                     </div>
 
                                 </div>
