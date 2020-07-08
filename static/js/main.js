@@ -85,8 +85,8 @@ $(document).ready(function () {
     */
 
     $('.input-group').on('click', '.button-plus', function(e) {
-        var inputPassenger = $(this).prev("input#passenger").val();
-        var maxSlot = $(this).prev("input#passenger").attr("max");
+        var inputPassenger = parseInt($(this).prev("input#passenger").val());
+        var maxSlot = parseInt($(this).prev("input#passenger").attr("max"));
         if ( inputPassenger >= maxSlot ) {
             swal({
                 title: "Sorry!",
@@ -100,7 +100,7 @@ $(document).ready(function () {
     });
 
     $('.input-group').on('click', '.button-minus', function(e) {
-        var inputPassenger = $(this).next("input#passenger").val();
+        var inputPassenger = parseInt($(this).next("input#passenger").val());
         if ( inputPassenger-1 <= 0 ) {
             swal({
                 title: "Sorry!",
