@@ -28,7 +28,7 @@
                 <div class="col-12 col-md-10 col-lg-8 jumbotron mx-auto">
 
                     {% for item in cart_items %}
-                        <div class="mb-5">
+                        <div class="mb-5 cartItemAdjust">
                     
                             <!-- Trip recap -->
                             <div class="col-12 mb-2">
@@ -91,14 +91,23 @@
 
                             <!-- Trip price & passenger -->
                             <div class="col-12 mt-3 text-left text-md-right">
-                                <form  class="form-inline mt-3 mb-3 justify-content-md-end" method="POST" action="{% url 'adjust_cart' item.id %}">
+
+                                <form class="mt-3 mb-3 justify-content-md-end passenger-adjust-form" method="POST" tripid="trip_{{ item.id }}">
                                 {% csrf_token %}
-                                    <div class="form-group">
-                                        <label class="mr-2" for="passenger"><i class="fas fa-user-friends mr-2"></i>Passenger(s)</label>
-                                        <input id="passenger" name="passenger" class="mr-2 form-control text-center passengerAdjust" type="number" min="1" max="{{ item.trip.slot }}" value="{{ item.passenger }}">
-                                        <input class="tripPrice" id="remove_{{ item.id }}" value="{{ item.trip.category.price }}" type="hidden">
+
+                                    <div class="input-group text-left text-md-right mb-3">
+                                        <i class="fas fa-user-friends pt-1 mr-2"></i>
+                                        <input type="button" value="-" class="button-minus" data-field="passenger">
+                                        <input id="passenger" name="passenger" class="quantity-field pl-3 text-center" type="number" step="1" min="1" max="{{ item.trip.slot }}" value="{{ item.passenger }}" required readonly>
+                                        <input type="button" value="+" class="button-plus" data-field="passenger">
                                     </div>
+
+                                    <button type="submit" class="btn btn-primary btn-cart">Adjust passengers</button>
+
                                 </form>
+
+                                <input class="tripPrice" value="{{ item.trip.category.price }}" type="hidden">
+
                                 <div class="d-inline-flex">
                                     <h4 class="mr-2">€</h4>
                                     <h4 class="totalPrice">{{ item.sub_total|intcomma }}</h4>
@@ -106,12 +115,11 @@
                             </div>
 
                         </div>
+                        <div class="col-12 mt-5 mb-5">
+                            <hr>
+                        </div>
                     {% endfor %}
 
-                    <div class="col-12 mt-5 mb-3">
-                        <hr>
-                    </div>
-                    
                     <!-- Total cart & checkout -->
                     <div class="col-12 mt-5 text-left text-md-right">
                         <div class="d-inline-flex">
@@ -141,9 +149,102 @@
 
 {% block script %}
 
-<!-- CSRF token -->
 <script type="text/javascript">
+
+    // CSRF token
     const csrfToken = '{{ csrf_token }}';
+
+    /*
+        Remove item from cart after user confirmed his choice
+    */
+    $(".remove-cart-form").submit(function (e) {
+
+        e.preventDefault();
+
+        swal({
+            title: "Are you sure?",
+            text: "This trip will be removed from your cart.",
+            icon: "warning",
+            buttons: {
+                cancel: "Cancel",
+                catch: {
+                    text: "Delete",
+                    value: "delete"
+                },
+            },
+        })
+            .then((value) => {
+                switch (value) {
+                    case "delete":
+                        swal("This trip was removed from your cart!", {
+                            icon: "success"
+                        })
+                            // Sent form to delete item from cart
+                            .then((value) => {
+                                var itemId = $(this).attr("tripid").split("trip_")[1];
+                                $.ajax({
+                                    type: "POST",
+                                    url: `/cart/remove/${itemId}/`,
+                                    data: $(this).serialize(),
+                                    success: function () {
+                                        location.reload();
+                                    }
+                                });
+                            });
+                        break;
+                    default:
+                        swal("The trip is still in your cart!");
+                }
+            });
+    });
+
+    /*
+        Update cart information according to changes in passenger number
+    */
+    $(".passenger-adjust-form").submit(function (e) {
+
+        e.preventDefault();
+
+        var inputPassenger = $(this).find("input#passenger").val();
+        console.log(inputPassenger);
+        var tripPrice = $(this).siblings(".tripPrice").val();
+        console.log(tripPrice);
+
+        // Update total price for the corresponding cart item
+        var totalTripPrice = (inputPassenger * tripPrice).toLocaleString();
+        $(this).siblings(".d-inline-flex").children(".totalPrice").text(totalTripPrice);
+
+        // Update amount for the total cart
+        var sum = 0;
+        $(".totalPrice").each(function () {
+            sum += parseFloat($(this).text().replace(/,/g, ''));
+        });
+        $("#totalCartPrice").text(sum.toLocaleString());
+
+        // Update number of cart item in the navbar
+        var cartItem = 0;
+        $(".cartItemAdjust").each(function () {
+            cartItem += 1;
+        });
+        if (cartItem > 0) {
+            $("#cart-label").text(cartItem);
+        }
+
+        // Update cart content without reloading the page
+        var itemId = $(this).attr("tripid").split("trip_")[1];
+        var url = `/cart/adjust/${itemId}/`;
+        var data = { 'csrfmiddlewaretoken': csrfToken, 'passenger': inputPassenger };
+        $.post(url, data);
+
+        swal({
+            title: "Cart updated!",
+            text: "We have adjusted the number of passengers for this trip.",
+            icon: "success",
+            button: "ok",
+        });
+
+    });
+
 </script>
 
 {% endblock %}
