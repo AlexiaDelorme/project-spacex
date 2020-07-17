@@ -299,6 +299,36 @@ This project has been tested multiple times against each user stories listed in 
 
 **Test result:** Successful :white_check_mark:
 
+###### Feature 8 - Cart page
+
+**Test scenario:**
+- [x] Click on the cart icon in the navbar, confirm that it takes you to the cart page.
+- [x] The icon title and the picture of the header loaded successfully.
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] Access the cart page when your cart is empty, confirm that you get a message saying that your cart is empty with a button to browse trips. 
+- [x] Click the button and confirm it takes you to the search all trips page.
+- [x] Add an item to your cart, confirm that the item you just added is now visible on the cart page.
+- [x] For each item in the cart, confirm that the following information is available:
+    - trip destination
+    - departure and return dates
+    - spaceship number
+    - recap of the trip with departure site (departure date and time) and destination site (return date and time)
+    - number of passengers and price
+    - total price of the cart
+    - button to checkout
+- [x] Delete an item:
+    - Click on the trash icon located at the top left corner of the trip item, you should get an alert box to confirm your choice. 
+    - Click on the 'Delete' button and confirm that the trip item was removed from the cart.
+- [x] Adjust passenger number:
+    - Try to set the passenger number to 0 and confirm that you get an alert box advising you that you should have at least 1 passenger. 
+    - Try to set the passenger number above the available slots for this trip and confirm that you get an alert box advising that you cannot book for more passengers.
+    - Set a correct passenger number by clicking on the '+' icon button to increment the passenger number by 1, then click on the 'Adjust passenger' button.
+    - You should get an alert box confirming you that the passenger number has been updated for this specific trip.
+    - Confirm that the sub-total for this specific trip as well as the grand total of the cart have been updated.
+- [x] In the navbar, confirm that the number displayed next to the cart icon corresponds to the number of trips and not the total number of passengers. 
+
+**Test result:** Successful :white_check_mark:
+
 ###### Feature 10 - FAQs page
 
 **Test scenario:**
