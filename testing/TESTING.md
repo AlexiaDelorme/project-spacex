@@ -362,6 +362,7 @@ Profile page for users with an account that should display their:
 - [x] The icon title and the picture of the header loaded successfully. 
 - [x] The navbar should be transparent, when scrolling down, it should turn white.
 - [x] Click each breadcrumd links, confirm they take the user to the corresponding page.
+- [x] For a user that just created an account, confirm that for the passenger/contact details cards, the following message is displayed: "You have not provided your passenger/contact details yet!"
 - [x] Confirm that the following information regarding your account is available:
     - passenger details
     - contact details
@@ -379,7 +380,7 @@ Profile page for users with an account that should display their:
 - [x] Edit password
     - Click the 'Edit' button on the right upper corner of the login/password card, confirm that you get redirected to a password form.
     - Click each breadcrumd links, confirm they take the user to the corresponding page.
-    - Try to submit the form with incorrect information (wrong old password), confirm that you get feedback.
+    - Try to submit the form with incorrect information (incorrect old password), confirm that you get feedback.
     - Now submit a correct form and confirm that you get redirected back to your profile page.
     - A green flash message at the top of the page should confirm you that your password was successfully updated.
     - Log out and try to log in with your new password.
