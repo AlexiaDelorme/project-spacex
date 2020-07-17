@@ -38,76 +38,100 @@
                     <!-- Passenger details -->
                     <div class="card mt-5">
                         <div class="card-body">
+
                             <div class="d-flex flex-row-reverse bd-highlight">
                                 {% if passenger %}
                                     <a href="{% url 'edit_passenger_details' %}">Edit</a>
                                 {% else %}
-                                    <a href="{% url 'create_passenger_details' %}">Update</a>
+                                    <a href="{% url 'create_passenger_details' %}">Create</a>
                                 {% endif %}
                             </div>
-                            <h4 class="font-weight-bold">Passenger</h4>
+
                             <div class="row">
-                                <div class="col-4 text-left">
-                                    <p>
-                                        Full name<br>
-                                        {% if passenger %}
-                                            Date of birth<br>
-                                            Passport
-                                        {% else %}
-                                        {% endif %}
-                                    </p>
+
+                                <div class="col-12">
+                                    <h4 class="font-weight-bold">Passenger</h4>
                                 </div>
-                                <div class="col-8 text-right">
-                                    <p>
-                                        {% if passenger %}
-                                            {{ passenger.title }}.
-                                        {% else %}
-                                        {% endif %}
-                                        {{ user.first_name }} {{ user.last_name }}<br>
-                                        {% if passenger %}
-                                            {{ passenger.birth_date }}<br>
-                                            {{ passenger.passport_id }}<br>
-                                        {% else %}
-                                        {% endif %}
-                                    </p>
+                                
+                                <div class="col-6 text-left">Full Name</div>
+                                <div class="col-6 text-right">
+                                    {% if passenger %}
+                                        {{ passenger.title }}.
+                                    {% endif %}
+                                    {{ user.first_name }} {{ user.last_name }}
                                 </div>
+
                                 {% if passenger %}
+
+                                    <div class="col-6 text-left">Date of birth</div>
+                                    <div class="col-6 text-right">
+                                        {{ passenger.birth_date }}
+                                    </div>
+
+                                    <div class="col-6 text-left">Passport</div>
+                                    <div class="col-6 text-right">
+                                        {{ passenger.passport_id }}
+                                    </div>
+
+                                    <div class="col-6 text-left">Country of issue</div>
+                                    <div class="col-6 text-right">
+                                        {{ passenger.citizenship.name }}
+                                    </div>
+                                            
                                 {% else %}
                                     <div class="card-body text-center"> You have not provided your passenger details yet!</div>
                                 {% endif %}
+                            
                             </div>
+                            
                         </div>
                     </div>
 
                     <!-- Contact details -->
                     <div class="card mt-5">
                         <div class="card-body">
+
                             <div class="d-flex flex-row-reverse bd-highlight">
                                 {% if contact %}
                                     <a href="{% url 'edit_contact_details' %}">Edit</a>
                                 {% else %}
-                                    <a href="{% url 'create_contact_details' %}">Update</a>
+                                    <a href="{% url 'create_contact_details' %}">Create</a>
                                 {% endif %}
                             </div>
-                            <h4 class="font-weight-bold">Contact</h4>
-                            {% if contact %}
-                                <div class="row">
-                                    <div class="col-4 text-left">
-                                        <p>Email<br>Phone number<br><br>Address</p>
-                                    </div>
-                                    <div class="col-8 text-right">
-                                        <p> {{ user.email }}<br>
-                                            {{ contact.phone_number }}<br><br>
-                                            {{ contact.street_address1 }} <br>
-                                            {{ contact.postcode }} {{ contact.town_or_city}} <br>
-                                            {{ contact.state }} <br>
-                                            {{ contact.country.name }} <br>
-                                        </p>
-                                    </div>
+
+                            <div class="row">
+
+                                <div class="col-12">
+                                    <h4 class="font-weight-bold">Contact</h4>
                                 </div>
-                            {% else %}
-                                <div class="card-body text-center"> You have not provided your details yet!</div>
-                            {% endif %}
+
+                                <div class="col-4 text-left">Email</div>
+                                <div class="col-8 text-right"> {{ user.email }} </div>
+
+                                {% if contact %}
+
+                                    <div class="col-4 text-left mb-3">Phone</div>
+                                    <div class="col-8 text-right mb-3"> {{ contact.phone_number }}</div>
+
+                                    <div class="col-4 text-left">Address</div>
+                                    <div class="col-8 text-right">
+                                        {{ contact.street_address1 }}<br>
+                                        {% if contact.street_address2 %}
+                                            {{ contact.street_address2 }} <br>
+                                        {% endif %}
+                                        {{ contact.postcode }} {{ contact.town_or_city}} <br>
+                                        {% if contact.state %}
+                                            {{ contact.state }} <br>
+                                        {% endif %}
+                                        {{ contact.country.name }}
+                                    </div>
+                                
+                                {% else %}
+                                    <div class="card-body text-center"> You have not provided your contact details yet!</div>
+                                {% endif %}
+                            
+                            </div> 
+
                         </div>
                     </div>
 
