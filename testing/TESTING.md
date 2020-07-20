@@ -378,6 +378,13 @@ This project has been tested multiple times against each user stories listed in 
 - [x] Try to submit the form providing an incorrect CVV for your credit card, confirm that you get appropriate feedback.
 - [x] Submit a valid credit card number (only use this test credit card number: 4242 4242 4242 4242), a random CVV and a correct expiry date. Confirm that you get redirected to the confirmation page with a green flash message displaying that your payment was accepted and your booking is confirmed. 
 
+**Test scenario: Confirmation page**
+- [x] Confirm that the progress bar is displayed at the top of the page and highlights the "Confirmation" step. 
+- [x] Confirm that the navbar is hidden during the checkout process. 
+- [x] The page should display a message confirming that your bookings are confirmed. 
+- [x] You should have a link to the booking page where you can see all your upcoming trips. Click on the link and confirm that it takes you to the booking page.
+- [x] Click the 'Browse trips' button, confirm that you get redirected to the search all trips page.
+
 **Tests results:** Successful :white_check_mark:
 
 ###### Feature 10 - FAQs page
