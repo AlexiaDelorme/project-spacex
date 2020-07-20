@@ -49,6 +49,8 @@ def checkout_contact_page(request):
                 messages.success(
                     request, "Your contact details have been saved")
                 return redirect(reverse('checkout_passengers'))
+            else:
+                messages.warning(request, "Please correct the error(s) below")
         else:
             form = UserContactDetailForm(instance=request.user.contactdetail)
 
@@ -64,6 +66,8 @@ def checkout_contact_page(request):
                 messages.success(
                     request, "Your contact details have been saved")
                 return redirect(reverse('checkout_passengers'))
+            else:
+                messages.warning(request, "Please correct the error(s) below")
         else:
             form = UserContactDetailForm()
 
