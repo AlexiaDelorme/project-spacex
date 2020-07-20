@@ -329,6 +329,21 @@ This project has been tested multiple times against each user stories listed in 
 
 **Test result:** Successful :white_check_mark:
 
+###### Feature 9 - Checkout pages
+
+**Test scenario: Access**
+- [x] Try to access the checkout urls with an empty cart and confirm that you get redirected back to the cart page. 
+- [x] Add a trip to your cart, go to the cart page and click the 'Checkout' button at the bottom of the page.
+- [x] If the user is logged in, confirm that the user is taken to the first checkout page (contact details page).
+- [x] If the user is not logged in, confirm that the user is being redirected to the login page.
+    - If the user already has an account: Enter the correct credentials and confirm that after successfully been logged in, the user is redirected to the first checkout page (contact details page).
+    - If the user has no account: At the bottom of the login page, there is a small paragraph displaying 'Do you need an account?' Click on the 'Sign up' button to register for an account. Confirm that after successfully created a new account, the user is redirected to the first checkout page (contact details page).
+
+**Test scenario: Contact details page**
+- [x] xxx
+
+**Tests results:** Successful :white_check_mark:
+
 ###### Feature 10 - FAQs page
 
 **Test scenario:**
