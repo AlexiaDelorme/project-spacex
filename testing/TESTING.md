@@ -340,7 +340,35 @@ This project has been tested multiple times against each user stories listed in 
     - If the user has no account: At the bottom of the login page, there is a small paragraph displaying 'Do you need an account?' Click on the 'Sign up' button to register for an account. Confirm that after successfully created a new account, the user is redirected to the first checkout page (contact details page).
 
 **Test scenario: Contact details page**
-- [x] xxx
+- [x] Confirm that the progress bar is displayed at the top of the page and highlights the "Contact" step. 
+- [x] Confirm that the navbar is hidden during the checkout process. 
+- [x] When accessing the page, confirm that a contact form is loaded and that the trip summary is correct (trip details, passengers, subtotal and total).
+- [x] Confirm that if the user already provided their contact details, the contact form is pre-filled with this information. Otherwise, the contact form should be blanked. 
+- [x] Click on the 'Return to cart' button and confirm that it takes the user back to the cart page.
+- [x] Try to proceed to the next stage of the checkout process without filling in the contact details form, confirm that you get appropriate error message.
+- [x] Confirm/update/fill in the contact details form and then click on the 'Register passengers' button, confirm that you are being taken to the second checkout page (passengers details page). 
+
+**Test scenario: Passenger details page**
+- [x] Confirm that the progress bar is displayed at the top of the page and highlights the "Passengers" step. 
+- [x] Confirm that the navbar is hidden during the checkout process. 
+- [x] When accessing the page, confirm that for each trip, a collapsible passenger form is available for each passenger booked on the trip. Also confirm that the trip summary is correct (trip details, passengers, subtotal and total).
+- [x] Click on the 'Return to contact' button and confirm that it takes the user back to the contact page.
+- [x] Try to proceed to the next stage of the checkout process without registering any passengers, confirm that you get an alert message with appropriate feedback.
+- [x] For each passenger, click on the collapsible button and confirm when it expands a passenger form is displayed.
+- [x] For 'PASSENGER 1':
+    - Confirm that above the passenger form, there is a message displaying 'Who is traveling?'. 
+    - Confirm that the user has the option to register themselves as a passenger or to book for another person.
+    - Check that the passenger form for the user is pre-filled with their information if already provided.
+    - In the 'Who is traveling?' section, select 'I am booking for another passenger', confirm that a blank form is displayed. 
+- [x] For 'PASSENGER 2' or above:
+    - Confirm that there is no 'Who is traveling?' section.
+    - Confirm that a blank passenger form is displayed.
+- [x] Confirm that when you try to register a passenger without filling all the required fields, you get approriate error message from the form.
+- [x] Now submit a valid passenger form by clicking on the 'Register passenger' button, confirm that you get an alert message with a green icon with a message displaying that the passenger was saved. 
+- [x] After you closed the alert message, the collapsible button should now display the name of the passenger with a green check mark. When you try to click on the collapsible button, it should not expand.
+- [x] Make sure you register all the passengers for each trip available in your cart. Click on the 'Proceed payment' button, confirm that you are being taken to the third checkout page (payment page).
+
+**Test scenario: Payment page**
 
 **Tests results:** Successful :white_check_mark:
 
