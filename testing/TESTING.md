@@ -369,6 +369,14 @@ This project has been tested multiple times against each user stories listed in 
 - [x] Make sure you register all the passengers for each trip available in your cart. Click on the 'Proceed payment' button, confirm that you are being taken to the third checkout page (payment page).
 
 **Test scenario: Payment page**
+- [x] Confirm that the progress bar is displayed at the top of the page and highlights the "Payment" step. 
+- [x] Confirm that the navbar is hidden during the checkout process. 
+- [x] When accessing the page, confirm that a payment form is loaded and that the trip summary is correct (trip details, passengers, subtotal and total).
+- [x] Check that the choices for the month and year fields in the credit card form are correct.
+- [x] Try to submit the form without providing any credit card information, confirm that you get appropriate feedback.
+- [x] Try to submit the form providing an incorrect expiry date for your credit card, confirm that you get appropriate feedback.
+- [x] Try to submit the form providing an incorrect CVV for your credit card, confirm that you get appropriate feedback.
+- [x] Submit a valid credit card number (only use this test credit card number: 4242 4242 4242 4242), a random CVV and a correct expiry date. Confirm that you get redirected to the confirmation page with a green flash message displaying that your payment was accepted and your booking is confirmed. 
 
 **Tests results:** Successful :white_check_mark:
 
