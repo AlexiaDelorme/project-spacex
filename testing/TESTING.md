@@ -439,10 +439,6 @@ This project has been tested multiple times against each user stories listed in 
 **Test result:** Successful :white_check_mark:
 
 ###### Feature 14 - Profile page
-Profile page for users with an account that should display their:
-- passenger details
-- contact details
-- option to change their password
 
 **Test scenario:**
 - [x] Try to access the url while being logged out, confirm that you get redirected back to the login page.
@@ -472,6 +468,28 @@ Profile page for users with an account that should display their:
     - Now submit a correct form and confirm that you get redirected back to your profile page.
     - A green flash message at the top of the page should confirm you that your password was successfully updated.
     - Log out and try to log in with your new password.
+
+**Test result:** Successful :white_check_mark:
+
+###### Feature 15 - Bookings page
+
+**Test scenario:**
+- [x] Try to access the url while being logged out, confirm that you get redirected back to the login page.
+- [x] Log in to your account, in the navbar click on the dropdown button 'Account', and then click on the 'Bookings' link to access the bookings page.
+- [x] The icon title and the picture of the header loaded successfully. 
+- [x] The navbar should be transparent, when scrolling down, it should turn white.
+- [x] Click each breadcrumd links, confirm they take the user to the corresponding page.
+- [x] For a user that has no bookings yet, confirm that you get a message displaying that there are no upcoming/past bookings with a button to browse for trips. Click on the link and confirm that it takes you to the search all trips page.
+- [x] Search for a trip and complete the checkout process untill your booking is confirmed. Access the "Bookings" page and confirm that the trip you just booked now appears within your upcoming trips. 
+- [x] For testing purposes, I created a trip with a past departure date. I was therefore able to book for a trip with a past value date and it indeed showed as "Past trips" in the booking page.
+- [x] For each past/upcoming trips, confirm that the following information is displayed:
+    - Booking reference
+    - Destination name
+    - Number of passengers
+    - Passengers names
+    - Booking date
+    - Spaceship number
+    - Trip summary (departure site, departure/return date and time)
 
 **Test result:** Successful :white_check_mark:
 

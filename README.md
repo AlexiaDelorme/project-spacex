@@ -210,8 +210,8 @@ Profile page for users with an account that should display their:
 - contact details
 - option to change their password
 
-###### Feature 15 - Bookings
-Page with all upcoming and/or past trips that were booked by the user. 
+###### Feature 15 - Bookings page
+Page with all upcoming and/or past trips that were booked by the user.
 
 ###### Feature 16 - Log out 
 
