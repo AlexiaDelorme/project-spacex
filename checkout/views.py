@@ -219,40 +219,40 @@ def checkout_payment_page(request):
                     description=request.user.email,
                     card=payment_form.cleaned_data['stripe_id']
                 )
+                if customer.paid:
+                    # Set booking references to status confirmed
+                    booking_references = request.session.get(
+                        'booking_references', {})
+                    for key in booking_references:
+                        booking_obj = get_object_or_404(
+                            BookingReference,
+                            id=booking_references[key]
+                        )
+                        booking_obj.confirmation_status = True
+                        booking_obj.order_date = datetime.now()
+                        booking_obj.save()
+                    # Decrement trip slots by number of passengers booked
+                    for id, passenger in cart.items():
+                        booked_trip = get_object_or_404(Trip, pk=id)
+                        booked_trip.slot -= passenger
+                        booked_trip.save()
+
+                    # Empty cart
+                    request.session['cart'] = {}
+                    # Delete session variable
+                    del request.session['booking_references']
+
+                    messages.success(
+                        request,
+                        "Your payment was accepted and your booking is confirmed"
+                    )
+                    return redirect(reverse('checkout_confirmation'))
+                else:
+                    messages.warning(
+                        request, "Sorry, we were unable to take payment")
+
             except stripe.error.CardError:
                 messages.warning(request, "Your card was declined")
-
-            if customer.paid:
-                # Set booking references to status confirmed
-                booking_references = request.session.get(
-                    'booking_references', {})
-                for key in booking_references:
-                    booking_obj = get_object_or_404(
-                        BookingReference,
-                        id=booking_references[key]
-                    )
-                    booking_obj.confirmation_status = True
-                    booking_obj.order_date = datetime.now()
-                    booking_obj.save()
-                # Decrement trip slots by number of passengers booked
-                for id, passenger in cart.items():
-                    booked_trip = get_object_or_404(Trip, pk=id)
-                    booked_trip.slot -= passenger
-                    booked_trip.save()
-
-                # Empty cart
-                request.session['cart'] = {}
-                # Delete session variable
-                del request.session['booking_references']
-
-                messages.success(
-                    request,
-                    "Your payment was accepted and your booking is confirmed"
-                )
-                return redirect(reverse('checkout_confirmation'))
-            else:
-                messages.warning(
-                    request, "Sorry, we were unable to take payment")
 
         else:
             messages.warning(
