@@ -11,10 +11,10 @@ function sendMail(contactForm) {
     })
     .then(
         function(response) {
-            console.log("SUCCESS", response);
+            alert(response);
         },
         function(error) {
-            console.log("FAILED", error);
+            alert(error);
         }
     );
 }
