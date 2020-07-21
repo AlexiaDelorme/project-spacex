@@ -254,7 +254,7 @@ def bookings_page(request):
         confirmation_status=True,
         trip__departure_date__gte=today)
 
-    passed_bookings = BookingReference.objects.all().filter(
+    past_bookings = BookingReference.objects.all().filter(
         booker=request.user,
         confirmation_status=True,
         trip__departure_date__lt=today)
@@ -262,7 +262,7 @@ def bookings_page(request):
     context = {
         "page_title": "Bookings",
         "upcoming_bookings": upcoming_bookings,
-        "passed_bookings": passed_bookings,
+        "past_bookings": past_bookings
     }
 
     return render(request, 'profile/bookings.html', context)
