@@ -4,6 +4,7 @@ from django import forms
 class ContactForm(forms.Form):
     """Contact form for contact page"""
     SUBJECT_CHOICES = (
+        ('', '-----------'),
         ("Information Request", "Information Request"),
         ("Tickets Booking", "Tickets Booking"),
         ("Medical Question", "Medical Question"),
