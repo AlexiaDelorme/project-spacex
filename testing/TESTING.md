@@ -94,23 +94,23 @@ This project has been tested multiple times against each user stories listed in 
     - If the user only wants to look for the type of destination available, (s)he can click on 'Destination' in the dropdown menu. 
 2. **The website to have a neat and elegant design with an optimal architecture and layout.**
     - The website is consistent with regards to the design and layout. 
-    - All the images are visually impacting and related with astrophysics and space.
+    - All the images are visually impacting and related to astrophysics and space.
 3. **The website to be intuitive and easy to navigate so that I can find what I need in the most effective manner.**
     - The website has a simple architecture and is quite intuitive to navigate. 
-    - All important pages can be accessed through a fixed navbar bar that is therefore always available for the user.
+    - All important pages can be accessed through a fixed navbar that is therefore always available for the user.
     - Some useful links are also available on the footer (trips, scientists and faq).
-4. **To easily find information i.e. identify key information for a specific trips and if needed, be able to get access to more details.**
+4. **To easily find information i.e. identify key information for a specific trip and, if needed, be able to get access to more details.**
     - The user can have access to trips presented by destination. Key information is listed in an organized manner: trip destination, trip duration, trip distance...
-    - The user can access more details about the destination by clicking on the 'trip details' button. The user will be able to view more pictures of the destination, with key information, and a detailed trip description. 
+    - The user can access more details about the destination by clicking on the 'Trip details' button. The user will be able to view more pictures of the destination, with key information, and a detailed trip description. 
 5. **To easily find information about the travel company and see their entire range of offers. I also want to have their contact details and be able to get in touch with them through a contact form.**
-    - The user can easily access information about the travel company by clicking on the 'About' item in the navbar. On this page, the user will have access to a small presentation of the company along with their history and all the services they provide.
-    - The user can get in touch with the company through a contact form available in the 'Contact' page. 
+    - The user can easily access information about the travel company by clicking on the 'About' link in the navbar. On this page, the user will have access to a short presentation of the company along with their history and all the services they provide.
+    - The user can get in touch with the company through a contact form available on the 'Contact' page. 
 6. **To be able to research trips by destination, departure site and date.**
-    - The user can research trip by destination and then on the trip details, (s)he will have the option to submit a form to look for all the available trips for this specific destination.
+    - The user can research trips by destination and then on the trip details page, (s)he will have the option to submit a form to look for all the available trips for this specific destination.
     - The user can also research trips in the 'Search all' section. At the top of the results page, there is a search form where the user can look for trips with the following criteria: destination, departure site and departure date. 
 7. **To read testimonies from previous passengers and have access to FAQs.**
     - Testimonies from previous passengers are directly available on the home page.
-    - A link to the FAQs is available in the 'trips' dropdown menu in the navbar and in the footer as well. 
+    - A link to the FAQs is available in the 'Trips' dropdown menu in the navbar and in the footer as well. 
 8. **To be able to book a trip and then register/log in to an account with minimal steps to confirm my order.**
     - After looking for a trip, the user can easily add the trip to his/her cart. The user will be then redirected to the cart page to view the content of his/her cart. Then, the user will be able to proceed to the checkout by clicking the button at the end of the cart page.
     - If the user is already logged in, (s)he will be able to start the checkout process.
@@ -121,16 +121,16 @@ This project has been tested multiple times against each user stories listed in 
     - SEND EMAIL AFTER BOOKING IS COMPLETED IS TO BE DONE. 
 10. **The website to be fully responsive on any devices: mobile, tablet, desktop.**
     - This project has been created to be fully responsive on all devices' size. For each page, the wireframes are available in three sizes.
-    - Throught the developement of this project, it has been extensively tested on mobile, tablet and desktop as well as on other devices screen size available in Chrome Developer Tools. 
+    - Throughout the developement of this project, it has been extensively tested on mobile, tablet and desktop as well as on other devices screen size available on Chrome Developer Tools. 
 11. **The website to be fully interactive so that I get clear feedback on any action I undertake (complete a form, process a payment, log in, log out etc…).**
-    - Flash messages were used to provide feedback to the user anytime an action has been triggered by the user leading to be redirected to a different view. Flash messages were used to provide feedback to the user if an action has indeed taken place when the user should be redirected to a different view than the one (s)he initiated the action.
-    - SweetAlert was used to provide feedback thanks to an alert box when the user has requested an action but this action requires a confirmation or just to provide feedback that this action is not permitted. For instance, when the user is adding a trip to his cart, then it will be asked to confirm if (s)he would like to keep shopping or go to the cart. Also JS was prioritized to provide feedback when the action the user has initiated does not imply that the user will be redirected to a different view.
+    - Flash messages were used to provide feedback to the user anytime an action has been triggered by the user leading to be redirected to a different view. Flash messages were used to provide feedback to the user if an action has indeed taken place and the user has been redirected to a different view resulting of this action. 
+    - SweetAlert was used to provide feedback thanks to an alert box when the user has requested an action but this action requires a confirmation or just feedback. For instance, when users add a trip to their cart, then they will be asked to confirm if they would like to keep shopping or go to the cart. Also JS was prioritized to provide feedback when the action initiated does imply to be redirected to a different view.
 12. As a business or scientist, I want to easily find information on the application process and request information to the company. 
     - Scientists and businesses have a dedicated page available from the navbar by clicking on 'Scientists'. 
     - On this dedicated page, they can find information on the selection process for a scientific experiment, examples of past experiments etc... A link to the contact page is also available on this page.
-13. As a user, I want to be able to access (and update) my personal information, upcoming and post bookings.
+13. As a user, I want to be able to access (and update) my personal information, upcoming and past bookings.
     - The user has access to their personal information on their 'Profile' page. The user can update their contact details, passenger details as well as their password.
-    - The user can access their upcoming or past bookings by clicking on the 'Bookings' link in the 'Account' dropdown menu in the navbar. 
+    - The user can access their upcoming or past bookings by clicking on the 'Bookings' link in the 'Account' dropdown menu in the navbar.
 
 <a name="features"/>
 
