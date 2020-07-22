@@ -7,7 +7,8 @@ function sendMail(contactForm) {
         "from_name": contactForm.first.value + " " + contactForm.last.value,
         "from_email": contactForm.email.value,
         "contact_request": contactForm.message.value,
-        "subject": contactForm.subject.value
+        "subject": "Blank subject for test"
+        // contactForm.subject.value
     })
     .then(
         function(response) {
