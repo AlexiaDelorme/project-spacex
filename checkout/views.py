@@ -9,6 +9,7 @@ from .forms import OtherPassengerForm, PaymentForm
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.contrib import messages
+from django.core.mail import send_mail
 import stripe
 
 
@@ -273,6 +274,14 @@ def checkout_payment_page(request):
 
 @login_required
 def checkout_confirmation_page(request):
+
+    # Send a confirmation email to the user
+    subject = 'Thanks for booking with SpaceX'
+    message = 'Please find below the information for your recent booking. This is just a test'
+    recepient = request.user.email
+    send_mail(subject,
+              message, settings.EMAIL_HOST_USER,
+              [recepient], fail_silently=False)
 
     context = {
         "page_title": "Confirmation",
