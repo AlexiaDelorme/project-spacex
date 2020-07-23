@@ -143,12 +143,12 @@ This project has been tested multiple times against each user stories listed in 
 **Test scenario:**
 - [x] Check that the SpaceX logo displays correctly and is aligned to the left.
 - [x] Check that each following menu items display correctly and are centered: Home, Trips, Scientists, About, Contact.
-- [x] Check that the dropdown menu item for Trips displays the following links: Destination, Search All, FAQs.
+- [x] Check that the dropdown menu item for Trips displays the following links: Destinations, Search All, FAQs.
 - [x] Check that the following menu items are aligned to the right: Account, Cart icon.
 - [x] Confirm that, when the user is not logged in, the dropdown menu item for Account displays the following links: Log in, Sign Up. 
 - [x] Confirm that, when the user is logged in, the dropdown menu item for Account displays the following links: Profile, Bookings, Log Out. 
-- [x] Hover over each menu items and confirm that the font-colour gets slightly highlighted.
-- [x] Confirm that for each menu item clicked, it should take the user back to the corresponding page. 
+- [x] Hover over each menu items and confirm that the font colour gets slightly highlighted.
+- [x] Confirm that for each menu item clicked, it should take the user to the corresponding page. 
 - [x] Add a trip to the cart and confirm that the number of booked trip(s) is successfully displayed next to the cart item in the navbar.
 
 **Test result:** Successful :white_check_mark:
@@ -183,11 +183,11 @@ This project has been tested multiple times against each user stories listed in 
     - When hovered over, the background color should get darker. 
     - When clicked, it should take the user further down on the home page: where the travel agency is presented.
 - [x] Confirm that all the pictures on the home page loaded successfully, including the ones for passengers testimonials. 
-- [x] Confirm that the following information is on the page: 
+- [x] Confirm that the following information is available on the page: 
     - innovative concept of the travel company
     - categories of trips (individuals & scientists)
-    - statistics on our trips
-    - testimonials of passengers
+    - statistics
+    - testimonials
     - button to browse trips    
 - [x] At the bottom of the home page, get to the 'Book Your Next Trip' button
     - When hovered over, the background color should turn white.
@@ -213,9 +213,9 @@ This project has been tested multiple times against each user stories listed in 
 - [x] The title and the picture of the header loaded successfully. 
 - [x] The navbar should be transparent, when scrolling down, it should turn white.
 - [x] Confirm that the contact form and the google map loaded successfully.
-- [x] As a logged in user, confirm that the following fields of the contact form are already filled: First Name, Last Name and Email.
-- [x] Try to submit the form with a missing field and confirm that you get an alert box advising you of the missing field.
-- [x] Submit a complete form, you should get redirected back to the contact page with a green flash message confirming that the request was sent. 
+- [x] As a logged in user, confirm that the following fields of the contact form are already provided: First Name, Last Name and Email.
+- [x] Try to submit the form with a missing field and confirm that you get an feedback advising you of the missing field.
+- [x] Submit a complete form, you should get an alert box confirming you that the contact form was sent. After closing the alert box, you should get redirected back to the contact page.
 
 **Test result:** Successful :white_check_mark:
 
@@ -263,8 +263,8 @@ This project has been tested multiple times against each user stories listed in 
     - a form to look for upcoming trips to this destination
     - trip description, requirements and safety guidelines
 - [x] Test search trip form:
-    - Try to submit the form with a missing field and confirm that you get an alert box advising you that this field is required.
-    - Now submit the complete form, confirm that you get redirected back to a result page of trips matching your search criteria.
+    - Try to submit the form with a missing field and confirm that you get feedback advising you that this field is required.
+    - Now submit the complete form, confirm that you get redirected to a result page of trips matching your search criteria.
 
 **Test result:** Successful :white_check_mark:
 
@@ -321,7 +321,7 @@ This project has been tested multiple times against each user stories listed in 
     - Click on the 'Delete' button and confirm that the trip item was removed from the cart.
 - [x] Adjust passenger number:
     - Try to set the passenger number to 0 and confirm that you get an alert box advising you that you should have at least 1 passenger. 
-    - Try to set the passenger number above the available slots for this trip and confirm that you get an alert box advising that you cannot book for more passengers.
+    - Try to set the passenger number above the available slots for this trip and confirm that you get an alert box advising you that you cannot book for more passengers.
     - Set a correct passenger number by clicking on the '+' icon button to increment the passenger number by 1, then click on the 'Adjust passenger' button.
     - You should get an alert box confirming you that the passenger number has been updated for this specific trip.
     - Confirm that the sub-total for this specific trip as well as the grand total of the cart have been updated.
@@ -342,8 +342,8 @@ This project has been tested multiple times against each user stories listed in 
 **Test scenario: Contact details page**
 - [x] Confirm that the progress bar is displayed at the top of the page and highlights the "Contact" step. 
 - [x] Confirm that the navbar is hidden during the checkout process. 
-- [x] When accessing the page, confirm that a contact form is loaded and that the trip summary is correct (trip details, passengers, subtotal and total).
-- [x] Confirm that if the user already provided their contact details, the contact form is pre-filled with this information. Otherwise, the contact form should be blanked. 
+- [x] When accessing the page, confirm that a contact form is loaded and that the trip summary is correct (trip details, passengers, sub-total and total).
+- [x] Confirm that if the user already provided their contact details, the contact form is pre-filled. Otherwise, the contact form fields should be blank. 
 - [x] Click on the 'Return to cart' button and confirm that it takes the user back to the cart page.
 - [x] Try to proceed to the next stage of the checkout process without filling in the contact details form, confirm that you get appropriate error message.
 - [x] Confirm/update/fill in the contact details form and then click on the 'Register passengers' button, confirm that you are being taken to the second checkout page (passengers details page). 
@@ -351,10 +351,10 @@ This project has been tested multiple times against each user stories listed in 
 **Test scenario: Passenger details page**
 - [x] Confirm that the progress bar is displayed at the top of the page and highlights the "Passengers" step. 
 - [x] Confirm that the navbar is hidden during the checkout process. 
-- [x] When accessing the page, confirm that for each trip, a collapsible passenger form is available for each passenger booked on the trip. Also confirm that the trip summary is correct (trip details, passengers, subtotal and total).
+- [x] When accessing the page, confirm that for each trip, a collapsible passenger form is available for each passenger booked on the trip. Also confirm that the trip summary is correct (trip details, passengers, sub-total and total).
 - [x] Click on the 'Return to contact' button and confirm that it takes the user back to the contact page.
 - [x] Try to proceed to the next stage of the checkout process without registering any passengers, confirm that you get an alert message with appropriate feedback.
-- [x] For each passenger, click on the collapsible button and confirm when it expands a passenger form is displayed.
+- [x] For each passenger, click on the collapsible button and confirm that when it expands a passenger form is displayed.
 - [x] For 'PASSENGER 1':
     - Confirm that above the passenger form, there is a message displaying 'Who is traveling?'. 
     - Confirm that the user has the option to register themselves as a passenger or to book for another person.
@@ -364,14 +364,14 @@ This project has been tested multiple times against each user stories listed in 
     - Confirm that there is no 'Who is traveling?' section.
     - Confirm that a blank passenger form is displayed.
 - [x] Confirm that when you try to register a passenger without filling all the required fields, you get approriate error message from the form.
-- [x] Now submit a valid passenger form by clicking on the 'Register passenger' button, confirm that you get an alert message with a green icon with a message displaying that the passenger was saved. 
+- [x] Now submit a valid passenger form by clicking on the 'Register passenger' button, confirm that you get an alert message confirming that the passenger was saved. 
 - [x] After you closed the alert message, the collapsible button should now display the name of the passenger with a green check mark. When you try to click on the collapsible button, it should not expand.
 - [x] Make sure you register all the passengers for each trip available in your cart. Click on the 'Proceed payment' button, confirm that you are being taken to the third checkout page (payment page).
 
 **Test scenario: Payment page**
 - [x] Confirm that the progress bar is displayed at the top of the page and highlights the "Payment" step. 
 - [x] Confirm that the navbar is hidden during the checkout process. 
-- [x] When accessing the page, confirm that a payment form is loaded and that the trip summary is correct (trip details, passengers, subtotal and total).
+- [x] When accessing the page, confirm that a payment form is loaded and that the trip summary is correct (trip details, passengers, sub-total and total).
 - [x] Check that the choices for the month and year fields in the credit card form are correct.
 - [x] Try to submit the form without providing any credit card information, confirm that you get appropriate feedback.
 - [x] Try to submit the form providing an incorrect expiry date for your credit card, confirm that you get appropriate feedback.
@@ -418,9 +418,9 @@ This project has been tested multiple times against each user stories listed in 
 - [x] The picture of the header loaded successfully. 
 - [x] The navbar should be transparent, when scrolling down, it should turn white.
 - [x] Confirm that the login form is displayed as expected.
-- [x] Try to submit the form with a missing field and confirm that you get an alert box advising you of the missing field.
+- [x] Try to submit the form with a missing field and confirm that you get feedback for the missing field.
 - [x] Try to submit the form with an incorrect username and/or password and confirm that you get feedback on the incorrect field(s).
-- [x] Submit the form with correct username and password, you should get redirected back to the profile page.
+- [x] Submit the form with correct username and password, you should get redirected to the profile page.
 - [x] Now try to access the url while being logged in, confirm that you get redirected back to your profile page.
 
 **Test result:** Successful :white_check_mark:
@@ -481,7 +481,7 @@ This project has been tested multiple times against each user stories listed in 
 - [x] Click each breadcrumd links, confirm they take the user to the corresponding page.
 - [x] For a user that has no bookings yet, confirm that you get a message displaying that there are no upcoming/past bookings with a button to browse for trips. Click on the link and confirm that it takes you to the search all trips page.
 - [x] Search for a trip and complete the checkout process untill your booking is confirmed. Access the "Bookings" page and confirm that the trip you just booked now appears within your upcoming trips. 
-- [x] For testing purposes, I created a trip with a past departure date. I was therefore able to book for a trip with a past value date and it indeed showed as "Past trips" in the booking page.
+- [x] For testing purposes, I created a trip with a past departure date. I was therefore able to book for a trip with a past departure date and it indeed showed as "Past trips" in the booking page.
 - [x] For each past/upcoming trips, confirm that the following information is displayed:
     - Booking reference
     - Destination name
