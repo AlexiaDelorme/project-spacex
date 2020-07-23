@@ -240,8 +240,6 @@ def checkout_payment_page(request):
 
                     # Empty cart
                     request.session['cart'] = {}
-                    # Delete session variable
-                    del request.session['booking_references']
 
                     messages.success(
                         request,
@@ -283,10 +281,24 @@ def checkout_confirmation_page(request):
               message, settings.EMAIL_HOST_USER,
               [recepient], fail_silently=False)
 
+    # Create a bookings var for context
+    booking_references = request.session.get('booking_references', {})
+    bookings = []
+    for key in booking_references:
+        booking_obj = get_object_or_404(
+            BookingReference,
+            id=booking_references[key]
+        )
+        bookings.append(booking_obj)
+
+    # Delete session variable
+    if 'booking_references' in request.session:
+        del request.session['booking_references']
+
     context = {
         "page_title": "Confirmation",
         "checkout_pg": "confirmation",
-        "publishable": settings.STRIPE_PUBLISHABLE
+        "bookings": bookings
     }
 
     return render(request, "checkout_confirmation.html", context)
