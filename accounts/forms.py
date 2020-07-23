@@ -32,21 +32,26 @@ class UserUpdateForm(forms.ModelForm):
 class UserPassengerForm(forms.ModelForm):
 
     CHOICES_TITLE = [
-        ('Mr', 'Mr'), ('Mrs', 'Mrs'), ('Miss', 'Miss'), ('Ms', 'Ms')
+        ('Mr', 'Mr'),
+        ('Mrs', 'Mrs'),
+        ('Miss', 'Miss'),
+        ('Ms', 'Ms')
     ]
-    CHOICES_MONTH = [('January', 'January'),
-                     ('February', 'February'),
-                     ('March', 'March'),
-                     ('April', 'April'),
-                     ('May', 'May'),
-                     ('June', 'June'),
-                     ('July', 'July'),
-                     ('August', 'August'),
-                     ('September', 'September'),
-                     ('October', 'October'),
-                     ('November', 'November'),
-                     ('December', 'December')
-                     ]
+    CHOICES_MONTH = [
+        ("", "---------"),
+        ('January', 'January'),
+        ('February', 'February'),
+        ('March', 'March'),
+        ('April', 'April'),
+        ('May', 'May'),
+        ('June', 'June'),
+        ('July', 'July'),
+        ('August', 'August'),
+        ('September', 'September'),
+        ('October', 'October'),
+        ('November', 'November'),
+        ('December', 'December')
+    ]
 
     today = date.today()
 
