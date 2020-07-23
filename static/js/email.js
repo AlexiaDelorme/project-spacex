@@ -2,11 +2,10 @@
   emailjs.init(emailjsUser);
 })();
 
-const contactForm = $("#contact-form");
+const contactForm = document.getElementById("contact-form");
 
 $("#contact-form").submit(function (e) {
   e.preventDefault();
-
   var data = {
     service_id: "gmail",
     template_id: "spacex",
