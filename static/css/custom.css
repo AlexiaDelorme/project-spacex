@@ -161,6 +161,20 @@ input#inputEmail {
     margin-bottom: 5rem!important;
 }
 
+.img-trip-destination {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 992px) {
+    .img-trip-destination {
+        height: 500px;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
  /*
     Trip details page
  */
