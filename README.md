@@ -18,7 +18,8 @@
 
 4. [Technologies Used](#tech)
     - [Languages](#languages)
-    - [Libraries](#libraries)
+    - [Frameworks & libraries](#libraries)
+    - [Databases](#db)
     - [Tools](#tools)
 
 5. [Testing](#testing)
@@ -52,10 +53,10 @@
 ## User Stories
 
 As a user, I expect:
-1. To have convenient access of all the trips that the travel agency offers.
+1. To have convenient access to all the trips that the travel agency offers.
 2. The website to have a neat and elegant design with an optimal architecture and layout.
 3. The website to be intuitive and easy to navigate so that I can find what I need in the most effective manner.
-4. To easily find information i.e. identify key information for a specific trips and if needed, be able to get access to more details.
+4. To easily find information i.e. identify key information for a specific trips and if needed, be able to access more details.
 5. To easily find information about the travel company and see their entire range of offers. I also want to have their contact details and be able to get in touch with them through a contact form.  
 6. To be able to research trips by destination, departure site and date.
 7. To read testimonies from previous passengers and have access to FAQs. 
@@ -72,7 +73,7 @@ As a user, I expect:
 
 ### Theme
 
-I wanted to create a website that would transport the user to space. I wanted to keep it classy and professional as well. I have tried to put some efforts on selecting visually impacting pictures. 
+I wanted to create a website that would "bring" the user to space. I wanted to keep it classy and professional as well. I have tried to put some efforts on selecting visually impacting pictures. 
 
 I have used a free bootstrap theme called [Grayscale](https://startbootstrap.com/themes/grayscale/). I found it absolutely wonderful and I tried my best to stick to the theme while building my website.
 
@@ -80,7 +81,7 @@ I have used a free bootstrap theme called [Grayscale](https://startbootstrap.com
 
 The three main colors were used throughout this project.
 
-1. White - ` #fff`
+1. White - `#fff`
     - Background
     - Navbar
 2. Black - `#161616`
@@ -144,7 +145,7 @@ Synthetic page with information about the company.
 Page with contact form and the google map location of the company.
 
 ###### Feature 4 - Scientists page
-Page with information for scientists and businesses that would like to organize scientific research trips. The page provides information on the selection process. There is a button to get redirected back to the contact form. 
+Page with information for scientists and businesses that would like to organize scientific research trips. The page provides information on the selection process. There is a button to get redirected to the contact page. 
 
 ###### Feature 5 - Trips by destination page
 Presentation of all the destinations available. For each destination, the following information is provided:
@@ -152,7 +153,7 @@ Presentation of all the destinations available. For each destination, the follow
 - trip distance (in km)
 - trip price (in euros)
 - departures
-- button to be redirected to the trip details
+- button to access the trip details
 
 ###### Feature 6 - Trips details
 Description page for a specific destination. The page should display:
@@ -190,7 +191,8 @@ Checkout process step by step with the following pages:
 - contact details form
 - forms to register passengers
 - payment form
-- confirmation of order booked for each step of the checkout process, a recap of the cart is available as well as a return button to get back to the previous step. 
+- confirmation of order booked
+- for each step of the checkout process, a recap of the cart is available as well as a return button to get back to the previous step. 
 
 ###### Feature 10 - FAQs page
 Page with all the most frequently asked questions about our trips.
@@ -219,7 +221,17 @@ Page with all upcoming and/or past trips that were booked by the user.
 
 ## Future Feature 1 - Waiting list
 
-To advise the user of the remaining slots if the trip is almost sold out and register to a waiting list if it is already sold out. 
+To provide the user with the option to register to a waiting list if a trip is sold out.
+
+## Future Feature 2 - Activity dashboard for admin
+
+To have a custom dashboard for the administrator of the website so they can monitor the activity of the travel agency.
+- statistics: number of bookings, revenues, new users...
+- edit/delete/add new trips
+
+## Future Feature 3 - Option to add testimonials
+
+Create a testimonial form where passengers could share their experience after completing a trip with us.
 
 <a name="database"/>
 
@@ -228,6 +240,9 @@ To advise the user of the remaining slots if the trip is almost sold out and reg
 <a name="db-choice"/>
 
 ## Database choice
+
+- Development: I used sqlite3 database which is the default database provided by Django. 
+- Production: I used PostgreSQL for my deployed application hosted on Heroku. 
 
 <a name="db-structure"/>
 
@@ -354,7 +369,7 @@ confirmation_status | models.BooleanField() | default=False
 
 <a name="libraries"/>
 
-## Libraries
+## Frameworks & Libraries
 
 ##### [Django 3](https://www.djangoproject.com)
 - I used Django 3 as Python framework to build this website. 
@@ -369,7 +384,17 @@ confirmation_status | models.BooleanField() | default=False
 - I used Font Awesome to display icons.
 
 ##### [Google Fonts](https://fonts.google.com/)
-- I used two google fonts as the main font families.
+- I used google fonts for my main font families.
+
+<a name="db"/>
+
+## Databases
+
+##### [SQLite3](https://www.sqlite.org/releaselog/3_32_3.html)
+- I used sqlite as database during the development stage.
+
+##### [PostgreSQL](https://www.postgresql.org/)
+- I used PostgreSQL as database in production. 
 
 <a name="tools"/>
 
@@ -381,8 +406,11 @@ confirmation_status | models.BooleanField() | default=False
 ##### [Gitpod](https://gitpod.io/)
 - I used Gitpod as my IDE for this project.
 
-##### [Postgres]()
-- 
+##### [Amazon S3](https://aws.amazon.com/s3/)
+- I used Amazon Simple Storage Service to store my static and media files.
+
+##### [Stripe](https://stripe.com/)
+- I used Stripe for secure credit card payment validation.
 
 ##### [Git & GitHub](https://github.com/)
 - I used Git for version control. 
@@ -390,6 +418,9 @@ confirmation_status | models.BooleanField() | default=False
 
 ##### [Heroku](https://dashboard.heroku.com)
 - I used Heroku to deploy and host my application.
+
+##### [Sweet Alert](https://sweetalert.js.org/)
+- I used Sweet Alert to enhance the layout of JS alert boxes.
 
 ##### [TinyPNG](https://tinypng.com)
 - I used TinyPNG to optimize the size of the images used for this app.
@@ -440,6 +471,7 @@ SECRET_KEY | `<SECRET_KEY>`
 STRIPE_PUBLISHABLE | `<STRIPE_PUBLISHABLE>`
 STRIPE_SECRET | `<STRIPE_SECRET>`
 USE_AWS | `<TRUE>`
+
 5. In the `Deploy` tab, choose `Connect Github` as **Deployment Method** and *Enable Automatic Deployment* from the Github master branch so that any new commit will be automatically deployed through your heroku app. 
 
 <a name="depl-gitpod"/>
@@ -474,6 +506,7 @@ HOSTNAME | `<HOSTNAME>`
 SECRET_KEY | `<SECRET_KEY>`
 STRIPE_PUBLISHABLE | `<STRIPE_PUBLISHABLE>`
 STRIPE_SECRET | `<STRIPE_SECRET>`
+
 5. The default local database for django projects is SQLite 3.
 6. Download all the dependencies necessary to run this project and listed in the **requirements.txt** file. 
     - Run the following command `pip3 install -r requirements.txt`
@@ -490,8 +523,8 @@ STRIPE_SECRET | `<STRIPE_SECRET>`
 ### Content
 
 - For the concept of this web app, (as you could guess) I got inspired by [SpaceX](https://www.spacex.com/). I decided to keep the same name to make it more realistic, I don't think it would be an issue as it is a project for educational purposes only.
-- For contents related to microgravity, scientific experiments, general terms & conditions, and safety guidelines, I have used information from [AirZeroG](https://www.airzerog.com/). This company organizes parabolic flights in Europe for the general public.
-- For content specifically related to the trips, I looked online to get the distance from earth, I researched a list of launch sites. I have set the price and duration of each trip myself - even though for some trips it's not that realistic (Mars).
+- For content related to microgravity, scientific experiments, general terms & conditions, and safety guidelines, I have used information from [AirZeroG](https://www.airzerog.com/). This company organizes parabolic flights in Europe for the general public.
+- For content specifically related to the trips, I looked online to get the distance from earth, moon etc... I researched a list of launch sites. I have set the price and duration of each trip myself - even though for some trips it's not that realistic (Mars).
 
 <a name="media"/>
 
@@ -510,6 +543,7 @@ STRIPE_SECRET | `<STRIPE_SECRET>`
 - [Collapsable](http://jsfiddle.net/hungerpain/eK8X5/7/)
 - [Progress tracker](https://stackoverflow.com/questions/5213753/build-step-progress-bar-css-and-jquery)
 - [Login success view](https://stackoverflow.com/questions/16824004/django-conditional-login-redirect/16824337#16824337)
+- [Corey Schafer's Django Tutorials](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p)
 
 <a name="ack"/>
 
