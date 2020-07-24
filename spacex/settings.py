@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django.contrib.humanize',
     'django_countries',
-    'django_template_email',
+    'template_email',
     'main_pages',
     'trips',
     'accounts',
