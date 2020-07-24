@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
 from django.contrib import messages
+from datetime import date
 from .models import Trip, TripCategory
 from .forms import TripSearchForm, AllTripSearchForm
-from django.core.paginator import Paginator
 
 
 def faq_page(request):
@@ -100,8 +101,8 @@ def trips_all_page(request):
             request, "Please, see below the result(s) for your search")
 
     else:
-
-        trips = Trip.objects.all()
+        today = date.today()
+        trips = Trip.objects.all().filter(departure_date__gte=(today))
 
         # Set pagination for trips results
         paginator = Paginator(trips, 5)  # Show 5 trips per page
