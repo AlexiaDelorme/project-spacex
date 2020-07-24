@@ -1,46 +1,72 @@
-{% extends 'base.html' %}
-{% load static %}
 {% load humanize %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email confirmation</title>
+  </head>
+  <body style="background-color: #fff;font-family:calibri;">
 
-{% block header %}
+    <header>
+      <h1 style="color: #64a19d;">Thank you!</h1>
+    </header>
 
-<!-- Header -->
-<header class="trips-head">
-	<div class="container d-flex align-items-center">
-		<div class="mx-auto text-center text-white">
-            <h1>Thank you! <i class="fas fa-rocket"></i></h1>
-		</div>
-	</div>
-</header>
+    <!-- Confirmation section -->
+    <section>
+      <p>
+        Dear {{ user.first_name }},<br><br>
+        This is email is to confirm your recent booking with SpaceX. Please find
+        below a summary of your order, information about your booking are also
+        available in your account.<br><br>
+      </p>
+      <hr>
+    </section>
 
-{% endblock %}
-
-{% block content %}
-
-<!-- Confirmation section -->
-<section class="bg-light">
-	<div class="container pt-5 pb-5">
-		<div class="row">
-
-            <!-- Confirmation text -->
-            <div class="col-12 col-md-10 col-lg-8 mx-auto text-center mt-5 mb-5">
+    <!-- Booking details -->
+    <section>
+        {% for booking in bookings %}
+            <div class="div">
+                <h3 style="color: #64a19d;">Ref: {{ booking.trip.departure_site.site_code }}{{ booking.trip.category.destination_code }}{{ booking.id }}</h3>
+                <h2>Trip to the {{ booking.trip.category.destination }} </h2>
                 <p>
-                    Dear {{ user.first_name }},<br>
-                    This is email is to confirm your recent booking with SpaceX. Please find below a summary of your order, your bookings information are also available in the bookings page of your account.<br><br>
+                    {{ booking.passenger_number }} Passengers <br>
+
+                    {% if booking.user_passenger %}
+                        {{ booking.user_passenger.user.first_name }} {{ booking.user_passenger.user.last_name }} <br>
+                    {% endif %}
+
+                    {%  if booking.other_passenger %}
+                        {% for passenger in booking.other_passenger.all %}
+                            {{ passenger.first_name }} {{ passenger.last_name }} <br>
+                        {% endfor %}
+                    {% endif %}
                 </p>
+                <p>
+                    Booked on {{ booking.order_date }}<br>
+                    Spacecraft number: {{ booking.trip.trip_reference }}
+                </p>
+                <p>
+                    <h4>Departure {{ booking.trip.departure_site.site_code }}</h4>
+                    From {{ booking.trip.departure_site }} on {{ booking.trip.departure_date }} @ {{ booking.trip.departure_time|time:"H:i A" }}
+                </p>
+                <p>
+                    <h4>Return {{ booking.trip.category.destination_code }}</h4>
+                    Returns from {{ booking.trip.category.destination }} on {{ booking.trip.return_date }} @ {{ booking.trip.return_time|time:"H:i A" }}
+                </p>               
+            <hr>
             </div>
+        {% endfor %}
+    </section>
 
-            <div class="col-12 mb-3"> 
-                <div class="col-12 col-lg-8 mx-auto">
-                    <!-- Booking details -->
-                    {% for booking in bookings %}
-                        {% include 'components/booking_recap.html' %}
-                    {% endfor %}
-                </div>
-            </div>
+    <footer>
+    <p> 
+        SpaceX Inc. &copy; <br>
+        1094 Vab Rd, Florida, United States<br><br>
+    </p>
+    <img src="{% static 'img/logo-oper.png' %}" alt="SpaceX Logo" width="400">
+    </footer>
 
-		</div>
-	</div>
-</section>
-
-{% endblock %}
+  </body>
+</html>

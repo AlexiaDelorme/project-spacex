@@ -292,10 +292,11 @@ def checkout_confirmation_page(request):
         "page_title": "Confirmation",
         "checkout_pg": "confirmation",
         "bookings": bookings,
+        "user": request.user,
     }
 
     # Send a confirmation email to the user
-    subject = "Thanks for booking with SpaceX"
+    subject = "[SpaceX] Your booking is confirmed"
     rendered_message = render_to_string('email.html', context)
     recepient = request.user.email
     send_mail(subject, rendered_message,
