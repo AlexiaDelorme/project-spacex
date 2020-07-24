@@ -8,6 +8,7 @@ Django==3.0.7
 django-countries==6.1.2
 django-crispy-forms==1.9.0
 django-storages==1.9.1
+django-template-email==0.1
 docutils==0.15.2
 gunicorn==20.0.4
 idna==2.9
