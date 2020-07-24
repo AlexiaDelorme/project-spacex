@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block header %}
+
+<!-- Header -->
+<header class="trips-head">
+	<div class="container d-flex align-items-center">
+		<div class="mx-auto text-center text-white">
+            <h1>Thank you! <i class="fas fa-rocket"></i></h1>
+		</div>
+	</div>
+</header>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- Confirmation section -->
+<section class="bg-light">
+	<div class="container pt-5 pb-5">
+		<div class="row">
+
+            <!-- Confirmation text -->
+            <div class="col-12 col-md-10 col-lg-8 mx-auto text-center mt-5 mb-5">
+                <p>
+                    Dear {{ user.first_name }},<br>
+                    This is email is to confirm your recent booking with SpaceX. Please find below a summary of your order, your bookings information are also available in the bookings page of your account.<br><br>
+                </p>
+            </div>
+
+            <div class="col-12 mb-3"> 
+                <div class="col-12 col-lg-8 mx-auto">
+                    <!-- Booking details -->
+                    {% for booking in bookings %}
+                        {% include 'components/booking_recap.html' %}
+                    {% endfor %}
+                </div>
+            </div>
+
+		</div>
+	</div>
+</section>
+
+{% endblock %}
