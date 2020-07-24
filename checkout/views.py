@@ -298,8 +298,9 @@ def checkout_confirmation_page(request):
     subject = "Thanks for booking with SpaceX"
     rendered_message = render_to_string('email.html', context)
     recepient = request.user.email
-    send_mail(subject,
-              rendered_message, settings.EMAIL_HOST_USER,
-              [recepient], fail_silently=False)
+    send_mail(subject, rendered_message,
+              settings.EMAIL_HOST_USER,
+              [recepient], fail_silently=False,
+              html_message=rendered_message)
 
     return render(request, "checkout_confirmation.html", context)
