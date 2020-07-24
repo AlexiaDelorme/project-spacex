@@ -273,14 +273,6 @@ def checkout_payment_page(request):
 @login_required
 def checkout_confirmation_page(request):
 
-    # Send a confirmation email to the user
-    subject = 'Thanks for booking with SpaceX'
-    message = 'Please find below the information for your recent booking. This is just a test'
-    recepient = request.user.email
-    send_mail(subject,
-              message, settings.EMAIL_HOST_USER,
-              [recepient], fail_silently=False)
-
     # Create a bookings var for context
     booking_references = request.session.get('booking_references', {})
     bookings = []
@@ -295,10 +287,18 @@ def checkout_confirmation_page(request):
     if 'booking_references' in request.session:
         del request.session['booking_references']
 
+    # Send a confirmation email to the user
+    subject = 'Thanks for booking with SpaceX'
+    message = 'Please find below the information for your recent booking. This is just a test'
+    recepient = request.user.email
+    send_mail(subject,
+              message, settings.EMAIL_HOST_USER,
+              [recepient], fail_silently=False)
+
     context = {
         "page_title": "Confirmation",
         "checkout_pg": "confirmation",
-        "bookings": bookings
+        "bookings": bookings,
     }
 
     return render(request, "checkout_confirmation.html", context)
