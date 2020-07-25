@@ -50,11 +50,11 @@
                             <div class="row">
 
                                 <div class="col-12">
-                                    <h4 class="font-weight-bold">Passenger</h4>
+                                    <h4 class="font-weight-bold mb-3">Passenger</h4>
                                 </div>
                                 
-                                <div class="col-6 text-left">Full Name</div>
-                                <div class="col-6 text-right">
+                                <div class="col-12 col-sm-6 text-left">Full Name</div>
+                                <div class="col-12 col-sm-6 text-left text-sm-right mb-3 mb-sm-0">
                                     {% if passenger %}
                                         {{ passenger.title }}.
                                     {% endif %}
@@ -63,18 +63,18 @@
 
                                 {% if passenger %}
 
-                                    <div class="col-6 text-left">Date of birth</div>
-                                    <div class="col-6 text-right">
+                                    <div class="col-12 col-sm-6 text-left">Date of birth</div>
+                                    <div class="col-12 col-sm-6 text-left text-sm-right mb-3 mb-sm-0">
                                         {{ passenger.birth_date }}
                                     </div>
 
-                                    <div class="col-6 text-left">Passport</div>
-                                    <div class="col-6 text-right">
+                                    <div class="col-12 col-sm-6 text-left">Passport</div>
+                                    <div class="col-12 col-sm-6 text-left text-sm-right mb-3 mb-sm-0">
                                         {{ passenger.passport_id }}
                                     </div>
 
-                                    <div class="col-6 text-left">Country of issue</div>
-                                    <div class="col-6 text-right">
+                                    <div class="col-12 col-sm-6 text-left">Country of issue</div>
+                                    <div class="col-12 col-sm-6 text-left text-sm-right mb-3 mb-sm-0">
                                         {{ passenger.citizenship.name }}
                                     </div>
                                             
@@ -102,19 +102,19 @@
                             <div class="row">
 
                                 <div class="col-12">
-                                    <h4 class="font-weight-bold">Contact</h4>
+                                    <h4 class="font-weight-bold mb-3">Contact</h4>
                                 </div>
 
-                                <div class="col-4 text-left">Email</div>
-                                <div class="col-8 text-right"> {{ user.email }} </div>
+                                <div class="col-12 col-sm-4 text-left">Email</div>
+                                <div class="col-12 col-sm-8 text-left text-sm-right mb-3 mb-sm-0"> {{ user.email }} </div>
 
                                 {% if contact %}
 
-                                    <div class="col-4 text-left mb-3">Phone</div>
-                                    <div class="col-8 text-right mb-3"> {{ contact.phone_number }}</div>
+                                    <div class="col-12 col-sm-4 text-left">Phone</div>
+                                    <div class="col-12 col-sm-8 text-left text-sm-right mb-3"> {{ contact.phone_number }}</div>
 
-                                    <div class="col-4 text-left">Address</div>
-                                    <div class="col-8 text-right">
+                                    <div class="col-12 col-sm-4 text-left">Address</div>
+                                    <div class="col-12 col-sm-8 text-left text-sm-right mb-3 mb-sm-0">
                                         {{ contact.street_address1 }}<br>
                                         {% if contact.street_address2 %}
                                             {{ contact.street_address2 }} <br>
@@ -141,7 +141,7 @@
                             <div class="d-flex flex-row-reverse bd-highlight"><a href="{% url 'edit_password' %}">Edit</a></div>
                             <h4 class="font-weight-bold">Login</h4>
                             <div class="row">
-                                <div class="col-4 text-left">
+                                <div class="col-12 text-left">
                                     <p>Password</p>
                                 </div>
                             </div>
