@@ -118,7 +118,7 @@ $(document).ready(function () {
     */
     var parentWrapper = $(".radio-title").children("#div_id_title").children("div");
     $(parentWrapper).addClass("row text-left ml-2");
-    $(parentWrapper).children(".form-check").addClass("col-2");
+    $(parentWrapper).children(".form-check").addClass("col-3 col-sm-2");
 
     /*
         Set up datepicker for trip search form
