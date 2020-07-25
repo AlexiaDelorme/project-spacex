@@ -521,15 +521,36 @@ class TestCheckoutConfirmationViewPage(TestCase):
             return_time='12:00:00', slot='15'
         )
 
-    def test_get_checkout_confirmation_page(self):
+        # create dummy instance of the booking reference object
+        self.booking_1 = BookingReference.objects.create(
+            booker=self.user,
+            trip=self.trip_1,
+            passenger_number=1,
+        )
 
-        # set cart
+        # set 'booking_references' session var
         session = self.client.session
-        session['cart'] = {'1': 1}
+        session['booking_references'] = {
+            str(self.trip_1.id): str(self.booking_1.id)}
         session.save()
 
-        # get url
+    def test_get_checkout_confirmation_page(self):
+
         response = self.client.get('/checkout/confirmation/')
 
         self.assertEqual(response.status_code,  200)
         self.assertTemplateUsed(response, 'checkout_confirmation.html')
+
+    def test_booking_references_session_variable_is_deleted(self):
+
+        self.client.get('/checkout/confirmation/')
+        session = self.client.session
+
+        self.assertNotIn('booking_references', session, msg=None)
+
+    def test_bookings_variable_is_in_context(self):
+
+        response = self.client.get('/checkout/confirmation/')
+
+        self.assertIn('bookings', response.context)
+        self.assertEqual(response.context['bookings'], [self.booking_1])
