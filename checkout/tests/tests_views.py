@@ -72,7 +72,7 @@ class TestCheckoutContactViewPage(TestCase):
         self.assertEqual(response.status_code,  200)
         self.assertTemplateUsed(response, 'checkout_contact.html')
 
-    def test_post_contact_details_if_contact_does_not_exist(self):
+    def test_post_form_if_contact_does_not_exist(self):
 
         # set cart
         session = self.client.session
@@ -92,6 +92,27 @@ class TestCheckoutContactViewPage(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('checkout_passengers'))
+
+    def test_post_incorrect_form_if_contact_does_not_exist(self):
+
+        # set cart
+        session = self.client.session
+        session['cart'] = {'1': 1}
+        session.save()
+
+        # post url and incorrect form
+        url = '/checkout/contact/'
+        contact_form = {
+            'town_or_city': 'London',
+            'country': 'GB'
+        }
+        response = self.client.post(url, contact_form)
+        messages = list(response.context['messages'])
+
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(
+            str(messages[0]),
+            'Please correct the error(s) below')
 
     def test_form_in_context_if_contact_exists(self):
 
@@ -116,7 +137,7 @@ class TestCheckoutContactViewPage(TestCase):
 
         self.assertEqual(type(contact_form), UserContactDetailForm)
 
-    def test_post_contact_details_if_contact_exists(self):
+    def test_post_form_if_contact_exists(self):
 
         # set contact details
         self.contact = ContactDetail.objects.create(
@@ -146,6 +167,37 @@ class TestCheckoutContactViewPage(TestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response.url, reverse('checkout_passengers'))
+
+    def test_post_incorrect_form_if_contact_exists(self):
+
+        # set contact details
+        self.contact = ContactDetail.objects.create(
+            user=self.user,
+            phone_number='+44 65 6575 6575',
+            street_address1='125 Main St',
+            postcode='W1H7EJ',
+            town_or_city='London',
+            country='GB'
+        )
+
+        # set cart
+        session = self.client.session
+        session['cart'] = {'1': 1}
+        session.save()
+
+        # post url and incorrect form
+        url = '/checkout/contact/'
+        contact_form = {
+            'town_or_city': 'Brixton',
+            'country': 'GB'
+        }
+        response = self.client.post(url, contact_form)
+        messages = list(response.context['messages'])
+
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(
+            str(messages[0]),
+            'Please correct the error(s) below')
 
 
 class TestCheckoutPassengersViewPage(TestCase):
