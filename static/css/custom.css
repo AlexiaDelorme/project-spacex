@@ -1,324 +1,343 @@
- /*
+/*
+    Base & headings
+ */
+
+body {
+  font-size: 0.8rem;
+}
+
+@media (min-width: 576px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+.about-head h1,
+.trips-head h1 {
+  font-family: "Varela Round";
+  letter-spacing: 0.6rem;
+  font-size: 1.8rem;
+}
+
+@media (min-width: 768px) {
+  .about-head h1,
+  .trips-head h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/*
     Navbar
  */
 
 .dropdown-menu.show {
-    border: none;
+  border: none;
 }
 
 .dropdown-item {
-    color: rgba(0,0,0,.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
-.dropdown-item:focus, .dropdown-item:hover {
-    background: transparent;
-    color: rgba(0,0,0,.7);
+.dropdown-item:focus,
+.dropdown-item:hover {
+  background: transparent;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 @media (min-width: 992px) {
+  #mainNav,
+  .dropdown-menu.show {
+    font-size: 95%;
+  }
 
-    #mainNav, .dropdown-menu.show {
-        font-size: 95%;
-    }
-    
-    .dropdown-menu.show {
-        background: transparent;
-        margin-top: -2rem;
-    }
+  .dropdown-menu.show {
+    background: transparent;
+    margin-top: -2rem;
+  }
 
-    .dropdown-item {
-        color: rgba(255,255,255,.5);
-    }
+  .dropdown-item {
+    color: rgba(255, 255, 255, 0.5);
+  }
 
-    .dropdown-item:focus, .dropdown-item:hover {
-        color: rgba(255,255,255,.75);
-    }
+  .dropdown-item:focus,
+  .dropdown-item:hover {
+    color: rgba(255, 255, 255, 0.75);
+  }
 
-    .dropdown-shrink.dropdown-menu.show {
-        background-color: #fff;
-        margin-top: 0;
-    }
+  .dropdown-shrink.dropdown-menu.show {
+    background-color: #fff;
+    margin-top: 0;
+  }
 
-    .dropdown-shrink .dropdown-item  {
-        color: #161616;
-    }
-    
+  .dropdown-shrink .dropdown-item {
+    color: #161616;
+  }
 }
 
-.breadcrumb-item+.breadcrumb-item::before {
-    display: inline-block;
-    padding-right: .5rem;
-    color: #6c757d;
-    content: ">";
+.breadcrumb-item + .breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  color: #6c757d;
+  content: ">";
 }
 
 ol.breadcrumb {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
- /*
+/*
     Footer
  */
 
 input#inputEmail {
-    box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.3) !important;
-    font-family: 'Varela Round';
-    font-size: 60%;
-    letter-spacing: 0.15rem;
-    border: 0;
+  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.3) !important;
+  font-family: "Varela Round";
+  font-size: 60%;
+  letter-spacing: 0.15rem;
+  border: 0;
 }
 
 .btn-subscribe {
-    padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
 }
 
 .footer-icon {
-    font-size: large;
+  font-size: large;
 }
 
 .contact-section .social {
   margin-top: 2rem;
 }
 
- /*
+/*
     Home page
  */
 
- .testimony-section hr, .stat-section hr {
-    border-color: #64a19d;
-    border-width: 0.25rem;
-    width: 5rem;
+.testimony-section hr,
+.stat-section hr {
+  border-color: #64a19d;
+  border-width: 0.25rem;
+  width: 5rem;
 }
 
 .book-section {
-    padding: 10rem 0;
-    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("../img/galaxy.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
+  padding: 10rem 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(22, 22, 22, 0.1) 0%,
+      rgba(22, 22, 22, 0.5) 75%,
+      #161616 100%
+    ),
+    url("../img/galaxy.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
 }
 
 .stat-icon {
-    font-size: 3rem;
-    color: white;
+  font-size: 3rem;
+  color: white;
 }
 
- /*
+/*
     About page
  */
 
 .about-head {
-    padding: 10rem 0;
-    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url("../img/stars-sky.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
+  padding: 10rem 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(22, 22, 22, 0.3) 0%,
+      rgba(22, 22, 22, 0.7) 75%,
+      #161616 100%
+    ),
+    url("../img/stars-sky.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
 }
 
-.about-head h1 {
-    font-family: 'Varela Round';
-    letter-spacing: 0.6rem;
-    font-size: 1.8rem;
-}
-
- @media (min-width: 768px) {
-   .about-head h1 {
-    font-size: 2.5rem;
-  }
-}
-
- /*
+/*
     Contact page
  */
 
- #map {
-    max-width: 100%;
-    height: 800px;
-    background-color: grey;
- }
+#map {
+  max-width: 100%;
+  height: 800px;
+  background-color: grey;
+}
 
- @media (min-width: 992px) {
-   #map {
+@media (min-width: 992px) {
+  #map {
     height: 100%;
   }
 }
 
- /*
+/*
     Destinations page
  */
 
- .trips-head {
-    padding: 10rem 0;
-    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url("../img/iss-nasa-3.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
-}
-
-.trips-head h1 {
-    font-family: 'Varela Round';
-    letter-spacing: 0.6rem;
+.trips-head {
+  padding: 10rem 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(22, 22, 22, 0.3) 0%,
+      rgba(22, 22, 22, 0.7) 75%,
+      #161616 100%
+    ),
+    url("../img/iss-nasa-3.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
 }
 
 .btn-book {
-    margin-top: -6rem;
-    z-index: 50;
-    position: relative;
-}
-.class-margin-bottom{
-    margin-bottom: 5rem!important;
+  margin-top: -6rem;
+  z-index: 50;
+  position: relative;
 }
 
-.img-trip-destination {
+.class-margin-bottom {
+  margin-bottom: 5rem !important;
+}
+
+@media (min-width: 576px) {
+  .img-trip-destination {
     height: 400px;
     width: 100%;
     object-fit: cover;
+  }
 }
 
 @media (min-width: 992px) {
-    .img-trip-destination {
-        height: 500px;
-        width: 100%;
-        object-fit: cover;
-    }
+  .img-trip-destination {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
- /*
+/*
     Trip details page
  */
 
 .trip-img-thumbnail {
-    object-fit: cover;
-    height: 125px;
-    width: 125px;
+  object-fit: cover;
+  height: 125px;
+  width: 125px;
 }
 
 img.img-fluid.img-box {
-    height: 550px;
-    width: 100%;
-    object-fit: cover;
+  height: 550px;
+  width: 100%;
+  object-fit: cover;
 }
 
 input#datepicker {
-    border-color: rgb(206, 212, 218);
-    font-family: Nunito;
-    padding: .375rem .75rem;
-    color: #495057;
+  border-color: rgb(206, 212, 218);
+  font-family: Nunito;
+  padding: 0.375rem 0.75rem;
+  color: #495057;
 }
 
 @media (min-width: 992px) {
-    .jumbotron.jumbotron-trip {
-        height: 550px;
-    }
+  .jumbotron.jumbotron-trip {
+    height: 550px;
+  }
 }
 
 .jumbotron.jumbotron-trip {
-    padding: 1.5rem;
+  padding: 1.5rem;
 }
 
- /*
+/*
     Trips results page
  */
 
 ul.timeline {
-    list-style-type: none;
-    position: relative;
+  list-style-type: none;
+  position: relative;
 }
 ul.timeline:before {
-    content: ' ';
-    background: #d4d9df;
-    display: inline-block;
-    position: absolute;
-    left: 29px;
-    width: 2px;
-    height: 100%;
-    z-index: 400;
+  content: " ";
+  background: #d4d9df;
+  display: inline-block;
+  position: absolute;
+  left: 29px;
+  width: 2px;
+  height: 100%;
+  z-index: 400;
 }
 ul.timeline > li {
-    margin: 20px 0;
-    padding-left: 20px;
+  margin: 20px 0;
+  padding-left: 20px;
 }
 ul.timeline > li:before {
-    content: ' ';
-    background: white;
-    display: inline-block;
-    position: absolute;
-    border-radius: 50%;
-    border: 3px solid #64a19d;
-    left: 20px;
-    width: 20px;
-    height: 20px;
-    z-index: 400;
+  content: " ";
+  background: white;
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid #64a19d;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
 }
 
-.spacex-book{
-    width: 80px;
-    height: auto;
+.spacex-book {
+  width: 80px;
+  height: auto;
 }
 
 .img-display {
-    display: none;
+  display: none;
 }
 
 @media (min-width: 768px) {
-    .img-display {
-        display: inline;
-    }
+  .img-display {
+    display: inline;
+  }
 }
 
- /*
+/*
     All trips page
  */
 
 @media (min-width: 992px) {
+  nav.navbar.navbar-light.bg-white.shadow-sm.pt-5 {
+    font-size: 85%;
+  }
 
-    nav.navbar.navbar-light.bg-white.shadow-sm.pt-5 {
-        font-size: 85%;
-    }
-
-    button.btn.btn-primary.btn-subscribe {
-        margin-top: 1.7rem;
-    }
-
+  button.btn.btn-primary.btn-subscribe {
+    margin-top: 1.7rem;
+  }
 }
 
 .input-group.text-left.text-md-right.mb-3 {
-    display: block;
+  display: block;
 }
 
- /*
+/*
     FAQs page
  */
 
 #faq .btn-link {
-    color: #161616;
-    box-shadow: 0 0!important;
+  color: #161616;
+  box-shadow: 0 0 !important;
 }
 
 #faq .btn-link:hover,
 #faq .btn-link:focus {
-    color: #64a19d;
-    text-decoration: none;
+  color: #64a19d;
+  text-decoration: none;
 }
 
 #faq h2 {
-    font-size: 1rem;
-}
-
-/*
-    Account page
- */
-
-  .accounts-head {
-    padding: 10rem 0;
-    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url("../img/stars-sky.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
+  font-size: 1rem;
 }
 
 /*
@@ -326,116 +345,135 @@ ul.timeline > li:before {
  */
 
 .badge-info {
-    background-color: #64a19d;
+  background-color: #64a19d;
 }
 
 .badge {
-    padding: 0.25rem 0.5rem;
-    border-radius: 1rem;
-    -webkit-border-radius: 1rem;
-    -moz-border-radius: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
 }
 
 .remove-item {
-    padding: 1rem 1.25rem;
-    border-radius: 1.5rem;
-    -webkit-border-radius: 1.5rem;
-    -moz-border-radius: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1.5rem;
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
 }
 
 /*
     Checkout pages
  */
 
-.btn{
-    font-size: 70%;
+.btn {
+  font-size: 70%;
 }
 
 .collapse-container .content {
-    display: none;
+  display: none;
 }
 
 .card-header.header {
-    background-color: #64a19d;
-    color: white;
+  background-color: #64a19d;
+  color: white;
 }
 
- /*
+/*
     Progress tracker for checkout
     <--------------- Code credit: http://jsfiddle.net/kevindmorgan/tuPrn/
  */
 
 .visuallyhidden {
-    display: none;
+  display: none;
 }
 
 .wizard-progress {
-    list-style: none;
-    list-style-image: none;
-    margin: 0;
-    padding: 0;
-    margin-top: 20px;
-    float: left;
-    white-space: nowrap;
+  list-style: none;
+  list-style-image: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+  float: left;
+  white-space: nowrap;
 }
 
 .wizard-progress li {
-    float: left;
-    margin-right: 50px;
-    text-align: center;
-    position: relative;
-    width: 100px;
+  float: left;
+  margin-right: 50px;
+  text-align: center;
+  position: relative;
+  width: 100px;
 }
 
 .wizard-progress .step-name {
-    display: table-cell;
-    height: 32px;
-    vertical-align: bottom;
-    text-align: center;
-    width: 100px;
+  display: table-cell;
+  height: 32px;
+  vertical-align: bottom;
+  text-align: center;
+  width: 100px;
 }
 
 .wizard-progress .step-name-wrapper {
-    display: table-cell;
-    height: 100%;
-    vertical-align: bottom;
+  display: table-cell;
+  height: 100%;
+  vertical-align: bottom;
 }
 
 .wizard-progress .step-num {
-    font-size: 14px;
-    font-weight: bold;
-    width: 20px;
-    display: inline-block;
-    margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  width: 20px;
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .wizard-progress .step-num:after {
-    content: "";
-    display: block;
-    background: white;
-    height: 3px;
-    width: 120px;
-    position: absolute;
-    bottom: 10px;
-    left: 65px;
+  content: "";
+  display: block;
+  background: white;
+  height: 3px;
+  width: 120px;
+  position: absolute;
+  bottom: 10px;
+  left: 65px;
 }
 
 .wizard-progress li:last-of-type .step-num:after {
-    display: none;
+  display: none;
 }
 
 .wizard-progress .active-step .step-num {
-    background-color:  #64a19d;
+  background-color: #64a19d;
 }
 /*
     <--------------- End of code credit
 */
 
 /*
+    Profile page
+ */
+
+.accounts-head {
+  padding: 10rem 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(22, 22, 22, 0.3) 0%,
+      rgba(22, 22, 22, 0.7) 75%,
+      #161616 100%
+    ),
+    url("../img/stars-sky.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+/*
     Bookings page
 */
 
-.booking-ref-class{
-    color: #64a19d;
-    font-weight: 600;
+.booking-ref-class {
+  color: #64a19d;
+  font-weight: 600;
 }
