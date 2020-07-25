@@ -76,6 +76,10 @@ input#inputEmail {
     font-size: large;
 }
 
+.contact-section .social {
+  margin-top: 2rem;
+}
+
  /*
     Home page
  */
@@ -113,9 +117,16 @@ input#inputEmail {
     background-size: cover;
 }
 
-.about-head h1, .trip-header {
+.about-head h1 {
     font-family: 'Varela Round';
     letter-spacing: 0.6rem;
+    font-size: 1.8rem;
+}
+
+ @media (min-width: 768px) {
+   .about-head h1 {
+    font-size: 2.5rem;
+  }
 }
 
  /*
