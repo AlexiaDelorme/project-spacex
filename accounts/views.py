@@ -63,8 +63,6 @@ def profile_page(request):
     """Render user profile page with their personal information:
     contact details, passenger information (if provided yet)"""
 
-    user = User.objects.get(email=request.user.email)
-
     # Check if user has already provided contact details
     try:
         contact = ContactDetail.objects.get(user=request.user)
@@ -82,7 +80,7 @@ def profile_page(request):
         if passenger is not None:
             context = {
                 "page_title": "Profile",
-                "user": user,
+                "user": request.user,
                 "contact": contact,
                 "passenger": passenger
             }
@@ -90,7 +88,7 @@ def profile_page(request):
         else:
             context = {
                 "page_title": "Profile",
-                "user": user,
+                "user": request.user,
                 "contact": contact
             }
     else:
@@ -98,14 +96,14 @@ def profile_page(request):
         if passenger is not None:
             context = {
                 "page_title": "Profile",
-                "user": user,
+                "user": request.user,
                 "passenger": passenger
             }
         # User has not provided neither contact nor passenger info
         else:
             context = {
                 "page_title": "Profile",
-                "user": user
+                "user": request.user
             }
 
     return render(request, 'profile/profile.html', context)
