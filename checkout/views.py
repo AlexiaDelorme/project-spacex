@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.conf import settings
-from django.contrib.auth.models import User
 from accounts.models import ContactDetail, Passenger
 from .models import BookingReference
 from trips.models import Trip
@@ -21,8 +20,6 @@ def checkout_contact_page(request):
     # Redirect users to cart if they try to access this page with an empty cart
     if not request.session.get('cart'):
         return redirect('view_cart')
-
-    user = User.objects.get(email=request.user.email)
 
     # Clear existing booking references
     # (if user has clicked prev btn on passenger page)
@@ -76,7 +73,7 @@ def checkout_contact_page(request):
     context = {
         "page_title": "Contact details",
         "checkout_pg": "contact",
-        "user": user,
+        "user": request.user,
         "form": form
     }
 
@@ -92,8 +89,6 @@ def checkout_passengers_page(request):
     if not request.session.get('cart'):
         return redirect('view_cart')
 
-    user = User.objects.get(email=request.user.email)
-
     # Create booking reference for trips
     if 'booking_references' not in request.session:
         cart = request.session.get('cart', {})
@@ -101,7 +96,7 @@ def checkout_passengers_page(request):
         for id in cart:
             # Create booking ref object
             booking_obj = BookingReference.objects.create(
-                booker=user,
+                booker=request.user,
                 trip=Trip.objects.get(id=id),
                 passenger_number=cart[id]
             )
@@ -125,7 +120,7 @@ def checkout_passengers_page(request):
     context = {
         "page_title": "Passenger details",
         "checkout_pg": "passengers",
-        "user": user,
+        "user": request.user,
         "form": form,
         "o_form": o_form
     }

@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.models import User
 from .models import ContactDetail, Passenger
 from checkout.models import BookingReference
 from .forms import (
