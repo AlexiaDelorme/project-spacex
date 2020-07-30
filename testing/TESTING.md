@@ -621,6 +621,22 @@ I have managed to achieve a coverage of **95%** on my project. I have **127 test
 
 #### Missing automated tests
 
+- accounts/views.py
+
+For the signup_page view, I was not able to simulate with unit tests a database error that would prevent from creating a user account. When the form submitted is valid but the user account was not created should throw a an error message displaying "We were enable to register your account". This block is therefore not covered in my python automated tests.
+
+![accounts/views.py coverage](python/accounts.png)
+
+- checkout/views.py
+
+When submitting a valid form for a stripe payment, a stripe id is created and this cannot be simulated by client tests. I have therefore manually tested the checkout_payment_page view in the [manual tests](#manual-tests) section.
+
+- main_pages/views.py
+
+For the handler500 view, as per [Django Ticket #18707](https://code.djangoproject.com/ticket/18707), test client doesn't allow testing of 500 responses content. I have therefore manually tested this view, by creating a 500 view with an url (setting must be set to DEBUG=TRUE in settings.py) that would simulate an internal service error. 
+
+![main_pages/views.py coverage](python/main.png)
+
 <a name="js"/>
 
 ### JS
