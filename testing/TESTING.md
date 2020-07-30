@@ -623,7 +623,7 @@ I have managed to achieve a coverage of **95%** on my project. I have **127 test
 
 - accounts/views.py
 
-For the signup_page view, I was not able to simulate with unit tests a database error that would prevent from creating a user account. When the form submitted is valid but the user account was not created should throw a an error message displaying "We were enable to register your account". This block is therefore not covered in my python automated tests.
+For the signup_page view, when the form is valid but the user account was not created, the following error message should be displayed: "We were enable to register your account". I was not able to simulate such a database error with unit tests, therefore this block of code is not covered in my python automated tests.
 
 ![accounts/views.py coverage](python/accounts.png)
 
@@ -633,7 +633,7 @@ When submitting a valid form for a stripe payment, a stripe id is created and th
 
 - main_pages/views.py
 
-For the handler500 view, as per [Django Ticket #18707](https://code.djangoproject.com/ticket/18707), test client doesn't allow testing of 500 responses content. I have therefore manually tested this view, by creating a 500 view with an url (setting must be set to DEBUG=TRUE in settings.py) that would simulate an internal service error. 
+For the handler500 view, as per [Django Ticket #18707](https://code.djangoproject.com/ticket/18707), test client doesn't allow testing of 500 responses content. I have therefore manually tested this view by creating a 500 view with an url (setting must be set to DEBUG=TRUE in settings.py) that would simulate an internal service error.
 
 ![main_pages/views.py coverage](python/main.png)
 

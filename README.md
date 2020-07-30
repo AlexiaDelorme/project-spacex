@@ -1,6 +1,10 @@
 [![Build Status](https://travis-ci.org/AlexiaDelorme/project-spacex.svg?branch=master)](https://travis-ci.org/AlexiaDelorme/project-spacex)
 
-# [SpaceX]()
+# [SpaceX](https://project-spacex.herokuapp.com/)
+
+<div align="center">
+    <img src="static/img/spacex-project.png" href="https://project-spacex.herokuapp.com/" target="_blank" alt="SpaceX Picture"/>
+</div>
 
 ## Table of Contents
 1. [UX](#ux)
