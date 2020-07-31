@@ -205,10 +205,8 @@
 
         e.preventDefault();
 
-        var inputPassenger = $(this).find("input#passenger").val();
-        console.log(inputPassenger);
-        var tripPrice = $(this).siblings(".tripPrice").val();
-        console.log(tripPrice);
+        var inputPassenger = parseInt($(this).find("input#passenger").val());
+        var tripPrice = parseInt($(this).siblings(".tripPrice").val());
 
         // Update total price for the corresponding cart item
         var totalTripPrice = (inputPassenger * tripPrice).toLocaleString();
