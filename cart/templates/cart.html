@@ -215,7 +215,7 @@
         // Update amount for the total cart
         var sum = 0;
         $(".totalPrice").each(function () {
-            sum += parseFloat($(this).text().replace(/,/g, ''));
+            sum += parseFloat($(this).text().replace((/,/g || / /g), ''));
         });
         $("#totalCartPrice").text(sum.toLocaleString());
 
