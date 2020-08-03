@@ -28,7 +28,7 @@
                 <div class="col-12 col-md-10 col-lg-8 jumbotron mx-auto">
 
                     {% for item in cart_items %}
-                        <div class="mb-5 cartItemAdjust">
+                        <div class="mb-3 mb-md-5 cartItemAdjust">
                     
                             <!-- Trip recap -->
                             <div class="col-12 mb-2">
@@ -36,7 +36,7 @@
                                     <div class="col-12 col-md-8">
                                         <form class="remove-cart-form" method="POST" tripid="trip_{{ item.id }}">
                                             {% csrf_token %}
-                                            <button class="remove-item btn btn-light float-left" type="submit"><i class="fas fa-trash-alt fa-2x"></i></button>
+                                            <button class="remove-item btn btn-light float-right float-md-left" type="submit"><i class="fas fa-trash-alt fa-2x"></i></button>
                                         </form>
                                         <h2 class="mb-4">Trip to the {{ item.trip.category.destination }} </h2>
                                         From {{ item.trip.departure_date }} to {{ item.trip.return_date }} <br>
@@ -115,16 +115,16 @@
                             </div>
 
                         </div>
-                        <div class="col-12 mt-5 mb-5">
-                            <hr>
-                        </div>
+                        
+                        <hr>
+                        
                     {% endfor %}
 
                     <!-- Total cart & checkout -->
                     <div class="col-12 mt-5 text-left text-md-right">
                         <div class="d-inline-flex">
-                            <h2 class="mr-2">TOTAL: €</h2>
-                            <h2 id="totalCartPrice">{{ total|intcomma }}</h2>
+                            <h3 class="mr-2">TOTAL: €</h3>
+                            <h3 id="totalCartPrice">{{ total|intcomma }}</h3>
                         </div>
                         <p>Tax included</p>
                         <a href="{% url 'checkout_contact' %}" class="btn btn-primary">Checkout</a>
