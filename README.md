@@ -545,7 +545,7 @@ STRIPE_SECRET | `<STRIPE_SECRET>`
 - [Datepicker](https://jsbin.com/culagonula/edit?html,js,output)
 - [Timeline](https://bootsnipp.com/tags/timeline/4)
 - [Collapsable](http://jsfiddle.net/hungerpain/eK8X5/7/)
-- [Progress Tracker](https://stackoverflow.com/questions/5213753/build-step-progress-bar-css-and-jquery)
+- [Progress Bar](https://codepen.io/cavellblood/pen/NNNbbg)
 - [Login Success View](https://stackoverflow.com/questions/16824004/django-conditional-login-redirect/16824337#16824337)
 - [Django Email](https://stackoverflow.com/questions/2809547/creating-email-templates-with-django)
 - [Corey Schafer's Django Tutorials](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p)
