@@ -1089,12 +1089,20 @@ A manual cross-browser testing was performed for each features for the following
 ###### Responsiveness
 
 The responsiveness of the webiste was tested thanks to Google Chrome developer tool, the following devices size were tested for all features and all elements were displayed without issues:
+- Moto G4
 - Galaxy S5 
-- Pixel 2 / Pixel 2 XL 
+- Pixel 2
+- Pixel 2 XL 
 - iPhone 5/SE
-- iPhone 6/7/8 and Plus
+- iPhone 6/7/8 
+- iPhone 6/7/8 Plus
 - iPhone X 
-- iPad / iPad Pro 
+- iPad
+- iPad Pro
+- Surface Duo
+- Galaxy Fold (fair)
+
+The rendering on the Galaxy Fold is not optimal but media queries were added to enable the app to be responsive on this device as well.
 
 The automated tool [BrowserStack](https://www.browserstack.com) was also used to review responsiveness on a wide range of devices. 
 
