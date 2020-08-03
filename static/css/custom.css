@@ -426,94 +426,6 @@ ul.timeline > li:before {
 }
 
 /*
-    Checkout pages
- */
-
-.btn {
-  font-size: 70%;
-}
-
-.collapse-container .content {
-  display: none;
-}
-
-.card-header.header {
-  background-color: #64a19d;
-  color: white;
-}
-
-/*
-    Progress tracker for checkout
-    <--------------- Code credit: http://jsfiddle.net/kevindmorgan/tuPrn/
- */
-
-.visuallyhidden {
-  display: none;
-}
-
-.wizard-progress {
-  list-style: none;
-  list-style-image: none;
-  margin: 0;
-  padding: 0;
-  margin-top: 20px;
-  float: left;
-  white-space: nowrap;
-}
-
-.wizard-progress li {
-  float: left;
-  margin-right: 50px;
-  text-align: center;
-  position: relative;
-  width: 100px;
-}
-
-.wizard-progress .step-name {
-  display: table-cell;
-  height: 32px;
-  vertical-align: bottom;
-  text-align: center;
-  width: 100px;
-}
-
-.wizard-progress .step-name-wrapper {
-  display: table-cell;
-  height: 100%;
-  vertical-align: bottom;
-}
-
-.wizard-progress .step-num {
-  font-size: 14px;
-  font-weight: bold;
-  width: 20px;
-  display: inline-block;
-  margin-top: 10px;
-}
-
-.wizard-progress .step-num:after {
-  content: "";
-  display: block;
-  background: white;
-  height: 3px;
-  width: 120px;
-  position: absolute;
-  bottom: 10px;
-  left: 65px;
-}
-
-.wizard-progress li:last-of-type .step-num:after {
-  display: none;
-}
-
-.wizard-progress .active-step .step-num {
-  background-color: #64a19d;
-}
-/*
-    <--------------- End of code credit
-*/
-
-/*
     Profile page
  */
 
@@ -540,3 +452,112 @@ ul.timeline > li:before {
   color: #64a19d;
   font-weight: 600;
 }
+
+/*
+    Checkout pages
+ */
+
+.btn {
+  font-size: 70%;
+}
+
+.collapse-container .content {
+  display: none;
+}
+
+.card-header.header {
+  background-color: #64a19d;
+  color: white;
+}
+
+/*
+    Progress bar for checkout
+    <--------------- Code credit: https://codepen.io/cavellblood/pen/NNNbbg
+ */
+
+.c-progress-steps {
+	 margin: 0;
+	 list-style-type: none;
+}
+ .c-progress-steps li {
+	 position: relative;
+	 font-size: 14px;
+	 color: #7f8c8d;
+	 padding: 2px 0 2px 23px;
+}
+ .c-progress-steps li a {
+	 color: inherit;
+}
+ .c-progress-steps li.done {
+	 color: #64a19d;
+}
+ .c-progress-steps li.done:before {
+	 color: #64a19d;
+	 content: "\f058";
+}
+ .c-progress-steps li.current {
+	 color: #161616;
+	 font-weight: bold;
+}
+ .c-progress-steps li.current:before {
+	 color: #161616;
+	 content: "\f192";
+}
+ .c-progress-steps li:before {
+	 position: absolute;
+	 left: 0;
+     font: normal normal normal 14px/1 "Font Awesome 5 Free";
+	 font-size: 22px;
+	 background-color: #f8f9fa;
+	 content: "\f111";
+}
+ @media all and (max-width: 600px) {
+	 .c-progress-steps li:before {
+		 top: calc(50% - 8px);
+		 font-size: 16px;
+	}
+}
+ @media all and (min-width: 600px) {
+	 .c-progress-steps {
+		 display: table;
+		 list-style-type: none;
+		 margin: 20px auto;
+		 padding: 0;
+		 table-layout: fixed;
+		 width: 100%;
+	}
+	 .c-progress-steps li {
+		 display: table-cell;
+		 text-align: center;
+		 padding: 0;
+		 padding-bottom: 10px;
+		 white-space: nowrap;
+		 position: relative;
+		 border-left-width: 0;
+		 border-bottom-width: 4px;
+		 border-bottom-style: solid;
+		 border-bottom-color: #7f8c8d;
+	}
+	 .c-progress-steps li.done {
+		 border-bottom-color: #64a19d;
+	}
+	 .c-progress-steps li.current {
+		 color:  #161616;
+		 font-size: 16px;
+		 line-height: 14px;
+		 border-bottom-color: #161616;
+	}
+	 .c-progress-steps li.current:before {
+		 color:  #161616;
+		 content: "\f192";
+	}
+	 .c-progress-steps li:before {
+		 bottom: -14px;
+		 left: 50%;
+		 margin-left: -9px;
+	}
+}
+ 
+/*
+    <--------------- End of code credit
+*/

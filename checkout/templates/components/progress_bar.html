@@ -1,0 +1,33 @@
+{% if checkout_pg == 'contact' %}
+    <ol class="c-progress-steps">
+        <li class="c-progress-steps__step current">Contact</li>
+        <li class="c-progress-steps__step">Passengers</li>
+        <li class="c-progress-steps__step">Payment</li>
+        <li class="c-progress-steps__step">Confirmation</li>
+    </ol>
+
+{% elif checkout_pg == 'passengers' %}
+    <ol class="c-progress-steps">
+        <li class="c-progress-steps__step  done">Contact</li>
+        <li class="c-progress-steps__step  current">Passengers</li>
+        <li class="c-progress-steps__step">Payment</li>
+        <li class="c-progress-steps__step">Confirmation</li>
+    </ol>
+
+{% elif checkout_pg == 'payment' %}
+    <ol class="c-progress-steps">
+        <li class="c-progress-steps__step  done">Contact</li>
+        <li class="c-progress-steps__step  done">Passengers</li>
+        <li class="c-progress-steps__step  current">Payment</li>
+        <li class="c-progress-steps__step">Confirmation</li>
+    </ol>
+
+{% else %}
+    <ol class="c-progress-steps">
+        <li class="c-progress-steps__step  done">Contact</li>
+        <li class="c-progress-steps__step  done">Passengers</li>
+        <li class="c-progress-steps__step  done">Payment</li>
+        <li class="c-progress-steps__step current">Confirmation</li>
+    </ol>
+
+{% endif %}
