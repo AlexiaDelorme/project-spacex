@@ -91,7 +91,7 @@ class TestAddToCartView(TestCase):
         # add item to cart and amend passenger number
         url = "/cart/add/" + str(self.trip_1.id) + "/"
         response = self.client.post(url, {'passenger': '3'})
-        expected_cart = {str(self.trip_1.id): 3}
+        expected_cart = {str(self.trip_1.id): 4}
         session = self.client.session
 
         self.assertEqual(session['cart'], expected_cart)

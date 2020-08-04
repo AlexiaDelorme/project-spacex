@@ -28,8 +28,9 @@ def add_to_cart(request, id):
     passenger = int(request.POST.get('passenger'))
     cart = request.session.get('cart', {})
 
-    if id in cart:
-        cart[id] = int(cart[id])+passenger
+    str_id = str(id)
+    if str_id in cart:
+        cart[str_id] = int(cart[str_id])+passenger
     else:
         cart[id] = cart.get(id, passenger)
 
