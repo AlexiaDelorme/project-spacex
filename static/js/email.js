@@ -25,7 +25,6 @@ $("#contact-form").submit(function (e) {
   })
     .done(function () {
       contact_request_success();
-      console.log("Your mail is sent!");
     })
     .fail(function (error) {
       contact_request_fail();
@@ -38,8 +37,8 @@ function contact_request_success() {
     title: "Message sent!",
     text: "Thank you, your message request was successfully sent to SpaceX.",
     icon: "success",
-    confirmButtonText: 'ok',
-    confirmButtonColor: '#64a19d',
+    button: 'ok',
+    buttonColor: '#64a19d',
   }).then(() => {
     location.reload();
   });
