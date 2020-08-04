@@ -201,8 +201,15 @@
         });
 
         // Alert success to user
-        swal(firstName+" "+lastName, "Passenger was saved", "success");
-
+        swal({
+            title: firstName+" "+lastName,
+            text:"Passenger was saved",
+            icon: "success",
+            buttons: false,
+            closeOnClickOutside: false,
+            timer: 3000,
+        });
+        
     });
 
     // Form to register authenticated user as passenger
@@ -232,7 +239,14 @@
         });
 
         // Alert success to user
-        swal(firstName+" "+lastName, "Passenger was saved", "success");
+        swal({
+            title: firstName+" "+lastName,
+            text:"Passenger was saved",
+            icon: "success",
+            buttons: false,
+            closeOnClickOutside: false,
+            timer: 3000,
+        });
 
     });
 
