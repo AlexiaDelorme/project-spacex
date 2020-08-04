@@ -80,7 +80,7 @@ h6 {
 @media (min-width: 576px) {
   #mainNav,
   .dropdown-menu.show {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }
 
