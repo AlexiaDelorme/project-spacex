@@ -37,8 +37,6 @@ class TripImage(models.Model):
 
 
 class TripCategory(models.Model):
-    class Meta:
-        verbose_name_plural = 'Trip Categories'
 
     title = models.CharField(max_length=50)
     destination = models.CharField(max_length=50)
@@ -51,6 +49,7 @@ class TripCategory(models.Model):
     img = models.ManyToManyField(TripImage)
 
     class Meta:
+        verbose_name_plural = 'Trip Categories'
         ordering = ['destination']
 
     def __str__(self):
