@@ -83,7 +83,6 @@ $(document).ready(function () {
     /*
         Buttons to increment or decrement passenger number
     */
-
     $('.input-group').on('click', '.button-plus', function(e) {
         var inputPassenger = parseInt($(this).prev("input#passenger").val());
         var maxSlot = parseInt($(this).prev("input#passenger").attr("max"));
