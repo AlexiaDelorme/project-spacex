@@ -1116,10 +1116,59 @@ While testing this project some bugs were discovered and they have been document
 
 ### Solved Issues
 
-1. Solved issue 1
+1. Incorrect total cart amount
+
+While testing the cart page on Mozilla Firefox, I noticed that when the user adjusted passenger numbers, the trip price format was incorrect resulting to an incorrect value for the total cart amount.
+
+![Cart passenger adjust](issues/issue-2.1.png)
+
+![Incorrect total cart amount](issues/issue-2.2.png)
+
+I discovered this issue only when I was doing cross-browsing testing even though it was not specific to Mozilla Firefox. I think that the language settings for Mozilla firefox was European, therefore displaying thousaunds without comma: "10 000". Whereas all my other browsers were by default set to US, hence displaying thousaunds using commas: "10,000". 
+
+I used the `toLocaleString()` method to format and display updated value for trip price and total cart amount when the user adjusted the number of passenger on the cart page. By default this method uses the regional settings of the browser to format the figures. To ensure that the formatting is harmonized I have therefore specified the use of 'en-US' format. 
+
+```
+var totalTripPrice = (inputPassenger * tripPrice).toLocaleString('en-US');
+
+// Update amount for the total cart
+        var sum = 0;
+        $(".totalPrice").each(function () {
+            sum += parseFloat($(this).text().replace(/,/g, ''));
+        });
+        $("#totalCartPrice").text(sum.toLocaleString('en-US'));
+```
+
+2. Add another passenger to an existing trip in the cart
+
+While testing the views.py file of the cart app, I had one test failing: test_add_to_cart_if_not_empty. When a user adds another passenger to a trip already in the cart, the new passenger should be added to the existing quantity in the cart (ie. summing the new quantity with the one already in the cart).
+
+But the test was failing - as per screenshot below - because when the item was already in the cart, the quantity (here number of passengers) was not being summed but replaced with the new quantity provided by the user.
+
+![Test failing](issues/issue-3.1.png)
+
+Code before correction:
+
+![Test failing](issues/issue-3.2.png)
+
+The issue was coming from the fact that the trip id is saved as string in the cart dictionary. The if statement on line 31 `if id in cart` never evaluated to True. To resolve that, I have therefore used the expression `str(id)` in the if statement.
+
+Code after correction:
+
+![Test failing](issues/issue-3.3.png)
+
+3. Passenger not added to the booking reference
 
 <a name="unsolved"/>
 
 ### Unsolved Issues
 
-1. Unsolved issue 1
+1. Console warnings
+
+To the best of my knowledge, there are no errors in the console during all interaction with the website. Nonetheless, there are two pages on which there are warnings. 
+
+- Checkout passengers page: there are elements with "non-unique" id because I used django form to populate passenger forms. There can be multiple errors on this page when there are various trips in the cart and/or several passengers. 
+![Checkout passengers](issues/console-2.png)
+
+- Checkout payment page: cookies associated with the use of stripe for the payment functionality.
+![Checkout passengers](issues/console-1.png)
