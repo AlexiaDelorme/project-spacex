@@ -12,4 +12,4 @@ class Testimonial(models.Model):
         ordering = ['trip_date']
 
     def __str__(self):
-        f"{self.passenger} - trip {self.trip_date}"
+        return f"{self.passenger.first_name} {self.passenger.last_name} - Trip {self.trip_date}"
