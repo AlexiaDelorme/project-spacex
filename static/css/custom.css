@@ -193,6 +193,10 @@ input#inputEmail {
   color: white;
 }
 
+.more-testimonials {
+  display: contents;
+}
+
 /*
     About page
  */

@@ -141,50 +141,22 @@
 
             {% for testimonial in testimonials %}
 
-                {% if forloop.counter|divisibleby:2 %}
-                    <!-- Testimonial - even -->
-                    <div class="col-12 col-md-6">
-                        <div class="card text-white bg-black mb-3" style="max-width: 540px;">
-                            <div class="row no-gutters">
-                                <div class="col-md-8">
-                                    <div class="card-body text-right">
-                                        <h5 class="card-title">{{testimonial.passenger.first_name}} {{testimonial.passenger.last_name}}</h5>
-                                        <p class="card-text">{{testimonial.text}}</p>
-                                        <p class="card-text"><small class="text-muted">Trip completed on {{testimonial.trip_date}}</small></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <img src="{{testimonial.image.url}}" class="card-img" alt="Testimonial">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                {% if forloop.counter <= 2 %}
+
+                    {% include 'components/testimonials.html' %}
 
                 {% else %}
-                    <!-- Testimonial - odd -->
-                    <div class="col-12 col-md-6">
-                        <div class="card text-white bg-black mb-3" style="max-width: 540px;">
-                            <div class="row no-gutters">
-                                <div class="col-md-4">
-                                    <img src="{{testimonial.image.url}}" class="card-img" alt="Testimonial">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{testimonial.passenger.first_name}} {{testimonial.passenger.last_name}}</h5>
-                                        <p class="card-text">{{testimonial.text}}</p>
-                                        <p class="card-text"><small class="text-muted">Trip completed on {{testimonial.trip_date}}</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                <div class="more-testimonials">
+                    {% include 'components/testimonials.html' %}
+                </div>
 
                 {% endif %}
 
             {% endfor %}
 
             <div class="col-12 text-center mt-3 mb-5">
-                <a href="#" class="btn btn-primary">View more</a>
+                <button id="btn-testimonials" class="btn btn-primary">View more</button>
             </div>
 
         </div>
@@ -206,4 +178,16 @@
 	</div>
 </section>
 
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+
+    $(".more-testimonials").hide();
+    
+    $("#btn-testimonials").click(function(){
+        $(".more-testimonials").toggle();
+    });
+
+</script>
 {% endblock %}
