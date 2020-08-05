@@ -1,0 +1,39 @@
+{% load static %}
+
+{% if forloop.counter|divisibleby:2 %}
+    <!-- Testimonial - even -->
+    <div class="col-12 col-md-6">
+        <div class="card text-white bg-black mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-8">
+                    <div class="card-body text-right">
+                        <h5 class="card-title">{{testimonial.passenger.first_name}} {{testimonial.passenger.last_name}}</h5>
+                        <p class="card-text">{{testimonial.text}}</p>
+                        <p class="card-text"><small class="text-muted">Trip completed on {{testimonial.trip_date}}</small></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="{{testimonial.image.url}}" class="card-img" alt="Testimonial">
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <!-- Testimonial - odd -->
+    <div class="col-12 col-md-6">
+        <div class="card text-white bg-black mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{testimonial.image.url}}" class="card-img" alt="Testimonial">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{testimonial.passenger.first_name}} {{testimonial.passenger.last_name}}</h5>
+                        <p class="card-text">{{testimonial.text}}</p>
+                        <p class="card-text"><small class="text-muted">Trip completed on {{testimonial.trip_date}}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
