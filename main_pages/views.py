@@ -1,11 +1,19 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
+from .models import Testimonial
 from .forms import ContactForm
 from django.contrib import messages
 
 
 def home_page(request):
-    return render(request, "home.html")
+    """Render home page and display passenger testimonials"""
+
+    testimonials = Testimonial.objects.all()
+    context = {
+        "page_title": "Home",
+        "testimonials": testimonials
+    }
+    return render(request, "home.html", context)
 
 
 def about_page(request):
