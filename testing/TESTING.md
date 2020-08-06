@@ -1116,15 +1116,15 @@ While testing this project some bugs were discovered and they have been document
 
 ### Solved Issues
 
-1. Incorrect total cart amount
+1. Incorrect cart amount
 
-While testing the cart page on Mozilla Firefox, I noticed that when the user adjusted passenger numbers, the trip price format was incorrect resulting to an incorrect value for the total cart amount.
+While testing the cart page on Mozilla Firefox, I noticed that when the user adjusted passenger numbers, the trip price format was incorrect resulting in an incorrect value for the total cart amount.
 
 ![Cart passenger adjust](issues/issue-2.1.png)
 
 ![Incorrect total cart amount](issues/issue-2.2.png)
 
-I discovered this issue only when I was doing cross-browsing testing even though it was not specific to Mozilla Firefox. I think that the language settings for Mozilla firefox was European, therefore displaying thousaunds without comma: "10 000". Whereas all my other browsers were by default set to US, hence displaying thousaunds using commas: "10,000". 
+I discovered this issue only when I was doing cross-browsing testing even though it was not specific to Mozilla Firefox. I think that the language settings that I had on Mozilla firefox was European, therefore displaying thousaunds without comma: "10 000". Whereas all my other browsers were by default set to US format, hence displaying thousaunds using commas: "10,000". 
 
 I used the `toLocaleString()` method to format and display updated value for trip price and total cart amount when the user adjusted the number of passenger on the cart page. By default this method uses the regional settings of the browser to format the figures. To ensure that the formatting is harmonized I have therefore specified the use of 'en-US' format. 
 
@@ -1159,6 +1159,24 @@ Code after correction:
 
 3. Passenger not added to the booking reference
 
+While testing the checkout app, I discovered that when a user submits passenger details and then clicks the payment button too quickly, the save_passenger_to_booking/save_user_passenger_to_booking functions haven't sufficient time to be executed. This resulted in enabling the user to proceed to the payment and confirm their trip while no passengers were associated to their booking.
+
+Please see below screenshots of this issue.
+
+- View of the admin site: no passengers are saved even though the booking is confirmed.
+
+![Admin](issues/issue-1.1.png)
+
+- View of the user's booking page: booking appears as upcoming trip but there are no saved passengers.
+
+![Booking](issues/issue-1.2.png)
+
+To correct this issue, I decided to add a timer and prevent users from closing the alert box manually when they click the button to save their passenger details. This should normally bring sufficient time for the python functions to be fully executed before proceeding to the payment page.
+
+![Code](issues/issue-1.3.png)
+
+![SWAL](issues/issue-1.4.png)
+
 <a name="unsolved"/>
 
 ### Unsolved Issues
@@ -1167,8 +1185,10 @@ Code after correction:
 
 To the best of my knowledge, there are no errors in the console during all interaction with the website. Nonetheless, there are two pages on which there are warnings. 
 
-- Checkout passengers page: there are elements with "non-unique" id because I used django form to populate passenger forms. There can be multiple errors on this page when there are various trips in the cart and/or several passengers. 
+- Checkout passengers page: there are elements with "non-unique" id because I used django form to populate passenger forms. There can be multiple errors on this page when there are various trips in the cart and/or several passengers.
+
 ![Checkout passengers](issues/console-2.png)
 
 - Checkout payment page: cookies associated with the use of stripe for the payment functionality.
+
 ![Checkout passengers](issues/console-1.png)
