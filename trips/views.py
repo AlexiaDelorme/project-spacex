@@ -67,7 +67,8 @@ def trips_results_page(request, pk):
         "page_obj": page_obj,
         "trip_category": trip_category
     }
-    messages.info(request, "Please, see below the result(s) for your search")
+    messages.info(
+        request, f"Please, see below the result(s) for your search. This includes trips departing on {departure_date} or later.")
     return render(request, "trips_results.html", context)
 
 
@@ -98,7 +99,7 @@ def trips_all_page(request):
         page_obj = paginator.get_page(page_number)
 
         messages.info(
-            request, "Please, see below the result(s) for your search")
+            request, f"Please, see below the result(s) for your search. This includes trips departing on {departure_date} or later.")
 
     else:
         today = date.today()
