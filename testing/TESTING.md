@@ -32,7 +32,7 @@ Back to [README.md](../README.md)
 - [JSHint](https://jshint.com/) was used to check the code quality for JS files.
     - The following undefined variables were reported but they are all related to the use of APIs: emailjs, google, stripe, csrftoken, swal.
     - There are two syntax warnings related to the use of syntax only available in ES6.
-- I used Visual Studio Code extension for Python available in Gitpod to ensure the code quality of my Python files. 
+- I used Visual Studio Code extension for Python available on Gitpod to ensure the code quality of my Python files. 
 
 <a name="python"/>
 
@@ -623,7 +623,7 @@ I have managed to achieve a coverage of **95%** on my project. I have **127 test
 
 - accounts/views.py
 
-For the signup_page view, when the form is valid but the user account was not created, the following error message should be displayed: "We were enable to register your account". I was not able to simulate such a database error with unit tests, therefore this block of code is not covered in my python automated tests.
+For the signup_page view, when the form is valid but the user account was not created, the following error message should be displayed: "We were unable to register your account". I was not able to simulate such a database error with unit tests, therefore this block of code is not covered in my python automated tests.
 
 ![accounts/views.py coverage](python/accounts.png)
 
@@ -760,9 +760,13 @@ This project has been tested multiple times against each user stories listed in 
     - categories of trips (individuals & scientists)
     - statistics
     - testimonials
-    - button to browse trips    
+    - button to browse trips
+- [x] Go to the section with the passenger testimonials.
+    - After page loaded, only 2 testimonials should be visible and there should be a button to 'Show more'.
+    - Click the 'Show more' button and confirm that it displayed more testimonials.
+    - Confirm that the button text is now saying 'Show less'. Click the button and confirm that it hid the testimonials. 
 - [x] At the bottom of the home page, get to the 'Book Your Next Trip' button
-    - When hovered over, the background color should turn white.
+    - When hovered over, the background color should turn darker.
     - When clicked, it should take the user to the page where all the destinations are listed.
 
 **Test result:** Successful :white_check_mark:
@@ -948,14 +952,23 @@ This project has been tested multiple times against each user stories listed in 
 - [x] Try to submit the form without providing any credit card information, confirm that you get appropriate feedback.
 - [x] Try to submit the form providing an incorrect expiry date for your credit card, confirm that you get appropriate feedback.
 - [x] Try to submit the form providing an incorrect CVV for your credit card, confirm that you get appropriate feedback.
-- [x] Submit a valid credit card number (only use this test credit card number: 4242 4242 4242 4242), a random CVV and a correct expiry date. Confirm that you get redirected to the confirmation page with a green flash message displaying that your payment was accepted and your booking is confirmed. 
+- [x] Submit an invalid credit card number as provided in [Stripe Testing documentation](https://stripe.com/docs/testing) (for instance: 4000 0000 0000 0101), a random CVV and a correct expiry date. Confirm that you get feedback saying that the payment failed.
+- [x] Submit a valid credit card number (only use this test credit card number: 4242 4242 4242 4242), a random CVV and a correct expiry date. Confirm that you get redirected to the confirmation page with a green flash message displaying that your payment was accepted and your booking is confirmed.
 
 **Test scenario: Confirmation page**
 - [x] Confirm that the progress bar is displayed at the top of the page and highlights the "Confirmation" step. 
 - [x] Confirm that the navbar is hidden during the checkout process. 
 - [x] The page should display a message confirming that your bookings are confirmed. 
-- [x] You should have a link to the booking page where you can see all your upcoming trips. Click on the link and confirm that it takes you to the booking page.
-- [x] Click the 'Browse trips' button, confirm that you get redirected to the search all trips page.
+- [x] You should view a summary of your booking with the following information:
+    - Booking reference
+    - Destination name
+    - Number of passengers
+    - Passengers names
+    - Booking date
+    - Spaceship number
+    - Trip summary (departure site, departure/return date and time)
+- [x] Confirm that you have received an email with the summary of your order.
+- [x] Click the 'Bookings' button, confirm that you get redirected to your bookings page.
 
 **Tests results:** Successful :white_check_mark:
 
