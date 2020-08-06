@@ -9,7 +9,7 @@ class Testimonial(models.Model):
     image = models.ImageField(blank=True, upload_to='testimonial_pics')
 
     class Meta:
-        ordering = ['trip_date']
+        ordering = ['-trip_date']
 
     def __str__(self):
         return f"{self.passenger.first_name} {self.passenger.last_name} - Trip {self.trip_date}"
