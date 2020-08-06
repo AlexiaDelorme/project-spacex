@@ -348,6 +348,15 @@ other_passenger | models.ManyToManyField(OtherPassenger) | blank=True
 order_date | models.DateField() | blank=True, null=True
 confirmation_status | models.BooleanField() | default=False
 
+### Testimonial model
+
+Field Name | Field Type | Requirements
+------------- | ------------- | -------------
+passenger | models.ForeignKey(User) | on_delete=models.PROTECT
+text | models.TextField() | 
+trip_date | models.DateField() | 
+image | models.ImageField() | blank=True, upload_to='testimonial_pics'
+
 <a name="tech"/>
 
 # Technologies Used
