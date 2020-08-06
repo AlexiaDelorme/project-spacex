@@ -60,7 +60,7 @@ As a user, I expect:
 1. To have convenient access to all the trips that the travel agency offers.
 2. The website to have a neat and elegant design with an optimal architecture and layout.
 3. The website to be intuitive and easy to navigate so that I can find what I need in the most effective manner.
-4. To easily find information i.e. identify key information for a specific trips and if needed, be able to access more details.
+4. To easily find information i.e. identify key information for a specific trip and, if needed, be able to access more details.
 5. To easily find information about the travel company and see their entire range of offers. I also want to have their contact details and be able to get in touch with them through a contact form.  
 6. To be able to research trips by destination, departure site and date.
 7. To read testimonies from previous passengers and have access to FAQs. 
@@ -69,7 +69,7 @@ As a user, I expect:
 10. The website to be fully responsive on any devices: mobile, tablet, desktop. 
 11. The website to be fully interactive so that I get clear feedback on any action I undertake (complete a form, process a payment, log in, log out etc…).
 12. As a business or scientist, I want to easily find information on the application process and request information to the company.
-13. As a user, I want to be able to access (and update) my personal information, upcoming and post bookings.
+13. As a client, I want to be able to access (and update) my personal information, upcoming and post bookings.
 
 <a name="design"/>
 
@@ -223,17 +223,19 @@ Page with all upcoming and/or past trips that were booked by the user.
 
 <a name="future-features"/>
 
-## Future Feature 1 - Waiting list
+## Future Features 
+
+###### Waiting list
 
 To provide the user with the option to register to a waiting list if a trip is sold out.
 
-## Future Feature 2 - Activity dashboard for admin
+###### Activity dashboard for admin
 
 To have a custom dashboard for the administrator of the website so they can monitor the activity of the travel agency.
 - statistics: number of bookings, revenues, new users...
 - edit/delete/add new trips
 
-## Future Feature 3 - Option to add testimonials
+###### Option to add testimonials
 
 Create a testimonial form where passengers could share their experience after completing a trip with us.
 
