@@ -156,7 +156,7 @@
             {% endfor %}
 
             <div class="col-12 text-center mt-3 mb-5">
-                <button id="btn-testimonials" class="btn btn-primary">View more</button>
+                <button id="btn-testimonials" class="btn btn-primary">Show more</button>
             </div>
 
         </div>
@@ -182,12 +182,16 @@
 
 {% block script %}
 <script type="text/javascript">
+  $(".more-testimonials").hide();
 
-    $(".more-testimonials").hide();
-    
-    $("#btn-testimonials").click(function(){
-        $(".more-testimonials").toggle();
-    });
+  $("#btn-testimonials").click(function () {
+    $(".more-testimonials").slideToggle("slow");
 
+    if ($(this).text() == "Show more") {
+      $(this).text("Show less");
+    } else {
+      $(this).text("Show more");
+    }
+  });
 </script>
 {% endblock %}
