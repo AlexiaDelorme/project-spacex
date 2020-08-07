@@ -2,8 +2,8 @@
 
 {% if forloop.counter|divisibleby:2 %}
     <!-- Testimonial - even -->
-    <div class="col-12 col-md-6">
-        <div class="card text-white bg-black mb-3" style="max-width: 540px;">
+    <div class="col-12 col-lg-6">
+        <div class="card text-white bg-black mb-3">
             <div class="row no-gutters">
                 <div class="col-md-8">
                     <div class="card-body text-right">
@@ -12,7 +12,7 @@
                         <p class="card-text"><small class="text-muted">Trip completed on {{testimonial.trip_date}}</small></p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 d-none d-md-block">
                     <img src="{{testimonial.image.url}}" class="card-img" alt="Testimonial">
                 </div>
             </div>
@@ -20,10 +20,10 @@
     </div>
 {% else %}
     <!-- Testimonial - odd -->
-    <div class="col-12 col-md-6">
-        <div class="card text-white bg-black mb-3" style="max-width: 540px;">
+    <div class="col-12 col-lg-6">
+        <div class="card text-white bg-black mb-3">
             <div class="row no-gutters">
-                <div class="col-md-4">
+                <div class="col-md-4 d-none d-md-block">
                     <img src="{{testimonial.image.url}}" class="card-img" alt="Testimonial">
                 </div>
                 <div class="col-md-8">
